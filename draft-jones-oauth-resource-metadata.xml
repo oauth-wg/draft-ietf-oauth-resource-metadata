@@ -32,7 +32,15 @@
       </address>
     </author>
 
-    <date day="29" month="March" year="2023" />
+    <author fullname="Aaron Parecki" initials="A." surname="Parecki">
+      <organization>Okta</organization>
+      <address>
+        <email>aaron@parecki.com</email>
+        <uri>https://aaronparecki.com/</uri>
+      </address>
+    </author>
+
+    <date day="29" month="June" year="2023" />
 
     <area>Security</area>
     <workgroup>OAuth Working Group</workgroup>
@@ -621,6 +629,12 @@
 	  should be cross-checked against one another for consistency
 	  when these lists are used by the application profile.
 	</t>
+      </section>
+
+      <section anchor="Server-Side Request Forgery (SSRF)">
+				The OAuth client is expected to fetch the authorization server metadata based on the value of the issuer in the resource server metadata. Since this specification enables clients to interoperate with RSs and ASs it has no prior knowledge of, this opens a risk for SSRF attacks by malicious users or malicious resource servers. Clients SHOULD take appropriate precautions against SSRF attacks, such as blocking requests to internal IP address ranges. Further recommendations can be found in the OWASP SSRF Prevention Cheat Sheet <xref target="OWASP.SSRF"/>.
+
+
       </section>
 
     </section>
@@ -1213,6 +1227,15 @@
           </author>
 	  <date/>
         </front>
+      </reference>
+
+      <reference anchor="OWASP.SSRF" target="https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html">
+      	<front>
+      		<title>OWASP SSRF Prevention Cheat Sheet</title>
+      		<author>
+      			<organization>OWASP</organization>
+      		</author>
+      	</front>
       </reference>
 
     </references>
