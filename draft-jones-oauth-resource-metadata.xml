@@ -988,16 +988,16 @@
 
   <back>
     <references title="Normative References">
-      <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2119"?>
-      <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5226"?>
-      <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5246"?>
-      <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5785"?>
-      <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6125"?>
-      <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6749"?>
-      <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6750"?>
-      <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7033"?>
-      <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7159"?>
-      <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7591"?>
+      <?rfc include="https://bib.ietf.org/public/rfc/bibxml7/reference.DOI.10.17487/RFC2119.xml"?>
+      <?rfc include="https://bib.ietf.org/public/rfc/bibxml7/reference.DOI.10.17487/RFC5226.xml"?>
+      <?rfc include="https://bib.ietf.org/public/rfc/bibxml7/reference.DOI.10.17487/RFC5246.xml"?>
+      <?rfc include="https://bib.ietf.org/public/rfc/bibxml7/reference.DOI.10.17487/RFC5785.xml"?>
+      <?rfc include="https://bib.ietf.org/public/rfc/bibxml7/reference.DOI.10.17487/RFC6125.xml"?>
+      <?rfc include="https://bib.ietf.org/public/rfc/bibxml7/reference.DOI.10.17487/RFC6749.xml"?>
+      <?rfc include="https://bib.ietf.org/public/rfc/bibxml7/reference.DOI.10.17487/RFC6750.xml"?>
+      <?rfc include="https://bib.ietf.org/public/rfc/bibxml7/reference.DOI.10.17487/RFC7033.xml"?>
+      <?rfc include="https://bib.ietf.org/public/rfc/bibxml7/reference.DOI.10.17487/RFC7159.xml"?>
+      <?rfc include="https://bib.ietf.org/public/rfc/bibxml7/reference.DOI.10.17487/RFC7591.xml"?>
 
       <reference anchor='BCP195' target='http://www.rfc-editor.org/info/bcp195'>
 	<front>
