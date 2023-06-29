@@ -3,7 +3,7 @@
 <!DOCTYPE rfc PUBLIC "-//IETF//DTD RFC 2629//EN"
 "http://xml2rfc.tools.ietf.org/authoring/rfc2629.dtd">
 
-<rfc category="std" docName="draft-jones-oauth-resource-metadata-02" ipr="trust200902">
+<rfc category="std" docName="draft-jones-oauth-resource-metadata-latest" ipr="trust200902">
 
   <?rfc toc="yes" ?>
   <?rfc tocdepth="5" ?>
