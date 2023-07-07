@@ -117,10 +117,13 @@
       </t>
 
       <section anchor="rnc" title="Requirements Notation and Conventions">
-	<t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-	"SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this
-	document are to be interpreted as described in <xref
-	target="RFC2119">RFC 2119</xref>.</t>
+	<t>
+	  The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+	  "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL"
+	  in this document are to be interpreted as described in
+	  BCP 14 <xref target="RFC2119"></xref> <xref target="RFC8174"></xref>
+	  when, and only when, they appear in all capitals, as shown here.
+	</t>
 
 	<t>
 	  All uses of <xref target="JWS">JSON Web Signature (JWS)</xref>
@@ -142,6 +145,17 @@
 	  the terms "Claim Name", "Claim Value", and "JSON Web Token (JWT)"
 	  defined by <xref target="JWT">JSON Web Token (JWT)</xref>.
 	</t>
+	<t>
+	  This specification defines the following term:
+	  <list style='hanging'>
+	    <t hangText='Resource Identifier:'>
+	      <vspace/>
+	      A URL that uses the <spanx style="verb">https</spanx> scheme and has no fragment components
+	      where <spanx style="verb">.well-known</spanx> <xref target="RFC5785"/> resources
+	      containing information about the protected resource are published.
+	    </t>
+	  </list>
+	</t>
       </section>
     </section>
 
@@ -161,7 +175,7 @@
 	    The protected resource's resource identifier, which is a URL that
 	    uses the <spanx style="verb">https</spanx> scheme and has no fragment components.
 	    This is the location where
-	    <spanx style="verb">.well-known</spanx> <xref target="RFC5785">RFC 5785</xref> resources
+	    <spanx style="verb">.well-known</spanx> <xref target="RFC5785"/> resources
 	    containing information about the protected resource are published.
 	    Using these well-known resources is described in <xref target="PRConfig"/>.
 	  </t>
@@ -315,7 +329,7 @@
 	<spanx style="verb">/.well-known/oauth-protected-resource</spanx> to the
 	protected resource's resource identifier.
 	The syntax and semantics of <spanx style="verb">.well-known</spanx>
-	are defined in <xref target="RFC5785">RFC 5785</xref>.
+	are defined in <xref target="RFC5785"/>.
 	The well-known URI path suffix used MUST be registered in the IANA
 	"Well-Known URIs" registry <xref target="IANA.well-known"/>.
       </t>
@@ -388,7 +402,7 @@
 	  This is required in some multi-tenant hosting configurations.
 	  This use of <spanx style="verb">.well-known</spanx> is for supporting
 	  multiple resources per host; unlike its use in
-	  <xref target="RFC5785">RFC 5785</xref>, it does not provide
+	  <xref target="RFC5785"/>, it does not provide
 	  general information about the host.
 	</t>
 
@@ -489,6 +503,126 @@
       </t>
     </section>
 
+    <section anchor="WWW-Authenticate" title="Use of WWW-Authenticate for Protected Resource Metadata">
+      <t>
+	A protected resource MAY use a <spanx style="verb">WWW-Authenticate</spanx> response to return its resource identifier to the client.
+	The client can then retrieve protected resource metadata using the resource identifier as described in <xref target="PRConfig"/>.
+	The client might then, for instance, determine what authorization server to use for the resource
+	based on protected resource metadata retrieved.
+      </t>
+      <t>
+	A typical end-to-end flow doing so is as follows.
+	Note that while this example uses the OAuth 2.0 Authorization Code flow,
+	a similar sequence could also be implemented with any other OAuth flow.
+      </t>
+      <t>
+	<list style="numbers">
+	  <t>
+	    The client makes a request to a protected resource without presenting an access token.
+	  </t>
+	  <t>
+	    The resource server responds with a <spanx style="verb">WWW-Authenticate</spanx> header including the resource identifier of the protected resource.
+	  </t>
+	  <t>
+	    The client fetches resource metadata from the <spanx style="verb">.well-known/oauth-protected-resource</spanx> location
+	    derived from the resource identifier according to <xref target="PRConfig"/>.
+	  </t>
+	  <t>
+	    The protected resource responds with the protected resource metadata according to <xref target="PRConfigurationResponse"/>.
+	  </t>
+	  <t>
+	    The client builds the authorization server metadata URL from an issuer identifier in the resource metadata according to <xref target="RFC8414"/>
+	    and makes a request to fetch the authorization server metadata.
+	  </t>
+	  <t>
+	    The authorization server responds with the authorization server metadata document according to <xref target="RFC8414"/>.
+	  </t>
+	  <t>
+	    The client directs the user agent to the authorization server to begin the authorization flow.
+	  </t>
+	  <t>
+	    The authorization exchange is completed and the authorization server returns an access token to the client.
+	  </t>
+	  <t>
+	    The client repeats the resource request from step 1, presenting the newly obtained access token.
+	  </t>
+	  <t>
+	    The resource server returns the requested protected resource.
+	  </t>
+	</list>
+      </t>
+
+      <section anchor="WWW-Authenticate-Response" title="WWW-Authenticate Response">
+	<t>
+	  This specification introduces a new parameter in the <spanx style="verb">WWW-Authenticate</spanx> response
+	  to indicate the resource identifier of the protected resource:
+            <list style='hanging'>
+              <t hangText='resource:'>
+                <vspace/>
+		The resource identifier of the protected resource.
+	      </t>
+	    </list>
+	</t>
+	<t>
+	  <figure>
+	    <preamble>The response below is an example of a <spanx style="verb">WWW-Authenticate</spanx> header that includes the resource identifier.</preamble>
+
+	    <artwork><![CDATA[
+  HTTP/1.1 400 Bad Request
+  WWW-Authenticate: Bearer error="invalid_request",
+    error_description="No access token was provided in this request",
+    resource="https://resource.example.com"
+]]></artwork>
+	  </figure>
+	</t>
+	<t>
+	  The HTTP status code and error string in the response are defined by <xref target="RFC6750"/>.
+	</t>
+	<t>
+	  The issuer parameter MAY be combined with other parameters defined in other extensions,
+	  such as the <spanx style="verb">max_age</spanx> parameter defined by <xref target="I-D.ietf-oauth-step-up-authn-challenge"/>.
+	</t>
+      </section>
+
+      <section anchor="changes" title="Changes to Resource Metadata">
+	<t>
+	  At any point, for any reason determined by the protected resource,
+	  the protected resource MAY respond with a new <spanx style="verb">WWW-Authenticate</spanx> challenge
+	  that includes a value for the resource identifier to indicate that its metadata MAY have changed.
+	  If the client receives such a <spanx style="verb">WWW-Authenticate</spanx> response,
+	  it is expected retrieve the protected resource metadata again,
+	  and SHOULD use the new metadata values obtained.
+	  Among other things,
+	  this enables a resource server to change which authorization servers it uses without any other coordination with clients.
+	</t>
+      </section>
+
+      <section anchor="assumptions" title="Client Identifier and Client Authentication">
+	<t>
+	  The way in which the client identifier is established at the authorization server is out of scope of this specification.
+	</t>
+	<t>
+	  This specification is intended to be deployed in scenarios where the client has no prior knowledge about the resource server,
+	  and the resource server might or might not have prior knowledge about the client.
+	</t>
+	<t>
+	  There are some existing methods by which an unrecognized client can make use of an authorization server,
+	  such as using Dynamic Client Registration <xref target="RFC7591"/>,
+	  to register the client prior to initiating the authorization flow.
+	  Future extensions might define alternatives, such as using URLs to identify clients.
+	</t>
+      </section>
+
+      <section anchor="compatibility" title="Compatibility with other authentication methods">
+	<t>
+	  Resource servers MAY return other <spanx style="verb">WWW-Authenticate</spanx> headers indicating various authentication schemes.
+	  This allows the resource server to support clients that may or may not implement this specification,
+	  and allows clients to choose their preferred authentication scheme.
+	</t>
+      </section>
+
+    </section>
+
     <section anchor="StringOps" title="String Operations">
 
       <t>
@@ -536,7 +670,7 @@
 	  TLS version 1.2 <xref target='RFC5246' />
 	  and MAY support additional transport-layer security mechanisms meeting its security requirements.
 	  When using TLS, the client MUST perform a TLS/SSL server certificate check,
-	  per <xref target="RFC6125">RFC 6125</xref>.
+	  per <xref target="RFC6125"/>.
 	  Implementation security considerations can be found in
 	  <xref target="BCP195">Recommendations for Secure Use of TLS and DTLS</xref>.
 	</t>
@@ -979,7 +1113,7 @@
 	  This specification registers the well-known URI defined in
 	  <xref target="PRConfig"/> in the IANA
 	  "Well-Known URIs" registry <xref target="IANA.well-known"/>
-	  established by <xref target="RFC5785">RFC 5785</xref>.
+	  established by <xref target="RFC5785"/>.
 	</t>
 
 	<section anchor='WellKnownContents' title='Registry Contents'>
@@ -1019,6 +1153,7 @@
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7033.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7159.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7591.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
 
       <reference anchor='BCP195' target='http://www.rfc-editor.org/info/bcp195'>
 	<front>
@@ -1199,6 +1334,9 @@
 
     <references title="Informative References">
 
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8414.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-oauth-step-up-authn-challenge-17.xml"/>
+
       <reference anchor="OpenID.Discovery" target="http://openid.net/specs/openid-connect-discovery-1_0.html">
         <front>
           <title>OpenID Connect Discovery 1.0</title>
@@ -1249,12 +1387,28 @@
     <section anchor="Acknowledgements" title="Acknowledgements">
 
       <t>
-	Thanks to George Fletcher and Tony Nadalin for their input on the specification.
+	The authors of this specification would like to thank the attendees of the IETF 115 OAuth and HTTP API Working Groups
+	and the attendees of the IETF 116 OAuth Working Group for their input on this specification.
+	We would would also like to thank
+	George Fletcher
+	and
+	Tony Nadalin
+	for their contributions to the specification.
       </t>
     </section>
 
     <section anchor="History" title="Document History">
       <t>[[ to be removed by the RFC Editor before publication as an RFC ]]</t>
+
+      <t>
+	-04
+        <list style="symbols">
+	  <t>
+	    Merged <spanx style="verb">WWW-Authenticate</spanx> functionality from draft-parecki-oauth-authorization-server-discovery-00
+	    into this specification, as requsted by attendees of the IETF 116 OAuth Working Group.
+	  </t>
+	</list>
+      </t>
 
       <t>
 	-03
