@@ -40,7 +40,7 @@
       </address>
     </author>
 
-    <date day="29" month="June" year="2023" />
+    <date day="7" month="July" year="2023" />
 
     <area>Security</area>
     <workgroup>OAuth Working Group</workgroup>
@@ -1255,6 +1255,18 @@
 
     <section anchor="History" title="Document History">
       <t>[[ to be removed by the RFC Editor before publication as an RFC ]]</t>
+
+      <t>
+	-03
+        <list style="symbols">
+	  <t>
+	    Aaron Parecki added Security Considerations on Server-Side Request Forgery (SSRF) and Phishing.
+	  </t>
+	  <t>
+	    Added Aaron Parecki as an author.
+	  </t>
+	</list>
+      </t>
 
       <t>
 	-02
