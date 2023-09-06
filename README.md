@@ -1,6 +1,6 @@
 # OAuth 2.0 Protected Resource Metadata
 
-This is the working area for the individual Internet-Draft, "OAuth 2.0 Protected Resource Metadata".
+This is the working area for the OAuth working group Internet-Draft, "OAuth 2.0 Protected Resource Metadata".
 
 * [Editor's Copy](https://drafts.oauth.net/draft-ietf-oauth-resource-metadata/draft-ietf-oauth-resource-metadata.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-ietf-oauth-resource-metadata)
