@@ -2,16 +2,15 @@
 
 This is the working area for the individual Internet-Draft, "OAuth 2.0 Protected Resource Metadata".
 
-* [Editor's Copy](https://aaronpk.github.io/draft-jones-oauth-resource-metadata/#go.draft-jones-oauth-resource-metadata.html)
-* [Datatracker Page](https://datatracker.ietf.org/doc/draft-jones-oauth-resource-metadata)
+* [Editor's Copy](https://drafts.oauth.net/draft-ietf-oauth-resource-metadata/draft-ietf-oauth-resource-metadata.html)
+* [Datatracker Page](https://datatracker.ietf.org/doc/draft-ietf-oauth-resource-metadata)
 * [Individual Draft](https://datatracker.ietf.org/doc/html/draft-jones-oauth-resource-metadata)
-* [Compare Editor's Copy to Individual Draft](https://aaronpk.github.io/draft-jones-oauth-resource-metadata/#go.draft-jones-oauth-resource-metadata.diff)
 
 
 ## Contributing
 
 See the
-[guidelines for contributions](https://github.com/aaronpk/draft-jones-oauth-resource-metadata/blob/main/CONTRIBUTING.md).
+[guidelines for contributions](https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/blob/main/CONTRIBUTING.md).
 
 Contributions can be made by creating pull requests.
 The GitHub interface supports creating pull requests using the Edit (✏) button.
