@@ -4,7 +4,7 @@
 "http://xml2rfc.tools.ietf.org/authoring/rfc2629.dtd">
 
 <rfc xmlns:xi="http://www.w3.org/2001/XInclude"
-	category="std" docName="draft-jones-oauth-resource-metadata-latest" ipr="trust200902">
+	category="std" docName="draft-ietf-oauth-resource-metadata-latest" ipr="trust200902">
 
   <?rfc toc="yes" ?>
   <?rfc tocdepth="5" ?>
@@ -18,7 +18,7 @@
     <title abbrev="OAuth 2.0 Protected Resource Metadata">OAuth 2.0 Protected Resource Metadata</title>
 
     <author fullname="Michael B. Jones" initials="M.B." surname="Jones">
-      <organization>independent</organization>
+      <organization>Self-Issued Consulting</organization>
       <address>
         <email>michael_b_jones@hotmail.com</email>
 	<uri>https://self-issued.info/</uri>
@@ -26,7 +26,7 @@
     </author>
 
     <author fullname="Phil Hunt" initials="P." surname="Hunt">
-      <organization>independent</organization>
+      <organization>Independent Identity, Inc.</organization>
       <address>
         <email>phil.hunt@yahoo.com</email>
       </address>
@@ -40,7 +40,7 @@
       </address>
     </author>
 
-    <date day="7" month="July" year="2023" />
+    <date day="6" month="September" year="2023" />
 
     <area>Security</area>
     <workgroup>OAuth Working Group</workgroup>
@@ -1401,53 +1401,10 @@
       <t>[[ to be removed by the RFC Editor before publication as an RFC ]]</t>
 
       <t>
-	-04
-        <list style="symbols">
-	  <t>
-	    Merged <spanx style="verb">WWW-Authenticate</spanx> functionality from draft-parecki-oauth-authorization-server-discovery-00
-	    into this specification, as requsted by attendees of the IETF 116 OAuth Working Group.
-	  </t>
-	</list>
-      </t>
-
-      <t>
-	-03
-        <list style="symbols">
-	  <t>
-	    Aaron Parecki added Security Considerations on Server-Side Request Forgery (SSRF) and Phishing.
-	  </t>
-	  <t>
-	    Added Aaron Parecki as an author.
-	  </t>
-	</list>
-      </t>
-
-      <t>
-	-02
-        <list style="symbols">
-	  <t>
-	    Applied IANA request to use "IETF" as the Change Controller.
-	  </t>
-	</list>
-      </t>
-
-      <t>
-	-01
-        <list style="symbols">
-	  <t>
-	    Moved the <spanx style="verb">protected_resources</spanx>
-	    authorization server metadata element here,
-	    removing it from draft-ietf-oauth-discovery.
-	  </t>
-	</list>
-      </t>
-
-      <t>
 	-00
         <list style="symbols">
 	  <t>
-	    Created the initial version.
-	    This draft reuses some text from draft-ietf-oauth-discovery-03.
+	    Initial working group version based on draft-jones-oauth-resource-metadata-04.
 	  </t>
 	</list>
       </t>
