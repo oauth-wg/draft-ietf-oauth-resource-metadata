@@ -40,7 +40,7 @@
       </address>
     </author>
 
-    <date day="6" month="September" year="2023" />
+    <date day="17" month="October" year="2023" />
 
     <area>Security</area>
     <workgroup>OAuth Working Group</workgroup>
@@ -121,7 +121,7 @@
 	  The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
 	  "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL"
 	  in this document are to be interpreted as described in
-	  BCP 14 <xref target="RFC2119"></xref> <xref target="RFC8174"></xref>
+	  BCP 14 <xref target="RFC2119"/> <xref target="RFC8174"/>
 	  when, and only when, they appear in all capitals, as shown here.
 	</t>
 
@@ -666,13 +666,10 @@
 	  Which version(s) ought to be implemented will vary over
 	  time, and depend on the widespread deployment and known
 	  security vulnerabilities at the time of implementation.
-	  The protected resource MUST support
-	  TLS version 1.2 <xref target='RFC5246' />
-	  and MAY support additional transport-layer security mechanisms meeting its security requirements.
-	  When using TLS, the client MUST perform a TLS/SSL server certificate check,
-	  per <xref target="RFC6125"/>.
-	  Implementation security considerations can be found in
-	  <xref target="BCP195">Recommendations for Secure Use of TLS and DTLS</xref>.
+	  Implementations SHOULD follow the guidance in
+	  BCP 195 <xref target="RFC8996"/> <xref target="RFC9325"/>,
+	  which provides recommendations and requirements
+	  for improving the security of deployed services that use TLS.
 	</t>
 	<t>
 	  To protect against information disclosure and tampering,
@@ -1145,30 +1142,15 @@
     <references title="Normative References">
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5226.xml"/>
-      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5246.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5785.xml"/>
-      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6125.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6749.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6750.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7033.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7159.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7591.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
-
-      <reference anchor='BCP195' target='http://www.rfc-editor.org/info/bcp195'>
-	<front>
-	  <title>Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)</title>
-	  <author initials='Y.' surname='Sheffer' fullname='Y. Sheffer'><organization /></author>
-	  <author initials='R.' surname='Holz' fullname='R. Holz'><organization /></author>
-	  <author initials='P.' surname='Saint-Andre' fullname='P. Saint-Andre'><organization /></author>
-	  <date year='2015' month='May' />
-	  <abstract><t>Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS) are widely used to protect data exchanged over application protocols such as HTTP, SMTP, IMAP, POP, SIP, and XMPP.  Over the last few years, several serious attacks on TLS have emerged, including attacks on its most commonly used cipher suites and their modes of operation.  This document provides recommendations for improving the security of deployed services that use TLS and DTLS. The recommendations are applicable to the majority of use cases.</t></abstract>
-	</front>
-	<seriesInfo name='BCP' value='195'/>
-	<seriesInfo name='RFC' value='7525'/>
-	<seriesInfo name='DOI' value='10.17487/RFC7525'/>
-	<format type='ASCII' octets='60283'/>
-      </reference>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8996.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9325.xml"/>
 
       <reference anchor="USA15" target="http://www.unicode.org/reports/tr15/">
 	<front>
@@ -1399,6 +1381,15 @@
 
     <section anchor="History" title="Document History">
       <t>[[ to be removed by the RFC Editor before publication as an RFC ]]</t>
+
+      <t>
+	-01
+        <list style="symbols">
+	  <t>
+	    Use BCP 195 for TLS recommendations.
+	  </t>
+	</list>
+      </t>
 
       <t>
 	-00
