@@ -679,6 +679,12 @@
 	</t>
       </section>
 
+      <section anchor="Scopes" title="Scopes">
+      	<t>
+					The <spanx style="verb">scopes_supported</spanx> parameter is the list of scopes the resource server is willing to disclose that it supports. It is not meant to indicate that an OAuth client should request all scopes in the list. The client SHOULD still follow OAuth best practices and request tokens with as limited scope as possible for the given operation, as described in Section 2.3 of OAuth 2.0 Security Best Current Practice <xref target="draft-ietf-oauth-security-topics"/>.
+      	</t>
+      </section>
+
       <section anchor="Impersonation" title="Impersonation Attacks">
 	<t>
 	  TLS certificate checking MUST be performed by the client,
@@ -1277,6 +1283,36 @@
 	  rather than to a specific release.  It is not expected that future changes in
 	  the UNICODE specification will impact the syntax of JSON or the UTF-8 encoding.
 	-->
+      </reference>
+
+      <reference anchor="draft-ietf-oauth-security-topics" target="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics">
+      	<front>
+      		<title abbrev="OAuth 2.0 Security BCP">OAuth 2.0 Security Best Current Practice</title>
+      		<author fullname="Torsten Lodderstedt" initials="T." surname="Lodderstedt">
+      			<organization abbrev="yes.com">yes.com</organization>
+      			<address>
+      				<email>torsten@lodderstedt.net</email>
+      			</address>
+      		</author>
+      		<author fullname="John Bradley" initials="J." surname="Bradley">
+      			<organization abbrev="Yubico">Yubico</organization>
+      			<address>
+      				<email>ve7jtb@ve7jtb.com</email>
+      			</address>
+      		</author>
+	      		<author fullname="Andrey Labunets" initials="A." surname="Labunets">
+      			<organization abbrev="Independent Researcher">Independent Researcher</organization>
+      			<address>
+      				<email>isciurus@gmail.com</email>
+      			</address>
+      		</author>
+      		<author fullname="Daniel Fett" initials="D." surname="Fett">
+      			<organization abbrev="Authlete">Authlete</organization>
+      			<address>
+      				<email>mail@danielfett.de</email>
+      			</address>
+      		</author>
+      	</front>
       </reference>
 
       <reference anchor="OAuth.AuthorizationMetadata" target="http://tools.ietf.org/html/draft-ietf-oauth-discovery-05">
