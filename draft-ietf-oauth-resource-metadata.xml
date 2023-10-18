@@ -205,13 +205,13 @@
 	    to indicate each key's intended usage.
 	  </t>
 
-	  <t hangText="scopes_provided">
+	  <t hangText="scopes_supported">
 	    <vspace/>
 	    RECOMMENDED.
 	    JSON array containing a list of the <xref
 	    target="RFC6749">OAuth 2.0</xref> <spanx style="verb">scope</spanx> values that
 	    are used in authorization requests to request access to this protected resource.
-	    Protected resources MAY choose not to advertise some scope values provided
+	    Protected resources MAY choose not to advertise some scope values supported
 	    even when this parameter is used.
 	  </t>
 
@@ -921,7 +921,7 @@
           <t>
             <list style='symbols'>
               <t>
-                Metadata Name: <spanx style="verb">scopes_provided</spanx>
+                Metadata Name: <spanx style="verb">scopes_supported</spanx>
               </t>
               <t>
                 Metadata Description:
