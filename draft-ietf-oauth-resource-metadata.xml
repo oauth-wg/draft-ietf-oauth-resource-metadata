@@ -730,7 +730,7 @@
       	<t>
       		While this attack is not explicitly enabled by this specification, and is possible in
       		a plain OAuth 2.0 deployment, it is made somewhat more likely by the use of
-      		dynamically-configured clients fetching resource server metadata. As such, the use
+      		dynamically-configured clients. As such, the use
       		of audience-restricted access tokens and Resource Indicators <xref target="RFC8707"/>
       		is RECOMMENDED when using the features in this specification.
       	</t>
