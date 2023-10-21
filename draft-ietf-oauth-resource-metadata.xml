@@ -120,7 +120,7 @@
 	      resource can publish, which includes things like which scopes are
 	      supported, how a client can present an access token, and more.
 	      These values may be used by other specifications, such as the <spanx style="verb">jwks_uri</spanx>
-	      used to indicate a public key the resource server uses to sign
+	      used to publish public keys the resource server uses to sign
 	      resource responses as described in Section 5.6.2 of <xref target="FAPI.MessageSigning"/>.
 	    </t>
 
