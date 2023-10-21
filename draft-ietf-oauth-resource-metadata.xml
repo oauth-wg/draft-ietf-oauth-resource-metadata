@@ -116,7 +116,7 @@
 	<xref target="OpenID.Discovery">"OpenID Connect Discovery 1.0"</xref>.
       </t>
       <t>
-	    	<xref target="PRMetadata"/> defines the metadata values that a protected
+	    	<xref target="PRMetadata"/> defines metadata values that a protected
 	      resource can publish, which includes things like which scopes are
 	      supported, how a client can present an access token, and more.
 	      The values may be used by other OAuth specifications as well as by
