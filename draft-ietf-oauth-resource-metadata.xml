@@ -1405,6 +1405,12 @@
       <t>
 	-01
         <list style="symbols">
+     <t>
+     	Renamed scopes_provided to scopes_supported.
+     </t>
+     <t>
+     	Added security consideration for scopes_supported.
+     </t>
 	  <t>
 	    Use BCP 195 for TLS recommendations.
 	  </t>
