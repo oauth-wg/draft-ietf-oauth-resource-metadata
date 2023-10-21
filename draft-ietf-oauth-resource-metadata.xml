@@ -1417,6 +1417,9 @@
 	  <t>
 	  	Added security consideration recommending audience-restricted access tokens.
 	  </t>
+	  <t>
+	  	Mention FAPI Message Signing as a use case for publishing signing keys.
+	  </t>
 	</list>
       </t>
 
