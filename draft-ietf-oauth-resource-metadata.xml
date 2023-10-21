@@ -40,7 +40,7 @@
       </address>
     </author>
 
-    <date day="17" month="October" year="2023" />
+    <date day="20" month="October" year="2023" />
 
     <area>Security</area>
     <workgroup>OAuth Working Group</workgroup>
@@ -60,7 +60,7 @@
     <abstract>
       <t>
 	This specification defines a metadata format that
-	an OAuth 2.0 client can use to obtain
+	an OAuth 2.0 client or authorization server can use to obtain
 	the information needed to interact with
 	an OAuth 2.0 protected resource.
       </t>
@@ -71,13 +71,13 @@
     <section anchor="Introduction" title="Introduction">
       <t>
 	This specification defines a metadata format
-	enabling OAuth 2.0 clients to obtain information needed
+	enabling OAuth 2.0 clients and authorization servers to obtain information needed
 	to interact with an OAuth 2.0 protected resource.
 	This specification is intentionally as parallel as possible to
 	<xref target="RFC7591">"OAuth 2.0 Dynamic Client Registration Protocol"</xref>,
 	which enables a client to provide metadata about itself
 	to an OAuth 2.0 authorization server and to
-	<xref target="OAuth.AuthorizationMetadata">OAuth 2.0 Authorization Server Metadata</xref>,
+	<xref target="RFC8414">OAuth 2.0 Authorization Server Metadata</xref>,
 	which enables a client to obtain metadata about
 	an OAuth 2.0 authorization server.
       </t>
@@ -184,7 +184,7 @@
 	    <vspace/>
 	    OPTIONAL.
 	    JSON array containing a list of OAuth authorization server issuer identifiers,
-	    as defined in <xref target="OAuth.AuthorizationMetadata"/>,
+	    as defined in <xref target="RFC8414"/>,
 	    for authorization servers that can be used with this protected resource.
 	    Protected resources MAY choose not to advertise some supported authorization servers
 	    even when this parameter is used.
@@ -484,7 +484,7 @@
 	The following authorization server metadata value
 	is defined by this specification and is registered in the IANA
 	"OAuth Authorization Server Metadata" registry established in
-	<xref target="OAuth.AuthorizationMetadata">OAuth 2.0 Authorization Server Metadata</xref>.
+	<xref target="RFC8414">OAuth 2.0 Authorization Server Metadata</xref>.
 
 	<list style="hanging">
 
@@ -580,7 +580,7 @@
 	</t>
 	<t>
 	  The issuer parameter MAY be combined with other parameters defined in other extensions,
-	  such as the <spanx style="verb">max_age</spanx> parameter defined by <xref target="I-D.ietf-oauth-step-up-authn-challenge"/>.
+	  such as the <spanx style="verb">max_age</spanx> parameter defined by <xref target="RFC9470"/>.
 	</t>
       </section>
 
@@ -681,7 +681,7 @@
 
       <section anchor="Scopes" title="Scopes">
       	<t>
-					The <spanx style="verb">scopes_supported</spanx> parameter is the list of scopes the resource server is willing to disclose that it supports. It is not meant to indicate that an OAuth client should request all scopes in the list. The client SHOULD still follow OAuth best practices and request tokens with as limited scope as possible for the given operation, as described in Section 2.3 of OAuth 2.0 Security Best Current Practice <xref target="draft-ietf-oauth-security-topics"/>.
+					The <spanx style="verb">scopes_supported</spanx> parameter is the list of scopes the resource server is willing to disclose that it supports. It is not meant to indicate that an OAuth client should request all scopes in the list. The client SHOULD still follow OAuth best practices and request tokens with as limited scope as possible for the given operation, as described in Section 2.3 of OAuth 2.0 Security Best Current Practice <xref target="I-D.ietf-oauth-security-topics"/>.
       	</t>
       </section>
 
@@ -1085,7 +1085,7 @@
 	  The following authorization server metadata value
 	  is registered in the IANA
 	  "OAuth Authorization Server Metadata" registry established in
-	  <xref target="OAuth.AuthorizationMetadata">OAuth 2.0 Authorization Server Metadata</xref>.
+	  <xref target="RFC8414">OAuth 2.0 Authorization Server Metadata</xref>.
 	</t>
 
 	<section title="Registry Contents" anchor="ASMetadataContents">
@@ -1155,6 +1155,7 @@
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7159.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7591.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8414.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8996.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9325.xml"/>
 
@@ -1285,75 +1286,13 @@
 	-->
       </reference>
 
-      <reference anchor="draft-ietf-oauth-security-topics" target="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics">
-      	<front>
-      		<title abbrev="OAuth 2.0 Security BCP">OAuth 2.0 Security Best Current Practice</title>
-      		<author fullname="Torsten Lodderstedt" initials="T." surname="Lodderstedt">
-      			<organization abbrev="yes.com">yes.com</organization>
-      			<address>
-      				<email>torsten@lodderstedt.net</email>
-      			</address>
-      		</author>
-      		<author fullname="John Bradley" initials="J." surname="Bradley">
-      			<organization abbrev="Yubico">Yubico</organization>
-      			<address>
-      				<email>ve7jtb@ve7jtb.com</email>
-      			</address>
-      		</author>
-	      		<author fullname="Andrey Labunets" initials="A." surname="Labunets">
-      			<organization abbrev="Independent Researcher">Independent Researcher</organization>
-      			<address>
-      				<email>isciurus@gmail.com</email>
-      			</address>
-      		</author>
-      		<author fullname="Daniel Fett" initials="D." surname="Fett">
-      			<organization abbrev="Authlete">Authlete</organization>
-      			<address>
-      				<email>mail@danielfett.de</email>
-      			</address>
-      		</author>
-      	</front>
-      </reference>
-
-      <reference anchor="OAuth.AuthorizationMetadata" target="http://tools.ietf.org/html/draft-ietf-oauth-discovery-05">
-        <front>
-	  <title abbrev="OAuth 2.0 Authorization Server Metadata">OAuth 2.0 Authorization Server Metadata</title>
-
-	  <author fullname="Michael B. Jones" initials="M.B." surname="Jones">
-	    <organization abbrev="Microsoft">Microsoft</organization>
-	    <address>
-	      <email>mbj@microsoft.com</email>
-	      <uri>http://self-issued.info/</uri>
-	    </address>
-	  </author>
-
-	  <author fullname="Nat Sakimura" initials="N." surname="Sakimura">
-	    <organization abbrev="NRI">Nomura Research Institute, Ltd.</organization>
-	    <address>
-	      <email>n-sakimura@nri.co.jp</email>
-	      <uri>http://nat.sakimura.org/</uri>
-	    </address>
-	  </author>
-
-	  <author fullname="John Bradley" initials="J." surname="Bradley">
-	    <organization abbrev="Ping Identity">Ping Identity</organization>
-	    <address>
-	      <email>ve7jtb@ve7jtb.com</email>
-	      <uri>http://www.thread-safe.com/</uri>
-	    </address>
-	  </author>
-
-	  <date day="19" month="January" year="2017" />
-        </front>
-	<seriesInfo name="Internet-Draft" value="draft-ietf-oauth-discovery-05"/>
-      </reference>
-
     </references>
 
     <references title="Informative References">
 
-      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8414.xml"/>
-      <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-oauth-step-up-authn-challenge-17.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9470.xml"/>
+
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-oauth-security-topics-23.xml"/>
 
       <reference anchor="OpenID.Discovery" target="http://openid.net/specs/openid-connect-discovery-1_0.html">
         <front>
@@ -1423,6 +1362,12 @@
         <list style="symbols">
 	  <t>
 	    Use BCP 195 for TLS recommendations.
+	  </t>
+	  <t>
+	    Clarified that resource metadata can be used by clients and authorization servers.
+	  </t>
+	  <t>
+	    Updated references.
 	  </t>
 	</list>
       </t>
