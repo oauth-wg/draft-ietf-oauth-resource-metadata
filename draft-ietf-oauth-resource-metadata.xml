@@ -115,6 +115,13 @@
 	in a manner related to the description in Section 2 of
 	<xref target="OpenID.Discovery">"OpenID Connect Discovery 1.0"</xref>.
       </t>
+      <t><xref target="PRMetadata"/> defines the metadata values that a protected
+      resource can publish, which includes things like which scopes are
+      supported, how a client can present an access token, and more.
+      The values may be used by other OAuth specifications as well as by
+      extensions to OAuth, such as the <spanx style="verb">jwks_uri</spanx>
+      used to indicate a public key the resource server uses to sign
+      resource responses as described in Section 5.6.2 of <xref target="FAPI.MessageSigning"/>.
 
       <section anchor="rnc" title="Requirements Notation and Conventions">
 	<t>
@@ -196,9 +203,11 @@
 	    <vspace/>
 	    OPTIONAL.
 	    URL of the protected resource's JWK Set <xref target="JWK"/> document.
-	    This contains keys belonging to the protected resource.
+	    This contains public keys belonging to the protected resource.
 	    For instance, this JWK Set MAY contain encryption key(s)
 	    that are used to encrypt access tokens to the protected resource.
+	    The JWK Set MAY also contain signing key(s) that the resource
+	    server uses to sign responses.
 	    When both signing and encryption keys are made available,
 	    a <spanx style="verb">use</spanx> (public key use) parameter
 	    value is REQUIRED for all keys in the referenced JWK Set
@@ -1335,6 +1344,18 @@
       		<title>OWASP SSRF Prevention Cheat Sheet</title>
       		<author>
       			<organization>OWASP</organization>
+      		</author>
+      	</front>
+      </reference>
+
+      <reference anchor="FAPI.MessageSigning" target="https://openid.net/specs/fapi-2_0-message-signing.html">
+      	<front>
+      		<title>FAPI 2.0 Message Signing</title>
+      		<author fullname="Dave Tonge" initials="D." surname="Tonge">
+      			<organization abbrev="Moneyhub">Moneyhub Financial Technology</organization>
+      		</author>
+      		<author fullname="Daniel Fett" initials="D." surname="Fett">
+      			<organization>Authlete</organization>
       		</author>
       	</front>
       </reference>
