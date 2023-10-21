@@ -115,13 +115,15 @@
 	in a manner related to the description in Section 2 of
 	<xref target="OpenID.Discovery">"OpenID Connect Discovery 1.0"</xref>.
       </t>
-      <t><xref target="PRMetadata"/> defines the metadata values that a protected
-      resource can publish, which includes things like which scopes are
-      supported, how a client can present an access token, and more.
-      The values may be used by other OAuth specifications as well as by
-      extensions to OAuth, such as the <spanx style="verb">jwks_uri</spanx>
-      used to indicate a public key the resource server uses to sign
-      resource responses as described in Section 5.6.2 of <xref target="FAPI.MessageSigning"/>.
+      <t>
+	    	<xref target="PRMetadata"/> defines the metadata values that a protected
+	      resource can publish, which includes things like which scopes are
+	      supported, how a client can present an access token, and more.
+	      The values may be used by other OAuth specifications as well as by
+	      extensions to OAuth, such as the <spanx style="verb">jwks_uri</spanx>
+	      used to indicate a public key the resource server uses to sign
+	      resource responses as described in Section 5.6.2 of <xref target="FAPI.MessageSigning"/>.
+	    </t>
 
       <section anchor="rnc" title="Requirements Notation and Conventions">
 	<t>
