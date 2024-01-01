@@ -481,8 +481,8 @@
 	  <spanx style="verb">resource_metadata</spanx> parameter, then
 	  the <spanx style="verb">resource</spanx> value returned MUST be identical to
 	  the URL that the client used to make the request to the resource server.
-	</t>
 	  If these values are not identical, the data contained in the response MUST NOT be used.
+	</t>
       </section>
     </section>
 
@@ -591,7 +591,8 @@
   HTTP/1.1 400 Bad Request
   WWW-Authenticate: Bearer error="invalid_request",
     error_description="No access token was provided in this request",
-    resource_metadata="https://resource.example.com/.well-known/oauth-protected-resource"
+    resource_metadata=
+    "https://resource.example.com/.well-known/oauth-protected-resource"
 ]]></artwork>
 	  </figure>
 	</t>
@@ -1200,6 +1201,7 @@
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7159.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7591.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8259.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8414.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8707.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8996.xml"/>
