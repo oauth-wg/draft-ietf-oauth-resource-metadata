@@ -24,6 +24,7 @@
 <meta content="Configuration Information" name="keyword">
 <meta content="Resource Server" name="keyword">
 <meta content="Protected Resource" name="keyword">
+<meta content="Resource Identifier" name="keyword">
 <meta content="JavaScript Object Notation" name="keyword">
 <meta content="JSON" name="keyword">
 <meta content="JSON Web Token" name="keyword">
@@ -1371,9 +1372,13 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <span class="break"></span><dl class="dlNewline" id="section-1.2-3">
           <dt id="section-1.2-3.1">Resource Identifier:</dt>
           <dd style="margin-left: 1.5em" id="section-1.2-3.2">
-       A URL that uses the <code>https</code> scheme and has no fragment components
-       where <code>.well-known</code> <span>[<a href="#RFC5785" class="cite xref">RFC5785</a>]</span> resources
-       containing information about the protected resource are published.<a href="#section-1.2-3.2" class="pilcrow">¶</a>
+       The Protected resource's resource identifier, which is a URL that
+       uses the <code>https</code> scheme and has no query or fragment components.
+       Protected resource metadata is published at a
+       <code>.well-known</code> location
+       <span>[<a href="#RFC5785" class="cite xref">RFC5785</a>]</span>
+       derived from this resource identifier,
+       as described in <a href="#PRConfig" class="auto internal xref">Section 3</a>.<a href="#section-1.2-3.2" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -1397,10 +1402,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         <dd style="margin-left: 1.5em" id="section-2-2.2">
      REQUIRED.
      The protected resource's resource identifier, which is a URL that
-     uses the <code>https</code> scheme and has no fragment components.
-     This is the location where
-     <code>.well-known</code> <span>[<a href="#RFC5785" class="cite xref">RFC5785</a>]</span> resources
-     containing information about the protected resource are published.
+     uses the <code>https</code> scheme and has no query or fragment components.
      Using these well-known resources is described in <a href="#PRConfig" class="auto internal xref">Section 3</a>.<a href="#section-2-2.2" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
@@ -1550,9 +1552,10 @@ svg :is([fill="white"], [fill^="#fff"]) {
  Protected resources supporting metadata
  MUST make a JSON document containing metadata as specified in <a href="#PRMetadata" class="auto internal xref">Section 2</a>
  available at a path formed by
- concatenating a well-known URI string such as
- <code>/.well-known/oauth-protected-resource</code> to the
- protected resource's resource identifier.
+ inserting a well-known URI string into the protected resource's resource identifier
+ between the host component and the path component, if any.
+ By default, the well-known URI string used is
+ <code>/.well-known/oauth-protected-resource</code>.
  The syntax and semantics of <code>.well-known</code>
  are defined in <span>[<a href="#RFC5785" class="cite xref">RFC5785</a>]</span>.
  The well-known URI path suffix used MUST be registered in the IANA
@@ -1564,17 +1567,22 @@ svg :is([fill="white"], [fill^="#fff"]) {
  For instance, if the Example application uses an OAuth protected resource in an Example-specific way,
  and there are Example-specific metadata values that it needs to publish,
  then it might register and use the
- <code>example-resource-configuration</code> URI path suffix and publish
- the metadata document at the path formed by concatenating
- <code>/.well-known/example-resource-configuration</code> to the
- protected resource's resource identifier.<a href="#section-3-2" class="pilcrow">¶</a></p>
+ <code>example-protected-resource</code> URI path suffix and publish
+ the metadata document at the path formed by inserting
+ <code>/.well-known/example-protected-resource</code>
+ between the host and path components of the
+ protected resource's resource identifier.
+ Alternatively, many such applications will use the default well-known URI string
+ <code>/.well-known/oauth-protected-resource</code>,
+ which is the right choice for general-purpose OAuth protected resources,
+ and not register an application-specific one.<a href="#section-3-2" class="pilcrow">¶</a></p>
 <p id="section-3-3">
  An OAuth 2.0 application using this specification MUST specify
  what well-known URI string it will use for this purpose.
  The same protected resource MAY choose to publish its metadata at multiple
- well-known locations relative to its resource identifier,
+ well-known locations derived from its resource identifier,
  for example, publishing metadata at both
- <code>/.well-known/example-resource-configuration</code> and
+ <code>/.well-known/example-protected-resource</code> and
  <code>/.well-known/oauth-protected-resource</code>.<a href="#section-3-3" class="pilcrow">¶</a></p>
 <div id="PRConfigurationRequest">
 <section id="section-3.1">
@@ -1599,8 +1607,9 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <p id="section-3.1-4">
    If the
    resource identifier value contains a path component, any terminating
-   <code>/</code> MUST be removed before appending
-   <code>/.well-known/</code> and the well-known URI path suffix.
+   <code>/</code> MUST be removed before inserting
+   <code>/.well-known/</code> and the well-known URI path suffix
+   between the host component and the path component.
    The consumer of the metadata would make the following request when the
    resource identifier is <code>https://resource.example.com/resource1</code>
    and the well-known URI path suffix is <code>oauth-protected-resource</code>
@@ -1608,7 +1617,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
    since the resource identifier contains a path component:<a href="#section-3.1-4" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-3.1-5">
 <pre>
-  GET /resource1/.well-known/oauth-protected-resource HTTP/1.1
+  GET /.well-known/oauth-protected-resource/resource1 HTTP/1.1
   Host: resource.example.com
 </pre><a href="#section-3.1-5" class="pilcrow">¶</a>
 </div>
@@ -1668,10 +1677,9 @@ svg :is([fill="white"], [fill^="#fff"]) {
         </h3>
 <p id="section-3.3-1">
    The <code>resource</code> value returned MUST be identical to
-   the protected resource's resource identifier value that was
-   concatenated with the well-known URI path suffix to create the URL
+   the protected resource's resource identifier value into which
+   the well-known URI path suffix was inserted to create the URL
    used to retrieve the metadata.
-   
    If these values are not identical, the data contained in the response MUST NOT be used.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
 <p id="section-3.3-2">
    If the protected resource metadata was retrieved from a URL
@@ -2633,7 +2641,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <ul class="normal">
 <li class="normal" id="appendix-B-3.1">
           <p id="appendix-B-3.1.1">
-     Have WWW-Authenticate return <code>resource_metadata</code> rather than <code>resource</code>.<a href="#appendix-B-3.1.1" class="pilcrow">¶</a></p>
+     Switched from concatenating .well-known to the end of the resource identifier
+     to inserting it between the host and path components of it.<a href="#appendix-B-3.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-3.2">
+          <p id="appendix-B-3.2.1">
+      Have WWW-Authenticate return <code>resource_metadata</code> rather than <code>resource</code>.<a href="#appendix-B-3.2.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-B-4">
