@@ -16,7 +16,7 @@
  an OAuth 2.0 protected resource.
        
     " name="description">
-<meta content="xml2rfc 3.18.2" name="generator">
+<meta content="xml2rfc 3.19.1" name="generator">
 <meta content="OAuth" name="keyword">
 <meta content="Discovery" name="keyword">
 <meta content="Metadata" name="keyword">
@@ -30,20 +30,20 @@
 <meta content="JWT" name="keyword">
 <meta content="draft-ietf-oauth-resource-metadata-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.18.2
+  xml2rfc 3.19.1
     Python 3.11.6
-    ConfigArgParse 1.5.3
+    ConfigArgParse 1.7
     google-i18n-address 3.1.0
     intervaltree 3.1.0
     Jinja2 3.1.2
     lxml 4.9.3
-    platformdirs 3.11.0
+    platformdirs 4.1.0
     pycountry 22.3.5
-    PyYAML 6.0
+    PyYAML 6.0.1
     requests 2.31.0
-    setuptools 67.7.2
+    setuptools 68.2.2
     six 1.16.0
-    wcwidth 0.2.8
+    wcwidth 0.2.13
 -->
 <link href="draft-ietf-oauth-resource-metadata.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1523,7 +1523,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
    if they do not support this feature.
    If the consumer of the metadata supports signed metadata,
    metadata values conveyed in the signed metadata
-   MUST take precedence over those conveyed using plain JSON elements.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
+   MUST take precedence over the corresponding values conveyed using plain JSON elements.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
 <p id="section-2.1-2">
    Signed metadata is included in the protected resource metadata JSON object
    using this OPTIONAL member:<a href="#section-2.1-2" class="pilcrow">¶</a></p>
@@ -2364,6 +2364,25 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <li class="compact" id="section-8.1.2-11.4">
               <p id="section-8.1.2-11.4.1">
                 Specification Document(s): <a href="#PRMetadata" class="auto internal xref">Section 2</a> of [[ this specification ]]<a href="#section-8.1.2-11.4.1" class="pilcrow">¶</a></p>
+</li>
+          </ul>
+<ul class="compact">
+<li class="compact" id="section-8.1.2-12.1">
+              <p id="section-8.1.2-12.1.1">
+ Metadata Name: signed_metadata<a href="#section-8.1.2-12.1.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="compact" id="section-8.1.2-12.2">
+              <p id="section-8.1.2-12.2.1">
+ Metadata Description:
+ Signed JWT containing metadata values about the protected resource as claims<a href="#section-8.1.2-12.2.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="compact" id="section-8.1.2-12.3">
+              <p id="section-8.1.2-12.3.1">
+ Change Controller: IETF<a href="#section-8.1.2-12.3.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="compact" id="section-8.1.2-12.4">
+              <p id="section-8.1.2-12.4.1">
+ Specification Document(s): <a href="#SignedMetadata" class="auto internal xref">Section 2.1</a> of [[ this specification ]]<a href="#section-8.1.2-12.4.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </section>

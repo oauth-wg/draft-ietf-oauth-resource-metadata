@@ -260,8 +260,8 @@ Table of Contents
    metadata.  Consumers of the metadata MAY ignore the signed metadata
    if they do not support this feature.  If the consumer of the metadata
    supports signed metadata, metadata values conveyed in the signed
-   metadata MUST take precedence over those conveyed using plain JSON
-   elements.
+   metadata MUST take precedence over the corresponding values conveyed
+   using plain JSON elements.
 
    Signed metadata is included in the protected resource metadata JSON
    object using this OPTIONAL member:
@@ -802,6 +802,12 @@ Table of Contents
       read about the protected resource's terms of service
    *  Change Controller: IETF
    *  Specification Document(s): Section 2 of [[ this specification ]]
+
+   *  Metadata Name: signed_metadata
+   *  Metadata Description: Signed JWT containing metadata values about
+      the protected resource as claims
+   *  Change Controller: IETF
+   *  Specification Document(s): Section 2.1 of [[ this specification ]]
 
 8.2.  OAuth Authorization Server Metadata Registry
 
