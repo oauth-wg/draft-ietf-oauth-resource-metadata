@@ -5,10 +5,10 @@
 OAuth Working Group                                           M.B. Jones
 Internet-Draft                                    Self-Issued Consulting
 Intended status: Standards Track                                 P. Hunt
-Expires: 22 April 2024                        Independent Identity, Inc.
+Expires: 3 July 2024                          Independent Identity, Inc.
                                                               A. Parecki
                                                                     Okta
-                                                         20 October 2023
+                                                        31 December 2023
 
 
                  OAuth 2.0 Protected Resource Metadata
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 April 2024.
+   This Internet-Draft will expire on 3 July 2024.
 
 Copyright Notice
 
@@ -369,6 +369,13 @@ Table of Contents
    metadata.  If these values are not identical, the data contained in
    the response MUST NOT be used.
 
+   If the protected resource metadata was retrieved from a URL returned
+   by the protected resource via the WWW-Authenticate resource_metadata
+   parameter, then the resource value returned MUST be identical to the
+   URL that the client used to make the request to the resource server.
+   If these values are not identical, the data contained in the response
+   MUST NOT be used.
+
 4.  Authorization Server Metadata
 
    To support use cases in which the set of legitimate protected
@@ -397,12 +404,12 @@ Table of Contents
 
 5.  Use of WWW-Authenticate for Protected Resource Metadata
 
-   A protected resource MAY use a WWW-Authenticate response to return
-   its resource identifier to the client.  The client can then retrieve
-   protected resource metadata using the resource identifier as
-   described in Section 3.  The client might then, for instance,
-   determine what authorization server to use for the resource based on
-   protected resource metadata retrieved.
+   A protected resource MAY use a WWW-Authenticate response to return a
+   URL to its protected resource metadata to the client.  The client can
+   then retrieve protected resource metadata as described in Section 3.
+   The client might then, for instance, determine what authorization
+   server to use for the resource based on protected resource metadata
+   retrieved.
 
    A typical end-to-end flow doing so is as follows.  Note that while
    this example uses the OAuth 2.0 Authorization Code flow, a similar
@@ -412,68 +419,70 @@ Table of Contents
         presenting an access token.
 
    2.   The resource server responds with a WWW-Authenticate header
-        including the resource identifier of the protected resource.
+        including the URL of the protected resource metadata.
 
-   3.   The client fetches resource metadata from the .well-known/oauth-
-        protected-resource location derived from the resource identifier
-        according to Section 3.
+   3.   The client fetches the protected resource metadata from this
+        URL.
 
    4.   The protected resource responds with the protected resource
         metadata according to Section 3.2.
 
-   5.   The client builds the authorization server metadata URL from an
+   5.   The client validates the protected resource metadata.
+
+   6.   The client builds the authorization server metadata URL from an
         issuer identifier in the resource metadata according to
         [RFC8414] and makes a request to fetch the authorization server
         metadata.
 
-   6.   The authorization server responds with the authorization server
+   7.   The authorization server responds with the authorization server
         metadata document according to [RFC8414].
 
-   7.   The client directs the user agent to the authorization server to
+   8.   The client directs the user agent to the authorization server to
         begin the authorization flow.
 
-   8.   The authorization exchange is completed and the authorization
+   9.   The authorization exchange is completed and the authorization
         server returns an access token to the client.
 
-   9.   The client repeats the resource request from step 1, presenting
+   10.  The client repeats the resource request from step 1, presenting
         the newly obtained access token.
 
-   10.  The resource server returns the requested protected resource.
+   11.  The resource server returns the requested protected resource.
 
 5.1.  WWW-Authenticate Response
 
    This specification introduces a new parameter in the WWW-Authenticate
-   response to indicate the resource identifier of the protected
-   resource:
+   response to indicate the protected resource metadata URL:
 
-   resource:
-      The resource identifier of the protected resource.
+   resource_metadata:
+      The URL of the protected resource metadata.
 
    The response below is an example of a WWW-Authenticate header that
    includes the resource identifier.
 
-     HTTP/1.1 400 Bad Request
-     WWW-Authenticate: Bearer error="invalid_request",
-       error_description="No access token was provided in this request",
-       resource="https://resource.example.com"
+   HTTP/1.1 400 Bad Request
+   WWW-Authenticate: Bearer error="invalid_request",
+     error_description="No access token was provided in this request",
+     resource_metadata=
+     "https://resource.example.com/.well-known/oauth-protected-resource"
 
    The HTTP status code and error string in the response are defined by
    [RFC6750].
 
-   The issuer parameter MAY be combined with other parameters defined in
-   other extensions, such as the max_age parameter defined by [RFC9470].
+   The resource_metadata parameter MAY be combined with other parameters
+   defined in other extensions, such as the max_age parameter defined by
+   [RFC9470].
 
 5.2.  Changes to Resource Metadata
 
    At any point, for any reason determined by the protected resource,
    the protected resource MAY respond with a new WWW-Authenticate
-   challenge that includes a value for the resource identifier to
-   indicate that its metadata MAY have changed.  If the client receives
-   such a WWW-Authenticate response, it is expected retrieve the
-   protected resource metadata again, and SHOULD use the new metadata
-   values obtained.  Among other things, this enables a resource server
-   to change which authorization servers it uses without any other
-   coordination with clients.
+   challenge that includes a value for the protected resource metadata
+   URL to indicate that its metadata MAY have changed.  If the client
+   receives such a WWW-Authenticate response, it is expected retrieve
+   the protected resource metadata again, and SHOULD use the new
+   metadata values obtained.  Among other things, this enables a
+   resource server to change which authorization servers it uses without
+   any other coordination with clients.
 
 5.3.  Client Identifier and Client Authentication
 
@@ -487,8 +496,8 @@ Table of Contents
 
    There are some existing methods by which an unrecognized client can
    make use of an authorization server, such as using Dynamic Client
-   Registration [RFC7591], to register the client prior to initiating
-   the authorization flow.  Future extensions might define alternatives,
+   Registration [RFC7591] to register the client prior to initiating the
+   authorization flow.  Future extensions might define alternatives,
    such as using URLs to identify clients.
 
 5.4.  Compatibility with other authentication methods
@@ -518,6 +527,9 @@ Table of Contents
 
    3.  Comparisons between the two strings MUST be performed as a
        Unicode code point to code point equality comparison.
+
+   Note that this is the same equality comparison procedure described in
+   Section 8.3 of [RFC8259].
 
 7.  Security Considerations
 
@@ -901,6 +913,11 @@ Table of Contents
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
 
+   [RFC8259]  Bray, T., Ed., "The JavaScript Object Notation (JSON) Data
+              Interchange Format", STD 90, RFC 8259,
+              DOI 10.17487/RFC8259, December 2017,
+              <https://www.rfc-editor.org/info/rfc8259>.
+
    [RFC8414]  Jones, M., Sakimura, N., and J. Bradley, "OAuth 2.0
               Authorization Server Metadata", RFC 8414,
               DOI 10.17487/RFC8414, June 2018,
@@ -973,6 +990,11 @@ Appendix A.  Acknowledgements
 Appendix B.  Document History
 
    [[ to be removed by the RFC Editor before publication as an RFC ]]
+
+   -02
+
+   *  Have WWW-Authenticate return resource_metadata rather than
+      resource.
 
    -01
 
