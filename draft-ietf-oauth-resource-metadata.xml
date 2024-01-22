@@ -307,7 +307,7 @@
 	  if they do not support this feature.
 	  If the consumer of the metadata supports signed metadata,
 	  metadata values conveyed in the signed metadata
-	  MUST take precedence over those conveyed using plain JSON elements.
+	  MUST take precedence over the corresponding values conveyed using plain JSON elements.
 	</t>
 	<t>
 	  Signed metadata is included in the protected resource metadata JSON object
@@ -1107,6 +1107,23 @@
               </t>
             </list>
           </t>
+	  <t>
+	    <list style='symbols'>
+	      <t>
+		Metadata Name: signed_metadata
+	      </t>
+	      <t>
+		Metadata Description:
+		Signed JWT containing metadata values about the protected resource as claims
+	      </t>
+	      <t>
+		Change Controller: IETF
+	      </t>
+	      <t>
+		Specification Document(s): <xref target="SignedMetadata"/> of [[ this specification ]]
+	      </t>
+	    </list>
+	  </t>
 	</section>
 	<?rfc subcompact="no"?>
       </section>
