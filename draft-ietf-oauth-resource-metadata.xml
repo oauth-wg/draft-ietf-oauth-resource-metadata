@@ -40,7 +40,7 @@
       </address>
     </author>
 
-    <date day="20" month="October" year="2023" />
+    <date day="31" month="December" year="2023" />
 
     <area>Security</area>
     <workgroup>OAuth Working Group</workgroup>
@@ -475,6 +475,14 @@
 	  -->
 	  If these values are not identical, the data contained in the response MUST NOT be used.
 	</t>
+	<t>
+	  If the protected resource metadata was retrieved from a URL
+	  returned by the protected resource via the WWW-Authenticate
+	  <spanx style="verb">resource_metadata</spanx> parameter, then
+	  the <spanx style="verb">resource</spanx> value returned MUST be identical to
+	  the URL that the client used to make the request to the resource server.
+	  If these values are not identical, the data contained in the response MUST NOT be used.
+	</t>
       </section>
     </section>
 
@@ -515,8 +523,8 @@
 
     <section anchor="WWW-Authenticate" title="Use of WWW-Authenticate for Protected Resource Metadata">
       <t>
-	A protected resource MAY use a <spanx style="verb">WWW-Authenticate</spanx> response to return its resource identifier to the client.
-	The client can then retrieve protected resource metadata using the resource identifier as described in <xref target="PRConfig"/>.
+	A protected resource MAY use a <spanx style="verb">WWW-Authenticate</spanx> response to return a URL to its protected resource metadata to the client.
+	The client can then retrieve protected resource metadata as described in <xref target="PRConfig"/>.
 	The client might then, for instance, determine what authorization server to use for the resource
 	based on protected resource metadata retrieved.
       </t>
@@ -531,14 +539,16 @@
 	    The client makes a request to a protected resource without presenting an access token.
 	  </t>
 	  <t>
-	    The resource server responds with a <spanx style="verb">WWW-Authenticate</spanx> header including the resource identifier of the protected resource.
+	    The resource server responds with a <spanx style="verb">WWW-Authenticate</spanx> header including the URL of the protected resource metadata.
 	  </t>
 	  <t>
-	    The client fetches resource metadata from the <spanx style="verb">.well-known/oauth-protected-resource</spanx> location
-	    derived from the resource identifier according to <xref target="PRConfig"/>.
+	    The client fetches the protected resource metadata from this URL.
 	  </t>
 	  <t>
 	    The protected resource responds with the protected resource metadata according to <xref target="PRConfigurationResponse"/>.
+	  </t>
+	  <t>
+	    The client validates the protected resource metadata.
 	  </t>
 	  <t>
 	    The client builds the authorization server metadata URL from an issuer identifier in the resource metadata according to <xref target="RFC8414"/>
@@ -565,11 +575,11 @@
       <section anchor="WWW-Authenticate-Response" title="WWW-Authenticate Response">
 	<t>
 	  This specification introduces a new parameter in the <spanx style="verb">WWW-Authenticate</spanx> response
-	  to indicate the resource identifier of the protected resource:
+	  to indicate the protected resource metadata URL:
             <list style='hanging'>
-              <t hangText='resource:'>
+              <t hangText='resource_metadata:'>
                 <vspace/>
-		The resource identifier of the protected resource.
+		The URL of the protected resource metadata.
 	      </t>
 	    </list>
 	</t>
@@ -581,7 +591,8 @@
   HTTP/1.1 400 Bad Request
   WWW-Authenticate: Bearer error="invalid_request",
     error_description="No access token was provided in this request",
-    resource="https://resource.example.com"
+    resource_metadata=
+    "https://resource.example.com/.well-known/oauth-protected-resource"
 ]]></artwork>
 	  </figure>
 	</t>
@@ -589,7 +600,7 @@
 	  The HTTP status code and error string in the response are defined by <xref target="RFC6750"/>.
 	</t>
 	<t>
-	  The issuer parameter MAY be combined with other parameters defined in other extensions,
+	  The <spanx style="verb">resource_metadata</spanx> parameter MAY be combined with other parameters defined in other extensions,
 	  such as the <spanx style="verb">max_age</spanx> parameter defined by <xref target="RFC9470"/>.
 	</t>
       </section>
@@ -598,7 +609,7 @@
 	<t>
 	  At any point, for any reason determined by the protected resource,
 	  the protected resource MAY respond with a new <spanx style="verb">WWW-Authenticate</spanx> challenge
-	  that includes a value for the resource identifier to indicate that its metadata MAY have changed.
+	  that includes a value for the protected resource metadata URL to indicate that its metadata MAY have changed.
 	  If the client receives such a <spanx style="verb">WWW-Authenticate</spanx> response,
 	  it is expected retrieve the protected resource metadata again,
 	  and SHOULD use the new metadata values obtained.
@@ -617,7 +628,7 @@
 	</t>
 	<t>
 	  There are some existing methods by which an unrecognized client can make use of an authorization server,
-	  such as using Dynamic Client Registration <xref target="RFC7591"/>,
+	  such as using Dynamic Client Registration <xref target="RFC7591"/>
 	  to register the client prior to initiating the authorization flow.
 	  Future extensions might define alternatives, such as using URLs to identify clients.
 	</t>
@@ -664,6 +675,10 @@
 	  </t>
 
         </list>
+      </t>
+      <t>
+	Note that this is the same equality comparison procedure described in
+	Section 8.3 of <xref target="RFC8259"/>.
       </t>
 
     </section>
@@ -1203,6 +1218,7 @@
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7159.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7591.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8259.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8414.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8707.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8996.xml"/>
@@ -1418,6 +1434,15 @@
 
     <section anchor="History" title="Document History">
       <t>[[ to be removed by the RFC Editor before publication as an RFC ]]</t>
+
+      <t>
+	-02
+	<list style="symbols">
+	  <t>
+	    Have WWW-Authenticate return <spanx style="verb">resource_metadata</spanx> rather than <spanx style="verb">resource</spanx>.
+	  </t>
+	</list>
+      </t>
 
       <t>
 	-01
