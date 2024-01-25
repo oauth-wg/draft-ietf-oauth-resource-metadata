@@ -233,7 +233,7 @@
 	    JSON array containing a list of the OAuth 2.0 Bearer Token <xref target="RFC6750"/>
 	    presentation methods that this protected resource supports.
 	    Defined values are
-	    <spanx style="verb">["header", "fragment", "query"]</spanx>,
+	    <spanx style="verb">["header", "body", "query"]</spanx>,
 	    corresponding to Sections 2.1, 2.2, and 2.3 of RFC 6750.
 	  </t>
 
@@ -1431,6 +1431,7 @@
 	and the attendees of the IETF 116 OAuth Working Group for their input on this specification.
 	We would would also like to thank
 	George Fletcher
+	Filip Skokan
 	and
 	Tony Nadalin
 	for their contributions to the specification.
