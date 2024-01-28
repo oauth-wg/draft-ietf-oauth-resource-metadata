@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-01-25T00:41:06.650810+00:00",
+  "timestamp": "2024-01-28T00:40:13.538482+00:00",
   "repo": "oauth-wg/draft-ietf-oauth-resource-metadata",
   "labels": [
     {
@@ -181,15 +181,15 @@
       "id": "I_kwDOJ1yJis51nFjo",
       "title": "Question: What happens if the WWW-Authenticate header returns a Resource Identifier with a different hostname?",
       "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/16",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "aaronpk",
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "* Is this acceptable?\r\n* What features does this enable?\r\n* What are the security considerations of doing so?\r\n\r\nIn some situations it is impossible or impractical for a resource server to host content at `.well-known`.",
       "createdAt": "2023-11-01T22:06:23Z",
-      "updatedAt": "2024-01-01T01:13:29Z",
-      "closedAt": null,
+      "updatedAt": "2024-01-25T03:36:09Z",
+      "closedAt": "2024-01-25T03:36:09Z",
       "comments": [
         {
           "author": "selfissued",
@@ -197,6 +197,13 @@
           "body": "Per the proposed validation logic in PR #20, this is OK when the URL of the resource server used by the client matches the `resource` value returned in the metadata.",
           "createdAt": "2024-01-01T01:13:27Z",
           "updatedAt": "2024-01-01T01:13:27Z"
+        },
+        {
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Addressed by this language in PR #20:\r\n> If the protected resource metadata was retrieved from a URL returned by the protected resource via the WWW-Authenticate resource_metadata parameter, then the resource value returned MUST be identical to the URL that the client used to make the request to the resource server. If these values are not identical, the data contained in the response MUST NOT be used.",
+          "createdAt": "2024-01-25T03:36:09Z",
+          "updatedAt": "2024-01-25T03:36:09Z"
         }
       ]
     },
@@ -760,6 +767,32 @@
       "mergeCommit": {
         "oid": "e2fdbf3594ad7db53b3233111d47b6ad6e44acf0"
       },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 22,
+      "id": "PR_kwDOJ1yJis5lDCIO",
+      "title": "fix bearer_methods_supported",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/22",
+      "state": "OPEN",
+      "author": "panva",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "This fixes the `bearer_methods_supported` definition, it incorrectly used \"fragment\" when it meant \"body\" as later shown in section-3.2",
+      "createdAt": "2024-01-25T10:23:14Z",
+      "updatedAt": "2024-01-25T10:23:14Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "5bcba637d47b792bf9de32e9a3b762c04d4d08ab",
+      "headRepository": "panva/draft-ietf-oauth-resource-metadata",
+      "headRefName": "fix-fragment",
+      "headRefOid": "e9e936a991f28f0ae7b8ecc0b5a77c06a251c362",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
       "comments": [],
       "reviews": []
     }
