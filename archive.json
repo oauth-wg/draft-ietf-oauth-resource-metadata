@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-01-30T00:37:40.399020+00:00",
+  "timestamp": "2024-02-01T00:39:36.542217+00:00",
   "repo": "oauth-wg/draft-ietf-oauth-resource-metadata",
   "labels": [
     {
@@ -214,7 +214,7 @@
       "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/17",
       "state": "CLOSED",
       "author": "panva",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "The draft [currently](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-resource-metadata-01#section-3) (and the examples in it) follow this language\r\n\r\n> Protected resources supporting metadata MUST make a JSON document containing metadata as specified in [Section 2](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-resource-metadata-01#PRMetadata) available at a path formed by concatenating a well-known URI string such as /.well-known/oauth-protected-resource to the protected resource's resource identifier.\r\n\r\nThis means (taken from an example in the draft):\r\n\r\n```\r\n    GET /resource1/.well-known/oauth-protected-resource HTTP/1.1\r\n    Host: resource.example.com\r\n```\r\n\r\nThis is inconsistent with RFC8414 (and its normative dependencies) which says\r\n\r\n> If the issuer identifier value contains a path component, any terminating \"/\" MUST be removed before inserting \"/.well-known/\" and the well-known URI suffix between the host component and the path component.\r\n\r\nThis means (taken from an example in RFC8414):\r\n\r\n```\r\n     GET /.well-known/oauth-authorization-server/issuer1 HTTP/1.1\r\n     Host: example.com\r\n```\r\n\r\nThe RFC8414 way kind of hampers the ability to host these documents in multi-tenant system on certain deployments but i'm unsure if we can justify not doing it this way.",
@@ -775,26 +775,42 @@
       "id": "PR_kwDOJ1yJis5lDCIO",
       "title": "fix bearer_methods_supported",
       "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/22",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "panva",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "This fixes the `bearer_methods_supported` definition, it incorrectly used \"fragment\" when it meant \"body\" as later shown in section-3.2",
       "createdAt": "2024-01-25T10:23:14Z",
-      "updatedAt": "2024-01-25T10:23:14Z",
+      "updatedAt": "2024-01-30T11:08:15Z",
       "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
       "baseRefName": "main",
       "baseRefOid": "5bcba637d47b792bf9de32e9a3b762c04d4d08ab",
       "headRepository": "panva/draft-ietf-oauth-resource-metadata",
       "headRefName": "fix-fragment",
       "headRefOid": "e9e936a991f28f0ae7b8ecc0b5a77c06a251c362",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-01-30T11:02:41Z",
+      "mergedAt": "2024-01-30T11:02:41Z",
+      "mergedBy": "selfissued",
+      "mergeCommit": {
+        "oid": "f0b853212ba3ba839b9bf74833514f7b901e441d"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ1yJis5uUm8z",
+          "commit": {
+            "abbreviatedOid": "e9e936a"
+          },
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-01-30T11:02:33Z",
+          "updatedAt": "2024-01-30T11:02:33Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
