@@ -40,7 +40,7 @@
       </address>
     </author>
 
-    <date day="24" month="January" year="2024" />
+    <date day="1" month="February" year="2024" />
 
     <area>Security</area>
     <workgroup>OAuth Working Group</workgroup>
@@ -1430,10 +1430,10 @@
 	The authors of this specification would like to thank the attendees of the IETF 115 OAuth and HTTP API Working Groups
 	and the attendees of the IETF 116 OAuth Working Group for their input on this specification.
 	We would would also like to thank
-	George Fletcher
-	Filip Skokan
+	George Fletcher,
+	Tony Nadalin,
 	and
-	Tony Nadalin
+	Filip Skokan
 	for their contributions to the specification.
       </t>
     </section>
@@ -1442,14 +1442,23 @@
       <t>[[ to be removed by the RFC Editor before publication as an RFC ]]</t>
 
       <t>
+	-03
+        <list style="symbols">
+	  <t>
+	    Applied correction by Filip Skokan.
+	  </t>
+	</list>
+      </t>
+
+      <t>
 	-02
 	<list style="symbols">
 	  <t>
 	    Switched from concatenating .well-known to the end of the resource identifier
 	    to inserting it between the host and path components of it.
-    </t>
-    <t>
-      Have WWW-Authenticate return <spanx style="verb">resource_metadata</spanx> rather than <spanx style="verb">resource</spanx>.
+	  </t>
+	  <t>
+	    Have WWW-Authenticate return <spanx style="verb">resource_metadata</spanx> rather than <spanx style="verb">resource</spanx>.
 	  </t>
 	</list>
       </t>
@@ -1457,12 +1466,12 @@
       <t>
 	-01
         <list style="symbols">
-     <t>
-     	Renamed scopes_provided to scopes_supported.
-     </t>
-     <t>
-     	Added security consideration for scopes_supported.
-     </t>
+	  <t>
+	    Renamed scopes_provided to scopes_supported.
+	  </t>
+	  <t>
+	    Added security consideration for scopes_supported.
+	  </t>
 	  <t>
 	    Use BCP 195 for TLS recommendations.
 	  </t>
@@ -1473,10 +1482,10 @@
 	    Updated references.
 	  </t>
 	  <t>
-	  	Added security consideration recommending audience-restricted access tokens.
+	    Added security consideration recommending audience-restricted access tokens.
 	  </t>
 	  <t>
-	  	Mention FAPI Message Signing as a use case for publishing signing keys.
+	    Mention FAPI Message Signing as a use case for publishing signing keys.
 	  </t>
 	</list>
       </t>
