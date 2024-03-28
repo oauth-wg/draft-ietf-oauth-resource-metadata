@@ -40,7 +40,7 @@
       </address>
     </author>
 
-    <date day="1" month="February" year="2024" />
+    <date day="28" month="March" year="2024" />
 
     <area>Security</area>
     <workgroup>OAuth Working Group</workgroup>
@@ -100,7 +100,7 @@
       <t>
 	Each protected resource publishing metadata about itself makes its own
 	metadata document available at a well-known location
-	rooted at the protect resource's URL,
+	deterministically derived from the protected resource's URL,
 	even when the resource server implements multiple protected resources.
 	This prevents attackers from publishing metadata supposedly describing
 	the protected resource, but that is not actually authoritative for
@@ -108,7 +108,7 @@
       </t>
       <t>
 	The means by which the client obtains the location
-	of the protected resource metadata document
+	of the protected resource
 	is out of scope.
 	In some cases, the location may be manually configured into the client.
 	In other cases, it may be dynamically discovered, for instance,
@@ -348,8 +348,8 @@
       </t>
       <t>
 	Different applications utilizing OAuth protected resources in application-specific ways
-	may define and register different well-known URI path suffixes
-	used to publish protected resource metadata as used by those applications.
+	MAY define and register different well-known URI path suffixes
+	for publishing protected resource metadata used by those applications.
 	For instance, if the Example application uses an OAuth protected resource in an Example-specific way,
 	and there are Example-specific metadata values that it needs to publish,
 	then it might register and use the
@@ -365,7 +365,7 @@
       </t>
       <t>
 	An OAuth 2.0 application using this specification MUST specify
-	what well-known URI string it will use for this purpose.
+	what well-known URI suffix it will use for this purpose.
 	The same protected resource MAY choose to publish its metadata at multiple
 	well-known locations derived from its resource identifier,
 	for example, publishing metadata at both
@@ -1427,19 +1427,30 @@
     <section anchor="Acknowledgements" title="Acknowledgements">
 
       <t>
-	The authors of this specification would like to thank the attendees of the IETF 115 OAuth and HTTP API Working Groups
-	and the attendees of the IETF 116 OAuth Working Group for their input on this specification.
+	The authors of this specification would like to thank the attendees of the IETF 115 OAuth and HTTP API Working Group meetings
+	and the attendees of subsequent OAuth Working Group meetings for their input on this specification.
 	We would would also like to thank
 	George Fletcher,
 	Tony Nadalin,
+	Filip Skokan,
 	and
-	Filip Skokan
+	Atul Tulshibagwale
 	for their contributions to the specification.
       </t>
     </section>
 
     <section anchor="History" title="Document History">
       <t>[[ to be removed by the RFC Editor before publication as an RFC ]]</t>
+
+      <t>
+	-04
+        <list style="symbols">
+	  <t>
+	    Applied working group last call suggestions by
+	    Atul Tulshibagwale.
+	  </t>
+	</list>
+      </t>
 
       <t>
 	-03
