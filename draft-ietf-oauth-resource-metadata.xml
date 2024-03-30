@@ -462,6 +462,8 @@
       "https://as2.example.net"],
    "bearer_methods_supported":
      ["header", "body"],
+   "scopes_supported":
+     ["profile", "email", "phone"],
    "resource_documentation":
      "http://resource.example.com/resource_documentation.html"
   }
@@ -519,7 +521,7 @@
 	    Authorization servers MAY choose not to advertise some supported protected resources
 	    even when this parameter is used.
 	    In some use cases, the set of protected resources will not be enumerable,
-	    in which case this metadata parameter would not be used.
+	    in which case this metadata parameter will not be present.
 	  </t>
 
 	</list>
@@ -550,7 +552,8 @@
 	    The client fetches the protected resource metadata from this URL.
 	  </t>
 	  <t>
-	    The protected resource responds with the protected resource metadata according to <xref target="PRConfigurationResponse"/>.
+	    The resource server responds with the protected resource metadata
+	    according to <xref target="PRConfigurationResponse"/>.
 	  </t>
 	  <t>
 	    The client validates the protected resource metadata.
@@ -616,7 +619,7 @@
 	  the protected resource MAY respond with a new <spanx style="verb">WWW-Authenticate</spanx> challenge
 	  that includes a value for the protected resource metadata URL to indicate that its metadata MAY have changed.
 	  If the client receives such a <spanx style="verb">WWW-Authenticate</spanx> response,
-	  it is expected retrieve the protected resource metadata again,
+	  the client SHOULD retrieve the protected resource metadata again,
 	  and SHOULD use the new metadata values obtained.
 	  Among other things,
 	  this enables a resource server to change which authorization servers it uses without any other coordination with clients.
