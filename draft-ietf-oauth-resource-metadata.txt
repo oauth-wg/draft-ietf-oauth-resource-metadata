@@ -5,10 +5,10 @@
 OAuth Working Group                                           M.B. Jones
 Internet-Draft                                    Self-Issued Consulting
 Intended status: Standards Track                                 P. Hunt
-Expires: 4 August 2024                        Independent Identity, Inc.
+Expires: 29 September 2024                    Independent Identity, Inc.
                                                               A. Parecki
                                                                     Okta
-                                                         1 February 2024
+                                                           28 March 2024
 
 
                  OAuth 2.0 Protected Resource Metadata
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 4 August 2024.
+   This Internet-Draft will expire on 29 September 2024.
 
 Copyright Notice
 
@@ -117,19 +117,20 @@ Table of Contents
    Dynamic Client Registration [RFC7591].
 
    Each protected resource publishing metadata about itself makes its
-   own metadata document available at a well-known location rooted at
-   the protect resource's URL, even when the resource server implements
-   multiple protected resources.  This prevents attackers from
-   publishing metadata supposedly describing the protected resource, but
-   that is not actually authoritative for the protected resource, as
-   described in Section 7.3.
+   own metadata document available at a well-known location
+   deterministically derived from the protected resource's URL, even
+   when the resource server implements multiple protected resources.
+   This prevents attackers from publishing metadata supposedly
+   describing the protected resource, but that is not actually
+   authoritative for the protected resource, as described in
+   Section 7.3.
 
    The means by which the client obtains the location of the protected
-   resource metadata document is out of scope.  In some cases, the
-   location may be manually configured into the client.  In other cases,
-   it may be dynamically discovered, for instance, through the use of
-   WebFinger [RFC7033], in a manner related to the description in
-   Section 2 of "OpenID Connect Discovery 1.0" [OpenID.Discovery].
+   resource is out of scope.  In some cases, the location may be
+   manually configured into the client.  In other cases, it may be
+   dynamically discovered, for instance, through the use of WebFinger
+   [RFC7033], in a manner related to the description in Section 2 of
+   "OpenID Connect Discovery 1.0" [OpenID.Discovery].
 
    Section 2 defines metadata values that a protected resource can
    publish, which includes things like which scopes are supported, how a
@@ -286,22 +287,22 @@ Table of Contents
    [IANA.well-known].
 
    Different applications utilizing OAuth protected resources in
-   application-specific ways may define and register different well-
-   known URI path suffixes used to publish protected resource metadata
-   as used by those applications.  For instance, if the Example
-   application uses an OAuth protected resource in an Example-specific
-   way, and there are Example-specific metadata values that it needs to
-   publish, then it might register and use the example-protected-
-   resource URI path suffix and publish the metadata document at the
-   path formed by inserting /.well-known/example-protected-resource
-   between the host and path components of the protected resource's
-   resource identifier.  Alternatively, many such applications will use
-   the default well-known URI string /.well-known/oauth-protected-
-   resource, which is the right choice for general-purpose OAuth
-   protected resources, and not register an application-specific one.
+   application-specific ways MAY define and register different well-
+   known URI path suffixes for publishing protected resource metadata
+   used by those applications.  For instance, if the Example application
+   uses an OAuth protected resource in an Example-specific way, and
+   there are Example-specific metadata values that it needs to publish,
+   then it might register and use the example-protected-resource URI
+   path suffix and publish the metadata document at the path formed by
+   inserting /.well-known/example-protected-resource between the host
+   and path components of the protected resource's resource identifier.
+   Alternatively, many such applications will use the default well-known
+   URI string /.well-known/oauth-protected-resource, which is the right
+   choice for general-purpose OAuth protected resources, and not
+   register an application-specific one.
 
    An OAuth 2.0 application using this specification MUST specify what
-   well-known URI string it will use for this purpose.  The same
+   well-known URI suffix it will use for this purpose.  The same
    protected resource MAY choose to publish its metadata at multiple
    well-known locations derived from its resource identifier, for
    example, publishing metadata at both /.well-known/example-protected-
@@ -365,6 +366,8 @@ Table of Contents
          "https://as2.example.net"],
       "bearer_methods_supported":
         ["header", "body"],
+      "scopes_supported":
+        ["profile", "email", "phone"],
       "resource_documentation":
         "http://resource.example.com/resource_documentation.html"
      }
@@ -408,7 +411,7 @@ Table of Contents
       choose not to advertise some supported protected resources even
       when this parameter is used.  In some use cases, the set of
       protected resources will not be enumerable, in which case this
-      metadata parameter would not be used.
+      metadata parameter will not be present.
 
 5.  Use of WWW-Authenticate for Protected Resource Metadata
 
@@ -432,7 +435,7 @@ Table of Contents
    3.   The client fetches the protected resource metadata from this
         URL.
 
-   4.   The protected resource responds with the protected resource
+   4.   The resource server responds with the protected resource
         metadata according to Section 3.2.
 
    5.   The client validates the protected resource metadata.
@@ -486,7 +489,7 @@ Table of Contents
    the protected resource MAY respond with a new WWW-Authenticate
    challenge that includes a value for the protected resource metadata
    URL to indicate that its metadata MAY have changed.  If the client
-   receives such a WWW-Authenticate response, it is expected retrieve
+   receives such a WWW-Authenticate response, the client SHOULD retrieve
    the protected resource metadata again, and SHOULD use the new
    metadata values obtained.  Among other things, this enables a
    resource server to change which authorization servers it uses without
@@ -990,15 +993,19 @@ Table of Contents
 Appendix A.  Acknowledgements
 
    The authors of this specification would like to thank the attendees
-   of the IETF 115 OAuth and HTTP API Working Groups and the attendees
-   of the IETF 116 OAuth Working Group for their input on this
-   specification.  We would would also like to thank George Fletcher,
-   Tony Nadalin, and Filip Skokan for their contributions to the
-   specification.
+   of the IETF 115 OAuth and HTTP API Working Group meetings and the
+   attendees of subsequent OAuth Working Group meetings for their input
+   on this specification.  We would would also like to thank George
+   Fletcher, Tony Nadalin, Filip Skokan, and Atul Tulshibagwale for
+   their contributions to the specification.
 
 Appendix B.  Document History
 
    [[ to be removed by the RFC Editor before publication as an RFC ]]
+
+   -04
+
+   *  Applied working group last call suggestions by Atul Tulshibagwale.
 
    -03
 

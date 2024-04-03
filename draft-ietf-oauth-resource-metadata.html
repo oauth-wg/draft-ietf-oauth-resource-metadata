@@ -16,7 +16,7 @@
  an OAuth 2.0 protected resource.
        
     " name="description">
-<meta content="xml2rfc 3.19.1" name="generator">
+<meta content="xml2rfc 3.20.1" name="generator">
 <meta content="OAuth" name="keyword">
 <meta content="Discovery" name="keyword">
 <meta content="Metadata" name="keyword">
@@ -31,14 +31,14 @@
 <meta content="JWT" name="keyword">
 <meta content="draft-ietf-oauth-resource-metadata-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.19.1
-    Python 3.11.6
+  xml2rfc 3.20.1
+    Python 3.11.8
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
     intervaltree 3.1.0
     Jinja2 3.1.2
     lxml 4.9.3
-    platformdirs 4.1.0
+    platformdirs 4.2.0
     pycountry 22.3.5
     PyYAML 6.0.1
     requests 2.31.0
@@ -1043,11 +1043,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">OAuth 2.0 Protected Resource Metadata</td>
-<td class="right">February 2024</td>
+<td class="right">March 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Jones, et al.</td>
-<td class="center">Expires 4 August 2024</td>
+<td class="center">Expires 29 September 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1060,12 +1060,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-resource-metadata-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-02-01" class="published">1 February 2024</time>
+<time datetime="2024-03-28" class="published">28 March 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-08-04">4 August 2024</time></dd>
+<dd class="expires"><time datetime="2024-09-29">29 September 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1111,7 +1111,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 4 August 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 29 September 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1313,14 +1313,14 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <p id="section-1-4">
  Each protected resource publishing metadata about itself makes its own
  metadata document available at a well-known location
- rooted at the protect resource's URL,
+ deterministically derived from the protected resource's URL,
  even when the resource server implements multiple protected resources.
  This prevents attackers from publishing metadata supposedly describing
  the protected resource, but that is not actually authoritative for
  the protected resource, as described in <a href="#Impersonation" class="auto internal xref">Section 7.3</a>.<a href="#section-1-4" class="pilcrow">¶</a></p>
 <p id="section-1-5">
  The means by which the client obtains the location
- of the protected resource metadata document
+ of the protected resource
  is out of scope.
  In some cases, the location may be manually configured into the client.
  In other cases, it may be dynamically discovered, for instance,
@@ -1562,8 +1562,8 @@ svg :is([fill="white"], [fill^="#fff"]) {
  "Well-Known URIs" registry <span>[<a href="#IANA.well-known" class="cite xref">IANA.well-known</a>]</span>.<a href="#section-3-1" class="pilcrow">¶</a></p>
 <p id="section-3-2">
  Different applications utilizing OAuth protected resources in application-specific ways
- may define and register different well-known URI path suffixes
- used to publish protected resource metadata as used by those applications.
+ MAY define and register different well-known URI path suffixes
+ for publishing protected resource metadata used by those applications.
  For instance, if the Example application uses an OAuth protected resource in an Example-specific way,
  and there are Example-specific metadata values that it needs to publish,
  then it might register and use the
@@ -1578,7 +1578,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
  and not register an application-specific one.<a href="#section-3-2" class="pilcrow">¶</a></p>
 <p id="section-3-3">
  An OAuth 2.0 application using this specification MUST specify
- what well-known URI string it will use for this purpose.
+ what well-known URI suffix it will use for this purpose.
  The same protected resource MAY choose to publish its metadata at multiple
  well-known locations derived from its resource identifier,
  for example, publishing metadata at both
@@ -1663,6 +1663,8 @@ svg :is([fill="white"], [fill^="#fff"]) {
       "https://as2.example.net"],
    "bearer_methods_supported":
      ["header", "body"],
+   "scopes_supported":
+     ["profile", "email", "phone"],
    "resource_documentation":
      "http://resource.example.com/resource_documentation.html"
   }
@@ -1721,7 +1723,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
      Authorization servers MAY choose not to advertise some supported protected resources
      even when this parameter is used.
      In some use cases, the set of protected resources will not be enumerable,
-     in which case this metadata parameter would not be used.<a href="#section-4-3.2" class="pilcrow">¶</a>
+     in which case this metadata parameter will not be present.<a href="#section-4-3.2" class="pilcrow">¶</a>
 </dd>
       <dd class="break"></dd>
 </dl>
@@ -1756,7 +1758,8 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </li>
         <li id="section-5-3.4">
           <p id="section-5-3.4.1">
-     The protected resource responds with the protected resource metadata according to <a href="#PRConfigurationResponse" class="auto internal xref">Section 3.2</a>.<a href="#section-5-3.4.1" class="pilcrow">¶</a></p>
+     The resource server responds with the protected resource metadata
+     according to <a href="#PRConfigurationResponse" class="auto internal xref">Section 3.2</a>.<a href="#section-5-3.4.1" class="pilcrow">¶</a></p>
 </li>
         <li id="section-5-3.5">
           <p id="section-5-3.5.1">
@@ -1830,7 +1833,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
    the protected resource MAY respond with a new <code>WWW-Authenticate</code> challenge
    that includes a value for the protected resource metadata URL to indicate that its metadata MAY have changed.
    If the client receives such a <code>WWW-Authenticate</code> response,
-   it is expected retrieve the protected resource metadata again,
+   the client SHOULD retrieve the protected resource metadata again,
    and SHOULD use the new metadata values obtained.
    Among other things,
    this enables a resource server to change which authorization servers it uses without any other coordination with clients.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
@@ -2621,13 +2624,14 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-acknowledgements" class="section-name selfRef">Acknowledgements</a>
       </h2>
 <p id="appendix-A-1">
- The authors of this specification would like to thank the attendees of the IETF 115 OAuth and HTTP API Working Groups
- and the attendees of the IETF 116 OAuth Working Group for their input on this specification.
+ The authors of this specification would like to thank the attendees of the IETF 115 OAuth and HTTP API Working Group meetings
+ and the attendees of subsequent OAuth Working Group meetings for their input on this specification.
  We would would also like to thank
  George Fletcher,
  Tony Nadalin,
+ Filip Skokan,
  and
- Filip Skokan
+ Atul Tulshibagwale
  for their contributions to the specification.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -2638,64 +2642,73 @@ svg :is([fill="white"], [fill^="#fff"]) {
       </h2>
 <p id="appendix-B-1">[[ to be removed by the RFC Editor before publication as an RFC ]]<a href="#appendix-B-1" class="pilcrow">¶</a></p>
 <p id="appendix-B-2">
- -03<a href="#appendix-B-2" class="pilcrow">¶</a></p>
+ -04<a href="#appendix-B-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-B-3.1">
           <p id="appendix-B-3.1.1">
-     Applied correction by Filip Skokan.<a href="#appendix-B-3.1.1" class="pilcrow">¶</a></p>
+     Applied working group last call suggestions by
+     Atul Tulshibagwale.<a href="#appendix-B-3.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-B-4">
- -02<a href="#appendix-B-4" class="pilcrow">¶</a></p>
+ -03<a href="#appendix-B-4" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-B-5.1">
           <p id="appendix-B-5.1.1">
-     Switched from concatenating .well-known to the end of the resource identifier
-     to inserting it between the host and path components of it.<a href="#appendix-B-5.1.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-5.2">
-          <p id="appendix-B-5.2.1">
-     Have WWW-Authenticate return <code>resource_metadata</code> rather than <code>resource</code>.<a href="#appendix-B-5.2.1" class="pilcrow">¶</a></p>
+     Applied correction by Filip Skokan.<a href="#appendix-B-5.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-B-6">
- -01<a href="#appendix-B-6" class="pilcrow">¶</a></p>
+ -02<a href="#appendix-B-6" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-B-7.1">
           <p id="appendix-B-7.1.1">
-     Renamed scopes_provided to scopes_supported.<a href="#appendix-B-7.1.1" class="pilcrow">¶</a></p>
+     Switched from concatenating .well-known to the end of the resource identifier
+     to inserting it between the host and path components of it.<a href="#appendix-B-7.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-B-7.2">
           <p id="appendix-B-7.2.1">
-     Added security consideration for scopes_supported.<a href="#appendix-B-7.2.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-7.3">
-          <p id="appendix-B-7.3.1">
-     Use BCP 195 for TLS recommendations.<a href="#appendix-B-7.3.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-7.4">
-          <p id="appendix-B-7.4.1">
-     Clarified that resource metadata can be used by clients and authorization servers.<a href="#appendix-B-7.4.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-7.5">
-          <p id="appendix-B-7.5.1">
-     Updated references.<a href="#appendix-B-7.5.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-7.6">
-          <p id="appendix-B-7.6.1">
-     Added security consideration recommending audience-restricted access tokens.<a href="#appendix-B-7.6.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-7.7">
-          <p id="appendix-B-7.7.1">
-     Mention FAPI Message Signing as a use case for publishing signing keys.<a href="#appendix-B-7.7.1" class="pilcrow">¶</a></p>
+     Have WWW-Authenticate return <code>resource_metadata</code> rather than <code>resource</code>.<a href="#appendix-B-7.2.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-B-8">
- -00<a href="#appendix-B-8" class="pilcrow">¶</a></p>
+ -01<a href="#appendix-B-8" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-B-9.1">
           <p id="appendix-B-9.1.1">
-     Initial working group version based on draft-jones-oauth-resource-metadata-04.<a href="#appendix-B-9.1.1" class="pilcrow">¶</a></p>
+     Renamed scopes_provided to scopes_supported.<a href="#appendix-B-9.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-9.2">
+          <p id="appendix-B-9.2.1">
+     Added security consideration for scopes_supported.<a href="#appendix-B-9.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-9.3">
+          <p id="appendix-B-9.3.1">
+     Use BCP 195 for TLS recommendations.<a href="#appendix-B-9.3.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-9.4">
+          <p id="appendix-B-9.4.1">
+     Clarified that resource metadata can be used by clients and authorization servers.<a href="#appendix-B-9.4.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-9.5">
+          <p id="appendix-B-9.5.1">
+     Updated references.<a href="#appendix-B-9.5.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-9.6">
+          <p id="appendix-B-9.6.1">
+     Added security consideration recommending audience-restricted access tokens.<a href="#appendix-B-9.6.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-9.7">
+          <p id="appendix-B-9.7.1">
+     Mention FAPI Message Signing as a use case for publishing signing keys.<a href="#appendix-B-9.7.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="appendix-B-10">
+ -00<a href="#appendix-B-10" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-B-11.1">
+          <p id="appendix-B-11.1.1">
+     Initial working group version based on draft-jones-oauth-resource-metadata-04.<a href="#appendix-B-11.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 </section>
