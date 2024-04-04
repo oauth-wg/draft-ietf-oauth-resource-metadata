@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-04-02T00:06:00.207702+00:00",
+  "timestamp": "2024-04-04T00:07:02.213985+00:00",
   "repo": "oauth-wg/draft-ietf-oauth-resource-metadata",
   "labels": [
     {
@@ -817,24 +817,26 @@
       "id": "PR_kwDOJ1yJis5rGLzq",
       "title": "Apply Atul's WGLC feedback",
       "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/23",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "selfissued",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-03-28T19:56:44Z",
-      "updatedAt": "2024-03-30T21:43:56Z",
+      "updatedAt": "2024-04-03T15:30:07Z",
       "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
       "baseRefName": "main",
       "baseRefOid": "a907e6b42875aa43a31486680c42696dc425389e",
       "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
       "headRefName": "mbj-atul",
       "headRefOid": "6b1a15dce504210c968bfb106646e33417fbf468",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-04-03T15:30:06Z",
+      "mergedAt": "2024-04-03T15:30:06Z",
+      "mergedBy": "selfissued",
+      "mergeCommit": {
+        "oid": "ed7002bd7169f8fab842c3904ad9d4a6a9f90e5e"
+      },
       "comments": [],
       "reviews": [
         {
