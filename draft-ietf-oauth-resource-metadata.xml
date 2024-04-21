@@ -206,11 +206,9 @@
 	    <vspace/>
 	    OPTIONAL.
 	    URL of the protected resource's JWK Set <xref target="JWK"/> document.
-	    This contains public keys belonging to the protected resource.
-	    For instance, this JWK Set MAY contain encryption key(s)
-	    that are used to encrypt access tokens to the protected resource.
-	    The JWK Set MAY also contain signing key(s) that the resource
-	    server uses to sign responses.
+	    This contains public keys belonging to the protected resource, such as
+	    signing key(s) that the resource server uses to sign resource responses.
+	    This URL MUST use the <spanx style="verb">https</spanx> scheme.
 	    When both signing and encryption keys are made available,
 	    a <spanx style="verb">use</spanx> (public key use) parameter
 	    value is REQUIRED for all keys in the referenced JWK Set
@@ -243,26 +241,9 @@
 	    JSON array containing a list of the JWS <xref target="JWS" /> signing algorithms
 	    (<spanx style="verb">alg</spanx> values) <xref target="JWA" />
 	    supported by the protected resource
-	    for signed content.
-	    The value <spanx style="verb">none</spanx> MAY be included.
-	  </t>
-
-	  <t hangText="resource_encryption_alg_values_supported">
-	    <vspace/>
-	    OPTIONAL.
-	    JSON array containing a list of the JWE <xref target="JWE" /> encryption algorithms
-	    (<spanx style="verb">alg</spanx> values) <xref target="JWA" />
-	    supported by the protected resource
-	    for encrypted content.
-	  </t>
-
-	  <t hangText="resource_encryption_enc_values_supported">
-	    <vspace/>
-	    OPTIONAL.
-	    JSON array containing a list of the JWE encryption algorithms
-	    (<spanx style="verb">enc</spanx> values) <xref target="JWA" />
-	    supported by the protected resource
-	    for encrypted content.
+	    for signing resource responses,
+	    as described in Section 5.6.2 of <xref target="FAPI.MessageSigning"/>.
+	    The value <spanx style="verb">none</spanx> MUST NOT be included.
 	  </t>
 
 	  <t hangText="resource_documentation">
@@ -1433,6 +1414,8 @@
 	The authors of this specification would like to thank the attendees of the IETF 115 OAuth and HTTP API Working Group meetings
 	and the attendees of subsequent OAuth Working Group meetings for their input on this specification.
 	We would would also like to thank
+	Brian Campbell,
+	Vladimir Dzhuvinov,
 	George Fletcher,
 	Tony Nadalin,
 	Filip Skokan,
@@ -1451,6 +1434,13 @@
 	  <t>
 	    Applied working group last call suggestions by
 	    Atul Tulshibagwale.
+	  </t>
+	  <t>
+	    Better described purpose of
+	    <spanx style="verb">resource_encryption_alg_values_supported</spanx> and
+	    removed <spanx style="verb">resource_encryption_alg_values_supported</spanx> and
+	    <spanx style="verb">resource_encryption_enc_values_supported</spanx>,
+	    per WGLC comments by Vladimir Dzhuvinov and Brian Campbell.
 	  </t>
 	</list>
       </t>
