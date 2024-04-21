@@ -243,7 +243,8 @@
 	    supported by the protected resource
 	    for signing resource responses,
 	    as described in Section 5.6.2 of <xref target="FAPI.MessageSigning"/>.
-	    The value <spanx style="verb">none</spanx> MUST NOT be included.
+	    No default algorithms are implied if this entry is omitted.
+	    The value <spanx style="verb">none</spanx> MUST NOT be used.
 	  </t>
 
 	  <t hangText="resource_documentation">
