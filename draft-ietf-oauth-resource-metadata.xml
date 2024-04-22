@@ -122,7 +122,8 @@
 	      supported, how a client can present an access token, and more.
 	      These values may be used by other specifications, such as the <spanx style="verb">jwks_uri</spanx>
 	      used to publish public keys the resource server uses to sign
-	      resource responses, as described in Section 5.6.2 of <xref target="FAPI.MessageSigning"/>.
+	      resource responses, for instance,
+	      as described in Section 5.6.2 of <xref target="FAPI.MessageSigning"/>.
 	    </t>
 
       <section anchor="rnc" title="Requirements Notation and Conventions">
@@ -241,7 +242,7 @@
 	    JSON array containing a list of the JWS <xref target="JWS" /> signing algorithms
 	    (<spanx style="verb">alg</spanx> values) <xref target="JWA" />
 	    supported by the protected resource
-	    for signing resource responses,
+	    for signing resource responses, for instance,
 	    as described in Section 5.6.2 of <xref target="FAPI.MessageSigning"/>.
 	    No default algorithms are implied if this entry is omitted.
 	    The value <spanx style="verb">none</spanx> MUST NOT be used.
@@ -1020,46 +1021,6 @@
           <t>
             <list style='symbols'>
               <t>
-                Metadata Name: <spanx style="verb">resource_encryption_alg_values_supported</spanx>
-              </t>
-              <t>
-                Metadata Description:
-		JSON array containing a list of the JWE encryption algorithms
-		(<spanx style="verb">alg</spanx> values)
-		supported by the protected resource
-		for encrypted content
-              </t>
-              <t>
-                Change Controller: IETF
-              </t>
-              <t>
-                Specification Document(s): <xref target="PRMetadata"/> of [[ this specification ]]
-              </t>
-            </list>
-          </t>
-          <t>
-            <list style='symbols'>
-              <t>
-                Metadata Name: <spanx style="verb">resource_encryption_enc_values_supported</spanx>
-              </t>
-              <t>
-                Metadata Description:
-		JSON array containing a list of the JWE encryption algorithms
-		(<spanx style="verb">enc</spanx> values)
-		supported by the protected resource
-		for encrypted content
-              </t>
-              <t>
-                Change Controller: IETF
-              </t>
-              <t>
-                Specification Document(s): <xref target="PRMetadata"/> of [[ this specification ]]
-              </t>
-            </list>
-          </t>
-          <t>
-            <list style='symbols'>
-              <t>
                 Metadata Name: <spanx style="verb">resource_documentation</spanx>
               </t>
               <t>
@@ -1438,7 +1399,7 @@
 	  </t>
 	  <t>
 	    Better described purpose of
-	    <spanx style="verb">resource_encryption_alg_values_supported</spanx> and
+	    <spanx style="verb">resource_signing_alg_values_supported</spanx> and
 	    removed <spanx style="verb">resource_encryption_alg_values_supported</spanx> and
 	    <spanx style="verb">resource_encryption_enc_values_supported</spanx>,
 	    per WGLC comments by Vladimir Dzhuvinov and Brian Campbell.
