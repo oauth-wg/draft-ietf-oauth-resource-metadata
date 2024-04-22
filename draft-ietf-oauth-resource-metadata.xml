@@ -783,6 +783,17 @@
 
       <section anchor="AuthorizationServers" title="Authorization Servers">
 	<t>
+	  To support use cases in which the set of legitimate authorization servers
+	  to use with the protected resource is fixed and enumerable,
+	  this specification defines the <spanx style="verb">authorization_servers</spanx>
+	  metadata value, which enables explicitly listing them.
+	  Note that if the set of legitimate protected resources
+	  to use with an authorization server is also fixed and enumerable,
+	  lists in the protected resource metadata and authorization server metadata
+	  should be cross-checked against one another for consistency
+	  when these lists are used by the application profile.
+	</t>
+	<t>
 	  Secure determination of appropriate authorization servers
 	  to use with a protected resource for all use cases
 	  is out of scope of this specification.
@@ -808,17 +819,6 @@
 	  or by changes to the set of authorization servers adhering to a trust framework.
 	  Many other means of determining appropriate associations between
 	  protected resources and authorization servers are also possible.
-	</t>
-	<t>
-	  To support use cases in which the set of legitimate authorization servers
-	  to use with the protected resource is fixed and enumerable,
-	  this specification defines the <spanx style="verb">authorization_servers</spanx>
-	  metadata value, which enables explicitly listing them.
-	  Note that if the set of legitimate protected resources
-	  to use with an authorization server is also fixed and enumerable,
-	  lists in the protected resource metadata and authorization server metadata
-	  should be cross-checked against one another for consistency
-	  when these lists are used by the application profile.
 	</t>
       </section>
 
