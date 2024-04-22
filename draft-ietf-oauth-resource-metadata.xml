@@ -490,6 +490,10 @@
 	  the URL that the client used to make the request to the resource server.
 	  If these values are not identical, the data contained in the response MUST NOT be used.
 	</t>
+	<t>
+	  These validation actions can thwart impersonation attacks,
+	  as described in <xref target="Impersonation"/>.
+	</t>
       </section>
     </section>
 
@@ -740,11 +744,8 @@
 	  To prevent this, the client MUST ensure that the resource identifier URL it is using
 	  as the prefix for the metadata request exactly matches the value of
 	  the <spanx style="verb">resource</spanx> metadata value
-	  in the protected resource metadata document received by the client.
-	  <!--
-	  and that this also exactly matches the <spanx style="verb">iss</spanx> claim
-	  value in ID Tokens that are supposed to be from that Issuer.
-	  -->
+	  in the protected resource metadata document received by the client,
+	  as described in <xref target="PRConfigurationValidation"/>.
 	</t>
       </section>
 
