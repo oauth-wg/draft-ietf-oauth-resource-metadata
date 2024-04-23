@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-04-21T00:06:45.488950+00:00",
+  "timestamp": "2024-04-23T00:06:28.867994+00:00",
   "repo": "oauth-wg/draft-ietf-oauth-resource-metadata",
   "labels": [
     {
@@ -332,9 +332,17 @@
       "labels": [],
       "body": "https://www.ietf.org/archive/id/draft-ietf-oauth-resource-metadata-03.html#section-3\r\n\r\nChange \"applications\" to \"deployment\" for clarity\r\n",
       "createdAt": "2024-04-12T11:18:40Z",
-      "updatedAt": "2024-04-12T11:18:41Z",
+      "updatedAt": "2024-04-22T19:35:08Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Looking at making the change, there are ~12 places we'd be changing \"application\" to \"deployment\" and it's not clear that it would improve the readability or clarity of the text.  Furthermore, I'll also point out that this is the language used in RFC 8414, and it seems to have worked for people there, so I'm reluctant to make this change, given I don't think it would be a significant enough improvement to warrant being different.\r\n\r\ncc @PieterKas",
+          "createdAt": "2024-04-22T19:35:07Z",
+          "updatedAt": "2024-04-22T19:35:07Z"
+        }
+      ]
     },
     {
       "number": 29,
@@ -1028,6 +1036,376 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 34,
+      "id": "PR_kwDOJ1yJis5tSHLe",
+      "title": "Clarify use of algorithms",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/34",
+      "state": "OPEN",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #24 \r\nFixes #26 \r\n\r\ncc @vdzhuvinov @PieterKas\r\n",
+      "createdAt": "2024-04-21T20:49:09Z",
+      "updatedAt": "2024-04-22T21:11:14Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "ed7002bd7169f8fab842c3904ad9d4a6a9f90e5e",
+      "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
+      "headRefName": "mbj-clarify-algs",
+      "headRefOid": "f9dee25b89caeb7485e388fb64ea6ec2ddf402c5",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ1yJis54Ee9G",
+          "commit": {
+            "abbreviatedOid": "0e4f671"
+          },
+          "author": "vdzhuvinov",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-22T10:55:49Z",
+          "updatedAt": "2024-04-22T10:55:50Z",
+          "comments": [
+            {
+              "originalPosition": 18,
+              "body": "There should be a `.` at the end of this sentence.",
+              "createdAt": "2024-04-22T10:55:49Z",
+              "updatedAt": "2024-04-22T10:55:50Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJ1yJis54EfOv",
+          "commit": {
+            "abbreviatedOid": "703de15"
+          },
+          "author": "vdzhuvinov",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-04-22T10:56:23Z",
+          "updatedAt": "2024-04-22T10:56:23Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJ1yJis54FCrb",
+          "commit": {
+            "abbreviatedOid": "703de15"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-22T12:12:30Z",
+          "updatedAt": "2024-04-22T12:12:30Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "@aaronpk and @selfissued, Is the intent here that if no key usage is specified, the keys are signing keys? Why not always be explicit. Either explicitly state that all keys are signing keys by default, and if encryption keys are used, key usage should be added, or alternatively make a key usage parameter mandatory, whether the keys are signing keys only, or if there are a mix of signing and encryption keys.",
+              "createdAt": "2024-04-22T12:12:30Z",
+              "updatedAt": "2024-04-22T12:12:31Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJ1yJis54FNn2",
+          "commit": {
+            "abbreviatedOid": "703de15"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "NONE",
+          "state": "CHANGES_REQUESTED",
+          "body": "The proposed text makes the key usage implicit, unless otherwise stated. It is also unclear if it is OK to include key usage even if there are only signing keys. \r\n\r\nFrom an implementation perspective, this creates complexity as there are now two cases to handle (1) implicit (no usage and unclear what to do if key usage is present only for signing keys - assumption is honour it, but perhaps better to be explicit) and (2) parse key usage if present. \r\n\r\nBy removing the implicit option and always forcing key usage it removes the additional ambiguity and simplified code (i.e. always check for key usage, if no key usage, error).\r\n\r\nSuggestion:\r\n\r\nReplace: \r\n\r\nWhen both signing and encryption keys are made available, a <spanx style=\"verb\">use</spanx> (public key use) parameter value is REQUIRED for all keys in the referenced JWK Set to indicate each key's intended usage.\r\n\r\nWith:\r\n\r\n\"A <spanx style=\"verb\">use</spanx> (public key use) parameter value is REQUIRED for all keys in the referenced JWK Set to indicate each key's intended usage.",
+          "createdAt": "2024-04-22T12:33:58Z",
+          "updatedAt": "2024-04-22T12:33:58Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJ1yJis54IUye",
+          "commit": {
+            "abbreviatedOid": "703de15"
+          },
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-22T17:45:43Z",
+          "updatedAt": "2024-04-22T17:45:43Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "This is exactly the same language as in the `jwks_uri` definition at https://www.rfc-editor.org/rfc/rfc8414.html#section-2.  I would rather keep the OAuth metadata specs consistent in their treatment of this parameter.\r\n\r\nAre you OK approving this on that basis, @PieterKas ?  Thanks.",
+              "createdAt": "2024-04-22T17:45:43Z",
+              "updatedAt": "2024-04-22T17:45:43Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJ1yJis54IrvY",
+          "commit": {
+            "abbreviatedOid": "703de15"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-22T18:34:03Z",
+          "updatedAt": "2024-04-22T18:34:03Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "@selfissued thanks for pointing that out. \r\n\r\nI was thinking through whether we will break something if we move away from the implicit key usage defined in the Authorization Server Metadata spec and concluded that we probably end up making the developers life more difficult as they now have two different models for validating resource metadata, creating opportunity for confusion and reducing re-use. So assuming they are parsing and validating authorization server metadata correctly, they should be able to do the same for resource metadata. So, I think with that, I am good with approving the changes.",
+              "createdAt": "2024-04-22T18:34:03Z",
+              "updatedAt": "2024-04-22T18:34:03Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJ1yJis54IsBE",
+          "commit": {
+            "abbreviatedOid": "703de15"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-04-22T18:34:50Z",
+          "updatedAt": "2024-04-22T18:34:50Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJ1yJis54JYIS",
+          "commit": {
+            "abbreviatedOid": "703de15"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-22T20:13:23Z",
+          "updatedAt": "2024-04-22T20:13:24Z",
+          "comments": [
+            {
+              "originalPosition": 61,
+              "body": "```suggestion\r\n\t    <spanx style=\"verb\">resource_signing_alg_values_supported</spanx> and\r\n```\r\ni think is what was intended. ",
+              "createdAt": "2024-04-22T20:13:24Z",
+              "updatedAt": "2024-04-22T20:13:24Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJ1yJis54JfwP",
+          "commit": {
+            "abbreviatedOid": "703de15"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-22T20:33:44Z",
+          "updatedAt": "2024-04-22T20:33:44Z",
+          "comments": [
+            {
+              "originalPosition": 40,
+              "body": "This reads like FAPI Message Signing is the only means of signing resource responses that this is applicable to, which I don't think is intended? Maybe qualify it with a \"such as described\"... \r\n\r\nAlso FWIW there is no Section 5.6.2 in the referenced version of FAPI 2.0 Message Signing.  It's in the WG/editors copy but not the published draft. \r\n\r\nAnd (draft) FAPI Message Signing uses HTTP Message Signatures, which allows for or accommodates JWS Algorithms https://datatracker.ietf.org/doc/html/rfc9421#name-json-web-signature-jws-algo but is not limited to them https://datatracker.ietf.org/doc/html/rfc9421#section-3.3 / https://www.iana.org/assignments/http-message-signature/http-message-signature.xhtml#signature-algorithms so there's kind of an impedance mismatch in this parameter that is defined as `a list of the JWS <xref target=\"JWS\" /> signing algorithms` and applicability to FAPI Message Signing and HTTP Message Signatures in general. \r\n\r\n",
+              "createdAt": "2024-04-22T20:33:44Z",
+              "updatedAt": "2024-04-22T20:33:45Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 35,
+      "id": "PR_kwDOJ1yJis5tSIca",
+      "title": "Improved bearer_methods_supported wording",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/35",
+      "state": "OPEN",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #25\r\n\r\ncc @PieterKas\r\n",
+      "createdAt": "2024-04-21T21:06:38Z",
+      "updatedAt": "2024-04-22T12:24:11Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "ed7002bd7169f8fab842c3904ad9d4a6a9f90e5e",
+      "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
+      "headRefName": "mbj-bearer-methods",
+      "headRefOid": "29f3cecdb39cf01f8ae4c739d33a967b39286e3b",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ1yJis54FIeP",
+          "commit": {
+            "abbreviatedOid": "29f3cec"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "The text is clear and brings better alignment with the name of the parameter. ",
+          "createdAt": "2024-04-22T12:24:11Z",
+          "updatedAt": "2024-04-22T12:24:11Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 36,
+      "id": "PR_kwDOJ1yJis5tYjCk",
+      "title": "Reference examples of .well-known construction",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/36",
+      "state": "OPEN",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #27 \r\n\r\ncc @PieterKas",
+      "createdAt": "2024-04-22T17:55:15Z",
+      "updatedAt": "2024-04-22T18:40:53Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "ed7002bd7169f8fab842c3904ad9d4a6a9f90e5e",
+      "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
+      "headRefName": "mbj-well-known-example",
+      "headRefOid": "b4785fb91b76448812b90c3ef85cdce8a39e04a7",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ1yJis54IwFr",
+          "commit": {
+            "abbreviatedOid": "b4785fb"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "Looks good to me.",
+          "createdAt": "2024-04-22T18:40:53Z",
+          "updatedAt": "2024-04-22T18:40:53Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 37,
+      "id": "PR_kwDOJ1yJis5tZNRm",
+      "title": "Cross-reference impersonation attack text",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/37",
+      "state": "OPEN",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #29 \r\n\r\nCc @PieterKas\r\n",
+      "createdAt": "2024-04-22T19:47:27Z",
+      "updatedAt": "2024-04-22T19:47:27Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "ed7002bd7169f8fab842c3904ad9d4a6a9f90e5e",
+      "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
+      "headRefName": "mbj-impersonation",
+      "headRefOid": "de62532ecb7dabdf746afc2b88e0c0ff983a714c",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 38,
+      "id": "PR_kwDOJ1yJis5tZVNh",
+      "title": "Improve protected_resources description",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/38",
+      "state": "OPEN",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #30 \r\n\r\nCc @PieterKas\r\n",
+      "createdAt": "2024-04-22T20:07:51Z",
+      "updatedAt": "2024-04-22T20:07:51Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "ed7002bd7169f8fab842c3904ad9d4a6a9f90e5e",
+      "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
+      "headRefName": "mbj-protected_resources",
+      "headRefOid": "33ac4660bb721b565aee888d7331fd77c1357076",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 39,
+      "id": "PR_kwDOJ1yJis5tZaan",
+      "title": "Enhance WWW-Authenticate description",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/39",
+      "state": "OPEN",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #32 \r\n\r\ncc @PieterKas\r\n",
+      "createdAt": "2024-04-22T20:23:03Z",
+      "updatedAt": "2024-04-22T20:23:03Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "ed7002bd7169f8fab842c3904ad9d4a6a9f90e5e",
+      "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
+      "headRefName": "mbj-enhance-WWW-Authenticate",
+      "headRefOid": "9e61da8af42d3add7e5ec61715930d82a16c0599",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 40,
+      "id": "PR_kwDOJ1yJis5tZgsB",
+      "title": "Reorder Authorization Servers security considerations",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/40",
+      "state": "OPEN",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #33 \r\n\r\ncc @PieterKas\r\n",
+      "createdAt": "2024-04-22T20:40:52Z",
+      "updatedAt": "2024-04-22T20:40:52Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "ed7002bd7169f8fab842c3904ad9d4a6a9f90e5e",
+      "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
+      "headRefName": "mbj-ASs-security",
+      "headRefOid": "dd9176254fe9dc18fd7295346ffd3de186283ee3",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
