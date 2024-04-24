@@ -1691,6 +1691,9 @@ svg :is([fill="white"], [fill^="#fff"]) {
    the <code>resource</code> value returned MUST be identical to
    the URL that the client used to make the request to the resource server.
    If these values are not identical, the data contained in the response MUST NOT be used.<a href="#section-3.3-2" class="pilcrow">¶</a></p>
+<p id="section-3.3-3">
+   These validation actions can thwart impersonation attacks,
+   as described in <a href="#Impersonation" class="auto internal xref">Section 7.3</a>.<a href="#section-3.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1967,7 +1970,8 @@ svg :is([fill="white"], [fill^="#fff"]) {
    To prevent this, the client MUST ensure that the resource identifier URL it is using
    as the prefix for the metadata request exactly matches the value of
    the <code>resource</code> metadata value
-   in the protected resource metadata document received by the client.<a href="#section-7.3-2" class="pilcrow">¶</a></p>
+   in the protected resource metadata document received by the client,
+   as described in <a href="#PRConfigurationValidation" class="auto internal xref">Section 3.3</a>.<a href="#section-7.3-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="AudienceRestriction">
