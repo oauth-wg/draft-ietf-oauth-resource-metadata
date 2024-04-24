@@ -345,6 +345,7 @@
 	are defined in <xref target="RFC5785"/>.
 	The well-known URI path suffix used MUST be registered in the IANA
 	"Well-Known URIs" registry <xref target="IANA.well-known"/>.
+	Examples of this construction can be found in <xref target="PRConfigurationRequest"/>.
       </t>
       <t>
 	Different applications utilizing OAuth protected resources in application-specific ways
