@@ -241,7 +241,7 @@
 	    OPTIONAL.
 	    JSON array containing a list of the JWS <xref target="JWS" /> signing algorithms
 	    (<spanx style="verb">alg</spanx> values) <xref target="JWA" />
-	    supported by the protected resource
+	    supported by the protected resource.
 	    for signing resource responses, for instance,
 	    as described in <xref target="FAPI.MessageSigning"/>.
 	    No default algorithms are implied if this entry is omitted.
