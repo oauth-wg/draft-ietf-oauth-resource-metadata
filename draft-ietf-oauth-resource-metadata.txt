@@ -5,10 +5,10 @@
 OAuth Working Group                                           M.B. Jones
 Internet-Draft                                    Self-Issued Consulting
 Intended status: Standards Track                                 P. Hunt
-Expires: 29 September 2024                    Independent Identity, Inc.
+Expires: 26 October 2024                      Independent Identity, Inc.
                                                               A. Parecki
                                                                     Okta
-                                                           28 March 2024
+                                                           24 April 2024
 
 
                  OAuth 2.0 Protected Resource Metadata
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 29 September 2024.
+   This Internet-Draft will expire on 26 October 2024.
 
 Copyright Notice
 
@@ -276,6 +276,13 @@ Table of Contents
    suffix used MUST be registered in the IANA "Well-Known URIs" registry
    [IANA.well-known].  Examples of this construction can be found in
    Section 3.1.
+
+   The term "application", as used below (and as used in [RFC8414]),
+   encompasses all the components used to accomplish the task for the
+   use case.  That can include OAuth clients, authorization servers,
+   protected resources, and non-OAuth components, inclusive of the code
+   running in each of them.  Applications are built to solve particular
+   problems and may utilize many components and services.
 
    Different applications utilizing OAuth protected resources in
    application-specific ways MAY define and register different well-
