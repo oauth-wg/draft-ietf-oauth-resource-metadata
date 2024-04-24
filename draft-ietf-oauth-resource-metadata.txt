@@ -136,8 +136,8 @@ Table of Contents
    publish, which includes things like which scopes are supported, how a
    client can present an access token, and more.  These values may be
    used by other specifications, such as the jwks_uri used to publish
-   public keys the resource server uses to sign resource responses, as
-   described in Section 5.6.2 of [FAPI.MessageSigning].
+   public keys the resource server uses to sign resource responses, for
+   instance, as described in [FAPI.MessageSigning].
 
 1.1.  Requirements Notation and Conventions
 
@@ -197,14 +197,12 @@ Table of Contents
 
    jwks_uri
       OPTIONAL.  URL of the protected resource's JWK Set [JWK] document.
-      This contains public keys belonging to the protected resource.
-      For instance, this JWK Set MAY contain encryption key(s) that are
-      used to encrypt access tokens to the protected resource.  The JWK
-      Set MAY also contain signing key(s) that the resource server uses
-      to sign responses.  When both signing and encryption keys are made
-      available, a use (public key use) parameter value is REQUIRED for
-      all keys in the referenced JWK Set to indicate each key's intended
-      usage.
+      This contains public keys belonging to the protected resource,
+      such as signing key(s) that the resource server uses to sign
+      resource responses.  This URL MUST use the https scheme.  When
+      both signing and encryption keys are made available, a use (public
+      key use) parameter value is REQUIRED for all keys in the
+      referenced JWK Set to indicate each key's intended usage.
 
    scopes_supported
       RECOMMENDED.  JSON array containing a list of the OAuth 2.0
@@ -222,17 +220,9 @@ Table of Contents
    resource_signing_alg_values_supported
       OPTIONAL.  JSON array containing a list of the JWS [JWS] signing
       algorithms (alg values) [JWA] supported by the protected resource
-      for signed content.  The value none MAY be included.
-
-   resource_encryption_alg_values_supported
-      OPTIONAL.  JSON array containing a list of the JWE [JWE]
-      encryption algorithms (alg values) [JWA] supported by the
-      protected resource for encrypted content.
-
-   resource_encryption_enc_values_supported
-      OPTIONAL.  JSON array containing a list of the JWE encryption
-      algorithms (enc values) [JWA] supported by the protected resource
-      for encrypted content.
+      for signing resource responses, for instance, as described in
+      [FAPI.MessageSigning].  No default algorithms are implied if this
+      entry is omitted.  The value none MUST NOT be used.
 
    resource_documentation
       OPTIONAL.  URL of a page containing human-readable information
@@ -798,20 +788,6 @@ Table of Contents
    *  Change Controller: IETF
    *  Specification Document(s): Section 2 of [[ this specification ]]
 
-   *  Metadata Name: resource_encryption_alg_values_supported
-   *  Metadata Description: JSON array containing a list of the JWE
-      encryption algorithms (alg values) supported by the protected
-      resource for encrypted content
-   *  Change Controller: IETF
-   *  Specification Document(s): Section 2 of [[ this specification ]]
-
-   *  Metadata Name: resource_encryption_enc_values_supported
-   *  Metadata Description: JSON array containing a list of the JWE
-      encryption algorithms (enc values) supported by the protected
-      resource for encrypted content
-   *  Change Controller: IETF
-   *  Specification Document(s): Section 2 of [[ this specification ]]
-
    *  Metadata Name: resource_documentation
    *  Metadata Description: URL of a page containing human-readable
       information that developers might want or need to know when using
@@ -1001,9 +977,10 @@ Appendix A.  Acknowledgements
    The authors of this specification would like to thank the attendees
    of the IETF 115 OAuth and HTTP API Working Group meetings and the
    attendees of subsequent OAuth Working Group meetings for their input
-   on this specification.  We would would also like to thank George
-   Fletcher, Pieter Kasselman, Tony Nadalin, Filip Skokan, and Atul
-   Tulshibagwale for their contributions to the specification.
+   on this specification.  We would would also like to thank Brian
+   Campbell, Vladimir Dzhuvinov, George Fletcher, Pieter Kasselman, Tony
+   Nadalin, Filip Skokan, and Atul Tulshibagwale for their contributions
+   to the specification.
 
 Appendix B.  Document History
 
@@ -1012,6 +989,12 @@ Appendix B.  Document History
    -04
 
    *  Applied working group last call suggestions by Atul Tulshibagwale.
+
+   *  Better described the purpose of
+      resource_signing_alg_values_supported and removed
+      resource_encryption_alg_values_supported and
+      resource_encryption_enc_values_supported, per WGLC comments by
+      Vladimir Dzhuvinov and Brian Campbell.
 
    *  Applied wording suggestions by Pieter Kasselman.
 

@@ -1333,7 +1333,8 @@ svg :is([fill="white"], [fill^="#fff"]) {
        supported, how a client can present an access token, and more.
        These values may be used by other specifications, such as the <code>jwks_uri</code>
        used to publish public keys the resource server uses to sign
-       resource responses, as described in Section 5.6.2 of <span>[<a href="#FAPI.MessageSigning" class="cite xref">FAPI.MessageSigning</a>]</span>.<a href="#section-1-6" class="pilcrow">¶</a></p>
+       resource responses, for instance,
+       as described in <span>[<a href="#FAPI.MessageSigning" class="cite xref">FAPI.MessageSigning</a>]</span>.<a href="#section-1-6" class="pilcrow">¶</a></p>
 <div id="rnc">
 <section id="section-1.1">
         <h3 id="name-requirements-notation-and-c">
@@ -1422,11 +1423,9 @@ svg :is([fill="white"], [fill^="#fff"]) {
         <dd style="margin-left: 1.5em" id="section-2-2.6">
      OPTIONAL.
      URL of the protected resource's JWK Set <span>[<a href="#JWK" class="cite xref">JWK</a>]</span> document.
-     This contains public keys belonging to the protected resource.
-     For instance, this JWK Set MAY contain encryption key(s)
-     that are used to encrypt access tokens to the protected resource.
-     The JWK Set MAY also contain signing key(s) that the resource
-     server uses to sign responses.
+     This contains public keys belonging to the protected resource, such as
+     signing key(s) that the resource server uses to sign resource responses.
+     This URL MUST use the <code>https</code> scheme.
      When both signing and encryption keys are made available,
      a <code>use</code> (public key use) parameter
      value is REQUIRED for all keys in the referenced JWK Set
@@ -1457,49 +1456,33 @@ svg :is([fill="white"], [fill^="#fff"]) {
      OPTIONAL.
      JSON array containing a list of the JWS <span>[<a href="#JWS" class="cite xref">JWS</a>]</span> signing algorithms
      (<code>alg</code> values) <span>[<a href="#JWA" class="cite xref">JWA</a>]</span>
-     supported by the protected resource
-     for signed content.
-     The value <code>none</code> MAY be included.<a href="#section-2-2.12" class="pilcrow">¶</a>
+     supported by the protected resource for signing resource responses,
+     for instance,
+     as described in <span>[<a href="#FAPI.MessageSigning" class="cite xref">FAPI.MessageSigning</a>]</span>.
+     No default algorithms are implied if this entry is omitted.
+     The value <code>none</code> MUST NOT be used.<a href="#section-2-2.12" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-2-2.13">resource_encryption_alg_values_supported</dt>
+<dt id="section-2-2.13">resource_documentation</dt>
         <dd style="margin-left: 1.5em" id="section-2-2.14">
      OPTIONAL.
-     JSON array containing a list of the JWE <span>[<a href="#JWE" class="cite xref">JWE</a>]</span> encryption algorithms
-     (<code>alg</code> values) <span>[<a href="#JWA" class="cite xref">JWA</a>]</span>
-     supported by the protected resource
-     for encrypted content.<a href="#section-2-2.14" class="pilcrow">¶</a>
-</dd>
-        <dd class="break"></dd>
-<dt id="section-2-2.15">resource_encryption_enc_values_supported</dt>
-        <dd style="margin-left: 1.5em" id="section-2-2.16">
-     OPTIONAL.
-     JSON array containing a list of the JWE encryption algorithms
-     (<code>enc</code> values) <span>[<a href="#JWA" class="cite xref">JWA</a>]</span>
-     supported by the protected resource
-     for encrypted content.<a href="#section-2-2.16" class="pilcrow">¶</a>
-</dd>
-        <dd class="break"></dd>
-<dt id="section-2-2.17">resource_documentation</dt>
-        <dd style="margin-left: 1.5em" id="section-2-2.18">
-     OPTIONAL.
      URL of a page containing human-readable information that
-     developers might want or need to know when using the protected resource<a href="#section-2-2.18" class="pilcrow">¶</a>
+     developers might want or need to know when using the protected resource<a href="#section-2-2.14" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-2-2.19">resource_policy_uri</dt>
-        <dd style="margin-left: 1.5em" id="section-2-2.20">
+<dt id="section-2-2.15">resource_policy_uri</dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.16">
      OPTIONAL.
      URL that the protected resource provides
      to read about the protected resource's requirements on how
-     the client can use the data provided by the protected resource<a href="#section-2-2.20" class="pilcrow">¶</a>
+     the client can use the data provided by the protected resource<a href="#section-2-2.16" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-2-2.21">resource_tos_uri</dt>
-        <dd style="margin-left: 1.5em" id="section-2-2.22">
+<dt id="section-2-2.17">resource_tos_uri</dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.18">
      OPTIONAL.
      URL that the protected resource provides
-     to read about the protected resource's terms of service<a href="#section-2-2.22" class="pilcrow">¶</a>
+     to read about the protected resource's terms of service<a href="#section-2-2.18" class="pilcrow">¶</a>
 </dd>
       <dd class="break"></dd>
 </dl>
@@ -2296,15 +2279,13 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <ul class="compact">
 <li class="compact" id="section-8.1.2-7.1">
               <p id="section-8.1.2-7.1.1">
-                Metadata Name: <code>resource_encryption_alg_values_supported</code><a href="#section-8.1.2-7.1.1" class="pilcrow">¶</a></p>
+                Metadata Name: <code>resource_documentation</code><a href="#section-8.1.2-7.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="compact" id="section-8.1.2-7.2">
               <p id="section-8.1.2-7.2.1">
                 Metadata Description:
- JSON array containing a list of the JWE encryption algorithms
- (<code>alg</code> values)
- supported by the protected resource
- for encrypted content<a href="#section-8.1.2-7.2.1" class="pilcrow">¶</a></p>
+ URL of a page containing human-readable information that
+ developers might want or need to know when using the protected resource<a href="#section-8.1.2-7.2.1" class="pilcrow">¶</a></p>
 </li>
             <li class="compact" id="section-8.1.2-7.3">
               <p id="section-8.1.2-7.3.1">
@@ -2318,15 +2299,14 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <ul class="compact">
 <li class="compact" id="section-8.1.2-8.1">
               <p id="section-8.1.2-8.1.1">
-                Metadata Name: <code>resource_encryption_enc_values_supported</code><a href="#section-8.1.2-8.1.1" class="pilcrow">¶</a></p>
+                Metadata Name: <code>resource_policy_uri</code><a href="#section-8.1.2-8.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="compact" id="section-8.1.2-8.2">
               <p id="section-8.1.2-8.2.1">
                 Metadata Description:
- JSON array containing a list of the JWE encryption algorithms
- (<code>enc</code> values)
- supported by the protected resource
- for encrypted content<a href="#section-8.1.2-8.2.1" class="pilcrow">¶</a></p>
+ URL that the protected resource provides
+ to read about the protected resource's requirements on how
+ the client can use the data provided by the protected resource<a href="#section-8.1.2-8.2.1" class="pilcrow">¶</a></p>
 </li>
             <li class="compact" id="section-8.1.2-8.3">
               <p id="section-8.1.2-8.3.1">
@@ -2340,13 +2320,13 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <ul class="compact">
 <li class="compact" id="section-8.1.2-9.1">
               <p id="section-8.1.2-9.1.1">
-                Metadata Name: <code>resource_documentation</code><a href="#section-8.1.2-9.1.1" class="pilcrow">¶</a></p>
+                Metadata Name: <code>resource_tos_uri</code><a href="#section-8.1.2-9.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="compact" id="section-8.1.2-9.2">
               <p id="section-8.1.2-9.2.1">
                 Metadata Description:
- URL of a page containing human-readable information that
- developers might want or need to know when using the protected resource<a href="#section-8.1.2-9.2.1" class="pilcrow">¶</a></p>
+ URL that the protected resource provides
+ to read about the protected resource's terms of service<a href="#section-8.1.2-9.2.1" class="pilcrow">¶</a></p>
 </li>
             <li class="compact" id="section-8.1.2-9.3">
               <p id="section-8.1.2-9.3.1">
@@ -2360,61 +2340,20 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <ul class="compact">
 <li class="compact" id="section-8.1.2-10.1">
               <p id="section-8.1.2-10.1.1">
-                Metadata Name: <code>resource_policy_uri</code><a href="#section-8.1.2-10.1.1" class="pilcrow">¶</a></p>
+ Metadata Name: signed_metadata<a href="#section-8.1.2-10.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="compact" id="section-8.1.2-10.2">
               <p id="section-8.1.2-10.2.1">
-                Metadata Description:
- URL that the protected resource provides
- to read about the protected resource's requirements on how
- the client can use the data provided by the protected resource<a href="#section-8.1.2-10.2.1" class="pilcrow">¶</a></p>
+ Metadata Description:
+ Signed JWT containing metadata values about the protected resource as claims<a href="#section-8.1.2-10.2.1" class="pilcrow">¶</a></p>
 </li>
             <li class="compact" id="section-8.1.2-10.3">
               <p id="section-8.1.2-10.3.1">
-                Change Controller: IETF<a href="#section-8.1.2-10.3.1" class="pilcrow">¶</a></p>
+ Change Controller: IETF<a href="#section-8.1.2-10.3.1" class="pilcrow">¶</a></p>
 </li>
             <li class="compact" id="section-8.1.2-10.4">
               <p id="section-8.1.2-10.4.1">
-                Specification Document(s): <a href="#PRMetadata" class="auto internal xref">Section 2</a> of [[ this specification ]]<a href="#section-8.1.2-10.4.1" class="pilcrow">¶</a></p>
-</li>
-          </ul>
-<ul class="compact">
-<li class="compact" id="section-8.1.2-11.1">
-              <p id="section-8.1.2-11.1.1">
-                Metadata Name: <code>resource_tos_uri</code><a href="#section-8.1.2-11.1.1" class="pilcrow">¶</a></p>
-</li>
-            <li class="compact" id="section-8.1.2-11.2">
-              <p id="section-8.1.2-11.2.1">
-                Metadata Description:
- URL that the protected resource provides
- to read about the protected resource's terms of service<a href="#section-8.1.2-11.2.1" class="pilcrow">¶</a></p>
-</li>
-            <li class="compact" id="section-8.1.2-11.3">
-              <p id="section-8.1.2-11.3.1">
-                Change Controller: IETF<a href="#section-8.1.2-11.3.1" class="pilcrow">¶</a></p>
-</li>
-            <li class="compact" id="section-8.1.2-11.4">
-              <p id="section-8.1.2-11.4.1">
-                Specification Document(s): <a href="#PRMetadata" class="auto internal xref">Section 2</a> of [[ this specification ]]<a href="#section-8.1.2-11.4.1" class="pilcrow">¶</a></p>
-</li>
-          </ul>
-<ul class="compact">
-<li class="compact" id="section-8.1.2-12.1">
-              <p id="section-8.1.2-12.1.1">
- Metadata Name: signed_metadata<a href="#section-8.1.2-12.1.1" class="pilcrow">¶</a></p>
-</li>
-            <li class="compact" id="section-8.1.2-12.2">
-              <p id="section-8.1.2-12.2.1">
- Metadata Description:
- Signed JWT containing metadata values about the protected resource as claims<a href="#section-8.1.2-12.2.1" class="pilcrow">¶</a></p>
-</li>
-            <li class="compact" id="section-8.1.2-12.3">
-              <p id="section-8.1.2-12.3.1">
- Change Controller: IETF<a href="#section-8.1.2-12.3.1" class="pilcrow">¶</a></p>
-</li>
-            <li class="compact" id="section-8.1.2-12.4">
-              <p id="section-8.1.2-12.4.1">
- Specification Document(s): <a href="#SignedMetadata" class="auto internal xref">Section 2.1</a> of [[ this specification ]]<a href="#section-8.1.2-12.4.1" class="pilcrow">¶</a></p>
+ Specification Document(s): <a href="#SignedMetadata" class="auto internal xref">Section 2.1</a> of [[ this specification ]]<a href="#section-8.1.2-10.4.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </section>
@@ -2634,6 +2573,8 @@ svg :is([fill="white"], [fill^="#fff"]) {
  The authors of this specification would like to thank the attendees of the IETF 115 OAuth and HTTP API Working Group meetings
  and the attendees of subsequent OAuth Working Group meetings for their input on this specification.
  We would would also like to thank
+ Brian Campbell,
+ Vladimir Dzhuvinov,
  George Fletcher,
  Pieter Kasselman,
  Tony Nadalin,
@@ -2659,7 +2600,15 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </li>
         <li class="normal" id="appendix-B-3.2">
           <p id="appendix-B-3.2.1">
-     Applied wording suggestions by Pieter Kasselman.<a href="#appendix-B-3.2.1" class="pilcrow">¶</a></p>
+     Better described the purpose of
+     <code>resource_signing_alg_values_supported</code> and
+     removed <code>resource_encryption_alg_values_supported</code> and
+     <code>resource_encryption_enc_values_supported</code>,
+     per WGLC comments by Vladimir Dzhuvinov and Brian Campbell.<a href="#appendix-B-3.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-3.3">
+          <p id="appendix-B-3.3.1">
+     Applied wording suggestions by Pieter Kasselman.<a href="#appendix-B-3.3.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-B-4">
