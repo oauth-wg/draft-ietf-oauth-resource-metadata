@@ -1768,7 +1768,8 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </li>
         <li id="section-5-3.5">
           <p id="section-5-3.5.1">
-     The client validates the protected resource metadata.<a href="#section-5-3.5.1" class="pilcrow">¶</a></p>
+     The client validates the protected resource metadata,
+     as described in <a href="#PRConfigurationValidation" class="auto internal xref">Section 3.3</a>.<a href="#section-5-3.5.1" class="pilcrow">¶</a></p>
 </li>
         <li id="section-5-3.6">
           <p id="section-5-3.6.1">
@@ -1838,8 +1839,8 @@ svg :is([fill="white"], [fill^="#fff"]) {
    the protected resource MAY respond with a new <code>WWW-Authenticate</code> challenge
    that includes a value for the protected resource metadata URL to indicate that its metadata MAY have changed.
    If the client receives such a <code>WWW-Authenticate</code> response,
-   the client SHOULD retrieve the protected resource metadata again,
-   and SHOULD use the new metadata values obtained.
+   it SHOULD retrieve the updated protected resource metadata
+   and use the new metadata values obtained.
    Among other things,
    this enables a resource server to change which authorization servers it uses without any other coordination with clients.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
 </section>

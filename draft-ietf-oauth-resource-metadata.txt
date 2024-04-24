@@ -443,7 +443,8 @@ Table of Contents
    4.   The resource server responds with the protected resource
         metadata according to Section 3.2.
 
-   5.   The client validates the protected resource metadata.
+   5.   The client validates the protected resource metadata, as
+        described in Section 3.3.
 
    6.   The client builds the authorization server metadata URL from an
         issuer identifier in the resource metadata according to
@@ -494,11 +495,11 @@ Table of Contents
    the protected resource MAY respond with a new WWW-Authenticate
    challenge that includes a value for the protected resource metadata
    URL to indicate that its metadata MAY have changed.  If the client
-   receives such a WWW-Authenticate response, the client SHOULD retrieve
-   the protected resource metadata again, and SHOULD use the new
-   metadata values obtained.  Among other things, this enables a
-   resource server to change which authorization servers it uses without
-   any other coordination with clients.
+   receives such a WWW-Authenticate response, it SHOULD retrieve the
+   updated protected resource metadata and use the new metadata values
+   obtained.  Among other things, this enables a resource server to
+   change which authorization servers it uses without any other
+   coordination with clients.
 
 5.3.  Client Identifier and Client Authentication
 
