@@ -284,7 +284,8 @@ Table of Contents
    is /.well-known/oauth-protected-resource.  The syntax and semantics
    of .well-known are defined in [RFC5785].  The well-known URI path
    suffix used MUST be registered in the IANA "Well-Known URIs" registry
-   [IANA.well-known].
+   [IANA.well-known].  Examples of this construction can be found in
+   Section 3.1.
 
    Different applications utilizing OAuth protected resources in
    application-specific ways MAY define and register different well-
