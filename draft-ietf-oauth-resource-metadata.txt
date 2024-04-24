@@ -395,9 +395,10 @@ Table of Contents
 
    To support use cases in which the set of legitimate protected
    resources to use with the authorization server is fixed and
-   enumerable, this specification defines the protected_resources
-   metadata value, which enables explicitly listing them.  Note that if
-   the set of legitimate authorization servers to use with a protected
+   enumerable, this specification defines the authorization server
+   metadata value protected_resources, which enables the authorization
+   server to explicitly list the protected resources.  Note that if the
+   set of legitimate authorization servers to use with a protected
    resource is also fixed and enumerable, lists in the authorization
    server metadata and protected resource metadata should be cross-
    checked against one another for consistency when these lists are used
