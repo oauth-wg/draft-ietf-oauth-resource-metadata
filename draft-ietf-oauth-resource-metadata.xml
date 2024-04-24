@@ -40,7 +40,7 @@
       </address>
     </author>
 
-    <date day="28" month="March" year="2024" />
+    <date day="24" month="April" year="2024" />
 
     <area>Security</area>
     <workgroup>OAuth Working Group</workgroup>
@@ -329,6 +329,14 @@
 	The well-known URI path suffix used MUST be registered in the IANA
 	"Well-Known URIs" registry <xref target="IANA.well-known"/>.
 	Examples of this construction can be found in <xref target="PRConfigurationRequest"/>.
+      </t>
+      <t>
+	The term "application", as used below (and as used in <xref target="RFC8414"/>),
+	encompasses all the components used to accomplish the task for the use case.
+	That can include OAuth clients, authorization servers, protected resources,
+	and non-OAuth components, inclusive of the code running in each of them.
+	Applications are built to solve particular problems
+	and may utilize many components and services.
       </t>
       <t>
 	Different applications utilizing OAuth protected resources in application-specific ways
