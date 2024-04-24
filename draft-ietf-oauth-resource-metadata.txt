@@ -214,9 +214,9 @@ Table of Contents
       this parameter is used.
 
    bearer_methods_supported
-      OPTIONAL.  JSON array containing a list of the OAuth 2.0 Bearer
-      Token [RFC6750] presentation methods that this protected resource
-      supports.  Defined values are ["header", "body", "query"],
+      OPTIONAL.  JSON array containing a list of the supported methods
+      of sending an OAuth 2.0 Bearer Token [RFC6750] to the protected
+      resource.  Defined values are ["header", "body", "query"],
       corresponding to Sections 2.1, 2.2, and 2.3 of RFC 6750.
 
    resource_signing_alg_values_supported
@@ -996,8 +996,8 @@ Appendix A.  Acknowledgements
    of the IETF 115 OAuth and HTTP API Working Group meetings and the
    attendees of subsequent OAuth Working Group meetings for their input
    on this specification.  We would would also like to thank George
-   Fletcher, Tony Nadalin, Filip Skokan, and Atul Tulshibagwale for
-   their contributions to the specification.
+   Fletcher, Pieter Kasselman, Tony Nadalin, Filip Skokan, and Atul
+   Tulshibagwale for their contributions to the specification.
 
 Appendix B.  Document History
 
@@ -1006,6 +1006,8 @@ Appendix B.  Document History
    -04
 
    *  Applied working group last call suggestions by Atul Tulshibagwale.
+
+   *  Applied wording suggestions by Pieter Kasselman.
 
    -03
 
