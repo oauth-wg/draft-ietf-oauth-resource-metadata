@@ -388,6 +388,9 @@ Table of Contents
    If these values are not identical, the data contained in the response
    MUST NOT be used.
 
+   These validation actions can thwart impersonation attacks, as
+   described in Section 7.3.
+
 4.  Authorization Server Metadata
 
    To support use cases in which the set of legitimate protected
@@ -590,7 +593,7 @@ Table of Contents
    the resource identifier URL it is using as the prefix for the
    metadata request exactly matches the value of the resource metadata
    value in the protected resource metadata document received by the
-   client.
+   client, as described in Section 3.3.
 
 7.4.  Audience-Restricted Access Tokens
 
