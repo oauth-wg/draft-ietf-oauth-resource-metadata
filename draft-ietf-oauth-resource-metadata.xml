@@ -502,8 +502,9 @@
       <t>
 	To support use cases in which the set of legitimate protected resources
 	to use with the authorization server is fixed and enumerable,
-	this specification defines the <spanx style="verb">protected_resources</spanx>
-	metadata value, which enables explicitly listing them.
+	this specification defines the authorization server metadata value
+	<spanx style="verb">protected_resources</spanx>,
+	which enables the authorization server to explicitly list the protected resources.
 	Note that if the set of legitimate authorization servers
 	to use with a protected resource is also fixed and enumerable,
 	lists in the authorization server metadata and protected resource metadata
