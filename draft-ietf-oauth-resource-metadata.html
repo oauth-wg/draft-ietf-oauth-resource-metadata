@@ -16,7 +16,7 @@
  an OAuth 2.0 protected resource.
        
     " name="description">
-<meta content="xml2rfc 3.20.1" name="generator">
+<meta content="xml2rfc 3.21.0" name="generator">
 <meta content="OAuth" name="keyword">
 <meta content="Discovery" name="keyword">
 <meta content="Metadata" name="keyword">
@@ -31,8 +31,8 @@
 <meta content="JWT" name="keyword">
 <meta content="draft-ietf-oauth-resource-metadata-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.20.1
-    Python 3.11.8
+  xml2rfc 3.21.0
+    Python 3.11.9
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
     intervaltree 3.1.0
@@ -2012,6 +2012,16 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="#section-7.6" class="section-number selfRef">7.6. </a><a href="#name-authorization-servers" class="section-name selfRef">Authorization Servers</a>
         </h3>
 <p id="section-7.6-1">
+   To support use cases in which the set of legitimate authorization servers
+   to use with the protected resource is fixed and enumerable,
+   this specification defines the <code>authorization_servers</code>
+   metadata value, which enables explicitly listing them.
+   Note that if the set of legitimate protected resources
+   to use with an authorization server is also fixed and enumerable,
+   lists in the protected resource metadata and authorization server metadata
+   should be cross-checked against one another for consistency
+   when these lists are used by the application profile.<a href="#section-7.6-1" class="pilcrow">¶</a></p>
+<p id="section-7.6-2">
    Secure determination of appropriate authorization servers
    to use with a protected resource for all use cases
    is out of scope of this specification.
@@ -2022,8 +2032,8 @@ svg :is([fill="white"], [fill^="#fff"]) {
    Implementers need to be aware that if an inappropriate authorization server
    is used by the client, that an attacker may be able to act as
    a man-in-the-middle proxy to a valid authorization server without
-   it being detected by the authorization server or the client.<a href="#section-7.6-1" class="pilcrow">¶</a></p>
-<p id="section-7.6-2">
+   it being detected by the authorization server or the client.<a href="#section-7.6-2" class="pilcrow">¶</a></p>
+<p id="section-7.6-3">
    The ways to determine the appropriate authorization servers to use
    with a protected resource are in general, application-dependent.
    For instance, some protected resources are used with
@@ -2035,17 +2045,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
    by administrative actions
    or by changes to the set of authorization servers adhering to a trust framework.
    Many other means of determining appropriate associations between
-   protected resources and authorization servers are also possible.<a href="#section-7.6-2" class="pilcrow">¶</a></p>
-<p id="section-7.6-3">
-   To support use cases in which the set of legitimate authorization servers
-   to use with the protected resource is fixed and enumerable,
-   this specification defines the <code>authorization_servers</code>
-   metadata value, which enables explicitly listing them.
-   Note that if the set of legitimate protected resources
-   to use with an authorization server is also fixed and enumerable,
-   lists in the protected resource metadata and authorization server metadata
-   should be cross-checked against one another for consistency
-   when these lists are used by the application profile.<a href="#section-7.6-3" class="pilcrow">¶</a></p>
+   protected resources and authorization servers are also possible.<a href="#section-7.6-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="SSRF">
