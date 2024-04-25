@@ -433,9 +433,9 @@ Table of Contents
         |  Client  |              |  Server  |    |    Server     |
         +----+-----+              +----+-----+    +-------+-------+
              |                         |                  |
-             |  Resource request       |                  |
+             |  Resource Request       |                  |
              | ----------------------> |                  |
-             |  without access token   |                  |
+             |  Without Access Token   |                  |
              |                         |                  |
              |                         |                  |
              |    WWW-Authenticate     |                  |
@@ -450,8 +450,8 @@ Table of Contents
              | <---------------------- |                  |
              |                         |                  |
    +---------+-----------+             |                  |
-   |Validate RS metadata |             |                  |
-   |Build AS metadata URL|             |                  |
+   |Validate RS Metadata |             |                  |
+   |Build AS Metadata URL|             |                  |
    +---------+-----------+             |                  |
              |                         |                  |
              |   Fetch AS Metadata     |                  |
@@ -463,15 +463,15 @@ Table of Contents
              |                         |                  |
            +-+-------------------------+------------------+-+
            |       OAuth Authorization Code Flow            |
-           |       Client obtains access token              |
+           |       Client Obtains Access Token              |
            +-+-------------------------+------------------+-+
              |                         |                  |
-             |  Resource request       |                  |
+             |  Resource Request       |                  |
              | ----------------------> |                  |
-             |  with access token      |                  |
+             |  With Access Token      |                  |
              |                         |                  |
              |                         |                  |
-             |   Resource response     |                  |
+             |   Resource Response     |                  |
              | <---------------------- |                  |
              |                         |                  |
 
