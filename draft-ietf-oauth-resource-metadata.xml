@@ -543,8 +543,6 @@
   <artset>
     <artwork type="svg" name="sequence.svg">
 			<svg baseProfile="tiny" version="1.2" viewBox="0 0 452 587" xmlns="http://www.w3.org/2000/svg">
-  			<text fill="black" font-family="sans-serif" font-size="20" font-weight="bold" x="155.357421875" y="30.322916666666515">
-    			RS Metadata  </text>
   			<path d="M-235,-405.0000000000001 L-235,0" fill="none" stroke="black" stroke-width="1" transform="translate(327.5 505.5)"/>
   			<rect fill="white" height="48" stroke="black" stroke-width="1" width="62" x="61.5" y="52.5"/>
   			<text fill="black" font-family="sans-serif" font-size="13.333333333333334" x="73.19531249999997" y="81.79166666666653">
