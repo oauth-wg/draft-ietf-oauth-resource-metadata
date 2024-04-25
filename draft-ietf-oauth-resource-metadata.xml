@@ -622,7 +622,7 @@
   			<text fill="black" font-family="sans-serif" font-size="13.333333333333334" x="123.21875" y="443.60416666666663">
     			Resource Request  </text>
   			<text fill="black" font-family="sans-serif" font-size="13.333333333333334" x="122.076171875" y="459.12499999999994">
-    			with Access Token  </text>
+    			With Access Token  </text>
   			<path d="M-234.50455729166669,-43 L-53.02278645833337,-43" fill="none" stroke="black" stroke-width="1" transform="translate(327.5 505.5)"/>
   			<path d="M-54,-43 L-54,-43 L-62,-51 L-62,-43 L-62,-35 L-54,-43" fill="black" stroke="black" stroke-width="1" transform="translate(327.5 505.5)"/>
   			<rect fill="white" height="15.333333333333371" width="130.91145833333334" x="118.28059895833331" y="475.6458333333333"/>
@@ -635,8 +635,8 @@
     <artwork type="ascii-art" name="sequence.txt">
       <![CDATA[
      +----------+              +----------+    +---------------+
-     |          |              | Resource |    | Authorization |
-     |  Client  |              |  Server  |    |    Server     |
+     |  Client  |              | Resource |    | Authorization |
+     |          |              |  Server  |    |    Server     |
      +----+-----+              +----+-----+    +-------+-------+
           |                         |                  |
           |  Resource Request       |                  |
