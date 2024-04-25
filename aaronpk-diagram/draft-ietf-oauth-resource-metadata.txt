@@ -429,8 +429,8 @@ Table of Contents
    sequence could also be implemented with any other OAuth flow.
 
         +----------+              +----------+    +---------------+
-        |          |              | Resource |    | Authorization |
-        |  Client  |              |  Server  |    |    Server     |
+        |  Client  |              | Resource |    | Authorization |
+        |          |              |  Server  |    |    Server     |
         +----+-----+              +----+-----+    +-------+-------+
              |                         |                  |
              |  Resource Request       |                  |
