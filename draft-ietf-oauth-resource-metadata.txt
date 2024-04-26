@@ -475,8 +475,6 @@ Table of Contents
              | <---------------------- |                  |
              |                         |                  |
 
-                         Figure 1: Sequence diagram
-
    1.   The client makes a request to a protected resource without
         presenting an access token.
 
