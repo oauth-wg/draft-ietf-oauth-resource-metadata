@@ -537,6 +537,154 @@
 	Note that while this example uses the OAuth 2.0 Authorization Code flow,
 	a similar sequence could also be implemented with any other OAuth flow.
       </t>
+			<t>
+			<figure>
+  <name>Sequence diagram</name>
+  <artset>
+    <artwork type="svg" name="sequence.svg">
+			<svg baseProfile="tiny" version="1.2" viewBox="0 0 452 587" xmlns="http://www.w3.org/2000/svg">
+  			<path d="M-235,-405.0000000000001 L-235,0" fill="none" stroke="black" stroke-width="1" transform="translate(327.5 505.5)"/>
+  			<rect fill="white" height="48" stroke="black" stroke-width="1" width="62" x="61.5" y="52.5"/>
+  			<text fill="black" font-family="sans-serif" font-size="13.333333333333334" x="73.19531249999997" y="81.79166666666653">
+    			Client  </text>
+  			<rect fill="white" height="48" stroke="black" stroke-width="1" width="62" x="61.5" y="505.5"/>
+  			<text fill="black" font-family="sans-serif" font-size="13.333333333333334" x="73.19531249999997" y="534.3541666666667">
+    			Client  </text>
+  			<path d="M-53,-405.00000000000017 L-53,0" fill="none" stroke="black" stroke-width="1" transform="translate(327.5 505.5)"/>
+  			<rect fill="white" height="48" stroke="black" stroke-width="1" width="85" x="232.5" y="52.5"/>
+  			<text fill="black" font-family="sans-serif" font-size="13.333333333333334" x="243.95833333333334" y="74.03124999999984">
+    			Resource  </text>
+  			<text fill="black" font-family="sans-serif" font-size="13.333333333333334" x="253.115234375" y="89.55208333333316">
+    			Server  </text>
+  			<rect fill="white" height="48" stroke="black" stroke-width="1" width="85" x="232.5" y="505.5"/>
+  			<text fill="black" font-family="sans-serif" font-size="13.333333333333334" x="243.95833333333334" y="526.59375">
+    			Resource  </text>
+  			<text fill="black" font-family="sans-serif" font-size="13.333333333333334" x="253.115234375" y="542.1145833333334">
+    			Server  </text>
+  			<path d="M56,-405.00000000000017 L56,0" fill="none" stroke="black" stroke-width="1" transform="translate(327.5 505.5)"/>
+  			<rect fill="white" height="48" stroke="black" stroke-width="1" width="112" x="327.5" y="52.5"/>
+  			<text fill="black" font-family="sans-serif" font-size="13.333333333333334" x="339.00390625" y="74.03124999999984">
+    			Authorization  </text>
+  			<text fill="black" font-family="sans-serif" font-size="13.333333333333334" x="361.7936197916667" y="89.55208333333316">
+    			Server  </text>
+  			<rect fill="white" height="48" stroke="black" stroke-width="1" width="112" x="327.5" y="505.5"/>
+  			<text fill="black" font-family="sans-serif" font-size="13.333333333333334" x="339.00390625" y="526.59375">
+    			Authorization  </text>
+  			<text fill="black" font-family="sans-serif" font-size="13.333333333333334" x="361.7936197916667" y="542.1145833333334">
+    			Server  </text>
+  			<rect fill="white" height="15.333333333333314" width="121.03515625000003" x="123.21874999999997" y="113.8333333333332"/>
+  			<rect fill="white" height="15.333333333333314" width="147.43489583333331" x="110.01888020833331" y="129.35416666666652"/>
+  			<text fill="black" font-family="sans-serif" font-size="13.333333333333334" x="123.21874999999997" y="127.16666666666653">
+    			Resource Request  </text>
+  			<text fill="black" font-family="sans-serif" font-size="13.333333333333334" x="110.01888020833331" y="142.68749999999986">
+    			Without Access Token  </text>
+  			<path d="M-234.50455729166669,-360 L-53.02278645833337,-360" fill="none" stroke="black" stroke-width="1" transform="translate(327.5 505.5)"/>
+  			<path d="M-54,-360 L-54,-360 L-62,-368 L-62,-360 L-62,-352 L-54,-360" fill="black" stroke="black" stroke-width="1" transform="translate(327.5 505.5)"/>
+  			<rect fill="white" height="15.333333333333314" width="130.13020833333334" x="118.67122395833331" y="159.2083333333332"/>
+  			<text fill="black" font-family="sans-serif" font-size="13.333333333333334" x="118.67122395833331" y="172.54166666666654">
+    			WWW-Authenticate  </text>
+  			<path d="M-234.50455729166669,-330 L-53.02278645833337,-330" fill="none" stroke="black" stroke-dasharray="5,3" stroke-width="1" transform="translate(327.5 505.5)"/>
+  			<path d="M-234,-330 L-234,-330 L-226,-338 L-226,-330 L-226,-322 L-234,-330" fill="black" stroke="black" stroke-width="1" transform="translate(327.5 505.5)"/>
+  			<rect fill="white" height="15.333333333333314" width="126.22395833333334" x="120.62434895833331" y="189.0624999999999"/>
+  			<text fill="black" font-family="sans-serif" font-size="13.333333333333334" x="120.62434895833331" y="202.39583333333323">
+    			Fetch RS Metadata  </text>
+  			<path d="M-234.50455729166669,-300 L-53.02278645833337,-300" fill="none" stroke="black" stroke-width="1" transform="translate(327.5 505.5)"/>
+  			<path d="M-54,-300 L-54,-300 L-62,-308 L-62,-300 L-62,-292 L-54,-300" fill="black" stroke="black" stroke-width="1" transform="translate(327.5 505.5)"/>
+  			<rect fill="white" height="15.333333333333314" width="153.97786458333331" x="106.74739583333331" y="218.91666666666657"/>
+  			<text fill="black" font-family="sans-serif" font-size="13.333333333333334" x="106.74739583333331" y="232.24999999999991">
+    			RS Metadata Response  </text>
+  			<path d="M-234.50455729166669,-270 L-53.02278645833337,-270" fill="none" stroke="black" stroke-dasharray="5,3" stroke-width="1" transform="translate(327.5 505.5)"/>
+  			<path d="M-234,-270 L-234,-270 L-226,-278 L-226,-270 L-226,-262 L-234,-270" fill="black" stroke="black" stroke-width="1" transform="translate(327.5 505.5)"/>
+  			<path d="M-317,-257 L-317,-257 L-161,-257 L-153,-249 L-153,-209 L-317,-209 L-317,-257" fill="white" stroke="black" stroke-width="1" transform="translate(327.5 505.5)"/>
+  			<path d="M-160.57291666666669,-256.72916666666674 L-160.57291666666669,-248.72916666666674 L-152.57291666666669,-248.72916666666674" fill="none" stroke="black" stroke-width="1" transform="translate(327.5 505.5)"/>
+  			<text fill="black" font-family="sans-serif" font-size="13.333333333333334" x="15.815755208333314" y="269.8645833333332">
+    			Validate RS Metadata,  </text>
+  			<text fill="black" font-family="sans-serif" font-size="13.333333333333334" x="15.815755208333314" y="285.3854166666666">
+    			Build AS Metadata URL  </text>
+  			<rect fill="white" height="15.333333333333371" width="126.08072916666669" x="175.03515625" y="309.66666666666663"/>
+  			<text fill="black" font-family="sans-serif" font-size="13.333333333333334" x="175.03515625" y="322.99999999999994">
+    			Fetch AS Metadata  </text>
+  			<path d="M-234.50455729166669,-179 L55.655598958333314,-179" fill="none" stroke="black" stroke-width="1" transform="translate(327.5 505.5)"/>
+  			<path d="M55,-179 L55,-179 L47,-187 L47,-179 L47,-171 L55,-179" fill="black" stroke="black" stroke-width="1" transform="translate(327.5 505.5)"/>
+  			<rect fill="white" height="15.333333333333314" width="153.83463541666669" x="161.158203125" y="339.5208333333333"/>
+  			<text fill="black" font-family="sans-serif" font-size="13.333333333333334" x="161.158203125" y="352.85416666666663">
+    			AS Metadata Response  </text>
+  			<path d="M-234.50455729166669,-149 L55.655598958333314,-149" fill="none" stroke="black" stroke-dasharray="5,3" stroke-width="1" transform="translate(327.5 505.5)"/>
+  			<path d="M-234,-149 L-234,-149 L-226,-157 L-226,-149 L-226,-141 L-234,-149" fill="black" stroke="black" stroke-width="1" transform="translate(327.5 505.5)"/>
+  			<path d="M-241,-136 L-241,-136 L54,-136 L62,-128 L62,-89 L-241,-89 L-241,-136" fill="white" stroke="black" stroke-width="1" transform="translate(327.5 505.5)"/>
+  			<path d="M53.655598958333314,-136.125 L53.655598958333314,-128.125 L61.655598958333314,-128.125" fill="none" stroke="black" stroke-width="1" transform="translate(327.5 505.5)"/>
+  			<text fill="black" font-family="sans-serif" font-size="13.333333333333334" x="143.41080729166666" y="390.46874999999994">
+    			OAuth Authorization Flow  </text>
+  			<text fill="black" font-family="sans-serif" font-size="13.333333333333334" x="143.41080729166666" y="405.9895833333333">
+    			Client Obtains Access Token  </text>
+  			<rect fill="white" height="15.333333333333314" width="121.03515625" x="123.21875" y="430.2708333333333"/>
+  			<rect fill="white" height="15.333333333333371" width="123.3203125" x="122.076171875" y="445.79166666666663"/>
+  			<text fill="black" font-family="sans-serif" font-size="13.333333333333334" x="123.21875" y="443.60416666666663">
+    			Resource Request  </text>
+  			<text fill="black" font-family="sans-serif" font-size="13.333333333333334" x="122.076171875" y="459.12499999999994">
+    			With Access Token  </text>
+  			<path d="M-234.50455729166669,-43 L-53.02278645833337,-43" fill="none" stroke="black" stroke-width="1" transform="translate(327.5 505.5)"/>
+  			<path d="M-54,-43 L-54,-43 L-62,-51 L-62,-43 L-62,-35 L-54,-43" fill="black" stroke="black" stroke-width="1" transform="translate(327.5 505.5)"/>
+  			<rect fill="white" height="15.333333333333371" width="130.91145833333334" x="118.28059895833331" y="475.6458333333333"/>
+  			<text fill="black" font-family="sans-serif" font-size="13.333333333333334" x="118.28059895833331" y="488.97916666666663">
+    			Resource Response  </text>
+  			<path d="M-234.50455729166669,-13 L-53.02278645833337,-13" fill="none" stroke="black" stroke-dasharray="5,3" stroke-width="1" transform="translate(327.5 505.5)"/>
+  			<path d="M-234,-13 L-234,-13 L-226,-21 L-226,-13 L-226,-5 L-234,-13" fill="black" stroke="black" stroke-width="1" transform="translate(327.5 505.5)"/>
+			</svg>
+    </artwork>
+    <artwork type="ascii-art" name="sequence.txt">
+      <![CDATA[
+     +----------+              +----------+    +---------------+
+     |  Client  |              | Resource |    | Authorization |
+     |          |              |  Server  |    |    Server     |
+     +----+-----+              +----+-----+    +-------+-------+
+          |                         |                  |
+          |  Resource Request       |                  |
+          | ----------------------> |                  |
+          |  Without Access Token   |                  |
+          |                         |                  |
+          |                         |                  |
+          |    WWW-Authenticate     |                  |
+          | <---------------------- |                  |
+          |                         |                  |
+          |                         |                  |
+          |    Fetch RS Metadata    |                  |
+          | ----------------------> |                  |
+          |                         |                  |
+          |                         |                  |
+          |   RS Metadata Response  |                  |
+          | <---------------------- |                  |
+          |                         |                  |
++---------+-----------+             |                  |
+|Validate RS Metadata |             |                  |
+|Build AS Metadata URL|             |                  |
++---------+-----------+             |                  |
+          |                         |                  |
+          |   Fetch AS Metadata     |                  |
+          | ------------------------+----------------> |
+          |                         |                  |
+          |                         |                  |
+          |   AS Metadata Response  |                  |
+          | <-----------------------+----------------- |
+          |                         |                  |
+        +-+-------------------------+------------------+-+
+        |       OAuth Authorization Code Flow            |
+        |       Client Obtains Access Token              |
+        +-+-------------------------+------------------+-+
+          |                         |                  |
+          |  Resource Request       |                  |
+          | ----------------------> |                  |
+          |  With Access Token      |                  |
+          |                         |                  |
+          |                         |                  |
+          |   Resource Response     |                  |
+          | <---------------------- |                  |
+          |                         |                  |
+      ]]>
+    </artwork>
+  </artset>
+</figure>
+			</t>
       <t>
 	<list style="numbers">
 	  <t>
