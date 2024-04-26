@@ -428,6 +428,55 @@ Table of Contents
    this example uses the OAuth 2.0 Authorization Code flow, a similar
    sequence could also be implemented with any other OAuth flow.
 
+        +----------+              +----------+    +---------------+
+        |  Client  |              | Resource |    | Authorization |
+        |          |              |  Server  |    |    Server     |
+        +----+-----+              +----+-----+    +-------+-------+
+             |                         |                  |
+             |  Resource Request       |                  |
+             | ----------------------> |                  |
+             |  Without Access Token   |                  |
+             |                         |                  |
+             |                         |                  |
+             |    WWW-Authenticate     |                  |
+             | <---------------------- |                  |
+             |                         |                  |
+             |                         |                  |
+             |    Fetch RS Metadata    |                  |
+             | ----------------------> |                  |
+             |                         |                  |
+             |                         |                  |
+             |   RS Metadata Response  |                  |
+             | <---------------------- |                  |
+             |                         |                  |
+   +---------+-----------+             |                  |
+   |Validate RS Metadata |             |                  |
+   |Build AS Metadata URL|             |                  |
+   +---------+-----------+             |                  |
+             |                         |                  |
+             |   Fetch AS Metadata     |                  |
+             | ------------------------+----------------> |
+             |                         |                  |
+             |                         |                  |
+             |   AS Metadata Response  |                  |
+             | <-----------------------+----------------- |
+             |                         |                  |
+           +-+-------------------------+------------------+-+
+           |       OAuth Authorization Code Flow            |
+           |       Client Obtains Access Token              |
+           +-+-------------------------+------------------+-+
+             |                         |                  |
+             |  Resource Request       |                  |
+             | ----------------------> |                  |
+             |  With Access Token      |                  |
+             |                         |                  |
+             |                         |                  |
+             |   Resource Response     |                  |
+             | <---------------------- |                  |
+             |                         |                  |
+
+                         Figure 1: Sequence diagram
+
    1.   The client makes a request to a protected resource without
         presenting an access token.
 
