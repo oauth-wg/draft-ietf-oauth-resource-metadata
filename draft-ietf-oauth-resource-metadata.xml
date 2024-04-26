@@ -40,7 +40,7 @@
       </address>
     </author>
 
-    <date day="24" month="April" year="2024" />
+    <date day="26" month="April" year="2024" />
 
     <area>Security</area>
     <workgroup>OAuth Working Group</workgroup>
@@ -1566,7 +1566,7 @@
 	    per WGLC comments by Vladimir Dzhuvinov and Brian Campbell.
 	  </t>
 	  <t>
-	    Applied wording suggestions by Pieter Kasselman.
+	    Applied suggestions by Pieter Kasselman.
 	  </t>
 	</list>
       </t>
