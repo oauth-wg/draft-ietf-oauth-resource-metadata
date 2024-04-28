@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-04-25T00:06:00.489086+00:00",
+  "timestamp": "2024-04-28T00:07:19.179905+00:00",
   "repo": "oauth-wg/draft-ietf-oauth-resource-metadata",
   "labels": [
     {
@@ -395,7 +395,7 @@
       "id": "I_kwDOJ1yJis6FglGV",
       "title": "Add flow diagrams",
       "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/31",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "aaronpk",
       "authorAssociation": "MEMBER",
       "assignees": [
@@ -404,8 +404,8 @@
       "labels": [],
       "body": "",
       "createdAt": "2024-04-12T11:24:38Z",
-      "updatedAt": "2024-04-24T19:35:34Z",
-      "closedAt": null,
+      "updatedAt": "2024-04-26T16:12:30Z",
+      "closedAt": "2024-04-26T16:12:30Z",
       "comments": [
         {
           "author": "aaronpk",
@@ -1736,6 +1736,97 @@
           "body": "",
           "createdAt": "2024-04-24T20:51:00Z",
           "updatedAt": "2024-04-24T20:51:00Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 42,
+      "id": "PR_kwDOJ1yJis5txt3L",
+      "title": "add sequence diagram",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/42",
+      "state": "MERGED",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "closes #31\r\n\r\nThis builds on my local machine without changing to v3!",
+      "createdAt": "2024-04-25T21:36:29Z",
+      "updatedAt": "2024-04-26T16:12:29Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "5c746bbb1aab04c1e489137de369a732985ce495",
+      "headRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "headRefName": "aaronpk-diagram",
+      "headRefOid": "57e87b33f92e43fbb108e27dba5893da89b24341",
+      "closedAt": "2024-04-26T16:12:29Z",
+      "mergedAt": "2024-04-26T16:12:29Z",
+      "mergedBy": "selfissued",
+      "mergeCommit": {
+        "oid": "90f3d6551d1d1a22599a92f1be1161d49efd4ffe"
+      },
+      "comments": [
+        {
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Please change labels to Title Case.  Specifically, change spellings in both diagrams to:\r\n\r\nResource Request Without Access Token\r\nResource Request With Access Token\r\nRS Metadata Response\r\nAS Metadata Response\r\nResource Response\r\nValidate RS Metadata\r\nBuild AS Metadata URL\r\nClient Obtains Access Token\r\n\r\n",
+          "createdAt": "2024-04-25T21:49:42Z",
+          "updatedAt": "2024-04-25T21:49:42Z"
+        },
+        {
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Cc @PieterKas",
+          "createdAt": "2024-04-25T21:59:24Z",
+          "updatedAt": "2024-04-25T21:59:24Z"
+        },
+        {
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "body": "Preview links:\r\n\r\nHTML: https://drafts.oauth.net/draft-ietf-oauth-resource-metadata/aaronpk-diagram/draft-ietf-oauth-resource-metadata.html#section-5\r\n\r\nText: https://drafts.oauth.net/draft-ietf-oauth-resource-metadata/aaronpk-diagram/draft-ietf-oauth-resource-metadata.txt",
+          "createdAt": "2024-04-25T22:01:27Z",
+          "updatedAt": "2024-04-25T22:01:27Z"
+        },
+        {
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Thanks for the preview links.  But they lead me to request two nitpicky changes. ;-)\r\n\r\nIn the ASCII diagram, move \"Client\" to the first line of the box.\r\nIn the SVG diagram, change \"with\" to \"With\".\r\n\r\nThanks.",
+          "createdAt": "2024-04-25T22:06:32Z",
+          "updatedAt": "2024-04-25T22:06:32Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "NONE",
+          "body": "Looks good to me, thanks for adding this, it brings a lot of clarity.",
+          "createdAt": "2024-04-26T14:35:21Z",
+          "updatedAt": "2024-04-26T14:35:21Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ1yJis54nqCO",
+          "commit": {
+            "abbreviatedOid": "6564eda"
+          },
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-04-25T21:58:09Z",
+          "updatedAt": "2024-04-25T21:58:09Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJ1yJis54tj8V",
+          "commit": {
+            "abbreviatedOid": "57e87b3"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-04-26T14:35:40Z",
+          "updatedAt": "2024-04-26T14:35:40Z",
           "comments": []
         }
       ]
