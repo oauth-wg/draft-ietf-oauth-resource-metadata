@@ -637,8 +637,7 @@
   			<path d="M-234,-13 L-234,-13 L-226,-21 L-226,-13 L-226,-5 L-234,-13" fill="black" stroke="black" stroke-width="1" transform="translate(327.5 505.5)"/>
 			</svg>
     </artwork>
-    <artwork type="ascii-art" name="sequence.txt">
-      <![CDATA[
+    <artwork type="ascii-art" name="sequence.txt"><![CDATA[
      +----------+              +----------+    +---------------+
      |  Client  |              | Resource |    | Authorization |
      |          |              |  Server  |    |    Server     |
