@@ -544,6 +544,7 @@
 	-->
       <t>
 <figure>
+	<name>Sequence Diagram</name>
   <artset>
     <artwork type="svg" name="sequence.svg">
 			<svg baseProfile="tiny" version="1.2" viewBox="0 0 452 587" xmlns="http://www.w3.org/2000/svg">
