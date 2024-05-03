@@ -537,12 +537,13 @@
 	Note that while this example uses the OAuth 2.0 Authorization Code flow,
 	a similar sequence could also be implemented with any other OAuth flow.
       </t>
-      <t>
-<figure>
+
 	<!--
 			 Diagram Source:
 	     https://www.websequencediagrams.com/?lz=cGFydGljaXBhbnQgQ2xpZW50CgAHDCJSZXNvdXJjZVxuU2VydmVyIiBhcyBSUwAXDkF1dGhvcml6YXRpb24AHQ1BUwoKAFEGLT5SUzogAEcIIFJlcXVlc3RcbldpdGhvdXQgQWNjZXNzIFRva2VuClJTLS0-AIEJBjogV1dXLUF1dGhlbnRpY2F0ZQBEDUZldGNoIFJTIE1ldGFkYXRhAC4OAA4LIFJlc3BvbnNlCm5vdGUgb3ZlcgCBawc6IFZhbGlkYXRlAD0MLFxuQnVpbGQgQQA5C1VSTACBRwlBAHYJABcLCkEAgS8MAC8MAGYZLCBBUzogT0F1dGggAII9DSBGbG93XG4AgxEGIE9idGFpbnMAghsOAII-HndpdGgAgj4bAIMCCwCCEwc&s=default
 	-->
+      <t>
+<figure>
   <artset>
     <artwork type="svg" name="sequence.svg">
 			<svg baseProfile="tiny" version="1.2" viewBox="0 0 452 587" xmlns="http://www.w3.org/2000/svg">
