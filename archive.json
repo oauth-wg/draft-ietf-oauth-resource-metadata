@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-05-02T00:06:30.632217+00:00",
+  "timestamp": "2024-05-05T00:06:40.063754+00:00",
   "repo": "oauth-wg/draft-ietf-oauth-resource-metadata",
   "labels": [
     {
@@ -1828,6 +1828,88 @@
           "createdAt": "2024-04-26T14:35:40Z",
           "updatedAt": "2024-04-26T14:35:40Z",
           "comments": []
+        }
+      ]
+    },
+    {
+      "number": 43,
+      "id": "PR_kwDOJ1yJis5ugZ-d",
+      "title": "add back SVG diagram",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/43",
+      "state": "MERGED",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-05-03T19:29:59Z",
+      "updatedAt": "2024-05-03T20:07:48Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "d55de032394219c3424d010bba4087914ad5d904",
+      "headRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "headRefName": "aaronpk-diagram",
+      "headRefOid": "b2f9666f434fafc6d0d860bf85769745135a099c",
+      "closedAt": "2024-05-03T20:07:48Z",
+      "mergedAt": "2024-05-03T20:07:48Z",
+      "mergedBy": "selfissued",
+      "mergeCommit": {
+        "oid": "171139ea0896ae937b07fd07c7ff3531bd90e6b6"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ1yJis55h2fV",
+          "commit": {
+            "abbreviatedOid": "30fc7b9"
+          },
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-05-03T19:59:42Z",
+          "updatedAt": "2024-05-03T19:59:42Z",
+          "comments": [
+            {
+              "originalPosition": 127,
+              "body": "```suggestion\r\n]]></artwork>\r\n```",
+              "createdAt": "2024-05-03T19:59:42Z",
+              "updatedAt": "2024-05-03T19:59:42Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJ1yJis55h2vP",
+          "commit": {
+            "abbreviatedOid": "dc90333"
+          },
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-05-03T20:00:34Z",
+          "updatedAt": "2024-05-03T20:00:34Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJ1yJis55h4V_",
+          "commit": {
+            "abbreviatedOid": "dc90333"
+          },
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-05-03T20:05:44Z",
+          "updatedAt": "2024-05-03T20:05:45Z",
+          "comments": [
+            {
+              "originalPosition": 116,
+              "body": "```suggestion\r\n    <artwork type=\"ascii-art\" name=\"sequence.txt\"><![CDATA[\r\n```",
+              "createdAt": "2024-05-03T20:05:44Z",
+              "updatedAt": "2024-05-03T20:05:45Z"
+            }
+          ]
         }
       ]
     }
