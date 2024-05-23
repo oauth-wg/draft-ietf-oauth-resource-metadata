@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-05-21T00:06:26.131289+00:00",
+  "timestamp": "2024-05-23T00:06:17.321614+00:00",
   "repo": "oauth-wg/draft-ietf-oauth-resource-metadata",
   "labels": [
     {
@@ -453,6 +453,22 @@
       "createdAt": "2024-04-12T13:43:10Z",
       "updatedAt": "2024-04-24T17:24:56Z",
       "closedAt": "2024-04-24T17:24:56Z",
+      "comments": []
+    },
+    {
+      "number": 44,
+      "id": "I_kwDOJ1yJis6JpVAP",
+      "title": "Usage of /.well-known/ as specified is not licit",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/44",
+      "state": "OPEN",
+      "author": "randomstuff",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "The current draft states:\r\n\r\n> The consumer of the metadata would make the following request when the resource identifier is https://resource.example.com/resource1 [\u2026]\r\n>\r\n>     GET /resource1/.well-known/oauth-protected-resource HTTP/1.1\r\n>     Host: resource.example.com\r\n> \r\n> Using path components enables supporting multiple resources per host. This is required in some multi-tenant hosting configurations. This use of .well-known is for supporting multiple resources per host; unlike its use in [[RFC5785](https://www.ietf.org/archive/id/draft-ietf-oauth-resource-metadata-01.html#RFC5785)], it does not provide general information about the host.\r\n\r\nAFAIU, this approach does not respect the idea of RFC5785 which is to have a dedicated path **prefix**:\r\n\r\n> To address this, this memo defines a **path prefix** in HTTP(S) URIs for\r\n> these \"well-known locations\", \"/.well-known/\".\r\n\r\nMoreover, this is not consistent with [server medata](https://www.rfc-editor.org/rfc/rfc8414#section-3.1) spec (which is completely similar):\r\n\r\n> The client would make the following request when the\r\n> issuer identifier is \"https://example.com/issuer1\" and the well-known\r\n> URI suffix is \"oauth-authorization-server\" to obtain the metadata,\r\n> since the issuer identifier contains a path component:\r\n> \r\n>     GET /.well-known/oauth-authorization-server/issuer1 HTTP/1.1\r\n>     Host: example.com\r\n\r\nTherefore, I believe, the correct behavior would be to use `/.well-known/oauth-protected-resource/resource1`.\r\n\r\nThis does not preclude a multi-tenant application from serving the same information at `/resource1/.well-known/oauth-protected-resource` as well in order to facilitate exposing `https://service/resource1` as `https://resource1/`.\r\n\r\nThis does not preclude either redirecting `/app1/.well-known/oauth-protected-resource` to `/.well-known/oauth-protected-resource/app1` when serving multiple independant applications under the same origin.",
+      "createdAt": "2024-05-22T00:05:46Z",
+      "updatedAt": "2024-05-22T00:05:46Z",
+      "closedAt": null,
       "comments": []
     }
   ],
