@@ -5,10 +5,10 @@
 OAuth Working Group                                           M.B. Jones
 Internet-Draft                                    Self-Issued Consulting
 Intended status: Standards Track                                 P. Hunt
-Expires: 4 November 2024                      Independent Identity, Inc.
+Expires: 9 January 2025                       Independent Identity, Inc.
                                                               A. Parecki
                                                                     Okta
-                                                              3 May 2024
+                                                             8 July 2024
 
 
                  OAuth 2.0 Protected Resource Metadata
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 4 November 2024.
+   This Internet-Draft will expire on 9 January 2025.
 
 Copyright Notice
 
@@ -67,7 +67,7 @@ Table of Contents
      5.1.  WWW-Authenticate Response
      5.2.  Changes to Resource Metadata
      5.3.  Client Identifier and Client Authentication
-     5.4.  Compatibility with other authentication methods
+     5.4.  Compatibility with Other Authentication Methods
    6.  String Operations
    7.  Security Considerations
      7.1.  TLS Requirements
@@ -97,12 +97,13 @@ Table of Contents
 
    This specification defines a metadata format enabling OAuth 2.0
    clients and authorization servers to obtain information needed to
-   interact with an OAuth 2.0 protected resource.  This specification is
-   intentionally as parallel as possible to "OAuth 2.0 Dynamic Client
-   Registration Protocol" [RFC7591], which enables a client to provide
-   metadata about itself to an OAuth 2.0 authorization server and to
-   OAuth 2.0 Authorization Server Metadata [RFC8414], which enables a
-   client to obtain metadata about an OAuth 2.0 authorization server.
+   interact with an OAuth 2.0 protected resource.  The structure and
+   content of this specification is intentionally as parallel as
+   possible to that of "OAuth 2.0 Dynamic Client Registration Protocol"
+   [RFC7591], which enables a client to provide metadata about itself to
+   an OAuth 2.0 authorization server and to OAuth 2.0 Authorization
+   Server Metadata [RFC8414], which enables a client to obtain metadata
+   about an OAuth 2.0 authorization server.
 
    The metadata for a protected resource is retrieved from a well-known
    location as a JSON [RFC7159] document, which declares information
@@ -563,12 +564,21 @@ Table of Contents
    authorization flow.  Future extensions might define alternatives,
    such as using URLs to identify clients.
 
-5.4.  Compatibility with other authentication methods
+5.4.  Compatibility with Other Authentication Methods
 
    Resource servers MAY return other WWW-Authenticate headers indicating
    various authentication schemes.  This allows the resource server to
    support clients that may or may not implement this specification, and
    allows clients to choose their preferred authentication scheme.
+
+   A fair question is whether allowing clients to choose from among
+   supported authentication methods represents an opportunity for a
+   downgrade attack.  Since resource servers will only enumerate
+   authentication methods acceptable to them, by definition, any choice
+   made by the client from among them is one that the resource server is
+   OK with.  Thus, the resource server allowing the use of different
+   supported authentication methods does not represent an opportunity
+   for a downgrade attack.
 
 6.  String Operations
 
@@ -1035,12 +1045,16 @@ Appendix A.  Acknowledgements
    attendees of subsequent OAuth Working Group meetings for their input
    on this specification.  We would would also like to thank Brian
    Campbell, Vladimir Dzhuvinov, George Fletcher, Pieter Kasselman, Tony
-   Nadalin, Filip Skokan, and Atul Tulshibagwale for their contributions
-   to the specification.
+   Nadalin, Rifaat Shekh-Yusef, Filip Skokan, and Atul Tulshibagwale for
+   their contributions to the specification.
 
 Appendix B.  Document History
 
    [[ to be removed by the RFC Editor before publication as an RFC ]]
+
+   -06
+
+   *  Addressed shepherd review comments by Rifaat Shekh-Yusef.
 
    -05
 
