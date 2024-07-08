@@ -40,7 +40,7 @@
       </address>
     </author>
 
-    <date day="03" month="May" year="2024" />
+    <date day="8" month="July" year="2024" />
 
     <area>Security</area>
     <workgroup>OAuth Working Group</workgroup>
@@ -74,7 +74,7 @@
 	This specification defines a metadata format
 	enabling OAuth 2.0 clients and authorization servers to obtain information needed
 	to interact with an OAuth 2.0 protected resource.
-	This specification is intentionally as parallel as possible to
+	The structure and content of this specification is intentionally as parallel as possible to that of
 	<xref target="RFC7591">"OAuth 2.0 Dynamic Client Registration Protocol"</xref>,
 	which enables a client to provide metadata about itself
 	to an OAuth 2.0 authorization server and to
@@ -791,11 +791,19 @@
 	</t>
       </section>
 
-      <section anchor="compatibility" title="Compatibility with other authentication methods">
+      <section anchor="compatibility" title="Compatibility with Other Authentication Methods">
 	<t>
 	  Resource servers MAY return other <spanx style="verb">WWW-Authenticate</spanx> headers indicating various authentication schemes.
 	  This allows the resource server to support clients that may or may not implement this specification,
 	  and allows clients to choose their preferred authentication scheme.
+	</t>
+	<t>
+	  A fair question is whether allowing clients to choose from among
+	  supported authentication methods represents an opportunity for a downgrade attack.
+	  Since resource servers will only enumerate authentication methods acceptable to them, by definition,
+	  any choice made by the client from among them is one that the resource server is OK with.
+	  Thus, the resource server allowing the use of different supported authentication methods
+	  does not represent an opportunity for a downgrade attack.
 	</t>
       </section>
 
@@ -1544,6 +1552,7 @@
 	George Fletcher,
 	Pieter Kasselman,
 	Tony Nadalin,
+	Rifaat Shekh-Yusef,
 	Filip Skokan,
 	and
 	Atul Tulshibagwale
@@ -1553,6 +1562,15 @@
 
     <section anchor="History" title="Document History">
       <t>[[ to be removed by the RFC Editor before publication as an RFC ]]</t>
+
+      <t>
+	-06
+	<list style="symbols">
+	  <t>
+	    Addressed shepherd review comments by Rifaat Shekh-Yusef.
+	  </t>
+	</list>
+      </t>
 
       <t>
 			-05
