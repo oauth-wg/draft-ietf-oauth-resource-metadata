@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-07T00:07:19.517298+00:00",
+  "timestamp": "2024-07-09T00:06:30.567519+00:00",
   "repo": "oauth-wg/draft-ietf-oauth-resource-metadata",
   "labels": [
     {
@@ -1942,24 +1942,26 @@
       "id": "PR_kwDOJ1yJis50lFM0",
       "title": "Address shepherd review comments",
       "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/45",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "selfissued",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Addressed shepherd review comments by Rifaat Shekh-Yusef.\r\n\r\ncc: @independentid",
       "createdAt": "2024-07-06T04:28:41Z",
-      "updatedAt": "2024-07-06T04:36:42Z",
+      "updatedAt": "2024-07-08T17:20:37Z",
       "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
       "baseRefName": "main",
       "baseRefOid": "171139ea0896ae937b07fd07c7ff3531bd90e6b6",
       "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
       "headRefName": "mbj-shepherd",
-      "headRefOid": "0cbed5df3aa6072870477e2855fd403ba54adfed",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "bb77cd1ff72abd5dfdfc8b9e06d6d278792dd848",
+      "closedAt": "2024-07-08T17:20:37Z",
+      "mergedAt": "2024-07-08T17:20:37Z",
+      "mergedBy": "selfissued",
+      "mergeCommit": {
+        "oid": "2c5215116f1ac2e2018d4db7542b6cdd7b0f1719"
+      },
       "comments": [],
       "reviews": []
     }
