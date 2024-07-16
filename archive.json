@@ -1,0 +1,1969 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2024-07-16T00:06:47.973949+00:00",
+  "repo": "oauth-wg/draft-ietf-oauth-resource-metadata",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    }
+  ],
+  "issues": [
+    {
+      "number": 2,
+      "id": "I_kwDOJ1yJis5zrQDR",
+      "title": "Security consideration: Scopes",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/2",
+      "state": "CLOSED",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "aaronpk"
+      ],
+      "labels": [],
+      "body": "\"The `scopes_provided` parameter is not meant to indicate that a client should request all scopes in the list. The client should still follow best practices and request tokens with as limited scope as possible for the given operation.\"\r\n",
+      "createdAt": "2023-10-12T20:07:50Z",
+      "updatedAt": "2023-10-18T12:20:08Z",
+      "closedAt": "2023-10-18T12:20:08Z",
+      "comments": []
+    },
+    {
+      "number": 3,
+      "id": "I_kwDOJ1yJis5zrQTX",
+      "title": "Rename `scopes_provided` to `scopes_supported`",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/3",
+      "state": "CLOSED",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "aaronpk"
+      ],
+      "labels": [],
+      "body": "AS Metadata uses `scopes_supported`, this draft should match\r\n\r\nhttps://datatracker.ietf.org/doc/html/rfc8414#section-2",
+      "createdAt": "2023-10-12T20:08:16Z",
+      "updatedAt": "2023-10-18T02:03:36Z",
+      "closedAt": "2023-10-18T02:03:36Z",
+      "comments": []
+    },
+    {
+      "number": 4,
+      "id": "I_kwDOJ1yJis5zrQeJ",
+      "title": "Update TLS Considerations language",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/4",
+      "state": "CLOSED",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "selfissued"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-10-12T20:08:40Z",
+      "updatedAt": "2023-10-17T17:56:14Z",
+      "closedAt": "2023-10-17T17:56:14Z",
+      "comments": []
+    },
+    {
+      "number": 5,
+      "id": "I_kwDOJ1yJis5zrR9J",
+      "title": "Security Consideration: Audience-restricted access tokens",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/5",
+      "state": "CLOSED",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "The security concern is when there are two separate RSs with different sets of scopes, it shouldn't be possible for RS1 to tell the client to ask for scopes for RS2, and then have RS1 be able to use the access token at RS2. Audience-restricted access tokens and resource indicators are a solution.",
+      "createdAt": "2023-10-12T20:13:10Z",
+      "updatedAt": "2023-10-21T01:48:48Z",
+      "closedAt": "2023-10-21T01:48:48Z",
+      "comments": []
+    },
+    {
+      "number": 6,
+      "id": "I_kwDOJ1yJis5zrTHM",
+      "title": "Revise abstract and introduction to include AS as audience of the RS Metadata",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/6",
+      "state": "CLOSED",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "From BC's comments: https://mailarchive.ietf.org/arch/msg/oauth/LA6sqNOV98D7wP44p2Hl6dpSmtg/",
+      "createdAt": "2023-10-12T20:17:03Z",
+      "updatedAt": "2023-10-21T00:44:02Z",
+      "closedAt": "2023-10-21T00:44:02Z",
+      "comments": []
+    },
+    {
+      "number": 7,
+      "id": "I_kwDOJ1yJis5zrVLB",
+      "title": "Use of RS signing keys",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/7",
+      "state": "CLOSED",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "From BC's comments: https://mailarchive.ietf.org/arch/msg/oauth/LA6sqNOV98D7wP44p2Hl6dpSmtg/\r\n\r\n> What \"content\" is being signed or encrypted and by whom?\r\n\r\nFAPI Message Signing talks about the RS signing resource responses. This specification could be how the RS publishes the public key, as mentioned in 5.6.6.2\r\n\r\nhttps://openid.bitbucket.io/fapi/fapi-2_0-message-signing.html#section-5.6.2.2\r\n\r\n> This specification doesn't specify the exact means by which a Client can retrieve the key for the Resource Server. Together with the identity of the Resource Server and the keyid in the Signature-Input field, the Client can retrieve the key from a trusted third party or by some other means",
+      "createdAt": "2023-10-12T20:23:27Z",
+      "updatedAt": "2023-10-21T02:18:44Z",
+      "closedAt": "2023-10-21T02:18:44Z",
+      "comments": []
+    },
+    {
+      "number": 8,
+      "id": "I_kwDOJ1yJis5zrYFP",
+      "title": "Question: What should the WWW-Authenticate header return",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/8",
+      "state": "CLOSED",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Should the header return the full path to the Resource Metadata document, or return the resource identifier?\r\n\r\n* RS Metadata document: the client fetches the exact URL returned\r\n* Resource Identifier: the client builds the metadata URL by appending .well-known... and then fetches the URL\r\n\r\nWhat are the implications of this for resources that differ by path? (see mailing list thread about path-based resources that require different scopes)",
+      "createdAt": "2023-10-12T20:32:44Z",
+      "updatedAt": "2024-01-22T21:58:33Z",
+      "closedAt": "2024-01-22T21:58:33Z",
+      "comments": [
+        {
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I'm increasingly of the view that the resource identifier should be returned, which is what the draft already does.  This aligns with the `resource` value in https://www.rfc-editor.org/rfc/rfc8707.html , which we normatively use.\r\n\r\nI propose that we say that during IETF 118 in Prague.  If we get consensus on this, it will close our last remaining issue.",
+          "createdAt": "2023-10-31T17:02:57Z",
+          "updatedAt": "2023-10-31T17:02:57Z"
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "id": "I_kwDOJ1yJis51nFjo",
+      "title": "Question: What happens if the WWW-Authenticate header returns a Resource Identifier with a different hostname?",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/16",
+      "state": "CLOSED",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "* Is this acceptable?\r\n* What features does this enable?\r\n* What are the security considerations of doing so?\r\n\r\nIn some situations it is impossible or impractical for a resource server to host content at `.well-known`.",
+      "createdAt": "2023-11-01T22:06:23Z",
+      "updatedAt": "2024-01-25T03:36:09Z",
+      "closedAt": "2024-01-25T03:36:09Z",
+      "comments": [
+        {
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Per the proposed validation logic in PR #20, this is OK when the URL of the resource server used by the client matches the `resource` value returned in the metadata.",
+          "createdAt": "2024-01-01T01:13:27Z",
+          "updatedAt": "2024-01-01T01:13:27Z"
+        },
+        {
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Addressed by this language in PR #20:\r\n> If the protected resource metadata was retrieved from a URL returned by the protected resource via the WWW-Authenticate resource_metadata parameter, then the resource value returned MUST be identical to the URL that the client used to make the request to the resource server. If these values are not identical, the data contained in the response MUST NOT be used.",
+          "createdAt": "2024-01-25T03:36:09Z",
+          "updatedAt": "2024-01-25T03:36:09Z"
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "id": "I_kwDOJ1yJis52PJ3_",
+      "title": ".well-known endpoint resolution",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/17",
+      "state": "CLOSED",
+      "author": "panva",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "The draft [currently](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-resource-metadata-01#section-3) (and the examples in it) follow this language\r\n\r\n> Protected resources supporting metadata MUST make a JSON document containing metadata as specified in [Section 2](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-resource-metadata-01#PRMetadata) available at a path formed by concatenating a well-known URI string such as /.well-known/oauth-protected-resource to the protected resource's resource identifier.\r\n\r\nThis means (taken from an example in the draft):\r\n\r\n```\r\n    GET /resource1/.well-known/oauth-protected-resource HTTP/1.1\r\n    Host: resource.example.com\r\n```\r\n\r\nThis is inconsistent with RFC8414 (and its normative dependencies) which says\r\n\r\n> If the issuer identifier value contains a path component, any terminating \"/\" MUST be removed before inserting \"/.well-known/\" and the well-known URI suffix between the host component and the path component.\r\n\r\nThis means (taken from an example in RFC8414):\r\n\r\n```\r\n     GET /.well-known/oauth-authorization-server/issuer1 HTTP/1.1\r\n     Host: example.com\r\n```\r\n\r\nThe RFC8414 way kind of hampers the ability to host these documents in multi-tenant system on certain deployments but i'm unsure if we can justify not doing it this way.",
+      "createdAt": "2023-11-08T14:01:30Z",
+      "updatedAt": "2024-01-22T22:12:24Z",
+      "closedAt": "2024-01-22T22:12:24Z",
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "NONE",
+          "body": "Thanks @panva, this was the subject of my comments in [the meeting today](https://notes.ietf.org/notes-ietf-118-oauth#Protected-Resource-Metadata-%E2%80%93-Mike-Jones-Aaron-Parecki-20-min). I do think that the way it's done in the draft currently makes sense for the context and is preferable.  But it might raise some objections in IESG etc. review. I don't honestly know what the best course of action is. But wanted to bring it up earlier rather than later. Perhaps Roman's suggestion of asking the HTTP directorate for an early review in hope of avoiding surprise down the line? ",
+          "createdAt": "2023-11-08T18:12:50Z",
+          "updatedAt": "2023-11-08T18:12:58Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "NONE",
+          "body": "The draft does say the following [here](https://www.ietf.org/archive/id/draft-ietf-oauth-resource-metadata-01.html#section-3.1-6), which maybe provides sufficient justification. Maybe.\r\n\r\n> Using path components enables supporting multiple resources per host. This is required in some multi-tenant hosting configurations. This use of .well-known is for supporting multiple resources per host; unlike its use in [[RFC5785](https://www.ietf.org/archive/id/draft-ietf-oauth-resource-metadata-01.html#RFC5785)], it does not provide general information about the host.",
+          "createdAt": "2023-11-09T16:11:48Z",
+          "updatedAt": "2023-11-09T16:12:02Z"
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "id": "I_kwDOJ1yJis5624eg",
+      "title": "Register signed_metadata parameter",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/19",
+      "state": "CLOSED",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "selfissued"
+      ],
+      "labels": [],
+      "body": "... analogous to the one in https://www.rfc-editor.org/rfc/rfc8414.html.",
+      "createdAt": "2024-01-01T00:34:01Z",
+      "updatedAt": "2024-01-22T21:53:58Z",
+      "closedAt": "2024-01-22T21:53:58Z",
+      "comments": []
+    },
+    {
+      "number": 24,
+      "id": "I_kwDOJ1yJis6FgSwN",
+      "title": "resource alg properties",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/24",
+      "state": "CLOSED",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "To address questions from Vladimir\r\n\r\n* [ ] Remove two encryption properties `resource_encryption_alg_values_supported` `resource_encryption_enc_values_supported`\r\n* [ ] Add explanation of `resource_signing_alg_values_supported` that it is for signing the response as described in FAPI message signing",
+      "createdAt": "2024-04-12T10:59:46Z",
+      "updatedAt": "2024-04-24T19:15:46Z",
+      "closedAt": "2024-04-24T19:15:46Z",
+      "comments": []
+    },
+    {
+      "number": 25,
+      "id": "I_kwDOJ1yJis6FgYT0",
+      "title": "Rephrase description of `bearer_methods_supported`",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/25",
+      "state": "CLOSED",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "From Pieter's review:\r\n\r\n> JSON array containing a list of the supported methods of sending an OAuth 2.0 Bearer Token [[RFC6750](https://www.ietf.org/archive/id/draft-ietf-oauth-resource-metadata-03.html#RFC6750)] to the protected resource\r\n\r\nSince \"presentation methods\" has come to have a new meaning. The language above is consistent with the language used in 6750.\r\n",
+      "createdAt": "2024-04-12T11:07:11Z",
+      "updatedAt": "2024-04-24T19:03:56Z",
+      "closedAt": "2024-04-24T19:03:56Z",
+      "comments": []
+    },
+    {
+      "number": 26,
+      "id": "I_kwDOJ1yJis6Fgaeq",
+      "title": "Update description of resource_signing_alg_values_supported",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/26",
+      "state": "CLOSED",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Copy language from AS metadata:\r\n\r\nhttps://datatracker.ietf.org/doc/html/rfc8414#section-2\r\n\r\nNo default value if omitted, `none` must not be used.",
+      "createdAt": "2024-04-12T11:10:05Z",
+      "updatedAt": "2024-04-24T19:15:46Z",
+      "closedAt": "2024-04-24T19:15:46Z",
+      "comments": []
+    },
+    {
+      "number": 27,
+      "id": "I_kwDOJ1yJis6Fge3f",
+      "title": "Add reference to example path construction in section 3 intro",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/27",
+      "state": "CLOSED",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "From Pieter's review:\r\n\r\n> Would it be possible to include the final result of what the path would look like when inserting the \"/.well-known/example-protected-resource\" between the host and path components of the protected resource's resource identifier just to remove opportunity for misinterpretation (is this the same as the second example given in Section 3.1, if so, perhaps refer to that example)?\r\n\r\n\"between the host and path components of the protected resource's resource identifier, as shown in Section 3.1 below\"\r\n",
+      "createdAt": "2024-04-12T11:15:59Z",
+      "updatedAt": "2024-04-24T19:04:22Z",
+      "closedAt": "2024-04-24T19:04:22Z",
+      "comments": []
+    },
+    {
+      "number": 28,
+      "id": "I_kwDOJ1yJis6Fgg1N",
+      "title": "Section 3 Change \"applications\" to \"deployment\"",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/28",
+      "state": "CLOSED",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "https://www.ietf.org/archive/id/draft-ietf-oauth-resource-metadata-03.html#section-3\r\n\r\nChange \"applications\" to \"deployment\" for clarity\r\n",
+      "createdAt": "2024-04-12T11:18:40Z",
+      "updatedAt": "2024-04-24T20:54:44Z",
+      "closedAt": "2024-04-24T20:54:44Z",
+      "comments": [
+        {
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Looking at making the change, there are ~12 places we'd be changing \"application\" to \"deployment\" and it's not clear that it would improve the readability or clarity of the text.  Furthermore, I'll also point out that this is the language used in RFC 8414, and it seems to have worked for people there, so I'm reluctant to make this change, given I don't think it would be a significant enough improvement to warrant being different.\r\n\r\ncc @PieterKas",
+          "createdAt": "2024-04-22T19:35:07Z",
+          "updatedAt": "2024-04-22T19:35:07Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "NONE",
+          "body": "My comment about this section was that it was generally quite hard to follow, not that \"application\" should be replaced by \"deployment\". \r\n\r\nThis sentence took a while to parse: \"Different applications utilizing OAuth protected resources in application-specific ways may define and register different well-known URI path suffixes used to publish protected resource metadata as used by those applications. \"\r\n\r\nI think the intent here is to say that an application may be composed of different OAuth protected resources, and each of those may have their own protected resource metadata, and if this is the case, your describing a scheme on how the application may expose the resource metadata to clients for each of the underlying OAuth protected resources. If that is the intent, changing from \"application\" to \"deployment\" may not help (these are different concepts). \r\n\r\nPerhaps just an introductory sentence for that paragraph - something like: \"An application may access multiple OAuth protected resources in order to complete an operation. Each OAuth protected resource may have their own resource metadata. In this case, the application may define and register different well-known URI path suffixes used to publish protected resource metadata as used by those applications to enable a client to obtain the resource metadata for each of the underlying resources.\r\n\r\nAs I write this, I think my confusion here was more about the lack of clarity on the relationship of the application (which may itself be an OAuth protected resource?) and the OAuth protected resources (which it relies on to perform an action). \r\n\r\n",
+          "createdAt": "2024-04-23T08:52:16Z",
+          "updatedAt": "2024-04-23T08:52:16Z"
+        },
+        {
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@aaronpk talked about this in Rome.  The term \"application\", as used, encompasses all the components used to accomplish the task for the use case.  That can include OAuth clients, authorization servers, and protected resources, inclusive of the code running in each of them.  Applications are built to solve particular problems and may utilize many components and services.\r\n\r\nI could add an introductory remark derived from the above, if that would work for you.  (Although I would try to make it more concise.)",
+          "createdAt": "2024-04-23T18:30:28Z",
+          "updatedAt": "2024-04-23T18:30:28Z"
+        }
+      ]
+    },
+    {
+      "number": 29,
+      "id": "I_kwDOJ1yJis6FgiVA",
+      "title": "Add reference to attack",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/29",
+      "state": "CLOSED",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Section 3.3 should reference the attack described in section 7.3\r\n\r\nhttps://www.ietf.org/archive/id/draft-ietf-oauth-resource-metadata-03.html#section-3.3\r\n\r\nAnd evaluate whether it makes sense to add a back reference from 7.3 to 3.3.\r\n",
+      "createdAt": "2024-04-12T11:20:44Z",
+      "updatedAt": "2024-04-24T19:04:40Z",
+      "closedAt": "2024-04-24T19:04:40Z",
+      "comments": []
+    },
+    {
+      "number": 30,
+      "id": "I_kwDOJ1yJis6Fgjnb",
+      "title": "Section 4 AS metadata",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/30",
+      "state": "CLOSED",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Change to: \r\n\r\n> To support use cases in which the set of legitimate protected resources to use with the authorization server is fixed and enumerable, this specification defines the authorization server metadata value `protected_resources`, which enables the authorization server to explicitly list the protected resources.\r\n\r\n",
+      "createdAt": "2024-04-12T11:22:28Z",
+      "updatedAt": "2024-04-24T19:05:08Z",
+      "closedAt": "2024-04-24T19:05:08Z",
+      "comments": []
+    },
+    {
+      "number": 31,
+      "id": "I_kwDOJ1yJis6FglGV",
+      "title": "Add flow diagrams",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/31",
+      "state": "CLOSED",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "aaronpk"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-04-12T11:24:38Z",
+      "updatedAt": "2024-04-26T16:12:30Z",
+      "closedAt": "2024-04-26T16:12:30Z",
+      "comments": [
+        {
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "body": "![RS Metadata](https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/assets/113001/c267531b-1823-4efc-b16e-68e5ea4aa757)\r\n\r\nHere's the SVG version. I need to make the ascii version of this next.",
+          "createdAt": "2024-04-24T17:55:51Z",
+          "updatedAt": "2024-04-24T17:55:51Z"
+        },
+        {
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Cc @PieterKas",
+          "createdAt": "2024-04-24T19:35:33Z",
+          "updatedAt": "2024-04-24T19:35:33Z"
+        }
+      ]
+    },
+    {
+      "number": 32,
+      "id": "I_kwDOJ1yJis6FglUe",
+      "title": "Section 5",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/32",
+      "state": "CLOSED",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "* [ ] Step 5, add reference to *how* to validate: \"...according to the validation steps described in Section 2.1 (validation of signed resource metadata if it applies) and Section 3.3\"\r\n* [ ] Step 5.2: rephrase to \"If the client receives such a WWW-Authenticate response, it SHOULD retrieve the updated protected resource metadata and use the new metadata values obtained.\"",
+      "createdAt": "2024-04-12T11:25:02Z",
+      "updatedAt": "2024-04-24T19:05:31Z",
+      "closedAt": "2024-04-24T19:05:31Z",
+      "comments": []
+    },
+    {
+      "number": 33,
+      "id": "I_kwDOJ1yJis6FhpIW",
+      "title": "Reorder paragraphs in 7.6",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/33",
+      "state": "CLOSED",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "https://www.ietf.org/archive/id/draft-ietf-oauth-resource-metadata-03.html#section-7.6\r\n\r\nMove paragraph 3 to the top so that we first talk about what use cases _are_ supported.",
+      "createdAt": "2024-04-12T13:43:10Z",
+      "updatedAt": "2024-04-24T17:24:56Z",
+      "closedAt": "2024-04-24T17:24:56Z",
+      "comments": []
+    },
+    {
+      "number": 44,
+      "id": "I_kwDOJ1yJis6JpVAP",
+      "title": "Usage of /.well-known/ as specified is not licit",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/44",
+      "state": "CLOSED",
+      "author": "randomstuff",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "The current draft states:\r\n\r\n> The consumer of the metadata would make the following request when the resource identifier is https://resource.example.com/resource1 [\u2026]\r\n>\r\n>     GET /resource1/.well-known/oauth-protected-resource HTTP/1.1\r\n>     Host: resource.example.com\r\n> \r\n> Using path components enables supporting multiple resources per host. This is required in some multi-tenant hosting configurations. This use of .well-known is for supporting multiple resources per host; unlike its use in [[RFC5785](https://www.ietf.org/archive/id/draft-ietf-oauth-resource-metadata-01.html#RFC5785)], it does not provide general information about the host.\r\n\r\nAFAIU, this approach does not respect the idea of RFC5785 which is to have a dedicated path **prefix**:\r\n\r\n> To address this, this memo defines a **path prefix** in HTTP(S) URIs for\r\n> these \"well-known locations\", \"/.well-known/\".\r\n\r\nMoreover, this is not consistent with [server medata](https://www.rfc-editor.org/rfc/rfc8414#section-3.1) spec (which is completely similar):\r\n\r\n> The client would make the following request when the\r\n> issuer identifier is \"https://example.com/issuer1\" and the well-known\r\n> URI suffix is \"oauth-authorization-server\" to obtain the metadata,\r\n> since the issuer identifier contains a path component:\r\n> \r\n>     GET /.well-known/oauth-authorization-server/issuer1 HTTP/1.1\r\n>     Host: example.com\r\n\r\nTherefore, I believe, the correct behavior would be to use `/.well-known/oauth-protected-resource/resource1`.\r\n\r\nThis does not preclude a multi-tenant application from serving the same information at `/resource1/.well-known/oauth-protected-resource` as well in order to facilitate exposing `https://service/resource1` as `https://resource1/`.\r\n\r\nThis does not preclude either redirecting `/app1/.well-known/oauth-protected-resource` to `/.well-known/oauth-protected-resource/app1` when serving multiple independant applications under the same origin.",
+      "createdAt": "2024-05-22T00:05:46Z",
+      "updatedAt": "2024-07-06T04:39:56Z",
+      "closedAt": "2024-07-06T04:39:56Z",
+      "comments": [
+        {
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This behavior was corrected in https://datatracker.ietf.org/doc/draft-ietf-oauth-resource-metadata/02/.",
+          "createdAt": "2024-07-06T04:39:56Z",
+          "updatedAt": "2024-07-06T04:39:56Z"
+        }
+      ]
+    }
+  ],
+  "pulls": [
+    {
+      "number": 1,
+      "id": "PR_kwDOJ1yJis5U-JmW",
+      "title": "Added WWW-Authenticate functionality from draft-parecki-oauth-authorization-server-discovery-00",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/1",
+      "state": "MERGED",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "as proposed by the working group during IETF 116",
+      "createdAt": "2023-07-07T23:21:10Z",
+      "updatedAt": "2023-07-07T23:33:20Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "f63db1b624d67363dcb348e900c6cce86b6911df",
+      "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
+      "headRefName": "mbj-www-authenticate",
+      "headRefOid": "089508689e9701077cc8cae961e2bf5fede83219",
+      "closedAt": "2023-07-07T23:33:20Z",
+      "mergedAt": "2023-07-07T23:33:20Z",
+      "mergedBy": "aaronpk",
+      "mergeCommit": {
+        "oid": "4da5fe94d3c4a4a5e4b8523dd5391bb7be3bab27"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 9,
+      "id": "PR_kwDOJ1yJis5dChqF",
+      "title": "Update TLS recommendations",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/9",
+      "state": "MERGED",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #4 ",
+      "createdAt": "2023-10-17T16:41:11Z",
+      "updatedAt": "2023-10-17T17:56:13Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "cd7b46b06f0ab93554652153ba2c4615eac585b2",
+      "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
+      "headRefName": "mbj-tls",
+      "headRefOid": "4f2dee26305f021f994d5cb6235596c57302338c",
+      "closedAt": "2023-10-17T17:56:13Z",
+      "mergedAt": "2023-10-17T17:56:13Z",
+      "mergedBy": "aaronpk",
+      "mergeCommit": {
+        "oid": "a98963d9ed767bec5f040cb032798579ef1938cb"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 10,
+      "id": "PR_kwDOJ1yJis5dC8zs",
+      "title": "Rename `scopes_provided` to `scopes_supported`",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/10",
+      "state": "MERGED",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "closes #3",
+      "createdAt": "2023-10-17T17:59:49Z",
+      "updatedAt": "2023-10-18T02:03:35Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "a98963d9ed767bec5f040cb032798579ef1938cb",
+      "headRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "headRefName": "apk-scopes-supported",
+      "headRefOid": "63bb78a7061b5a298d49725c9f82a4c4e1f7d19e",
+      "closedAt": "2023-10-18T02:03:35Z",
+      "mergedAt": "2023-10-18T02:03:35Z",
+      "mergedBy": "selfissued",
+      "mergeCommit": {
+        "oid": "bf2f69731034ddd645fa849ba83bf82ba275219c"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ1yJis5kXE18",
+          "commit": {
+            "abbreviatedOid": "63bb78a"
+          },
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-10-18T02:03:06Z",
+          "updatedAt": "2023-10-18T02:03:06Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "id": "PR_kwDOJ1yJis5dDH2A",
+      "title": "add security consideration for scopes_supported",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/11",
+      "state": "MERGED",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "closes #2",
+      "createdAt": "2023-10-17T18:28:12Z",
+      "updatedAt": "2023-10-18T12:20:07Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "a98963d9ed767bec5f040cb032798579ef1938cb",
+      "headRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "headRefName": "apk-scopes-security-consideration",
+      "headRefOid": "3e1a1284b96232d10109861497fc881a4eaf0916",
+      "closedAt": "2023-10-18T12:20:07Z",
+      "mergedAt": "2023-10-18T12:20:07Z",
+      "mergedBy": "selfissued",
+      "mergeCommit": {
+        "oid": "6b9ad04879cef11fa0f3170b9f6f34d6612c2700"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ1yJis5kbb66",
+          "commit": {
+            "abbreviatedOid": "3e1a128"
+          },
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-10-18T12:19:53Z",
+          "updatedAt": "2023-10-18T12:19:53Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "id": "PR_kwDOJ1yJis5dbYcO",
+      "title": "Metadata can be used by clients and authorization servers",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/12",
+      "state": "MERGED",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #6 ",
+      "createdAt": "2023-10-21T00:03:50Z",
+      "updatedAt": "2023-10-21T00:44:01Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "6b9ad04879cef11fa0f3170b9f6f34d6612c2700",
+      "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
+      "headRefName": "mbj-clients-and-authorization-servers",
+      "headRefOid": "22c2faf400b1eec12de7ecb3ce602d291ae4a4e2",
+      "closedAt": "2023-10-21T00:44:01Z",
+      "mergedAt": "2023-10-21T00:44:00Z",
+      "mergedBy": "aaronpk",
+      "mergeCommit": {
+        "oid": "41c92382a908dc8f275a4bbaedc6b7a2033c6682"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ1yJis5kywnd",
+          "commit": {
+            "abbreviatedOid": "22c2faf"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-10-21T00:40:56Z",
+          "updatedAt": "2023-10-21T00:40:56Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "id": "PR_kwDOJ1yJis5dbdoC",
+      "title": "mention origin-bound authenticators in phishing consideration",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/13",
+      "state": "MERGED",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-10-21T00:48:01Z",
+      "updatedAt": "2023-10-21T00:50:12Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "41c92382a908dc8f275a4bbaedc6b7a2033c6682",
+      "headRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "headRefName": "phishing",
+      "headRefOid": "33967d8028887632ad92572b40c171719e45caa3",
+      "closedAt": "2023-10-21T00:49:41Z",
+      "mergedAt": "2023-10-21T00:49:41Z",
+      "mergedBy": "selfissued",
+      "mergeCommit": {
+        "oid": "3166ab56009183a8e0c5e129678830cdb3b3088f"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ1yJis5kyx8q",
+          "commit": {
+            "abbreviatedOid": "33967d8"
+          },
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-10-21T00:49:20Z",
+          "updatedAt": "2023-10-21T00:49:20Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "id": "PR_kwDOJ1yJis5dbgKQ",
+      "title": "add security consideration for audience-restricted access tokens",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/14",
+      "state": "MERGED",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "closes #5",
+      "createdAt": "2023-10-21T01:05:29Z",
+      "updatedAt": "2023-10-21T01:48:52Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "3166ab56009183a8e0c5e129678830cdb3b3088f",
+      "headRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "headRefName": "audience-restricted",
+      "headRefOid": "fec2c605ca4a1cba8f4ea431fb5032db8d42ad42",
+      "closedAt": "2023-10-21T01:48:47Z",
+      "mergedAt": "2023-10-21T01:48:47Z",
+      "mergedBy": "aaronpk",
+      "mergeCommit": {
+        "oid": "8089b722ce8f9a1c875b94648c095344161b2854"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ1yJis5kyzcc",
+          "commit": {
+            "abbreviatedOid": "f20fc80"
+          },
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-21T01:15:06Z",
+          "updatedAt": "2023-10-21T01:15:06Z",
+          "comments": [
+            {
+              "originalPosition": 19,
+              "body": "```suggestion\r\n      \t\tdynamically-configured clients. As such, the use\r\n```",
+              "createdAt": "2023-10-21T01:15:06Z",
+              "updatedAt": "2023-10-21T01:15:06Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJ1yJis5kyzeE",
+          "commit": {
+            "abbreviatedOid": "f20fc80"
+          },
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Apply my wording suggestion if you like it or don't if you don't.  Then merge.",
+          "createdAt": "2023-10-21T01:15:53Z",
+          "updatedAt": "2023-10-21T01:15:53Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "id": "PR_kwDOJ1yJis5dbmqF",
+      "title": "Provide use case for publishing signing keys",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/15",
+      "state": "MERGED",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "closes #7",
+      "createdAt": "2023-10-21T01:54:16Z",
+      "updatedAt": "2023-10-21T02:18:46Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "8089b722ce8f9a1c875b94648c095344161b2854",
+      "headRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "headRefName": "rs-signing",
+      "headRefOid": "e54e2340bcbb5231aa155853be7e3752445fa7eb",
+      "closedAt": "2023-10-21T02:18:43Z",
+      "mergedAt": "2023-10-21T02:18:43Z",
+      "mergedBy": "aaronpk",
+      "mergeCommit": {
+        "oid": "c51b616b9e557332cd320baa360c68d5189edc53"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ1yJis5ky4SM",
+          "commit": {
+            "abbreviatedOid": "f4f6002"
+          },
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-21T01:56:35Z",
+          "updatedAt": "2023-10-21T01:56:35Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\n\t    \t<xref target=\"PRMetadata\"/> defines metadata values that a protected\r\n```",
+              "createdAt": "2023-10-21T01:56:35Z",
+              "updatedAt": "2023-10-21T01:56:36Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJ1yJis5ky5Vx",
+          "commit": {
+            "abbreviatedOid": "f4f6002"
+          },
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-21T02:00:27Z",
+          "updatedAt": "2023-10-21T02:00:28Z",
+          "comments": [
+            {
+              "originalPosition": 9,
+              "body": "```suggestion\r\n\t      These values may be used by other specifications, such as the <spanx style=\"verb\">jwks_uri</spanx>\r\n```",
+              "createdAt": "2023-10-21T02:00:28Z",
+              "updatedAt": "2023-10-21T02:00:28Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJ1yJis5ky5j5",
+          "commit": {
+            "abbreviatedOid": "f4f6002"
+          },
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-21T02:01:11Z",
+          "updatedAt": "2023-10-21T02:01:12Z",
+          "comments": [
+            {
+              "originalPosition": 10,
+              "body": "```suggestion\r\n\t      used to publish public keys the resource server uses to sign\r\n```",
+              "createdAt": "2023-10-21T02:01:12Z",
+              "updatedAt": "2023-10-21T02:01:12Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJ1yJis5ky5wI",
+          "commit": {
+            "abbreviatedOid": "f4f6002"
+          },
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-21T02:01:35Z",
+          "updatedAt": "2023-10-21T02:01:35Z",
+          "comments": [
+            {
+              "originalPosition": 11,
+              "body": "```suggestion\r\n\t      resource responses, as described in Section 5.6.2 of <xref target=\"FAPI.MessageSigning\"/>.\r\n```",
+              "createdAt": "2023-10-21T02:01:35Z",
+              "updatedAt": "2023-10-21T02:01:36Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJ1yJis5ky6T_",
+          "commit": {
+            "abbreviatedOid": "f4f6002"
+          },
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-21T02:04:54Z",
+          "updatedAt": "2023-10-21T02:04:55Z",
+          "comments": [
+            {
+              "originalPosition": 41,
+              "body": "```suggestion\r\n      \t\t</author>\r\n      \t\t<date day=\"24\" month=\"March\" year=\"2023\" />\r\n```",
+              "createdAt": "2023-10-21T02:04:54Z",
+              "updatedAt": "2023-10-21T02:04:55Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJ1yJis5ky6Xq",
+          "commit": {
+            "abbreviatedOid": "67902e8"
+          },
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "I can see why this one was tricky.\r\n\r\nOne more suggestion to approve, then merge.",
+          "createdAt": "2023-10-21T02:06:12Z",
+          "updatedAt": "2023-10-21T02:06:12Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "id": "PR_kwDOJ1yJis5i_TJr",
+      "title": "Switch from concatenating to inserting .well-known string",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/18",
+      "state": "MERGED",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "As discussed during IETF 118.\r\n\r\nFixes #17 ",
+      "createdAt": "2024-01-01T00:25:47Z",
+      "updatedAt": "2024-01-22T22:12:24Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "482b5de3efc18a71e3986217edea6fdab91bc572",
+      "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
+      "headRefName": "mbj-well-known",
+      "headRefOid": "4ccf8f3ec451c95959be60a45b283b859501538a",
+      "closedAt": "2024-01-22T22:12:23Z",
+      "mergedAt": "2024-01-22T22:12:23Z",
+      "mergedBy": "aaronpk",
+      "mergeCommit": {
+        "oid": "a60209199cca2e4cd714f7706f290f3314d8249d"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 20,
+      "id": "PR_kwDOJ1yJis5i_XkV",
+      "title": "Have WWW-Authenticate return resource_metadata URL",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/20",
+      "state": "MERGED",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #8 ",
+      "createdAt": "2024-01-01T01:11:19Z",
+      "updatedAt": "2024-01-22T21:58:32Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "5910a09ac252057acf4d4e1f547791f9d1afd426",
+      "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
+      "headRefName": "mbj-www-authenticate-resource_metadata",
+      "headRefOid": "96b783a26dba7c47bb41588ecec0403fed60b3aa",
+      "closedAt": "2024-01-22T21:58:32Z",
+      "mergedAt": "2024-01-22T21:58:32Z",
+      "mergedBy": "aaronpk",
+      "mergeCommit": {
+        "oid": "482b5de3efc18a71e3986217edea6fdab91bc572"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 21,
+      "id": "PR_kwDOJ1yJis5i_aqp",
+      "title": "Register signed_metadata parameter",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/21",
+      "state": "MERGED",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #19 ",
+      "createdAt": "2024-01-01T01:35:24Z",
+      "updatedAt": "2024-01-22T21:53:58Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "5910a09ac252057acf4d4e1f547791f9d1afd426",
+      "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
+      "headRefName": "mbj-register-signed_metadata",
+      "headRefOid": "8c635d20152f1241767b537cc16049f74720fea0",
+      "closedAt": "2024-01-22T21:53:57Z",
+      "mergedAt": "2024-01-22T21:53:57Z",
+      "mergedBy": "aaronpk",
+      "mergeCommit": {
+        "oid": "e2fdbf3594ad7db53b3233111d47b6ad6e44acf0"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 22,
+      "id": "PR_kwDOJ1yJis5lDCIO",
+      "title": "fix bearer_methods_supported",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/22",
+      "state": "MERGED",
+      "author": "panva",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "This fixes the `bearer_methods_supported` definition, it incorrectly used \"fragment\" when it meant \"body\" as later shown in section-3.2",
+      "createdAt": "2024-01-25T10:23:14Z",
+      "updatedAt": "2024-01-30T11:08:15Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "5bcba637d47b792bf9de32e9a3b762c04d4d08ab",
+      "headRepository": "panva/draft-ietf-oauth-resource-metadata",
+      "headRefName": "fix-fragment",
+      "headRefOid": "e9e936a991f28f0ae7b8ecc0b5a77c06a251c362",
+      "closedAt": "2024-01-30T11:02:41Z",
+      "mergedAt": "2024-01-30T11:02:41Z",
+      "mergedBy": "selfissued",
+      "mergeCommit": {
+        "oid": "f0b853212ba3ba839b9bf74833514f7b901e441d"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ1yJis5uUm8z",
+          "commit": {
+            "abbreviatedOid": "e9e936a"
+          },
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-01-30T11:02:33Z",
+          "updatedAt": "2024-01-30T11:02:33Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "id": "PR_kwDOJ1yJis5rGLzq",
+      "title": "Apply Atul's WGLC feedback",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/23",
+      "state": "MERGED",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-03-28T19:56:44Z",
+      "updatedAt": "2024-04-03T15:30:07Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "a907e6b42875aa43a31486680c42696dc425389e",
+      "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
+      "headRefName": "mbj-atul",
+      "headRefOid": "6b1a15dce504210c968bfb106646e33417fbf468",
+      "closedAt": "2024-04-03T15:30:06Z",
+      "mergedAt": "2024-04-03T15:30:06Z",
+      "mergedBy": "selfissued",
+      "mergeCommit": {
+        "oid": "ed7002bd7169f8fab842c3904ad9d4a6a9f90e5e"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ1yJis51QOAP",
+          "commit": {
+            "abbreviatedOid": "9062a32"
+          },
+          "author": "tulshi",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-03-28T20:15:13Z",
+          "updatedAt": "2024-03-28T20:15:13Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJ1yJis51bMCf",
+          "commit": {
+            "abbreviatedOid": "6b1a15d"
+          },
+          "author": "tulshi",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-03-30T21:43:56Z",
+          "updatedAt": "2024-03-30T21:43:56Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 34,
+      "id": "PR_kwDOJ1yJis5tSHLe",
+      "title": "Clarify use of algorithms",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/34",
+      "state": "MERGED",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #24 \r\nFixes #26 \r\n\r\ncc @vdzhuvinov @PieterKas\r\n",
+      "createdAt": "2024-04-21T20:49:09Z",
+      "updatedAt": "2024-04-24T19:15:45Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "e76c3d842d0b55907af6fd75ecd461d4c363a54d",
+      "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
+      "headRefName": "mbj-clarify-algs",
+      "headRefOid": "cd5960c47c9f9a9870895b82fffa9090b3c5315e",
+      "closedAt": "2024-04-24T19:15:45Z",
+      "mergedAt": "2024-04-24T19:15:45Z",
+      "mergedBy": "selfissued",
+      "mergeCommit": {
+        "oid": "b334ad230788a2660975d1521f1d234495f09466"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ1yJis54Ee9G",
+          "commit": {
+            "abbreviatedOid": "0e4f671"
+          },
+          "author": "vdzhuvinov",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-22T10:55:49Z",
+          "updatedAt": "2024-04-22T10:55:50Z",
+          "comments": [
+            {
+              "originalPosition": 18,
+              "body": "There should be a `.` at the end of this sentence.",
+              "createdAt": "2024-04-22T10:55:49Z",
+              "updatedAt": "2024-04-22T10:55:50Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJ1yJis54EfOv",
+          "commit": {
+            "abbreviatedOid": "703de15"
+          },
+          "author": "vdzhuvinov",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-04-22T10:56:23Z",
+          "updatedAt": "2024-04-22T10:56:23Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJ1yJis54FCrb",
+          "commit": {
+            "abbreviatedOid": "703de15"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-22T12:12:30Z",
+          "updatedAt": "2024-04-22T12:12:30Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "@aaronpk and @selfissued, Is the intent here that if no key usage is specified, the keys are signing keys? Why not always be explicit. Either explicitly state that all keys are signing keys by default, and if encryption keys are used, key usage should be added, or alternatively make a key usage parameter mandatory, whether the keys are signing keys only, or if there are a mix of signing and encryption keys.",
+              "createdAt": "2024-04-22T12:12:30Z",
+              "updatedAt": "2024-04-22T12:12:31Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJ1yJis54FNn2",
+          "commit": {
+            "abbreviatedOid": "703de15"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "NONE",
+          "state": "CHANGES_REQUESTED",
+          "body": "The proposed text makes the key usage implicit, unless otherwise stated. It is also unclear if it is OK to include key usage even if there are only signing keys. \r\n\r\nFrom an implementation perspective, this creates complexity as there are now two cases to handle (1) implicit (no usage and unclear what to do if key usage is present only for signing keys - assumption is honour it, but perhaps better to be explicit) and (2) parse key usage if present. \r\n\r\nBy removing the implicit option and always forcing key usage it removes the additional ambiguity and simplified code (i.e. always check for key usage, if no key usage, error).\r\n\r\nSuggestion:\r\n\r\nReplace: \r\n\r\nWhen both signing and encryption keys are made available, a <spanx style=\"verb\">use</spanx> (public key use) parameter value is REQUIRED for all keys in the referenced JWK Set to indicate each key's intended usage.\r\n\r\nWith:\r\n\r\n\"A <spanx style=\"verb\">use</spanx> (public key use) parameter value is REQUIRED for all keys in the referenced JWK Set to indicate each key's intended usage.",
+          "createdAt": "2024-04-22T12:33:58Z",
+          "updatedAt": "2024-04-22T12:33:58Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJ1yJis54IUye",
+          "commit": {
+            "abbreviatedOid": "703de15"
+          },
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-22T17:45:43Z",
+          "updatedAt": "2024-04-22T17:45:43Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "This is exactly the same language as in the `jwks_uri` definition at https://www.rfc-editor.org/rfc/rfc8414.html#section-2.  I would rather keep the OAuth metadata specs consistent in their treatment of this parameter.\r\n\r\nAre you OK approving this on that basis, @PieterKas ?  Thanks.",
+              "createdAt": "2024-04-22T17:45:43Z",
+              "updatedAt": "2024-04-22T17:45:43Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJ1yJis54IrvY",
+          "commit": {
+            "abbreviatedOid": "703de15"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-22T18:34:03Z",
+          "updatedAt": "2024-04-22T18:34:03Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "@selfissued thanks for pointing that out. \r\n\r\nI was thinking through whether we will break something if we move away from the implicit key usage defined in the Authorization Server Metadata spec and concluded that we probably end up making the developers life more difficult as they now have two different models for validating resource metadata, creating opportunity for confusion and reducing re-use. So assuming they are parsing and validating authorization server metadata correctly, they should be able to do the same for resource metadata. So, I think with that, I am good with approving the changes.",
+              "createdAt": "2024-04-22T18:34:03Z",
+              "updatedAt": "2024-04-22T18:34:03Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJ1yJis54IsBE",
+          "commit": {
+            "abbreviatedOid": "703de15"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-04-22T18:34:50Z",
+          "updatedAt": "2024-04-22T18:34:50Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJ1yJis54JYIS",
+          "commit": {
+            "abbreviatedOid": "703de15"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-22T20:13:23Z",
+          "updatedAt": "2024-04-22T20:13:24Z",
+          "comments": [
+            {
+              "originalPosition": 61,
+              "body": "```suggestion\r\n\t    <spanx style=\"verb\">resource_signing_alg_values_supported</spanx> and\r\n```\r\ni think is what was intended. ",
+              "createdAt": "2024-04-22T20:13:24Z",
+              "updatedAt": "2024-04-22T20:13:24Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJ1yJis54JfwP",
+          "commit": {
+            "abbreviatedOid": "703de15"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-22T20:33:44Z",
+          "updatedAt": "2024-04-22T20:33:44Z",
+          "comments": [
+            {
+              "originalPosition": 40,
+              "body": "This reads like FAPI Message Signing is the only means of signing resource responses that this is applicable to, which I don't think is intended? Maybe qualify it with a \"such as described\"... \r\n\r\nAlso FWIW there is no Section 5.6.2 in the referenced version of FAPI 2.0 Message Signing.  It's in the WG/editors copy but not the published draft. \r\n\r\nAnd (draft) FAPI Message Signing uses HTTP Message Signatures, which allows for or accommodates JWS Algorithms https://datatracker.ietf.org/doc/html/rfc9421#name-json-web-signature-jws-algo but is not limited to them https://datatracker.ietf.org/doc/html/rfc9421#section-3.3 / https://www.iana.org/assignments/http-message-signature/http-message-signature.xhtml#signature-algorithms so there's kind of an impedance mismatch in this parameter that is defined as `a list of the JWS <xref target=\"JWS\" /> signing algorithms` and applicability to FAPI Message Signing and HTTP Message Signatures in general. \r\n\r\n",
+              "createdAt": "2024-04-22T20:33:44Z",
+              "updatedAt": "2024-04-22T20:33:45Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJ1yJis54bsWc",
+          "commit": {
+            "abbreviatedOid": "f9dee25"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-24T17:37:56Z",
+          "updatedAt": "2024-04-24T17:37:57Z",
+          "comments": [
+            {
+              "originalPosition": 28,
+              "body": "```suggestion\r\n\t    supported by the protected resource.\r\n```",
+              "createdAt": "2024-04-24T17:37:57Z",
+              "updatedAt": "2024-04-24T17:37:57Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJ1yJis54bwWD",
+          "commit": {
+            "abbreviatedOid": "e3a5721"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-04-24T17:40:54Z",
+          "updatedAt": "2024-04-24T17:40:54Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJ1yJis54bw6x",
+          "commit": {
+            "abbreviatedOid": "f9dee25"
+          },
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-24T17:42:15Z",
+          "updatedAt": "2024-04-24T17:42:15Z",
+          "comments": [
+            {
+              "originalPosition": 18,
+              "body": "This is not the end of the sentence.  The full sentence is:\r\n> JSON array containing a list of the JWS signing algorithms (\"alg\" values) supported by the protected resource for signing resource responses, for instance, as described in [FAPI.MessageSigning].",
+              "createdAt": "2024-04-24T17:42:15Z",
+              "updatedAt": "2024-04-24T17:45:53Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJ1yJis54b0Hi",
+          "commit": {
+            "abbreviatedOid": "0e4f671"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-24T17:49:30Z",
+          "updatedAt": "2024-04-24T17:49:30Z",
+          "comments": [
+            {
+              "originalPosition": 18,
+              "body": "now it's erroneously two sentences e3a57219cb1364185686d26ad820acece6095937",
+              "createdAt": "2024-04-24T17:49:30Z",
+              "updatedAt": "2024-04-24T17:49:30Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJ1yJis54cbzD",
+          "commit": {
+            "abbreviatedOid": "0e4f671"
+          },
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-24T19:12:23Z",
+          "updatedAt": "2024-04-24T19:12:24Z",
+          "comments": [
+            {
+              "originalPosition": 18,
+              "body": "Corrected",
+              "createdAt": "2024-04-24T19:12:23Z",
+              "updatedAt": "2024-04-24T19:12:24Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 35,
+      "id": "PR_kwDOJ1yJis5tSIca",
+      "title": "Improved bearer_methods_supported wording",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/35",
+      "state": "MERGED",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #25\r\n\r\ncc @PieterKas\r\n",
+      "createdAt": "2024-04-21T21:06:38Z",
+      "updatedAt": "2024-04-24T19:03:55Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "ed7002bd7169f8fab842c3904ad9d4a6a9f90e5e",
+      "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
+      "headRefName": "mbj-bearer-methods",
+      "headRefOid": "29f3cecdb39cf01f8ae4c739d33a967b39286e3b",
+      "closedAt": "2024-04-24T19:03:55Z",
+      "mergedAt": "2024-04-24T19:03:55Z",
+      "mergedBy": "selfissued",
+      "mergeCommit": {
+        "oid": "27dca321cf4819bb869dd2dc1eeaff628d9d2860"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ1yJis54FIeP",
+          "commit": {
+            "abbreviatedOid": "29f3cec"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "The text is clear and brings better alignment with the name of the parameter. ",
+          "createdAt": "2024-04-22T12:24:11Z",
+          "updatedAt": "2024-04-22T12:24:11Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJ1yJis54bqaB",
+          "commit": {
+            "abbreviatedOid": "29f3cec"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-04-24T17:34:12Z",
+          "updatedAt": "2024-04-24T17:34:12Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 36,
+      "id": "PR_kwDOJ1yJis5tYjCk",
+      "title": "Reference examples of .well-known construction",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/36",
+      "state": "MERGED",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #27 \r\n\r\ncc @PieterKas",
+      "createdAt": "2024-04-22T17:55:15Z",
+      "updatedAt": "2024-04-24T19:04:21Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "ed7002bd7169f8fab842c3904ad9d4a6a9f90e5e",
+      "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
+      "headRefName": "mbj-well-known-example",
+      "headRefOid": "b4785fb91b76448812b90c3ef85cdce8a39e04a7",
+      "closedAt": "2024-04-24T19:04:21Z",
+      "mergedAt": "2024-04-24T19:04:21Z",
+      "mergedBy": "selfissued",
+      "mergeCommit": {
+        "oid": "50c68f1a93b4f7ebc5bb965a3d3454eeb76da46a"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ1yJis54IwFr",
+          "commit": {
+            "abbreviatedOid": "b4785fb"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "Looks good to me.",
+          "createdAt": "2024-04-22T18:40:53Z",
+          "updatedAt": "2024-04-22T18:40:53Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJ1yJis54bqGq",
+          "commit": {
+            "abbreviatedOid": "b4785fb"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-04-24T17:33:32Z",
+          "updatedAt": "2024-04-24T17:33:32Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 37,
+      "id": "PR_kwDOJ1yJis5tZNRm",
+      "title": "Cross-reference impersonation attack text",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/37",
+      "state": "MERGED",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #29 \r\n\r\nCc @PieterKas\r\n",
+      "createdAt": "2024-04-22T19:47:27Z",
+      "updatedAt": "2024-04-24T19:04:39Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "ed7002bd7169f8fab842c3904ad9d4a6a9f90e5e",
+      "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
+      "headRefName": "mbj-impersonation",
+      "headRefOid": "de62532ecb7dabdf746afc2b88e0c0ff983a714c",
+      "closedAt": "2024-04-24T19:04:39Z",
+      "mergedAt": "2024-04-24T19:04:39Z",
+      "mergedBy": "selfissued",
+      "mergeCommit": {
+        "oid": "c20ab4feb2f687b00155c97f36091b02d9b1189d"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ1yJis54NI_R",
+          "commit": {
+            "abbreviatedOid": "de62532"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "Looks good to me.",
+          "createdAt": "2024-04-23T09:19:15Z",
+          "updatedAt": "2024-04-23T09:19:15Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJ1yJis54bnxr",
+          "commit": {
+            "abbreviatedOid": "de62532"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-04-24T17:29:45Z",
+          "updatedAt": "2024-04-24T17:29:45Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 38,
+      "id": "PR_kwDOJ1yJis5tZVNh",
+      "title": "Improve protected_resources description",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/38",
+      "state": "MERGED",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #30 \r\n\r\nCc @PieterKas\r\n",
+      "createdAt": "2024-04-22T20:07:51Z",
+      "updatedAt": "2024-04-24T19:05:07Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "ed7002bd7169f8fab842c3904ad9d4a6a9f90e5e",
+      "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
+      "headRefName": "mbj-protected_resources",
+      "headRefOid": "33ac4660bb721b565aee888d7331fd77c1357076",
+      "closedAt": "2024-04-24T19:05:07Z",
+      "mergedAt": "2024-04-24T19:05:07Z",
+      "mergedBy": "selfissued",
+      "mergeCommit": {
+        "oid": "04dce902314c3ce4e7f271e99fae96b2f1f365c5"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ1yJis54NJ6w",
+          "commit": {
+            "abbreviatedOid": "33ac466"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "Looks good to me.",
+          "createdAt": "2024-04-23T09:21:03Z",
+          "updatedAt": "2024-04-23T09:21:03Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJ1yJis54bm_l",
+          "commit": {
+            "abbreviatedOid": "33ac466"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-04-24T17:28:32Z",
+          "updatedAt": "2024-04-24T17:28:32Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 39,
+      "id": "PR_kwDOJ1yJis5tZaan",
+      "title": "Enhance WWW-Authenticate description",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/39",
+      "state": "MERGED",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #32 \r\n\r\ncc @PieterKas\r\n",
+      "createdAt": "2024-04-22T20:23:03Z",
+      "updatedAt": "2024-04-24T19:05:30Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "ed7002bd7169f8fab842c3904ad9d4a6a9f90e5e",
+      "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
+      "headRefName": "mbj-enhance-WWW-Authenticate",
+      "headRefOid": "9e61da8af42d3add7e5ec61715930d82a16c0599",
+      "closedAt": "2024-04-24T19:05:30Z",
+      "mergedAt": "2024-04-24T19:05:30Z",
+      "mergedBy": "selfissued",
+      "mergeCommit": {
+        "oid": "e76c3d842d0b55907af6fd75ecd461d4c363a54d"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ1yJis54NK05",
+          "commit": {
+            "abbreviatedOid": "9e61da8"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "Looks good to me.",
+          "createdAt": "2024-04-23T09:22:44Z",
+          "updatedAt": "2024-04-23T09:22:44Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJ1yJis54bmsz",
+          "commit": {
+            "abbreviatedOid": "9e61da8"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-04-24T17:27:55Z",
+          "updatedAt": "2024-04-24T17:27:55Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 40,
+      "id": "PR_kwDOJ1yJis5tZgsB",
+      "title": "Reorder Authorization Servers security considerations",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/40",
+      "state": "MERGED",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #33 \r\n\r\ncc @PieterKas\r\n",
+      "createdAt": "2024-04-22T20:40:52Z",
+      "updatedAt": "2024-04-24T17:24:56Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "ed7002bd7169f8fab842c3904ad9d4a6a9f90e5e",
+      "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
+      "headRefName": "mbj-ASs-security",
+      "headRefOid": "dd9176254fe9dc18fd7295346ffd3de186283ee3",
+      "closedAt": "2024-04-24T17:24:55Z",
+      "mergedAt": "2024-04-24T17:24:55Z",
+      "mergedBy": "aaronpk",
+      "mergeCommit": {
+        "oid": "da15fc8a3e743aab15bf62828243590b99abf040"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ1yJis54NL83",
+          "commit": {
+            "abbreviatedOid": "dd91762"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "Looks good to me.",
+          "createdAt": "2024-04-23T09:24:55Z",
+          "updatedAt": "2024-04-23T09:24:55Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJ1yJis54blX8",
+          "commit": {
+            "abbreviatedOid": "dd91762"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-04-24T17:24:48Z",
+          "updatedAt": "2024-04-24T17:24:48Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 41,
+      "id": "PR_kwDOJ1yJis5tpHl7",
+      "title": "Define term \"application\" as used by the specification",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/41",
+      "state": "MERGED",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #28 \r\n\r\nCc @PieterKas",
+      "createdAt": "2024-04-24T19:32:35Z",
+      "updatedAt": "2024-04-24T20:54:43Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "b334ad230788a2660975d1521f1d234495f09466",
+      "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
+      "headRefName": "mbj-application",
+      "headRefOid": "ea432ab4acf10b2065f49f28e68abb4540b9dae7",
+      "closedAt": "2024-04-24T20:54:43Z",
+      "mergedAt": "2024-04-24T20:54:43Z",
+      "mergedBy": "selfissued",
+      "mergeCommit": {
+        "oid": "5c746bbb1aab04c1e489137de369a732985ce495"
+      },
+      "comments": [
+        {
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "body": "well that's one way to solve it!",
+          "createdAt": "2024-04-24T20:50:53Z",
+          "updatedAt": "2024-04-24T20:50:53Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ1yJis54cxWA",
+          "commit": {
+            "abbreviatedOid": "ea432ab"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "Looks good to me.",
+          "createdAt": "2024-04-24T19:48:17Z",
+          "updatedAt": "2024-04-24T19:48:17Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJ1yJis54dMT4",
+          "commit": {
+            "abbreviatedOid": "ea432ab"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-04-24T20:51:00Z",
+          "updatedAt": "2024-04-24T20:51:00Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 42,
+      "id": "PR_kwDOJ1yJis5txt3L",
+      "title": "add sequence diagram",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/42",
+      "state": "MERGED",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "closes #31\r\n\r\nThis builds on my local machine without changing to v3!",
+      "createdAt": "2024-04-25T21:36:29Z",
+      "updatedAt": "2024-04-26T16:12:29Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "5c746bbb1aab04c1e489137de369a732985ce495",
+      "headRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "headRefName": "aaronpk-diagram",
+      "headRefOid": "57e87b33f92e43fbb108e27dba5893da89b24341",
+      "closedAt": "2024-04-26T16:12:29Z",
+      "mergedAt": "2024-04-26T16:12:29Z",
+      "mergedBy": "selfissued",
+      "mergeCommit": {
+        "oid": "90f3d6551d1d1a22599a92f1be1161d49efd4ffe"
+      },
+      "comments": [
+        {
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Please change labels to Title Case.  Specifically, change spellings in both diagrams to:\r\n\r\nResource Request Without Access Token\r\nResource Request With Access Token\r\nRS Metadata Response\r\nAS Metadata Response\r\nResource Response\r\nValidate RS Metadata\r\nBuild AS Metadata URL\r\nClient Obtains Access Token\r\n\r\n",
+          "createdAt": "2024-04-25T21:49:42Z",
+          "updatedAt": "2024-04-25T21:49:42Z"
+        },
+        {
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Cc @PieterKas",
+          "createdAt": "2024-04-25T21:59:24Z",
+          "updatedAt": "2024-04-25T21:59:24Z"
+        },
+        {
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "body": "Preview links:\r\n\r\nHTML: https://drafts.oauth.net/draft-ietf-oauth-resource-metadata/aaronpk-diagram/draft-ietf-oauth-resource-metadata.html#section-5\r\n\r\nText: https://drafts.oauth.net/draft-ietf-oauth-resource-metadata/aaronpk-diagram/draft-ietf-oauth-resource-metadata.txt",
+          "createdAt": "2024-04-25T22:01:27Z",
+          "updatedAt": "2024-04-25T22:01:27Z"
+        },
+        {
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Thanks for the preview links.  But they lead me to request two nitpicky changes. ;-)\r\n\r\nIn the ASCII diagram, move \"Client\" to the first line of the box.\r\nIn the SVG diagram, change \"with\" to \"With\".\r\n\r\nThanks.",
+          "createdAt": "2024-04-25T22:06:32Z",
+          "updatedAt": "2024-04-25T22:06:32Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "NONE",
+          "body": "Looks good to me, thanks for adding this, it brings a lot of clarity.",
+          "createdAt": "2024-04-26T14:35:21Z",
+          "updatedAt": "2024-04-26T14:35:21Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ1yJis54nqCO",
+          "commit": {
+            "abbreviatedOid": "6564eda"
+          },
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-04-25T21:58:09Z",
+          "updatedAt": "2024-04-25T21:58:09Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJ1yJis54tj8V",
+          "commit": {
+            "abbreviatedOid": "57e87b3"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-04-26T14:35:40Z",
+          "updatedAt": "2024-04-26T14:35:40Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 43,
+      "id": "PR_kwDOJ1yJis5ugZ-d",
+      "title": "add back SVG diagram",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/43",
+      "state": "MERGED",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-05-03T19:29:59Z",
+      "updatedAt": "2024-05-03T20:07:48Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "d55de032394219c3424d010bba4087914ad5d904",
+      "headRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "headRefName": "aaronpk-diagram",
+      "headRefOid": "b2f9666f434fafc6d0d860bf85769745135a099c",
+      "closedAt": "2024-05-03T20:07:48Z",
+      "mergedAt": "2024-05-03T20:07:48Z",
+      "mergedBy": "selfissued",
+      "mergeCommit": {
+        "oid": "171139ea0896ae937b07fd07c7ff3531bd90e6b6"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ1yJis55h2fV",
+          "commit": {
+            "abbreviatedOid": "30fc7b9"
+          },
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-05-03T19:59:42Z",
+          "updatedAt": "2024-05-03T19:59:42Z",
+          "comments": [
+            {
+              "originalPosition": 127,
+              "body": "```suggestion\r\n]]></artwork>\r\n```",
+              "createdAt": "2024-05-03T19:59:42Z",
+              "updatedAt": "2024-05-03T19:59:42Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJ1yJis55h2vP",
+          "commit": {
+            "abbreviatedOid": "dc90333"
+          },
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-05-03T20:00:34Z",
+          "updatedAt": "2024-05-03T20:00:34Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJ1yJis55h4V_",
+          "commit": {
+            "abbreviatedOid": "dc90333"
+          },
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-05-03T20:05:44Z",
+          "updatedAt": "2024-05-03T20:05:45Z",
+          "comments": [
+            {
+              "originalPosition": 116,
+              "body": "```suggestion\r\n    <artwork type=\"ascii-art\" name=\"sequence.txt\"><![CDATA[\r\n```",
+              "createdAt": "2024-05-03T20:05:44Z",
+              "updatedAt": "2024-05-03T20:05:45Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 45,
+      "id": "PR_kwDOJ1yJis50lFM0",
+      "title": "Address shepherd review comments",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/45",
+      "state": "MERGED",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Addressed shepherd review comments by Rifaat Shekh-Yusef.\r\n\r\ncc: @independentid",
+      "createdAt": "2024-07-06T04:28:41Z",
+      "updatedAt": "2024-07-08T17:20:37Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "171139ea0896ae937b07fd07c7ff3531bd90e6b6",
+      "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
+      "headRefName": "mbj-shepherd",
+      "headRefOid": "bb77cd1ff72abd5dfdfc8b9e06d6d278792dd848",
+      "closedAt": "2024-07-08T17:20:37Z",
+      "mergedAt": "2024-07-08T17:20:37Z",
+      "mergedBy": "selfissued",
+      "mergeCommit": {
+        "oid": "2c5215116f1ac2e2018d4db7542b6cdd7b0f1719"
+      },
+      "comments": [],
+      "reviews": []
+    }
+  ]
+}
