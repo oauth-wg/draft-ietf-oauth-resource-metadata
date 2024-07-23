@@ -1046,7 +1046,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Jones, et al.</td>
-<td class="center">Expires 9 January 2025</td>
+<td class="center">Expires 23 January 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1059,12 +1059,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-resource-metadata-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-07-08" class="published">8 July 2024</time>
+<time datetime="2024-07-22" class="published">22 July 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-01-09">9 January 2025</time></dd>
+<dd class="expires"><time datetime="2025-01-23">23 January 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1110,7 +1110,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 9 January 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 23 January 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1957,13 +1957,6 @@ svg :is([fill="white"], [fill^="#fff"]) {
    Resource servers MAY return other <code>WWW-Authenticate</code> headers indicating various authentication schemes.
    This allows the resource server to support clients that may or may not implement this specification,
    and allows clients to choose their preferred authentication scheme.<a href="#section-5.4-1" class="pilcrow">¶</a></p>
-<p id="section-5.4-2">
-   A fair question is whether allowing clients to choose from among
-   supported authentication methods represents an opportunity for a downgrade attack.
-   Since resource servers will only enumerate authentication methods acceptable to them, by definition,
-   any choice made by the client from among them is one that the resource server is OK with.
-   Thus, the resource server allowing the use of different supported authentication methods
-   does not represent an opportunity for a downgrade attack.<a href="#section-5.4-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -2702,101 +2695,110 @@ svg :is([fill="white"], [fill^="#fff"]) {
       </h2>
 <p id="appendix-B-1">[[ to be removed by the RFC Editor before publication as an RFC ]]<a href="#appendix-B-1" class="pilcrow">¶</a></p>
 <p id="appendix-B-2">
- -06<a href="#appendix-B-2" class="pilcrow">¶</a></p>
+ -07<a href="#appendix-B-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-B-3.1">
           <p id="appendix-B-3.1.1">
-     Addressed shepherd review comments by Rifaat Shekh-Yusef.<a href="#appendix-B-3.1.1" class="pilcrow">¶</a></p>
+     Removed extraneous paragraph about downgrade attacks discussing
+     an issue that's already addressed elsewhere in the specification.<a href="#appendix-B-3.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-B-4">
- -05<a href="#appendix-B-4" class="pilcrow">¶</a></p>
+ -06<a href="#appendix-B-4" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-B-5.1">
           <p id="appendix-B-5.1.1">
-     Added SVG diagram<a href="#appendix-B-5.1.1" class="pilcrow">¶</a></p>
+     Addressed shepherd review comments by Rifaat Shekh-Yusef.<a href="#appendix-B-5.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-B-6">
- -04<a href="#appendix-B-6" class="pilcrow">¶</a></p>
+ -05<a href="#appendix-B-6" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-B-7.1">
           <p id="appendix-B-7.1.1">
-     Applied working group last call suggestions by
-     Atul Tulshibagwale.<a href="#appendix-B-7.1.1" class="pilcrow">¶</a></p>
+     Added SVG diagram<a href="#appendix-B-7.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-B-7.2">
-          <p id="appendix-B-7.2.1">
+      </ul>
+<p id="appendix-B-8">
+ -04<a href="#appendix-B-8" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-B-9.1">
+          <p id="appendix-B-9.1.1">
+     Applied working group last call suggestions by
+     Atul Tulshibagwale.<a href="#appendix-B-9.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-9.2">
+          <p id="appendix-B-9.2.1">
      Better described the purpose of
      <code>resource_signing_alg_values_supported</code> and
      removed <code>resource_encryption_alg_values_supported</code> and
      <code>resource_encryption_enc_values_supported</code>,
-     per WGLC comments by Vladimir Dzhuvinov and Brian Campbell.<a href="#appendix-B-7.2.1" class="pilcrow">¶</a></p>
+     per WGLC comments by Vladimir Dzhuvinov and Brian Campbell.<a href="#appendix-B-9.2.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-B-7.3">
-          <p id="appendix-B-7.3.1">
-     Applied suggestions by Pieter Kasselman.<a href="#appendix-B-7.3.1" class="pilcrow">¶</a></p>
-</li>
-      </ul>
-<p id="appendix-B-8">
- -03<a href="#appendix-B-8" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="appendix-B-9.1">
-          <p id="appendix-B-9.1.1">
-     Applied correction by Filip Skokan.<a href="#appendix-B-9.1.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-B-9.3">
+          <p id="appendix-B-9.3.1">
+     Applied suggestions by Pieter Kasselman.<a href="#appendix-B-9.3.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-B-10">
- -02<a href="#appendix-B-10" class="pilcrow">¶</a></p>
+ -03<a href="#appendix-B-10" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-B-11.1">
           <p id="appendix-B-11.1.1">
-     Switched from concatenating .well-known to the end of the resource identifier
-     to inserting it between the host and path components of it.<a href="#appendix-B-11.1.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-11.2">
-          <p id="appendix-B-11.2.1">
-     Have WWW-Authenticate return <code>resource_metadata</code> rather than <code>resource</code>.<a href="#appendix-B-11.2.1" class="pilcrow">¶</a></p>
+     Applied correction by Filip Skokan.<a href="#appendix-B-11.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-B-12">
- -01<a href="#appendix-B-12" class="pilcrow">¶</a></p>
+ -02<a href="#appendix-B-12" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-B-13.1">
           <p id="appendix-B-13.1.1">
-     Renamed scopes_provided to scopes_supported.<a href="#appendix-B-13.1.1" class="pilcrow">¶</a></p>
+     Switched from concatenating .well-known to the end of the resource identifier
+     to inserting it between the host and path components of it.<a href="#appendix-B-13.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-B-13.2">
           <p id="appendix-B-13.2.1">
-     Added security consideration for scopes_supported.<a href="#appendix-B-13.2.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-13.3">
-          <p id="appendix-B-13.3.1">
-     Use BCP 195 for TLS recommendations.<a href="#appendix-B-13.3.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-13.4">
-          <p id="appendix-B-13.4.1">
-     Clarified that resource metadata can be used by clients and authorization servers.<a href="#appendix-B-13.4.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-13.5">
-          <p id="appendix-B-13.5.1">
-     Updated references.<a href="#appendix-B-13.5.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-13.6">
-          <p id="appendix-B-13.6.1">
-     Added security consideration recommending audience-restricted access tokens.<a href="#appendix-B-13.6.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-13.7">
-          <p id="appendix-B-13.7.1">
-     Mention FAPI Message Signing as a use case for publishing signing keys.<a href="#appendix-B-13.7.1" class="pilcrow">¶</a></p>
+     Have WWW-Authenticate return <code>resource_metadata</code> rather than <code>resource</code>.<a href="#appendix-B-13.2.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-B-14">
- -00<a href="#appendix-B-14" class="pilcrow">¶</a></p>
+ -01<a href="#appendix-B-14" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-B-15.1">
           <p id="appendix-B-15.1.1">
-     Initial working group version based on draft-jones-oauth-resource-metadata-04.<a href="#appendix-B-15.1.1" class="pilcrow">¶</a></p>
+     Renamed scopes_provided to scopes_supported.<a href="#appendix-B-15.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-15.2">
+          <p id="appendix-B-15.2.1">
+     Added security consideration for scopes_supported.<a href="#appendix-B-15.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-15.3">
+          <p id="appendix-B-15.3.1">
+     Use BCP 195 for TLS recommendations.<a href="#appendix-B-15.3.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-15.4">
+          <p id="appendix-B-15.4.1">
+     Clarified that resource metadata can be used by clients and authorization servers.<a href="#appendix-B-15.4.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-15.5">
+          <p id="appendix-B-15.5.1">
+     Updated references.<a href="#appendix-B-15.5.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-15.6">
+          <p id="appendix-B-15.6.1">
+     Added security consideration recommending audience-restricted access tokens.<a href="#appendix-B-15.6.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-15.7">
+          <p id="appendix-B-15.7.1">
+     Mention FAPI Message Signing as a use case for publishing signing keys.<a href="#appendix-B-15.7.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="appendix-B-16">
+ -00<a href="#appendix-B-16" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-B-17.1">
+          <p id="appendix-B-17.1.1">
+     Initial working group version based on draft-jones-oauth-resource-metadata-04.<a href="#appendix-B-17.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 </section>

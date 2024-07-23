@@ -5,10 +5,10 @@
 OAuth Working Group                                           M.B. Jones
 Internet-Draft                                    Self-Issued Consulting
 Intended status: Standards Track                                 P. Hunt
-Expires: 9 January 2025                       Independent Identity, Inc.
+Expires: 23 January 2025                      Independent Identity, Inc.
                                                               A. Parecki
                                                                     Okta
-                                                             8 July 2024
+                                                            22 July 2024
 
 
                  OAuth 2.0 Protected Resource Metadata
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 January 2025.
+   This Internet-Draft will expire on 23 January 2025.
 
 Copyright Notice
 
@@ -571,15 +571,6 @@ Table of Contents
    support clients that may or may not implement this specification, and
    allows clients to choose their preferred authentication scheme.
 
-   A fair question is whether allowing clients to choose from among
-   supported authentication methods represents an opportunity for a
-   downgrade attack.  Since resource servers will only enumerate
-   authentication methods acceptable to them, by definition, any choice
-   made by the client from among them is one that the resource server is
-   OK with.  Thus, the resource server allowing the use of different
-   supported authentication methods does not represent an opportunity
-   for a downgrade attack.
-
 6.  String Operations
 
    Processing some OAuth 2.0 messages requires comparing values in the
@@ -1051,6 +1042,11 @@ Appendix A.  Acknowledgements
 Appendix B.  Document History
 
    [[ to be removed by the RFC Editor before publication as an RFC ]]
+
+   -07
+
+   *  Removed extraneous paragraph about downgrade attacks discussing an
+      issue that's already addressed elsewhere in the specification.
 
    -06
 
