@@ -40,7 +40,7 @@
       </address>
     </author>
 
-    <date day="8" month="July" year="2024" />
+    <date day="22" month="July" year="2024" />
 
     <area>Security</area>
     <workgroup>OAuth Working Group</workgroup>
@@ -796,14 +796,6 @@
 	  Resource servers MAY return other <spanx style="verb">WWW-Authenticate</spanx> headers indicating various authentication schemes.
 	  This allows the resource server to support clients that may or may not implement this specification,
 	  and allows clients to choose their preferred authentication scheme.
-	</t>
-	<t>
-	  A fair question is whether allowing clients to choose from among
-	  supported authentication methods represents an opportunity for a downgrade attack.
-	  Since resource servers will only enumerate authentication methods acceptable to them, by definition,
-	  any choice made by the client from among them is one that the resource server is OK with.
-	  Thus, the resource server allowing the use of different supported authentication methods
-	  does not represent an opportunity for a downgrade attack.
 	</t>
       </section>
 
@@ -1562,6 +1554,16 @@
 
     <section anchor="History" title="Document History">
       <t>[[ to be removed by the RFC Editor before publication as an RFC ]]</t>
+
+      <t>
+	-07
+	<list style="symbols">
+	  <t>
+	    Removed extraneous paragraph about downgrade attacks discussing
+	    an issue that's already addressed elsewhere in the specification.
+	  </t>
+	</list>
+      </t>
 
       <t>
 	-06
