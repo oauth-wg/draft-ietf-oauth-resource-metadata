@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-23T00:06:53.143723+00:00",
+  "timestamp": "2024-07-25T00:06:42.678499+00:00",
   "repo": "oauth-wg/draft-ietf-oauth-resource-metadata",
   "labels": [
     {
@@ -1970,24 +1970,26 @@
       "id": "PR_kwDOJ1yJis51_xGS",
       "title": "Removed extraneous paragraph",
       "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/46",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "selfissued",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Removed extraneous paragraph about downgrade attacks discussing an issue that's already addressed elsewhere in the specification.\r\n",
       "createdAt": "2024-07-20T21:51:21Z",
-      "updatedAt": "2024-07-21T19:38:22Z",
+      "updatedAt": "2024-07-23T00:47:00Z",
       "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
       "baseRefName": "main",
       "baseRefOid": "2c5215116f1ac2e2018d4db7542b6cdd7b0f1719",
       "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
       "headRefName": "mbj-remove-extraneous-paragraph",
-      "headRefOid": "253373e6fb3162fb698a6acd8bdeb5551c72d084",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "78ac76158b4213bc596b9bd475a9cbd20597ede6",
+      "closedAt": "2024-07-23T00:47:00Z",
+      "mergedAt": "2024-07-23T00:47:00Z",
+      "mergedBy": "selfissued",
+      "mergeCommit": {
+        "oid": "4d4e4213ddb9bbf02477a6cb8da08ca3e751950b"
+      },
       "comments": [],
       "reviews": [
         {
