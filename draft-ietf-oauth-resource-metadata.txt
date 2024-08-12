@@ -5,10 +5,10 @@
 OAuth Working Group                                           M.B. Jones
 Internet-Draft                                    Self-Issued Consulting
 Intended status: Standards Track                                 P. Hunt
-Expires: 23 January 2025                      Independent Identity, Inc.
+Expires: 12 February 2025                     Independent Identity, Inc.
                                                               A. Parecki
                                                                     Okta
-                                                            22 July 2024
+                                                          11 August 2024
 
 
                  OAuth 2.0 Protected Resource Metadata
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 January 2025.
+   This Internet-Draft will expire on 12 February 2025.
 
 Copyright Notice
 
@@ -78,6 +78,7 @@ Table of Contents
      7.6.  Authorization Servers
      7.7.  Server-Side Request Forgery (SSRF)
      7.8.  Phishing
+     7.9.  Differences between Unsigned and Signed Metadata
    8.  IANA Considerations
      8.1.  OAuth Protected Resource Metadata Registry
        8.1.1.  Registration Template
@@ -106,7 +107,7 @@ Table of Contents
    about an OAuth 2.0 authorization server.
 
    The metadata for a protected resource is retrieved from a well-known
-   location as a JSON [RFC7159] document, which declares information
+   location as a JSON [RFC8259] document, which declares information
    about its capabilities and optionally, its relationships to other
    services.  This process is described in Section 3.
 
@@ -170,7 +171,7 @@ Table of Contents
       The Protected resource's resource identifier, which is a URL that
       uses the https scheme and has no query or fragment components.
       Protected resource metadata is published at a .well-known location
-      [RFC5785] derived from this resource identifier, as described in
+      [RFC8615] derived from this resource identifier, as described in
       Section 3.
 
 2.  Protected Resource Metadata
@@ -197,13 +198,14 @@ Table of Contents
       used.
 
    jwks_uri
-      OPTIONAL.  URL of the protected resource's JWK Set [JWK] document.
-      This contains public keys belonging to the protected resource,
-      such as signing key(s) that the resource server uses to sign
-      resource responses.  This URL MUST use the https scheme.  When
-      both signing and encryption keys are made available, a use (public
-      key use) parameter value is REQUIRED for all keys in the
-      referenced JWK Set to indicate each key's intended usage.
+      OPTIONAL.  URL of the protected resource's JSON Web Key (JWK) Set
+      [JWK] document.  This contains public keys belonging to the
+      protected resource, such as signing key(s) that the resource
+      server uses to sign resource responses.  This URL MUST use the
+      https scheme.  When both signing and encryption keys are made
+      available, a use (public key use) parameter value is REQUIRED for
+      all keys in the referenced JWK Set to indicate each key's intended
+      usage.
 
    scopes_supported
       RECOMMENDED.  JSON array containing a list of the OAuth 2.0
@@ -273,7 +275,7 @@ Table of Contents
    resource's resource identifier between the host component and the
    path component, if any.  By default, the well-known URI string used
    is /.well-known/oauth-protected-resource.  The syntax and semantics
-   of .well-known are defined in [RFC5785].  The well-known URI path
+   of .well-known are defined in [RFC8615].  The well-known URI path
    suffix used MUST be registered in the IANA "Well-Known URIs" registry
    [IANA.well-known].  Examples of this construction can be found in
    Section 3.1.
@@ -335,7 +337,7 @@ Table of Contents
    Using path components enables supporting multiple resources per host.
    This is required in some multi-tenant hosting configurations.  This
    use of .well-known is for supporting multiple resources per host;
-   unlike its use in [RFC5785], it does not provide general information
+   unlike its use in [RFC8615], it does not provide general information
    about the host.
 
 3.2.  Protected Resource Metadata Response
@@ -733,12 +735,30 @@ Table of Contents
    authenticators, supporting the use of password managers, and applying
    heuristic checks such as domain reputation.
 
+7.9.  Differences between Unsigned and Signed Metadata
+
+   Unsigned metadata is integrity protected by use of TLS at the site
+   where it is hosted.  This means that its security is dependent upon
+   the Internet Public Key Infrastructure (PKI) [RFC9525].  Signed
+   metadata is additionally integrity protected by the JWS signature
+   applied by the issuer, which is not dependent upon the Internet PKI.
+
+   When using unsigned metadata, the party issuing the metadata is the
+   protected resource itself, which is represented by the resource value
+   in the metadata.  Whereas, when using signed metadata, the party
+   issuing the metadata is represented by the iss (issuer) claim in the
+   signed metadata.  When using signed metadata, applications can make
+   trust decisions based on the issuer that performed the signing --
+   information that is not available when using unsigned metadata.  How
+   these trust decisions are made is out of scope for this
+   specification.
+
 8.  IANA Considerations
 
    The following registration procedure is used for the registry
    established by this specification.
 
-   Values are registered on a Specification Required [RFC5226] basis
+   Values are registered on a Specification Required [RFC8126] basis
    after a two-week review period on the oauth-ext-review@ietf.org
    mailing list, on the advice of one or more Designated Experts.
    However, to allow for the allocation of values prior to publication,
@@ -888,8 +908,7 @@ Table of Contents
 8.3.  Well-Known URI Registry
 
    This specification registers the well-known URI defined in Section 3
-   in the IANA "Well-Known URIs" registry [IANA.well-known] established
-   by [RFC5785].
+   in the IANA "Well-Known URIs" registry [IANA.well-known].
 
 8.3.1.  Registry Contents
 
@@ -927,16 +946,6 @@ Table of Contents
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
 
-   [RFC5226]  Narten, T. and H. Alvestrand, "Guidelines for Writing an
-              IANA Considerations Section in RFCs", RFC 5226,
-              DOI 10.17487/RFC5226, May 2008,
-              <https://www.rfc-editor.org/info/rfc5226>.
-
-   [RFC5785]  Nottingham, M. and E. Hammer-Lahav, "Defining Well-Known
-              Uniform Resource Identifiers (URIs)", RFC 5785,
-              DOI 10.17487/RFC5785, April 2010,
-              <https://www.rfc-editor.org/info/rfc5785>.
-
    [RFC6749]  Hardt, D., Ed., "The OAuth 2.0 Authorization Framework",
               RFC 6749, DOI 10.17487/RFC6749, October 2012,
               <https://www.rfc-editor.org/info/rfc6749>.
@@ -950,14 +959,15 @@ Table of Contents
               "WebFinger", RFC 7033, DOI 10.17487/RFC7033, September
               2013, <https://www.rfc-editor.org/info/rfc7033>.
 
-   [RFC7159]  Bray, T., Ed., "The JavaScript Object Notation (JSON) Data
-              Interchange Format", RFC 7159, DOI 10.17487/RFC7159, March
-              2014, <https://www.rfc-editor.org/info/rfc7159>.
-
    [RFC7591]  Richer, J., Ed., Jones, M., Bradley, J., Machulak, M., and
               P. Hunt, "OAuth 2.0 Dynamic Client Registration Protocol",
               RFC 7591, DOI 10.17487/RFC7591, July 2015,
               <https://www.rfc-editor.org/info/rfc7591>.
+
+   [RFC8126]  Cotton, M., Leiba, B., and T. Narten, "Guidelines for
+              Writing an IANA Considerations Section in RFCs", BCP 26,
+              RFC 8126, DOI 10.17487/RFC8126, June 2017,
+              <https://www.rfc-editor.org/info/rfc8126>.
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
@@ -972,6 +982,10 @@ Table of Contents
               Authorization Server Metadata", RFC 8414,
               DOI 10.17487/RFC8414, June 2018,
               <https://www.rfc-editor.org/info/rfc8414>.
+
+   [RFC8615]  Nottingham, M., "Well-Known Uniform Resource Identifiers
+              (URIs)", RFC 8615, DOI 10.17487/RFC8615, May 2019,
+              <https://www.rfc-editor.org/info/rfc8615>.
 
    [RFC8707]  Campbell, B., Bradley, J., and H. Tschofenig, "Resource
               Indicators for OAuth 2.0", RFC 8707, DOI 10.17487/RFC8707,
@@ -1005,9 +1019,9 @@ Table of Contents
               Lodderstedt, T., Bradley, J., Labunets, A., and D. Fett,
               "OAuth 2.0 Security Best Current Practice", Work in
               Progress, Internet-Draft, draft-ietf-oauth-security-
-              topics-23, 5 June 2023,
+              topics-29, 3 June 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
-              security-topics-23>.
+              security-topics-29>.
 
    [IANA.well-known]
               IANA, "Well-Known URIs",
@@ -1015,8 +1029,8 @@ Table of Contents
 
    [OpenID.Discovery]
               Sakimura, N., Bradley, J., Jones, M.B., and E. Jay,
-              "OpenID Connect Discovery 1.0", 8 November 2014,
-              <http://openid.net/specs/openid-connect-discovery-
+              "OpenID Connect Discovery 1.0", 15 December 2023,
+              <https://openid.net/specs/openid-connect-discovery-
               1_0.html>.
 
    [OWASP.SSRF]
@@ -1029,19 +1043,30 @@ Table of Contents
               DOI 10.17487/RFC9470, September 2023,
               <https://www.rfc-editor.org/info/rfc9470>.
 
+   [RFC9525]  Saint-Andre, P. and R. Salz, "Service Identity in TLS",
+              RFC 9525, DOI 10.17487/RFC9525, November 2023,
+              <https://www.rfc-editor.org/info/rfc9525>.
+
 Appendix A.  Acknowledgements
 
    The authors of this specification would like to thank the attendees
    of the IETF 115 OAuth and HTTP API Working Group meetings and the
    attendees of subsequent OAuth Working Group meetings for their input
    on this specification.  We would would also like to thank Brian
-   Campbell, Vladimir Dzhuvinov, George Fletcher, Pieter Kasselman, Tony
-   Nadalin, Rifaat Shekh-Yusef, Filip Skokan, and Atul Tulshibagwale for
-   their contributions to the specification.
+   Campbell, Deb Cooley, Vladimir Dzhuvinov, George Fletcher, Pieter
+   Kasselman, Tony Nadalin, Rifaat Shekh-Yusef, Filip Skokan, and Atul
+   Tulshibagwale for their contributions to the specification.
 
 Appendix B.  Document History
 
    [[ to be removed by the RFC Editor before publication as an RFC ]]
+
+   -08
+
+   *  Added Security Considerations about the differences between
+      unsigned and signed metadata, as suggested by Deb Cooley.
+
+   *  Updated obsolete references.
 
    -07
 
