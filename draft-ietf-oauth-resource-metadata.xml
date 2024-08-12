@@ -40,7 +40,7 @@
       </address>
     </author>
 
-    <date day="22" month="July" year="2024" />
+    <date day="11" month="August" year="2024" />
 
     <area>Security</area>
     <workgroup>OAuth Working Group</workgroup>
@@ -84,7 +84,7 @@
       </t>
       <t>
 	The metadata for a protected resource
-	is retrieved from a well-known location as a JSON <xref target="RFC7159"/> document,
+	is retrieved from a well-known location as a JSON <xref target="RFC8259"/> document,
 	which declares information about its capabilities and optionally, its relationships to other services.
 	This process is described in <xref target="PRConfig"/>.
       </t>
@@ -164,7 +164,7 @@
 	      uses the <spanx style="verb">https</spanx> scheme and has no query or fragment components.
 	      Protected resource metadata is published at a
 	      <spanx style="verb">.well-known</spanx> location
-	      <xref target="RFC5785"/>
+	      <xref target="RFC8615"/>
 	      derived from this resource identifier,
 	      as described in <xref target="PRConfig"/>.
 	    </t>
@@ -206,7 +206,7 @@
 	  <t hangText="jwks_uri">
 	    <vspace/>
 	    OPTIONAL.
-	    URL of the protected resource's JWK Set <xref target="JWK"/> document.
+	    URL of the protected resource's JSON Web Key (JWK) Set <xref target="JWK"/> document.
 	    This contains public keys belonging to the protected resource, such as
 	    signing key(s) that the resource server uses to sign resource responses.
 	    This URL MUST use the <spanx style="verb">https</spanx> scheme.
@@ -325,7 +325,7 @@
 	By default, the well-known URI string used is
 	<spanx style="verb">/.well-known/oauth-protected-resource</spanx>.
 	The syntax and semantics of <spanx style="verb">.well-known</spanx>
-	are defined in <xref target="RFC5785"/>.
+	are defined in <xref target="RFC8615"/>.
 	The well-known URI path suffix used MUST be registered in the IANA
 	"Well-Known URIs" registry <xref target="IANA.well-known"/>.
 	Examples of this construction can be found in <xref target="PRConfigurationRequest"/>.
@@ -413,7 +413,7 @@
 	  This is required in some multi-tenant hosting configurations.
 	  This use of <spanx style="verb">.well-known</spanx> is for supporting
 	  multiple resources per host; unlike its use in
-	  <xref target="RFC5785"/>, it does not provide
+	  <xref target="RFC8615"/>, it does not provide
 	  general information about the host.
 	</t>
 
@@ -980,6 +980,29 @@
       	</t>
       </section>
 
+      <section anchor="UnsignedMetadata"
+	       title="Differences between Unsigned and Signed Metadata">
+	<t>
+	  Unsigned metadata is integrity protected by use of TLS at the site
+	  where it is hosted.
+	  This means that its security is dependent upon the Internet
+	  Public Key Infrastructure (PKI) <xref target="RFC9525"/>.
+	  Signed metadata is additionally integrity protected by the JWS signature
+	  applied by the issuer, which is not dependent upon the Internet PKI.
+	</t>
+	<t>
+	  When using unsigned metadata, the party issuing the metadata
+	  is the protected resource itself, which is represented by the
+	  <spanx style="verb">resource</spanx> value in the metadata.
+	  Whereas, when using signed metadata, the party issuing the metadata
+	  is represented by the <spanx style="verb">iss</spanx> (issuer) claim
+	  in the signed metadata.
+	  When using signed metadata, applications can make trust decisions
+	  based on the issuer that performed the signing --
+	  information that is not available when using unsigned metadata.
+	  How these trust decisions are made is out of scope for this specification.
+	</t>
+      </section>
     </section>
 
     <section anchor="IANA" title="IANA Considerations">
@@ -989,7 +1012,7 @@
 	registry established by this specification.
       </t>
       <t>
-	Values are registered on a Specification Required <xref target="RFC5226"/>
+	Values are registered on a Specification Required <xref target="RFC8126"/>
 	basis after a two-week review period on the oauth-ext-review@ietf.org
 	mailing list, on the advice of one or more Designated Experts.
 	However, to allow for the allocation of values prior to publication,
@@ -1292,8 +1315,7 @@
 	<t>
 	  This specification registers the well-known URI defined in
 	  <xref target="PRConfig"/> in the IANA
-	  "Well-Known URIs" registry <xref target="IANA.well-known"/>
-	  established by <xref target="RFC5785"/>.
+	  "Well-Known URIs" registry <xref target="IANA.well-known"/>.
 	</t>
 
 	<section anchor='WellKnownContents' title='Registry Contents'>
@@ -1324,16 +1346,15 @@
   <back>
     <references title="Normative References">
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"/>
-      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5226.xml"/>
-      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5785.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6749.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6750.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7033.xml"/>
-      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7159.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7591.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8126.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8259.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8414.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8615.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8707.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8996.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9325.xml"/>
@@ -1470,33 +1491,32 @@
     <references title="Informative References">
 
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9470.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9525.xml"/>
 
-      <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-oauth-security-topics-23.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-oauth-security-topics-29.xml"/>
 
-      <reference anchor="OpenID.Discovery" target="http://openid.net/specs/openid-connect-discovery-1_0.html">
-        <front>
-          <title>OpenID Connect Discovery 1.0</title>
+      <reference anchor="OpenID.Discovery" target="https://openid.net/specs/openid-connect-discovery-1_0.html">
+	<front>
+	  <title>OpenID Connect Discovery 1.0</title>
 
-          <author fullname="Nat Sakimura" initials="N." surname="Sakimura">
-            <organization abbrev="NRI">Nomura Research Institute,
-            Ltd.</organization>
-          </author>
+	  <author fullname="Nat Sakimura" initials="N." surname="Sakimura">
+	    <organization abbrev="NAT.Consulting (was at NRI)">NAT.Consulting</organization>
+	  </author>
 
-          <author fullname="John Bradley" initials="J." surname="Bradley">
-            <organization abbrev="Ping Identity">Ping Identity</organization>
-          </author>
+	  <author fullname="John Bradley" initials="J." surname="Bradley">
+	    <organization abbrev="Yubico (was at Ping Identity)">Yubico</organization>
+	  </author>
 
-          <author fullname="Michael B. Jones" initials="M.B." surname="Jones">
-            <organization abbrev="Microsoft">Microsoft</organization>
-          </author>
+	  <author fullname="Michael B. Jones" initials="M.B." surname="Jones">
+	    <organization abbrev="Self-Issued Consulting (was at Microsoft)">Self-Issued Consulting</organization>
+	  </author>
 
-          <author fullname="Edmund Jay" initials="E." surname="Jay">
-            <organization>Illumila</organization>
-          </author>
+	  <author fullname="Edmund Jay" initials="E." surname="Jay">
+	    <organization abbrev="Illumila">Illumila</organization>
+	  </author>
 
-          <date day="8" month="November" year="2014"/>
-        </front>
-
+          <date day="15" month="December" year="2023"/>
+	</front>
       </reference>
 
       <reference anchor="IANA.well-known" target="http://www.iana.org/assignments/well-known-uris">
@@ -1540,6 +1560,7 @@
 	and the attendees of subsequent OAuth Working Group meetings for their input on this specification.
 	We would would also like to thank
 	Brian Campbell,
+	Deb Cooley,
 	Vladimir Dzhuvinov,
 	George Fletcher,
 	Pieter Kasselman,
@@ -1554,6 +1575,19 @@
 
     <section anchor="History" title="Document History">
       <t>[[ to be removed by the RFC Editor before publication as an RFC ]]</t>
+
+      <t>
+	-08
+	<list style="symbols">
+	  <t>
+	    Added Security Considerations about the differences between
+	    unsigned and signed metadata, as suggested by Deb Cooley.
+	  </t>
+	  <t>
+	    Updated obsolete references.
+	  </t>
+	</list>
+      </t>
 
       <t>
 	-07
