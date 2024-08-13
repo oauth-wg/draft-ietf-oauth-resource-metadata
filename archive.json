@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-08-08T00:07:07.934050+00:00",
+  "timestamp": "2024-08-13T00:07:17.672466+00:00",
   "repo": "oauth-wg/draft-ietf-oauth-resource-metadata",
   "labels": [
     {
@@ -2006,6 +2006,34 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 47,
+      "id": "PR_kwDOJ1yJis54Cpo1",
+      "title": "Apply Deb Cooley's review feedback",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/47",
+      "state": "MERGED",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Cc: @debcooley @independentid",
+      "createdAt": "2024-08-11T21:14:44Z",
+      "updatedAt": "2024-08-12T19:37:17Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "4d4e4213ddb9bbf02477a6cb8da08ca3e751950b",
+      "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
+      "headRefName": "mbj-deb",
+      "headRefOid": "65a151d1b262f12abda86587686367a1fad01cc2",
+      "closedAt": "2024-08-12T19:37:17Z",
+      "mergedAt": "2024-08-12T19:37:17Z",
+      "mergedBy": "selfissued",
+      "mergeCommit": {
+        "oid": "710025977352de13890733e6e7b4837f02904d9f"
+      },
+      "comments": [],
+      "reviews": []
     }
   ]
 }
