@@ -40,7 +40,7 @@
       </address>
     </author>
 
-    <date day="11" month="August" year="2024" />
+    <date day="23" month="August" year="2024" />
 
     <area>Security</area>
     <workgroup>OAuth Working Group</workgroup>
@@ -1156,7 +1156,7 @@
                 Metadata Description:
 		JSON array containing a list of the OAuth 2.0
 		<spanx style="verb">scope</spanx> values that
-		are used in authorization requests to request access this protected resource
+		are used in authorization requests to request access to this protected resource
               </t>
               <t>
                 Change Controller: IETF
@@ -1575,6 +1575,15 @@
 
     <section anchor="History" title="Document History">
       <t>[[ to be removed by the RFC Editor before publication as an RFC ]]</t>
+
+      <t>
+	-09
+	<list style="symbols">
+	  <t>
+	    Added missing word caught during IANA review.
+	  </t>
+	</list>
+      </t>
 
       <t>
 	-08
