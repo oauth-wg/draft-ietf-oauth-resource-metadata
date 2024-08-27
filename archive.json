@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-08-25T00:07:40.332509+00:00",
+  "timestamp": "2024-08-27T00:07:17.267610+00:00",
   "repo": "oauth-wg/draft-ietf-oauth-resource-metadata",
   "labels": [
     {
@@ -476,6 +476,30 @@
           "body": "This behavior was corrected in https://datatracker.ietf.org/doc/draft-ietf-oauth-resource-metadata/02/.",
           "createdAt": "2024-07-06T04:39:56Z",
           "updatedAt": "2024-07-06T04:39:56Z"
+        }
+      ]
+    },
+    {
+      "number": 48,
+      "id": "I_kwDOJ1yJis6UJfre",
+      "title": "Declaring support for DPoP and Certificate-Bound Access Tokens",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/48",
+      "state": "OPEN",
+      "author": "randomstuff",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "It would be interesting for the resource server to declare support for:\r\n\r\n* [DPoP](https://datatracker.ietf.org/doc/html/rfc9449)\r\n* [Certificate-Bound Access Token](https://www.rfc-editor.org/rfc/rfc8705)\r\n\r\nThe authorization server could use this information to detect that it can issue this type of access tokens for the target Resource Server.",
+      "createdAt": "2024-08-25T23:18:28Z",
+      "updatedAt": "2024-08-26T23:16:48Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I will create a PR for people to review.  @bc-pi asks the question whether these should be booleans indicating support or whether they are required.  @aaronpk indicates that he doesn't believe that any current metadata parameters indicate REQUIRED.\r\n\r\nI will also try to align the parameters with our existing metadata parameters for these topics.",
+          "createdAt": "2024-08-26T23:16:47Z",
+          "updatedAt": "2024-08-26T23:16:47Z"
         }
       ]
     }
