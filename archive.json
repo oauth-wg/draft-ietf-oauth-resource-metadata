@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-08-27T00:07:17.267610+00:00",
+  "timestamp": "2024-08-29T00:07:25.656191+00:00",
   "repo": "oauth-wg/draft-ietf-oauth-resource-metadata",
   "labels": [
     {
@@ -491,7 +491,7 @@
       "labels": [],
       "body": "It would be interesting for the resource server to declare support for:\r\n\r\n* [DPoP](https://datatracker.ietf.org/doc/html/rfc9449)\r\n* [Certificate-Bound Access Token](https://www.rfc-editor.org/rfc/rfc8705)\r\n\r\nThe authorization server could use this information to detect that it can issue this type of access tokens for the target Resource Server.",
       "createdAt": "2024-08-25T23:18:28Z",
-      "updatedAt": "2024-08-26T23:16:48Z",
+      "updatedAt": "2024-08-27T19:49:58Z",
       "closedAt": null,
       "comments": [
         {
@@ -500,6 +500,13 @@
           "body": "I will create a PR for people to review.  @bc-pi asks the question whether these should be booleans indicating support or whether they are required.  @aaronpk indicates that he doesn't believe that any current metadata parameters indicate REQUIRED.\r\n\r\nI will also try to align the parameters with our existing metadata parameters for these topics.",
           "createdAt": "2024-08-26T23:16:47Z",
           "updatedAt": "2024-08-26T23:16:47Z"
+        },
+        {
+          "author": "randomstuff",
+          "authorAssociation": "NONE",
+          "body": "I guess it would make sense to use properties which are similar to the existing AS metadata:\r\n\r\n> **dpop_signing_alg_values_supported:**\r\n> A JSON array containing a list of the JWS alg values\r\n> (from the [[IANA.JOSE.ALGS](https://www.iana.org/assignments/jose/)] registry) supported\r\n> by the authorization server for DPoP proof JWTs.\r\n> \r\n> **tls_client_certificate_bound_access_tokens**\r\n> OPTIONAL. Boolean value indicating server support for mutual-TLS client certificate-bound access tokens.\r\n> If omitted, the default value is false.\r\n\r\nNote: the last one does not really respect the tradition format of `xxxx_supported`.\r\n",
+          "createdAt": "2024-08-27T19:49:56Z",
+          "updatedAt": "2024-08-27T19:49:56Z"
         }
       ]
     }
