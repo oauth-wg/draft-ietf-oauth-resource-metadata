@@ -436,45 +436,45 @@ Table of Contents
         |          |              |  Server  |    |    Server     |
         +----+-----+              +----+-----+    +-------+-------+
              |                         |                  |
-             |  Resource Request       |                  |
+             |  1. Resource Request    |                  |
              | ----------------------> |                  |
              |  Without Access Token   |                  |
              |                         |                  |
              |                         |                  |
-             |    WWW-Authenticate     |                  |
+             |   2. WWW-Authenticate   |                  |
              | <---------------------- |                  |
              |                         |                  |
              |                         |                  |
-             |    Fetch RS Metadata    |                  |
+             |   3. Fetch RS Metadata  |                  |
              | ----------------------> |                  |
              |                         |                  |
              |                         |                  |
-             |   RS Metadata Response  |                  |
+             | 4. RS Metadata Response |                  |
              | <---------------------- |                  |
              |                         |                  |
-   +---------+-----------+             |                  |
-   |Validate RS Metadata |             |                  |
-   |Build AS Metadata URL|             |                  |
-   +---------+-----------+             |                  |
+   +---------+---------------+         |                  |
+   | 5. Validate RS Metadata |         |                  |
+   | Build AS Metadata URL   |         |                  |
+   +---------+---------------+         |                  |
              |                         |                  |
-             |   Fetch AS Metadata     |                  |
+             |   6. Fetch AS Metadata  |                  |
              | ------------------------+----------------> |
              |                         |                  |
              |                         |                  |
-             |   AS Metadata Response  |                  |
+             | 7. AS Metadata Response |                  |
              | <-----------------------+----------------- |
              |                         |                  |
            +-+-------------------------+------------------+-+
-           |       OAuth Authorization Code Flow            |
-           |       Client Obtains Access Token              |
+           |       8-9. OAuth Authorization Code Flow       |
+           |            Client Obtains Access Token         |
            +-+-------------------------+------------------+-+
              |                         |                  |
-             |  Resource Request       |                  |
+             |  10. Resource Request   |                  |
              | ----------------------> |                  |
              |  With Access Token      |                  |
              |                         |                  |
              |                         |                  |
-             |   Resource Response     |                  |
+             |  11. Resource Response  |                  |
              | <---------------------- |                  |
              |                         |                  |
 
@@ -1064,6 +1064,8 @@ Appendix B.  Document History
    -09
 
    *  Added missing word caught during IANA review.
+
+   *  Added step numbers to sequence diagram.
 
    -08
 
