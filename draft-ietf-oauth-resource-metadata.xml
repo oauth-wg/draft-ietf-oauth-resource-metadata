@@ -40,7 +40,7 @@
       </address>
     </author>
 
-    <date day="23" month="August" year="2024" />
+    <date day="11" month="September" year="2024" />
 
     <area>Security</area>
     <workgroup>OAuth Working Group</workgroup>
@@ -234,6 +234,11 @@
 	    Defined values are
 	    <spanx style="verb">["header", "body", "query"]</spanx>,
 	    corresponding to Sections 2.1, 2.2, and 2.3 of RFC 6750.
+	    The empty array <spanx style="verb">[]</spanx> can be used
+	    to indicate that no Bearer methods are supported.
+	    If this entry is omitted,
+	    no default Bearer methods supported are implied,
+	    nor does its absence indicate that they are not supported.
 	  </t>
 
 	  <t hangText="resource_signing_alg_values_supported">
@@ -248,26 +253,41 @@
 	    The value <spanx style="verb">none</spanx> MUST NOT be used.
 	  </t>
 
+          <t hangText="resource_name">
+	    <vspace/>
+	    Human-readable name of the protected resource
+	    intended for display to the end-user.
+	    It is RECOMMENDED that protected resource metadata includes this field.
+	    The value of this field MAY be internationalized,
+	    as described in <xref target="HumanReadableMetadata"/>.
+	  </t>
+
 	  <t hangText="resource_documentation">
 	    <vspace/>
 	    OPTIONAL.
 	    URL of a page containing human-readable information that
-	    developers might want or need to know when using the protected resource
+	    developers might want or need to know when using the protected resource.
+	    The value of this field MAY be internationalized,
+	    as described in <xref target="HumanReadableMetadata"/>.
 	  </t>
 
 	  <t hangText="resource_policy_uri">
 	    <vspace/>
 	    OPTIONAL.
-	    URL that the protected resource provides
-	    to read about the protected resource's requirements on how
-	    the client can use the data provided by the protected resource
+	    URL of a page containing human-readable information
+	    about the protected resource's requirements on how
+	    the client can use the data provided by the protected resource.
+	    The value of this field MAY be internationalized,
+	    as described in <xref target="HumanReadableMetadata"/>.
 	  </t>
 
 	  <t hangText="resource_tos_uri">
 	    <vspace/>
 	    OPTIONAL.
-	    URL that the protected resource provides
-	    to read about the protected resource's terms of service
+	    URL of a page containing human-readable information
+	    about the protected resource's terms of service.
+	    The value of this field MAY be internationalized,
+	    as described in <xref target="HumanReadableMetadata"/>.
 	  </t>
 
 	</list>
@@ -275,6 +295,64 @@
       <t>
 	Additional protected resource metadata parameters MAY also be used.
       </t>
+
+      <section anchor="HumanReadableMetadata"
+	       title="Human-Readable Resource Metadata">
+	<t>
+	  Human-readable resource metadata values
+	  and resource metadata values that reference human-readable content
+	  MAY be represented in multiple languages and scripts.
+	  For example, the values of fields such as
+	  <spanx style="verb">resource_name</spanx>,
+	  <spanx style="verb">resource_documentation</spanx>,
+	  <spanx style="verb">resource_tos_uri</spanx>, and
+	  <spanx style="verb">resource_policy_uri</spanx>
+	  might have multiple locale-specific metadata values
+	  to facilitate use in different locations.
+	</t>
+	<t>
+	  To specify the languages and scripts, <xref target="RFC5646">BCP 47</xref>
+	  language tags are added to resource metadata parameter names,
+	  delimited by a <spanx style="verb">#</spanx> character.
+	  Since <xref target="RFC8259">JSON</xref> member names are case sensitive,
+	  it is RECOMMENDED that language tag values used in Claim Names be spelled
+	  using the character case with which they are registered in the
+	  <xref target="IANA.Language">"IANA Language Subtag" registry</xref>.
+	  In particular, normally language names are spelled with lowercase
+	  characters, region names are spelled with uppercase characters,
+	  and languages are spelled with mixed-case characters.
+	  However, since BCP 47 language tag values are case-insensitive,
+	  implementations SHOULD interpret the language tag values supplied
+	  in a case insensitive manner.
+	  Per the recommendations in BCP 47, language tag values used in
+	  metadata parameter names should only be as specific as necessary.
+	  For instance, using <spanx style="verb">fr</spanx> might be sufficient
+	  in many contexts, rather than <spanx style="verb">fr-CA</spanx>
+	  or <spanx style="verb">fr-FR</spanx>.
+	</t>
+	<t>
+	  For example, a resource could represent its name in English as
+	  <spanx style="verb">"resource_name#en": "My Resource"</spanx>
+	  and its name in Italian as
+	  <spanx style="verb">"resource_name#it": "La mia bella risorsa"</spanx>
+	  within its metadata.
+	  Any or all of these names MAY be displayed to the end-user,
+	  choosing which names to display based on system configuration,
+	  user preferences, or other factors.
+	</t>
+	<t>
+	  If any human-readable field is sent without a language tag,
+	  parties using it MUST NOT make any assumptions about the language,
+	  character set, or script of the string value, and the string value
+	  MUST be used as is wherever it is presented in a user interface.
+	  To facilitate interoperability, it is RECOMMENDED that
+	  each kind of human-readable metadata provided includes
+	  an instance of its metadata parameter without any language tags
+	  in addition to any language-specific parameters, and it is RECOMMENDED that
+	  any human-readable fields sent without language tags contain values
+	  suitable for display on a wide variety of systems.
+	</t>
+      </section>
 
       <section anchor="SignedMetadata" title="Signed Protected Resource Metadata">
 	<t>
@@ -296,7 +374,7 @@
 	</t>
 	<t>
 	  Signed metadata is included in the protected resource metadata JSON object
-	  using this OPTIONAL member:
+	  using this OPTIONAL metadata parameter:
 	  <list style="hanging">
 
 	    <t hangText="signed_metadata">
@@ -457,7 +535,7 @@
    "scopes_supported":
      ["profile", "email", "phone"],
    "resource_documentation":
-     "http://resource.example.com/resource_documentation.html"
+     "https://resource.example.com/resource_documentation.html"
   }
 ]]></artwork>
           </figure>
@@ -492,12 +570,12 @@
     <section anchor="ASMetadata" title="Authorization Server Metadata">
       <t>
 	To support use cases in which the set of legitimate protected resources
-	to use with the authorization server is fixed and enumerable,
+	to use with the authorization server is enumerable,
 	this specification defines the authorization server metadata value
 	<spanx style="verb">protected_resources</spanx>,
 	which enables the authorization server to explicitly list the protected resources.
 	Note that if the set of legitimate authorization servers
-	to use with a protected resource is also fixed and enumerable,
+	to use with a protected resource is also enumerable,
 	lists in the authorization server metadata and protected resource metadata
 	should be cross-checked against one another for consistency
 	when these lists are used by the application profile.
@@ -933,11 +1011,11 @@
       <section anchor="AuthorizationServers" title="Authorization Servers">
 	<t>
 	  To support use cases in which the set of legitimate authorization servers
-	  to use with the protected resource is fixed and enumerable,
+	  to use with the protected resource is enumerable,
 	  this specification defines the <spanx style="verb">authorization_servers</spanx>
 	  metadata value, which enables explicitly listing them.
 	  Note that if the set of legitimate protected resources
-	  to use with an authorization server is also fixed and enumerable,
+	  to use with an authorization server is also enumerable,
 	  lists in the protected resource metadata and authorization server metadata
 	  should be cross-checked against one another for consistency
 	  when these lists are used by the application profile.
@@ -1006,6 +1084,22 @@
 	  How these trust decisions are made is out of scope for this specification.
 	</t>
       </section>
+
+      <section anchor="caching" title="Metadata Caching">
+	<t>
+	  Protected resource metadata is retrieved using an HTTP
+	  <spanx style="verb">GET</spanx> request,
+	  as specified in <xref target="PRConfigurationRequest"/>.
+	  Normal HTTP caching behaviors apply, meaning that the GET may retrieve
+	  a cached copy of the content, rather than the latest copy.
+	  Implementations should utlize HTTP caching directives such as
+	  <spanx style="verb">Cache-Control</spanx>
+	  with <spanx style="verb">max-age</spanx>,
+	  as defined in <xref target="RFC7234"/>,
+	  to enable caching of retrieved metadata for appropriate time periods.
+	</t>
+      </section>
+
     </section>
 
     <section anchor="IANA" title="IANA Considerations">
@@ -1061,7 +1155,7 @@
 	  This specification establishes the
 	  IANA "OAuth Protected Resource Metadata" registry
 	  for OAuth 2.0 protected resource metadata names.
-	  The registry records the protected resource metadata member
+	  The registry records the protected resource metadata parameter
 	  and a reference to the specification that defines it.
 	</t>
 
@@ -1210,6 +1304,23 @@
           <t>
             <list style='symbols'>
               <t>
+                Metadata Name: <spanx style="verb">resource_name</spanx>
+              </t>
+              <t>
+                Metadata Description:
+		Human-readable name of the protected resource
+              </t>
+              <t>
+                Change Controller: IETF
+              </t>
+              <t>
+                Specification Document(s): <xref target="PRMetadata"/> of [[ this specification ]]
+              </t>
+            </list>
+          </t>
+          <t>
+            <list style='symbols'>
+              <t>
                 Metadata Name: <spanx style="verb">resource_documentation</spanx>
               </t>
               <t>
@@ -1232,8 +1343,8 @@
               </t>
               <t>
                 Metadata Description:
-		URL that the protected resource provides
-		to read about the protected resource's requirements on how
+		URL of a page containing human-readable information
+		about the protected resource's requirements on how
 		the client can use the data provided by the protected resource
               </t>
               <t>
@@ -1251,8 +1362,8 @@
               </t>
               <t>
                 Metadata Description:
-		URL that the protected resource provides
-		to read about the protected resource's terms of service
+		URL of a page containing human-readable information
+		about the protected resource's terms of service
               </t>
               <t>
                 Change Controller: IETF
@@ -1349,9 +1460,11 @@
   <back>
     <references title="Normative References">
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5646.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6749.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6750.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7033.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7234.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7591.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8126.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
@@ -1362,7 +1475,7 @@
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8996.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9325.xml"/>
 
-      <reference anchor="USA15" target="http://www.unicode.org/reports/tr15/">
+      <reference anchor="USA15" target="https://www.unicode.org/reports/tr15/">
 	<front>
 	  <title>Unicode Normalization Forms</title>
 
@@ -1378,7 +1491,7 @@
 	<seriesInfo name="Unicode Standard Annex" value="15" />
       </reference>
 
-      <reference anchor="JWT" target="http://tools.ietf.org/html/rfc7519">
+      <reference anchor="JWT" target="https://tools.ietf.org/html/rfc7519">
         <front>
           <title>JSON Web Token (JWT)</title>
 
@@ -1401,7 +1514,7 @@
 	<seriesInfo name="DOI" value="10.17487/RFC7519"/>
       </reference>
 
-      <reference anchor="JWS" target="http://tools.ietf.org/html/rfc7515">
+      <reference anchor="JWS" target="https://tools.ietf.org/html/rfc7515">
         <front>
           <title>JSON Web Signature (JWS)</title>
 
@@ -1424,7 +1537,7 @@
 	<seriesInfo name="DOI" value="10.17487/RFC7515"/>
       </reference>
 
-      <reference anchor="JWE" target="http://tools.ietf.org/html/rfc7516">
+      <reference anchor="JWE" target="https://tools.ietf.org/html/rfc7516">
         <front>
           <title>JSON Web Encryption (JWE)</title>
 
@@ -1443,7 +1556,7 @@
 	<seriesInfo name="DOI" value="10.17487/RFC7516"/>
       </reference>
 
-      <reference anchor="JWA" target="http://tools.ietf.org/html/rfc7518">
+      <reference anchor="JWA" target="https://tools.ietf.org/html/rfc7518">
         <front>
           <title>JSON Web Algorithms (JWA)</title>
 
@@ -1458,7 +1571,7 @@
 	<seriesInfo name="DOI" value="10.17487/RFC7518"/>
       </reference>
 
-      <reference anchor="JWK" target="http://tools.ietf.org/html/rfc7517">
+      <reference anchor="JWK" target="https://tools.ietf.org/html/rfc7517">
         <front>
 	  <title>JSON Web Key (JWK)</title>
 
@@ -1473,7 +1586,7 @@
 	<seriesInfo name="DOI" value="10.17487/RFC7517"/>
       </reference>
 
-      <reference anchor="UNICODE" target="http://www.unicode.org/versions/latest/">
+      <reference anchor="UNICODE" target="https://www.unicode.org/versions/latest/">
 	<front>
 	  <title abbrev="Unicode">The Unicode Standard</title>
 	  <author>
@@ -1487,6 +1600,17 @@
 	  rather than to a specific release.  It is not expected that future changes in
 	  the UNICODE specification will impact the syntax of JSON or the UTF-8 encoding.
 	-->
+      </reference>
+
+      <reference anchor="IANA.Language"
+                 target="https://www.iana.org/assignments/language-subtag-registry">
+        <front>
+          <title>Language Subtag Registry</title>
+          <author>
+            <organization>IANA</organization>
+          </author>
+          <date/>
+        </front>
       </reference>
 
     </references>
@@ -1522,7 +1646,7 @@
 	</front>
       </reference>
 
-      <reference anchor="IANA.well-known" target="http://www.iana.org/assignments/well-known-uris">
+      <reference anchor="IANA.well-known" target="https://www.iana.org/assignments/well-known-uris">
         <front>
           <title>Well-Known URIs</title>
           <author>
@@ -1566,6 +1690,7 @@
 	Deb Cooley,
 	Vladimir Dzhuvinov,
 	George Fletcher,
+	Arnt Gulbrandsen,
 	Pieter Kasselman,
 	Tony Nadalin,
 	Rifaat Shekh-Yusef,
@@ -1587,6 +1712,22 @@
 	  </t>
 	  <t>
 	    Added step numbers to sequence diagram.
+	  </t>
+	  <t>
+	    Defined meaning of omitting
+	    <spanx style="verb">bearer_methods_supported</spanx>
+	    metadata parameter.
+	  </t>
+	  <t>
+	    Added internationalization of human-readable metadata values
+	    using the mechanism from <xref target="RFC7591"/>.
+	  </t>
+	  <t>
+	    Added <spanx style="verb">resource_name</spanx> metadata parameter,
+	    paralleling<spanx style="verb">client_name</spanx> in <xref target="RFC7591"/>.
+	  </t>
+	  <t>
+	    Added Security Considerations section on metadata caching.
 	  </t>
 	</list>
       </t>
