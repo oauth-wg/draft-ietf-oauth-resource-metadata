@@ -564,6 +564,12 @@
 	  These validation actions can thwart impersonation attacks,
 	  as described in <xref target="Impersonation"/>.
 	</t>
+	<t>
+	  The recipient MUST validate that any signed metadata was signed
+	  by a key belonging to the issuer and that the signature is valid.
+	  If the signature does not validate or the issuer is not trusted,
+	  the recipient SHOULD treat this as an error condition.
+	</t>
       </section>
     </section>
 
@@ -850,7 +856,8 @@
 	  that includes a value for the protected resource metadata URL to indicate that its metadata MAY have changed.
 	  If the client receives such a <spanx style="verb">WWW-Authenticate</spanx> response,
 	  it SHOULD retrieve the updated protected resource metadata
-	  and use the new metadata values obtained.
+	  and use the new metadata values obtained, after validating them
+	  as described in <xref target="PRConfigurationValidation"/>.
 	  Among other things,
 	  this enables a resource server to change which authorization servers it uses without any other coordination with clients.
 	</t>
@@ -1692,6 +1699,7 @@
 	George Fletcher,
 	Arnt Gulbrandsen,
 	Pieter Kasselman,
+	David Mandelberg,
 	Tony Nadalin,
 	Rifaat Shekh-Yusef,
 	Filip Skokan,
@@ -1709,6 +1717,11 @@
 	<list style="symbols">
 	  <t>
 	    Added missing word caught during IANA review.
+	  </t>
+	  <t>
+	    Addressed ART, SecDir, and OpsDir review comments by
+	    Arnt Gulbrandsen, David Mandelberg, and Bo Wu,
+	    resulting in the following changes.
 	  </t>
 	  <t>
 	    Added step numbers to sequence diagram.
