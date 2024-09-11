@@ -186,9 +186,8 @@
 	  <t hangText="resource">
 	    <vspace/>
 	    REQUIRED.
-	    The protected resource's resource identifier, which is a URL that
-	    uses the <spanx style="verb">https</spanx> scheme and has no query or fragment components.
-	    Using these well-known resources is described in <xref target="PRConfig"/>.
+	    The protected resource's Resource Identifier,
+	    as defined in <xref target="Terminology"/>.
 	  </t>
 
 	  <t hangText="authorization_servers">
@@ -875,7 +874,7 @@
 	  There are some existing methods by which an unrecognized client can make use of an authorization server,
 	  such as using Dynamic Client Registration <xref target="RFC7591"/>
 	  to register the client prior to initiating the authorization flow.
-	  Future extensions might define alternatives, such as using URLs to identify clients.
+	  Future OAuth extensions might define alternatives, such as using URLs to identify clients.
 	</t>
       </section>
 
@@ -1741,6 +1740,9 @@
 	  </t>
 	  <t>
 	    Added Security Considerations section on metadata caching.
+	  </t>
+	  <t>
+	    Used and referenced Resource Identifier definition.
 	  </t>
 	</list>
       </t>
