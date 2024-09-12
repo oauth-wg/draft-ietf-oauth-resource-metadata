@@ -270,6 +270,24 @@
 	    to read about the protected resource's terms of service
 	  </t>
 
+	  <t hangText="dpop_signing_alg_values_supported">
+	    <vspace/>
+	    OPTIONAL.
+	    A JSON array containing a list of the JWS alg values
+	    (from the "JSON Web Signature and Encryption Algorithms" registry
+	    <xref target="IANA.JOSE"/>)
+	    supported by the resource server for validating
+	    DPoP proof JWTs <xref target="RFC9449"/>.
+	  </t>
+
+	  <t hangText="dpop_bound_access_tokens">
+	    <vspace/>
+	    OPTIONAL.
+	    A boolean value specifying whether the protected resource always requires
+	    the use of DPoP-bound access tokens <xref target="RFC9449"/>.
+	    If omitted, the default value is false.
+	  </t>
+
 	</list>
       </t>
       <t>
@@ -1262,6 +1280,42 @@
               </t>
             </list>
           </t>
+          <t>
+            <list style='symbols'>
+              <t>
+                Metadata Name: <spanx style="verb">dpop_signing_alg_values_supported</spanx>
+              </t>
+              <t>
+                Metadata Description:
+		JSON array containing a list of the JWS alg values
+		supported by the resource server for validating DPoP proof JWTs
+              </t>
+              <t>
+                Change Controller: IETF
+              </t>
+              <t>
+                Specification Document(s): <xref target="PRMetadata"/> of [[ this specification ]]
+              </t>
+            </list>
+          </t>
+          <t>
+            <list style='symbols'>
+              <t>
+                Metadata Name: <spanx style="verb">dpop_bound_access_tokens</spanx>
+              </t>
+              <t>
+                Metadata Description:
+		Boolean value specifying whether the protected resource
+		always requires the use of DPoP-bound access tokens
+              </t>
+              <t>
+                Change Controller: IETF
+              </t>
+              <t>
+                Specification Document(s): <xref target="PRMetadata"/> of [[ this specification ]]
+              </t>
+            </list>
+          </t>
 	  <t>
 	    <list style='symbols'>
 	      <t>
@@ -1361,6 +1415,7 @@
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8707.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8996.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9325.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9449.xml"/>
 
       <reference anchor="USA15" target="http://www.unicode.org/reports/tr15/">
 	<front>
@@ -1532,6 +1587,16 @@
         </front>
       </reference>
 
+      <reference anchor="IANA.JOSE" target="https://www.iana.org/assignments/jose">
+        <front>
+          <title>JSON Object Signing and Encryption (JOSE)</title>
+          <author>
+            <organization>IANA</organization>
+          </author>
+          <date/>
+        </front>
+      </reference>
+
       <reference anchor="OWASP.SSRF" target="https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html">
       	<front>
       		<title>OWASP SSRF Prevention Cheat Sheet</title>
@@ -1564,6 +1629,7 @@
 	We would would also like to thank
 	Brian Campbell,
 	Deb Cooley,
+	Gabriel Corona,
 	Vladimir Dzhuvinov,
 	George Fletcher,
 	Pieter Kasselman,
@@ -1582,6 +1648,9 @@
       <t>
 	-09
 	<list style="symbols">
+	  <t>
+	    Added metadata values declaring support for DPoP.
+	  </t>
 	  <t>
 	    Added missing word caught during IANA review.
 	  </t>
