@@ -40,7 +40,7 @@
       </address>
     </author>
 
-    <date day="23" month="August" year="2024" />
+    <date day="11" month="September" year="2024" />
 
     <area>Security</area>
     <workgroup>OAuth Working Group</workgroup>
@@ -268,6 +268,15 @@
 	    OPTIONAL.
 	    URL that the protected resource provides
 	    to read about the protected resource's terms of service
+	  </t>
+
+	  <t hangText="tls_client_certificate_bound_access_tokens">
+	    <vspace/>
+	    OPTIONAL.
+	    Boolean value indicating protected resource support for
+	    mutual-TLS client certificate-bound access tokens
+	    <xref target="RFC8705"/>.
+	    If omitted, the default value is false.
 	  </t>
 
 	  <t hangText="dpop_signing_alg_values_supported">
@@ -1283,6 +1292,24 @@
           <t>
             <list style='symbols'>
               <t>
+                Metadata Name: <spanx style="verb">tls_client_certificate_bound_access_tokens</spanx>
+              </t>
+              <t>
+                Metadata Description:
+		Boolean value indicating protected resource support for
+		mutual-TLS client certificate-bound access tokens
+              </t>
+              <t>
+                Change Controller: IETF
+              </t>
+              <t>
+                Specification Document(s): <xref target="PRMetadata"/> of [[ this specification ]]
+              </t>
+            </list>
+          </t>
+          <t>
+            <list style='symbols'>
+              <t>
                 Metadata Name: <spanx style="verb">dpop_signing_alg_values_supported</spanx>
               </t>
               <t>
@@ -1412,6 +1439,7 @@
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8259.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8414.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8615.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8705.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8707.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8996.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9325.xml"/>
@@ -1649,7 +1677,8 @@
 	-09
 	<list style="symbols">
 	  <t>
-	    Added metadata values declaring support for DPoP.
+	    Added metadata values declaring support for DPoP
+	    and mutual-TLS client certificate-bound access tokens.
 	  </t>
 	  <t>
 	    Added missing word caught during IANA review.
