@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-10T00:07:34.047262+00:00",
+  "timestamp": "2024-09-12T00:07:36.617236+00:00",
   "repo": "oauth-wg/draft-ietf-oauth-resource-metadata",
   "labels": [
     {
@@ -509,6 +509,42 @@
           "updatedAt": "2024-08-27T19:49:56Z"
         }
       ]
+    },
+    {
+      "number": 49,
+      "id": "I_kwDOJ1yJis6WGc8t",
+      "title": "Add step numbers to sequence diagram, if possible",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/49",
+      "state": "CLOSED",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "aaronpk"
+      ],
+      "labels": [],
+      "body": "In his [Opsdir review](https://datatracker.ietf.org/doc/review-ietf-oauth-resource-metadata-08-opsdir-lc-wu-2024-08-29/), Bo Wu wrote:\r\n> The Figure 1 Sequence Diagram does not seem to match the text in the steps.\r\n> For example, step 5 in the diagram corresponds to step 5 and the first half of step 6 in the text description, and there is no \"user agent\" (step 8) in the diagram. Therefore, it is recommended that sequence numbers be added to the diagram.\r\n\r\nI agree that adding step numbers to the sequence diagram (in both the SVG and ASCII ART versions) would improve readers' comprehension.",
+      "createdAt": "2024-09-11T01:44:36Z",
+      "updatedAt": "2024-09-11T17:25:46Z",
+      "closedAt": "2024-09-11T17:25:46Z",
+      "comments": []
+    },
+    {
+      "number": 50,
+      "id": "I_kwDOJ1yJis6WQgim",
+      "title": "Add motivating example for resource metadata to the spec",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/50",
+      "state": "OPEN",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "aaronpk"
+      ],
+      "labels": [],
+      "body": "Per my reply to Bo Wu's OpsDir review:\r\n\r\n> It seems that text in Introduction means that the resource server is prior knowledge of the client if I understand correctly. Am I correct?\r\n\r\n> Mike> Actually, the client may learn about the resource server at runtime as a result of user interface actions by the person using the client.  The client might be, for instance, an e-mail reader and the resource might be an e-mail server.  The client can be pointed at any of thousands of e-mail servers worldwide, which would be the resources.\r\n\r\n> Mike> Aaron Parecki did a good job explaining that motivating use case several IETFs ago.  I'll try to dig that up and we'll consider describing it in the draft.\r\n\r\n@aaronpk, can you add your motivating example to the introduction?  Thanks!",
+      "createdAt": "2024-09-11T22:36:21Z",
+      "updatedAt": "2024-09-11T22:36:21Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -2063,6 +2099,32 @@
       "mergeCommit": {
         "oid": "710025977352de13890733e6e7b4837f02904d9f"
       },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 51,
+      "id": "PR_kwDOJ1yJis57OgUV",
+      "title": "Addressed ART, SecDir, and OpsDir reviews",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/51",
+      "state": "OPEN",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-09-11T23:00:11Z",
+      "updatedAt": "2024-09-11T23:00:11Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "fe6fd613eae34e3c63acbec340d21de21a3a1176",
+      "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
+      "headRefName": "mbj-area-reviews",
+      "headRefOid": "5f3450dcb40a6badebec4935fab7783d9f149b95",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
       "comments": [],
       "reviews": []
     }
