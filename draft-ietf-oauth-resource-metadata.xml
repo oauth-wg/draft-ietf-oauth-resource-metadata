@@ -83,6 +83,22 @@
 	an OAuth 2.0 authorization server.
       </t>
       <t>
+	The means by which the client obtains the location
+	of the protected resource
+	is out of scope of this document.
+	In some cases, the location may be manually configured into the client;
+	for example, an email client could provide an interface for a user to enter
+	the URL of their <xref target="RFC8620">JMAP</xref> server.
+	In other cases, it may be dynamically discovered;
+	for example, a user could enter their email address into an email client,
+	the client could perform <xref target="RFC7033">WebFinger</xref> discovery
+	(in a manner related to the description in Section 2 of
+	<xref target="OpenID.Discovery">"OpenID Connect Discovery 1.0"</xref>)
+	to find the resource server, then fetch the resource server metadata
+	to find the authorization server to use to obtain authorization
+	to access the user's email.
+	    </t>
+      <t>
 	The metadata for a protected resource
 	is retrieved from a well-known location as a JSON <xref target="RFC8259"/> document,
 	which declares information about its capabilities and optionally, its relationships to other services.
@@ -105,16 +121,6 @@
 	This prevents attackers from publishing metadata supposedly describing
 	the protected resource, but that is not actually authoritative for
 	the protected resource, as described in <xref target="Impersonation"/>.
-      </t>
-      <t>
-	The means by which the client obtains the location
-	of the protected resource
-	is out of scope.
-	In some cases, the location may be manually configured into the client.
-	In other cases, it may be dynamically discovered, for instance,
-	through the use of <xref target="RFC7033">WebFinger</xref>,
-	in a manner related to the description in Section 2 of
-	<xref target="OpenID.Discovery">"OpenID Connect Discovery 1.0"</xref>.
       </t>
       <t>
 	    	<xref target="PRMetadata"/> defines metadata values that a protected
