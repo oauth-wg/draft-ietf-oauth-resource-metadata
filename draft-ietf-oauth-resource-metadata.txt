@@ -5,10 +5,10 @@
 OAuth Working Group                                           M.B. Jones
 Internet-Draft                                    Self-Issued Consulting
 Intended status: Standards Track                                 P. Hunt
-Expires: 24 February 2025                     Independent Identity, Inc.
+Expires: 15 March 2025                        Independent Identity, Inc.
                                                               A. Parecki
                                                                     Okta
-                                                          23 August 2024
+                                                       11 September 2024
 
 
                  OAuth 2.0 Protected Resource Metadata
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 February 2025.
+   This Internet-Draft will expire on 15 March 2025.
 
 Copyright Notice
 
@@ -57,7 +57,8 @@ Table of Contents
      1.1.  Requirements Notation and Conventions
      1.2.  Terminology
    2.  Protected Resource Metadata
-     2.1.  Signed Protected Resource Metadata
+     2.1.  Human-Readable Resource Metadata
+     2.2.  Signed Protected Resource Metadata
    3.  Obtaining Protected Resource Metadata
      3.1.  Protected Resource Metadata Request
      3.2.  Protected Resource Metadata Response
@@ -79,6 +80,7 @@ Table of Contents
      7.7.  Server-Side Request Forgery (SSRF)
      7.8.  Phishing
      7.9.  Differences between Unsigned and Signed Metadata
+     7.10. Metadata Caching
    8.  IANA Considerations
      8.1.  OAuth Protected Resource Metadata Registry
        8.1.1.  Registration Template
@@ -182,10 +184,8 @@ Table of Contents
    Resource Metadata" registry established in Section 8.1:
 
    resource
-      REQUIRED.  The protected resource's resource identifier, which is
-      a URL that uses the https scheme and has no query or fragment
-      components.  Using these well-known resources is described in
-      Section 3.
+      REQUIRED.  The protected resource's Resource Identifier, as
+      defined in Section 1.2.
 
    authorization_servers
       OPTIONAL.  JSON array containing a list of OAuth authorization
@@ -218,7 +218,11 @@ Table of Contents
       OPTIONAL.  JSON array containing a list of the supported methods
       of sending an OAuth 2.0 Bearer Token [RFC6750] to the protected
       resource.  Defined values are ["header", "body", "query"],
-      corresponding to Sections 2.1, 2.2, and 2.3 of RFC 6750.
+      corresponding to Sections 2.1, 2.2, and 2.3 of RFC 6750.  The
+      empty array [] can be used to indicate that no Bearer methods are
+      supported.  If this entry is omitted, no default Bearer methods
+      supported are implied, nor does its absence indicate that they are
+      not supported.
 
    resource_signing_alg_values_supported
       OPTIONAL.  JSON array containing a list of the JWS [JWS] signing
@@ -227,23 +231,75 @@ Table of Contents
       [FAPI.MessageSigning].  No default algorithms are implied if this
       entry is omitted.  The value none MUST NOT be used.
 
+   resource_name
+      Human-readable name of the protected resource intended for display
+      to the end-user.  It is RECOMMENDED that protected resource
+      metadata includes this field.  The value of this field MAY be
+      internationalized, as described in Section 2.1.
+
    resource_documentation
       OPTIONAL.  URL of a page containing human-readable information
       that developers might want or need to know when using the
-      protected resource
+      protected resource.  The value of this field MAY be
+      internationalized, as described in Section 2.1.
 
    resource_policy_uri
-      OPTIONAL.  URL that the protected resource provides to read about
-      the protected resource's requirements on how the client can use
-      the data provided by the protected resource
+      OPTIONAL.  URL of a page containing human-readable information
+      about the protected resource's requirements on how the client can
+      use the data provided by the protected resource.  The value of
+      this field MAY be internationalized, as described in Section 2.1.
 
    resource_tos_uri
-      OPTIONAL.  URL that the protected resource provides to read about
-      the protected resource's terms of service
+      OPTIONAL.  URL of a page containing human-readable information
+      about the protected resource's terms of service.  The value of
+      this field MAY be internationalized, as described in Section 2.1.
 
    Additional protected resource metadata parameters MAY also be used.
 
-2.1.  Signed Protected Resource Metadata
+2.1.  Human-Readable Resource Metadata
+
+   Human-readable resource metadata values and resource metadata values
+   that reference human-readable content MAY be represented in multiple
+   languages and scripts.  For example, the values of fields such as
+   resource_name, resource_documentation, resource_tos_uri, and
+   resource_policy_uri might have multiple locale-specific metadata
+   values to facilitate use in different locations.
+
+   To specify the languages and scripts, BCP 47 [RFC5646] language tags
+   are added to resource metadata parameter names, delimited by a #
+   character.  Since JSON [RFC8259] member names are case sensitive, it
+   is RECOMMENDED that language tag values used in Claim Names be
+   spelled using the character case with which they are registered in
+   the "IANA Language Subtag" registry [IANA.Language].  In particular,
+   normally language names are spelled with lowercase characters, region
+   names are spelled with uppercase characters, and languages are
+   spelled with mixed-case characters.  However, since BCP 47 language
+   tag values are case-insensitive, implementations SHOULD interpret the
+   language tag values supplied in a case insensitive manner.  Per the
+   recommendations in BCP 47, language tag values used in metadata
+   parameter names should only be as specific as necessary.  For
+   instance, using fr might be sufficient in many contexts, rather than
+   fr-CA or fr-FR.
+
+   For example, a resource could represent its name in English as
+   "resource_name#en": "My Resource" and its name in Italian as
+   "resource_name#it": "La mia bella risorsa" within its metadata.  Any
+   or all of these names MAY be displayed to the end-user, choosing
+   which names to display based on system configuration, user
+   preferences, or other factors.
+
+   If any human-readable field is sent without a language tag, parties
+   using it MUST NOT make any assumptions about the language, character
+   set, or script of the string value, and the string value MUST be used
+   as is wherever it is presented in a user interface.  To facilitate
+   interoperability, it is RECOMMENDED that each kind of human-readable
+   metadata provided includes an instance of its metadata parameter
+   without any language tags in addition to any language-specific
+   parameters, and it is RECOMMENDED that any human-readable fields sent
+   without language tags contain values suitable for display on a wide
+   variety of systems.
+
+2.2.  Signed Protected Resource Metadata
 
    In addition to JSON elements, metadata values MAY also be provided as
    a signed_metadata value, which is a JSON Web Token (JWT) [JWT] that
@@ -259,7 +315,7 @@ Table of Contents
    using plain JSON elements.
 
    Signed metadata is included in the protected resource metadata JSON
-   object using this OPTIONAL member:
+   object using this OPTIONAL metadata parameter:
 
    signed_metadata
       A JWT containing metadata values about the protected resource as
@@ -370,7 +426,7 @@ Table of Contents
       "scopes_supported":
         ["profile", "email", "phone"],
       "resource_documentation":
-        "http://resource.example.com/resource_documentation.html"
+        "https://resource.example.com/resource_documentation.html"
      }
 
 3.3.  Protected Resource Metadata Validation
@@ -391,18 +447,23 @@ Table of Contents
    These validation actions can thwart impersonation attacks, as
    described in Section 7.3.
 
+   The recipient MUST validate that any signed metadata was signed by a
+   key belonging to the issuer and that the signature is valid.  If the
+   signature does not validate or the issuer is not trusted, the
+   recipient SHOULD treat this as an error condition.
+
 4.  Authorization Server Metadata
 
    To support use cases in which the set of legitimate protected
-   resources to use with the authorization server is fixed and
-   enumerable, this specification defines the authorization server
-   metadata value protected_resources, which enables the authorization
-   server to explicitly list the protected resources.  Note that if the
-   set of legitimate authorization servers to use with a protected
-   resource is also fixed and enumerable, lists in the authorization
-   server metadata and protected resource metadata should be cross-
-   checked against one another for consistency when these lists are used
-   by the application profile.
+   resources to use with the authorization server is enumerable, this
+   specification defines the authorization server metadata value
+   protected_resources, which enables the authorization server to
+   explicitly list the protected resources.  Note that if the set of
+   legitimate authorization servers to use with a protected resource is
+   also enumerable, lists in the authorization server metadata and
+   protected resource metadata should be cross-checked against one
+   another for consistency when these lists are used by the application
+   profile.
 
    The following authorization server metadata value is defined by this
    specification and is registered in the IANA "OAuth Authorization
@@ -546,9 +607,10 @@ Table of Contents
    URL to indicate that its metadata MAY have changed.  If the client
    receives such a WWW-Authenticate response, it SHOULD retrieve the
    updated protected resource metadata and use the new metadata values
-   obtained.  Among other things, this enables a resource server to
-   change which authorization servers it uses without any other
-   coordination with clients.
+   obtained, after validating them as described in Section 3.3.  Among
+   other things, this enables a resource server to change which
+   authorization servers it uses without any other coordination with
+   clients.
 
 5.3.  Client Identifier and Client Authentication
 
@@ -563,8 +625,8 @@ Table of Contents
    There are some existing methods by which an unrecognized client can
    make use of an authorization server, such as using Dynamic Client
    Registration [RFC7591] to register the client prior to initiating the
-   authorization flow.  Future extensions might define alternatives,
-   such as using URLs to identify clients.
+   authorization flow.  Future OAuth extensions might define
+   alternatives, such as using URLs to identify clients.
 
 5.4.  Compatibility with Other Authentication Methods
 
@@ -678,12 +740,12 @@ Table of Contents
 7.6.  Authorization Servers
 
    To support use cases in which the set of legitimate authorization
-   servers to use with the protected resource is fixed and enumerable,
-   this specification defines the authorization_servers metadata value,
-   which enables explicitly listing them.  Note that if the set of
-   legitimate protected resources to use with an authorization server is
-   also fixed and enumerable, lists in the protected resource metadata
-   and authorization server metadata should be cross-checked against one
+   servers to use with the protected resource is enumerable, this
+   specification defines the authorization_servers metadata value, which
+   enables explicitly listing them.  Note that if the set of legitimate
+   protected resources to use with an authorization server is also
+   enumerable, lists in the protected resource metadata and
+   authorization server metadata should be cross-checked against one
    another for consistency when these lists are used by the application
    profile.
 
@@ -753,6 +815,16 @@ Table of Contents
    these trust decisions are made is out of scope for this
    specification.
 
+7.10.  Metadata Caching
+
+   Protected resource metadata is retrieved using an HTTP GET request,
+   as specified in Section 3.1.  Normal HTTP caching behaviors apply,
+   meaning that the GET may retrieve a cached copy of the content,
+   rather than the latest copy.  Implementations should utlize HTTP
+   caching directives such as Cache-Control with max-age, as defined in
+   [RFC7234], to enable caching of retrieved metadata for appropriate
+   time periods.
+
 8.  IANA Considerations
 
    The following registration procedure is used for the registry
@@ -799,7 +871,7 @@ Table of Contents
 
    This specification establishes the IANA "OAuth Protected Resource
    Metadata" registry for OAuth 2.0 protected resource metadata names.
-   The registry records the protected resource metadata member and a
+   The registry records the protected resource metadata parameter and a
    reference to the specification that defines it.
 
 8.1.1.  Registration Template
@@ -865,6 +937,12 @@ Table of Contents
    *  Change Controller: IETF
    *  Specification Document(s): Section 2 of [[ this specification ]]
 
+   *  Metadata Name: resource_name
+   *  Metadata Description: Human-readable name of the protected
+      resource
+   *  Change Controller: IETF
+   *  Specification Document(s): Section 2 of [[ this specification ]]
+
    *  Metadata Name: resource_documentation
    *  Metadata Description: URL of a page containing human-readable
       information that developers might want or need to know when using
@@ -873,15 +951,15 @@ Table of Contents
    *  Specification Document(s): Section 2 of [[ this specification ]]
 
    *  Metadata Name: resource_policy_uri
-   *  Metadata Description: URL that the protected resource provides to
-      read about the protected resource's requirements on how the client
-      can use the data provided by the protected resource
+   *  Metadata Description: URL of a page containing human-readable
+      information about the protected resource's requirements on how the
+      client can use the data provided by the protected resource
    *  Change Controller: IETF
    *  Specification Document(s): Section 2 of [[ this specification ]]
 
    *  Metadata Name: resource_tos_uri
-   *  Metadata Description: URL that the protected resource provides to
-      read about the protected resource's terms of service
+   *  Metadata Description: URL of a page containing human-readable
+      information about the protected resource's terms of service
    *  Change Controller: IETF
    *  Specification Document(s): Section 2 of [[ this specification ]]
 
@@ -889,7 +967,7 @@ Table of Contents
    *  Metadata Description: Signed JWT containing metadata values about
       the protected resource as claims
    *  Change Controller: IETF
-   *  Specification Document(s): Section 2.1 of [[ this specification ]]
+   *  Specification Document(s): Section 2.2 of [[ this specification ]]
 
 8.2.  OAuth Authorization Server Metadata Registry
 
@@ -921,30 +999,39 @@ Table of Contents
 
 9.1.  Normative References
 
+   [IANA.Language]
+              IANA, "Language Subtag Registry",
+              <https://www.iana.org/assignments/language-subtag-
+              registry>.
+
    [JWA]      Jones, M.B., "JSON Web Algorithms (JWA)", RFC 7518,
               DOI 10.17487/RFC7518, May 2015,
-              <http://tools.ietf.org/html/rfc7518>.
+              <https://tools.ietf.org/html/rfc7518>.
 
    [JWE]      Jones, M.B. and J. Hildebrand, "JSON Web Encryption
               (JWE)", RFC 7516, DOI 10.17487/RFC7516, May 2015,
-              <http://tools.ietf.org/html/rfc7516>.
+              <https://tools.ietf.org/html/rfc7516>.
 
    [JWK]      Jones, M.B., "JSON Web Key (JWK)", RFC 7517,
               DOI 10.17487/RFC7517, May 2015,
-              <http://tools.ietf.org/html/rfc7517>.
+              <https://tools.ietf.org/html/rfc7517>.
 
    [JWS]      Jones, M.B., Bradley, J., and N. Sakimura, "JSON Web
               Signature (JWS)", RFC 7515, DOI 10.17487/RFC7515, May
-              2015, <http://tools.ietf.org/html/rfc7515>.
+              2015, <https://tools.ietf.org/html/rfc7515>.
 
    [JWT]      Jones, M.B., Bradley, J., and N. Sakimura, "JSON Web Token
               (JWT)", RFC 7519, DOI 10.17487/RFC7519, May 2015,
-              <http://tools.ietf.org/html/rfc7519>.
+              <https://tools.ietf.org/html/rfc7519>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
+
+   [RFC5646]  Phillips, A., Ed. and M. Davis, Ed., "Tags for Identifying
+              Languages", BCP 47, RFC 5646, DOI 10.17487/RFC5646,
+              September 2009, <https://www.rfc-editor.org/info/rfc5646>.
 
    [RFC6749]  Hardt, D., Ed., "The OAuth 2.0 Authorization Framework",
               RFC 6749, DOI 10.17487/RFC6749, October 2012,
@@ -958,6 +1045,11 @@ Table of Contents
    [RFC7033]  Jones, P., Salgueiro, G., Jones, M., and J. Smarr,
               "WebFinger", RFC 7033, DOI 10.17487/RFC7033, September
               2013, <https://www.rfc-editor.org/info/rfc7033>.
+
+   [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
+              Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
+              RFC 7234, DOI 10.17487/RFC7234, June 2014,
+              <https://www.rfc-editor.org/info/rfc7234>.
 
    [RFC7591]  Richer, J., Ed., Jones, M., Bradley, J., Machulak, M., and
               P. Hunt, "OAuth 2.0 Dynamic Client Registration Protocol",
@@ -1002,11 +1094,11 @@ Table of Contents
               2022, <https://www.rfc-editor.org/info/rfc9325>.
 
    [UNICODE]  The Unicode Consortium, "The Unicode Standard",
-              <http://www.unicode.org/versions/latest/>.
+              <https://www.unicode.org/versions/latest/>.
 
    [USA15]    Davis, M. and K. Whistler, "Unicode Normalization Forms",
               Unicode Standard Annex 15, 1 June 2015,
-              <http://www.unicode.org/reports/tr15/>.
+              <https://www.unicode.org/reports/tr15/>.
 
 9.2.  Informative References
 
@@ -1025,7 +1117,7 @@ Table of Contents
 
    [IANA.well-known]
               IANA, "Well-Known URIs",
-              <http://www.iana.org/assignments/well-known-uris>.
+              <https://www.iana.org/assignments/well-known-uris>.
 
    [OpenID.Discovery]
               Sakimura, N., Bradley, J., Jones, M.B., and E. Jay,
@@ -1053,9 +1145,10 @@ Appendix A.  Acknowledgements
    of the IETF 115 OAuth and HTTP API Working Group meetings and the
    attendees of subsequent OAuth Working Group meetings for their input
    on this specification.  We would would also like to thank Brian
-   Campbell, Deb Cooley, Vladimir Dzhuvinov, George Fletcher, Pieter
-   Kasselman, Tony Nadalin, Rifaat Shekh-Yusef, Filip Skokan, and Atul
-   Tulshibagwale for their contributions to the specification.
+   Campbell, Deb Cooley, Vladimir Dzhuvinov, George Fletcher, Arnt
+   Gulbrandsen, Pieter Kasselman, David Mandelberg, Tony Nadalin, Rifaat
+   Shekh-Yusef, Filip Skokan, Atul Tulshibagwale, and Bo Wu for their
+   contributions to the specification.
 
 Appendix B.  Document History
 
@@ -1065,7 +1158,24 @@ Appendix B.  Document History
 
    *  Added missing word caught during IANA review.
 
+   *  Addressed ART, SecDir, and OpsDir review comments by Arnt
+      Gulbrandsen, David Mandelberg, and Bo Wu, resulting in the
+      following changes.
+
    *  Added step numbers to sequence diagram.
+
+   *  Defined meaning of omitting bearer_methods_supported metadata
+      parameter.
+
+   *  Added internationalization of human-readable metadata values using
+      the mechanism from [RFC7591].
+
+   *  Added resource_name metadata parameter, parallelingclient_name in
+      [RFC7591].
+
+   *  Added Security Considerations section on metadata caching.
+
+   *  Used and referenced Resource Identifier definition.
 
    -08
 
