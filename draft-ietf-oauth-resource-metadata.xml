@@ -40,7 +40,7 @@
       </address>
     </author>
 
-    <date day="11" month="September" year="2024" />
+    <date day="13" month="September" year="2024" />
 
     <area>Security</area>
     <workgroup>OAuth Working Group</workgroup>
@@ -308,7 +308,7 @@
 	    DPoP proof JWTs <xref target="RFC9449"/>.
 	  </t>
 
-	  <t hangText="dpop_bound_access_tokens">
+	  <t hangText="dpop_bound_access_tokens_required">
 	    <vspace/>
 	    OPTIONAL.
 	    A boolean value specifying whether the protected resource always requires
@@ -1445,7 +1445,7 @@
           <t>
             <list style='symbols'>
               <t>
-                Metadata Name: <spanx style="verb">dpop_bound_access_tokens</spanx>
+                Metadata Name: <spanx style="verb">dpop_bound_access_tokens_required</spanx>
               </t>
               <t>
                 Metadata Description:
@@ -1835,7 +1835,7 @@
 	  </t>
 	  <t>
 	    Added <spanx style="verb">resource_name</spanx> metadata parameter,
-	    paralleling<spanx style="verb">client_name</spanx> in <xref target="RFC7591"/>.
+	    paralleling <spanx style="verb">client_name</spanx> in <xref target="RFC7591"/>.
 	  </t>
 	  <t>
 	    Added Security Considerations section on metadata caching.
