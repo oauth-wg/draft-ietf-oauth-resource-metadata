@@ -1042,11 +1042,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">OAuth 2.0 Protected Resource Metadata</td>
-<td class="right">August 2024</td>
+<td class="right">September 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Jones, et al.</td>
-<td class="center">Expires 24 February 2025</td>
+<td class="center">Expires 15 March 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1059,12 +1059,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-resource-metadata-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-08-23" class="published">23 August 2024</time>
+<time datetime="2024-09-11" class="published">11 September 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-02-24">24 February 2025</time></dd>
+<dd class="expires"><time datetime="2025-03-15">15 March 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1110,7 +1110,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 24 February 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 15 March 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1154,7 +1154,10 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-protected-resource-metadata" class="internal xref">Protected Resource Metadata</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
-                <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-signed-protected-resource-m" class="internal xref">Signed Protected Resource Metadata</a></p>
+                <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-human-readable-resource-met" class="internal xref">Human-Readable Resource Metadata</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
+                <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-signed-protected-resource-m" class="internal xref">Signed Protected Resource Metadata</a></p>
 </li>
             </ul>
 </li>
@@ -1224,6 +1227,9 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.9">
                 <p id="section-toc.1-1.7.2.9.1"><a href="#section-7.9" class="auto internal xref">7.9</a>.  <a href="#name-differences-between-unsigne" class="internal xref">Differences between Unsigned and Signed Metadata</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.10">
+                <p id="section-toc.1-1.7.2.10.1"><a href="#section-7.10" class="auto internal xref">7.10</a>. <a href="#name-metadata-caching" class="internal xref">Metadata Caching</a></p>
 </li>
             </ul>
 </li>
@@ -1404,9 +1410,8 @@ svg :is([fill="white"], [fill^="#fff"]) {
         <dt id="section-2-2.1">resource</dt>
         <dd style="margin-left: 1.5em" id="section-2-2.2">
      REQUIRED.
-     The protected resource's resource identifier, which is a URL that
-     uses the <code>https</code> scheme and has no query or fragment components.
-     Using these well-known resources is described in <a href="#PRConfig" class="auto internal xref">Section 3</a>.<a href="#section-2-2.2" class="pilcrow">¶</a>
+     The protected resource's Resource Identifier,
+     as defined in <a href="#Terminology" class="auto internal xref">Section 1.2</a>.<a href="#section-2-2.2" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
 <dt id="section-2-2.3">authorization_servers</dt>
@@ -1450,7 +1455,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
      OAuth 2.0 Bearer Token <span>[<a href="#RFC6750" class="cite xref">RFC6750</a>]</span> to the protected resource.
      Defined values are
      <code>["header", "body", "query"]</code>,
-     corresponding to Sections 2.1, 2.2, and 2.3 of RFC 6750.<a href="#section-2-2.10" class="pilcrow">¶</a>
+     corresponding to Sections 2.1, 2.2, and 2.3 of RFC 6750.
+     The empty array <code>[]</code> can be used
+     to indicate that no Bearer methods are supported.
+     If this entry is omitted,
+     no default Bearer methods supported are implied,
+     nor does its absence indicate that they are not supported.<a href="#section-2-2.10" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
 <dt id="section-2-2.11">resource_signing_alg_values_supported</dt>
@@ -1465,37 +1475,109 @@ svg :is([fill="white"], [fill^="#fff"]) {
      The value <code>none</code> MUST NOT be used.<a href="#section-2-2.12" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-2-2.13">resource_documentation</dt>
+<dt id="section-2-2.13">resource_name</dt>
         <dd style="margin-left: 1.5em" id="section-2-2.14">
-     OPTIONAL.
-     URL of a page containing human-readable information that
-     developers might want or need to know when using the protected resource<a href="#section-2-2.14" class="pilcrow">¶</a>
+     Human-readable name of the protected resource
+     intended for display to the end-user.
+     It is RECOMMENDED that protected resource metadata includes this field.
+     The value of this field MAY be internationalized,
+     as described in <a href="#HumanReadableMetadata" class="auto internal xref">Section 2.1</a>.<a href="#section-2-2.14" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-2-2.15">resource_policy_uri</dt>
+<dt id="section-2-2.15">resource_documentation</dt>
         <dd style="margin-left: 1.5em" id="section-2-2.16">
      OPTIONAL.
-     URL that the protected resource provides
-     to read about the protected resource's requirements on how
-     the client can use the data provided by the protected resource<a href="#section-2-2.16" class="pilcrow">¶</a>
+     URL of a page containing human-readable information that
+     developers might want or need to know when using the protected resource.
+     The value of this field MAY be internationalized,
+     as described in <a href="#HumanReadableMetadata" class="auto internal xref">Section 2.1</a>.<a href="#section-2-2.16" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-2-2.17">resource_tos_uri</dt>
+<dt id="section-2-2.17">resource_policy_uri</dt>
         <dd style="margin-left: 1.5em" id="section-2-2.18">
      OPTIONAL.
-     URL that the protected resource provides
-     to read about the protected resource's terms of service<a href="#section-2-2.18" class="pilcrow">¶</a>
+     URL of a page containing human-readable information
+     about the protected resource's requirements on how
+     the client can use the data provided by the protected resource.
+     The value of this field MAY be internationalized,
+     as described in <a href="#HumanReadableMetadata" class="auto internal xref">Section 2.1</a>.<a href="#section-2-2.18" class="pilcrow">¶</a>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.19">resource_tos_uri</dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.20">
+     OPTIONAL.
+     URL of a page containing human-readable information
+     about the protected resource's terms of service.
+     The value of this field MAY be internationalized,
+     as described in <a href="#HumanReadableMetadata" class="auto internal xref">Section 2.1</a>.<a href="#section-2-2.20" class="pilcrow">¶</a>
 </dd>
       <dd class="break"></dd>
 </dl>
 <p id="section-2-3">
  Additional protected resource metadata parameters MAY also be used.<a href="#section-2-3" class="pilcrow">¶</a></p>
-<div id="SignedMetadata">
+<div id="HumanReadableMetadata">
 <section id="section-2.1">
-        <h3 id="name-signed-protected-resource-m">
-<a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-signed-protected-resource-m" class="section-name selfRef">Signed Protected Resource Metadata</a>
+        <h3 id="name-human-readable-resource-met">
+<a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-human-readable-resource-met" class="section-name selfRef">Human-Readable Resource Metadata</a>
         </h3>
 <p id="section-2.1-1">
+   Human-readable resource metadata values
+   and resource metadata values that reference human-readable content
+   MAY be represented in multiple languages and scripts.
+   For example, the values of fields such as
+   <code>resource_name</code>,
+   <code>resource_documentation</code>,
+   <code>resource_tos_uri</code>, and
+   <code>resource_policy_uri</code>
+   might have multiple locale-specific metadata values
+   to facilitate use in different locations.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
+<p id="section-2.1-2">
+   To specify the languages and scripts, <span><a href="#RFC5646" class="internal xref">BCP 47</a> [<a href="#RFC5646" class="cite xref">RFC5646</a>]</span>
+   language tags are added to resource metadata parameter names,
+   delimited by a <code>#</code> character.
+   Since <span><a href="#RFC8259" class="internal xref">JSON</a> [<a href="#RFC8259" class="cite xref">RFC8259</a>]</span> member names are case sensitive,
+   it is RECOMMENDED that language tag values used in Claim Names be spelled
+   using the character case with which they are registered in the
+   <span><a href="#IANA.Language" class="internal xref">"IANA Language Subtag" registry</a> [<a href="#IANA.Language" class="cite xref">IANA.Language</a>]</span>.
+   In particular, normally language names are spelled with lowercase
+   characters, region names are spelled with uppercase characters,
+   and languages are spelled with mixed-case characters.
+   However, since BCP 47 language tag values are case-insensitive,
+   implementations SHOULD interpret the language tag values supplied
+   in a case insensitive manner.
+   Per the recommendations in BCP 47, language tag values used in
+   metadata parameter names should only be as specific as necessary.
+   For instance, using <code>fr</code> might be sufficient
+   in many contexts, rather than <code>fr-CA</code>
+   or <code>fr-FR</code>.<a href="#section-2.1-2" class="pilcrow">¶</a></p>
+<p id="section-2.1-3">
+   For example, a resource could represent its name in English as
+   <code>"resource_name#en": "My Resource"</code>
+   and its name in Italian as
+   <code>"resource_name#it": "La mia bella risorsa"</code>
+   within its metadata.
+   Any or all of these names MAY be displayed to the end-user,
+   choosing which names to display based on system configuration,
+   user preferences, or other factors.<a href="#section-2.1-3" class="pilcrow">¶</a></p>
+<p id="section-2.1-4">
+   If any human-readable field is sent without a language tag,
+   parties using it MUST NOT make any assumptions about the language,
+   character set, or script of the string value, and the string value
+   MUST be used as is wherever it is presented in a user interface.
+   To facilitate interoperability, it is RECOMMENDED that
+   each kind of human-readable metadata provided includes
+   an instance of its metadata parameter without any language tags
+   in addition to any language-specific parameters, and it is RECOMMENDED that
+   any human-readable fields sent without language tags contain values
+   suitable for display on a wide variety of systems.<a href="#section-2.1-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="SignedMetadata">
+<section id="section-2.2">
+        <h3 id="name-signed-protected-resource-m">
+<a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-signed-protected-resource-m" class="section-name selfRef">Signed Protected Resource Metadata</a>
+        </h3>
+<p id="section-2.2-1">
    In addition to JSON elements, metadata values MAY also be provided
    as a <code>signed_metadata</code> value,
    which is a JSON Web Token (JWT) <span>[<a href="#JWT" class="cite xref">JWT</a>]</span>
@@ -1510,17 +1592,17 @@ svg :is([fill="white"], [fill^="#fff"]) {
    if they do not support this feature.
    If the consumer of the metadata supports signed metadata,
    metadata values conveyed in the signed metadata
-   MUST take precedence over the corresponding values conveyed using plain JSON elements.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
-<p id="section-2.1-2">
+   MUST take precedence over the corresponding values conveyed using plain JSON elements.<a href="#section-2.2-1" class="pilcrow">¶</a></p>
+<p id="section-2.2-2">
    Signed metadata is included in the protected resource metadata JSON object
-   using this OPTIONAL member:<a href="#section-2.1-2" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlNewline" id="section-2.1-3">
-          <dt id="section-2.1-3.1">signed_metadata</dt>
-          <dd style="margin-left: 1.5em" id="section-2.1-3.2">
+   using this OPTIONAL metadata parameter:<a href="#section-2.2-2" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlNewline" id="section-2.2-3">
+          <dt id="section-2.2-3.1">signed_metadata</dt>
+          <dd style="margin-left: 1.5em" id="section-2.2-3.2">
        A JWT containing metadata values about the protected resource as claims.
        This is a string value consisting of the entire signed JWT.
        A <code>signed_metadata</code>
-       metadata value SHOULD NOT appear as a claim in the JWT.<a href="#section-2.1-3.2" class="pilcrow">¶</a>
+       metadata value SHOULD NOT appear as a claim in the JWT.<a href="#section-2.2-3.2" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -1659,7 +1741,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
    "scopes_supported":
      ["profile", "email", "phone"],
    "resource_documentation":
-     "http://resource.example.com/resource_documentation.html"
+     "https://resource.example.com/resource_documentation.html"
   }
 </pre><a href="#section-3.2-5" class="pilcrow">¶</a>
 </div>
@@ -1686,6 +1768,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <p id="section-3.3-3">
    These validation actions can thwart impersonation attacks,
    as described in <a href="#Impersonation" class="auto internal xref">Section 7.3</a>.<a href="#section-3.3-3" class="pilcrow">¶</a></p>
+<p id="section-3.3-4">
+   The recipient MUST validate that any signed metadata was signed
+   by a key belonging to the issuer and that the signature is valid.
+   If the signature does not validate or the issuer is not trusted,
+   the recipient SHOULD treat this as an error condition.<a href="#section-3.3-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1697,12 +1784,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
       </h2>
 <p id="section-4-1">
  To support use cases in which the set of legitimate protected resources
- to use with the authorization server is fixed and enumerable,
+ to use with the authorization server is enumerable,
  this specification defines the authorization server metadata value
  <code>protected_resources</code>,
  which enables the authorization server to explicitly list the protected resources.
  Note that if the set of legitimate authorization servers
- to use with a protected resource is also fixed and enumerable,
+ to use with a protected resource is also enumerable,
  lists in the authorization server metadata and protected resource metadata
  should be cross-checked against one another for consistency
  when these lists are used by the application profile.<a href="#section-4-1" class="pilcrow">¶</a></p>
@@ -1929,7 +2016,8 @@ svg :is([fill="white"], [fill^="#fff"]) {
    that includes a value for the protected resource metadata URL to indicate that its metadata MAY have changed.
    If the client receives such a <code>WWW-Authenticate</code> response,
    it SHOULD retrieve the updated protected resource metadata
-   and use the new metadata values obtained.
+   and use the new metadata values obtained, after validating them
+   as described in <a href="#PRConfigurationValidation" class="auto internal xref">Section 3.3</a>.
    Among other things,
    this enables a resource server to change which authorization servers it uses without any other coordination with clients.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
 </section>
@@ -1948,7 +2036,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
    There are some existing methods by which an unrecognized client can make use of an authorization server,
    such as using Dynamic Client Registration <span>[<a href="#RFC7591" class="cite xref">RFC7591</a>]</span>
    to register the client prior to initiating the authorization flow.
-   Future extensions might define alternatives, such as using URLs to identify clients.<a href="#section-5.3-3" class="pilcrow">¶</a></p>
+   Future OAuth extensions might define alternatives, such as using URLs to identify clients.<a href="#section-5.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="compatibility">
@@ -2109,11 +2197,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
         </h3>
 <p id="section-7.6-1">
    To support use cases in which the set of legitimate authorization servers
-   to use with the protected resource is fixed and enumerable,
+   to use with the protected resource is enumerable,
    this specification defines the <code>authorization_servers</code>
    metadata value, which enables explicitly listing them.
    Note that if the set of legitimate protected resources
-   to use with an authorization server is also fixed and enumerable,
+   to use with an authorization server is also enumerable,
    lists in the protected resource metadata and authorization server metadata
    should be cross-checked against one another for consistency
    when these lists are used by the application profile.<a href="#section-7.6-1" class="pilcrow">¶</a></p>
@@ -2187,6 +2275,24 @@ svg :is([fill="white"], [fill^="#fff"]) {
    How these trust decisions are made is out of scope for this specification.<a href="#section-7.9-2" class="pilcrow">¶</a></p>
 </section>
 </div>
+<div id="caching">
+<section id="section-7.10">
+        <h3 id="name-metadata-caching">
+<a href="#section-7.10" class="section-number selfRef">7.10. </a><a href="#name-metadata-caching" class="section-name selfRef">Metadata Caching</a>
+        </h3>
+<p id="section-7.10-1">
+   Protected resource metadata is retrieved using an HTTP
+   <code>GET</code> request,
+   as specified in <a href="#PRConfigurationRequest" class="auto internal xref">Section 3.1</a>.
+   Normal HTTP caching behaviors apply, meaning that the GET may retrieve
+   a cached copy of the content, rather than the latest copy.
+   Implementations should utlize HTTP caching directives such as
+   <code>Cache-Control</code>
+   with <code>max-age</code>,
+   as defined in <span>[<a href="#RFC7234" class="cite xref">RFC7234</a>]</span>,
+   to enable caching of retrieved metadata for appropriate time periods.<a href="#section-7.10-1" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="IANA">
@@ -2241,7 +2347,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
    This specification establishes the
    IANA "OAuth Protected Resource Metadata" registry
    for OAuth 2.0 protected resource metadata names.
-   The registry records the protected resource metadata member
+   The registry records the protected resource metadata parameter
    and a reference to the specification that defines it.<a href="#section-8.1-1" class="pilcrow">¶</a></p>
 <div id="PRMetadataTemplate">
 <section id="section-8.1.1">
@@ -2410,13 +2516,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <ul class="compact">
 <li class="compact" id="section-8.1.2-7.1">
               <p id="section-8.1.2-7.1.1">
-                Metadata Name: <code>resource_documentation</code><a href="#section-8.1.2-7.1.1" class="pilcrow">¶</a></p>
+                Metadata Name: <code>resource_name</code><a href="#section-8.1.2-7.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="compact" id="section-8.1.2-7.2">
               <p id="section-8.1.2-7.2.1">
                 Metadata Description:
- URL of a page containing human-readable information that
- developers might want or need to know when using the protected resource<a href="#section-8.1.2-7.2.1" class="pilcrow">¶</a></p>
+ Human-readable name of the protected resource<a href="#section-8.1.2-7.2.1" class="pilcrow">¶</a></p>
 </li>
             <li class="compact" id="section-8.1.2-7.3">
               <p id="section-8.1.2-7.3.1">
@@ -2430,14 +2535,13 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <ul class="compact">
 <li class="compact" id="section-8.1.2-8.1">
               <p id="section-8.1.2-8.1.1">
-                Metadata Name: <code>resource_policy_uri</code><a href="#section-8.1.2-8.1.1" class="pilcrow">¶</a></p>
+                Metadata Name: <code>resource_documentation</code><a href="#section-8.1.2-8.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="compact" id="section-8.1.2-8.2">
               <p id="section-8.1.2-8.2.1">
                 Metadata Description:
- URL that the protected resource provides
- to read about the protected resource's requirements on how
- the client can use the data provided by the protected resource<a href="#section-8.1.2-8.2.1" class="pilcrow">¶</a></p>
+ URL of a page containing human-readable information that
+ developers might want or need to know when using the protected resource<a href="#section-8.1.2-8.2.1" class="pilcrow">¶</a></p>
 </li>
             <li class="compact" id="section-8.1.2-8.3">
               <p id="section-8.1.2-8.3.1">
@@ -2451,13 +2555,14 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <ul class="compact">
 <li class="compact" id="section-8.1.2-9.1">
               <p id="section-8.1.2-9.1.1">
-                Metadata Name: <code>resource_tos_uri</code><a href="#section-8.1.2-9.1.1" class="pilcrow">¶</a></p>
+                Metadata Name: <code>resource_policy_uri</code><a href="#section-8.1.2-9.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="compact" id="section-8.1.2-9.2">
               <p id="section-8.1.2-9.2.1">
                 Metadata Description:
- URL that the protected resource provides
- to read about the protected resource's terms of service<a href="#section-8.1.2-9.2.1" class="pilcrow">¶</a></p>
+ URL of a page containing human-readable information
+ about the protected resource's requirements on how
+ the client can use the data provided by the protected resource<a href="#section-8.1.2-9.2.1" class="pilcrow">¶</a></p>
 </li>
             <li class="compact" id="section-8.1.2-9.3">
               <p id="section-8.1.2-9.3.1">
@@ -2471,20 +2576,40 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <ul class="compact">
 <li class="compact" id="section-8.1.2-10.1">
               <p id="section-8.1.2-10.1.1">
- Metadata Name: signed_metadata<a href="#section-8.1.2-10.1.1" class="pilcrow">¶</a></p>
+                Metadata Name: <code>resource_tos_uri</code><a href="#section-8.1.2-10.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="compact" id="section-8.1.2-10.2">
               <p id="section-8.1.2-10.2.1">
- Metadata Description:
- Signed JWT containing metadata values about the protected resource as claims<a href="#section-8.1.2-10.2.1" class="pilcrow">¶</a></p>
+                Metadata Description:
+ URL of a page containing human-readable information
+ about the protected resource's terms of service<a href="#section-8.1.2-10.2.1" class="pilcrow">¶</a></p>
 </li>
             <li class="compact" id="section-8.1.2-10.3">
               <p id="section-8.1.2-10.3.1">
- Change Controller: IETF<a href="#section-8.1.2-10.3.1" class="pilcrow">¶</a></p>
+                Change Controller: IETF<a href="#section-8.1.2-10.3.1" class="pilcrow">¶</a></p>
 </li>
             <li class="compact" id="section-8.1.2-10.4">
               <p id="section-8.1.2-10.4.1">
- Specification Document(s): <a href="#SignedMetadata" class="auto internal xref">Section 2.1</a> of [[ this specification ]]<a href="#section-8.1.2-10.4.1" class="pilcrow">¶</a></p>
+                Specification Document(s): <a href="#PRMetadata" class="auto internal xref">Section 2</a> of [[ this specification ]]<a href="#section-8.1.2-10.4.1" class="pilcrow">¶</a></p>
+</li>
+          </ul>
+<ul class="compact">
+<li class="compact" id="section-8.1.2-11.1">
+              <p id="section-8.1.2-11.1.1">
+ Metadata Name: signed_metadata<a href="#section-8.1.2-11.1.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="compact" id="section-8.1.2-11.2">
+              <p id="section-8.1.2-11.2.1">
+ Metadata Description:
+ Signed JWT containing metadata values about the protected resource as claims<a href="#section-8.1.2-11.2.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="compact" id="section-8.1.2-11.3">
+              <p id="section-8.1.2-11.3.1">
+ Change Controller: IETF<a href="#section-8.1.2-11.3.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="compact" id="section-8.1.2-11.4">
+              <p id="section-8.1.2-11.4.1">
+ Specification Document(s): <a href="#SignedMetadata" class="auto internal xref">Section 2.2</a> of [[ this specification ]]<a href="#section-8.1.2-11.4.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </section>
@@ -2576,29 +2701,37 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="#section-9.1" class="section-number selfRef">9.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
+<dt id="IANA.Language">[IANA.Language]</dt>
+        <dd>
+<span class="refAuthor">IANA</span>, <span class="refTitle">"Language Subtag Registry"</span>, <span>&lt;<a href="https://www.iana.org/assignments/language-subtag-registry">https://www.iana.org/assignments/language-subtag-registry</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="JWA">[JWA]</dt>
         <dd>
-<span class="refAuthor">Jones, M.B.</span>, <span class="refTitle">"JSON Web Algorithms (JWA)"</span>, <span class="seriesInfo">RFC 7518</span>, <span class="seriesInfo">DOI 10.17487/RFC7518</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="http://tools.ietf.org/html/rfc7518">http://tools.ietf.org/html/rfc7518</a>&gt;</span>. </dd>
+<span class="refAuthor">Jones, M.B.</span>, <span class="refTitle">"JSON Web Algorithms (JWA)"</span>, <span class="seriesInfo">RFC 7518</span>, <span class="seriesInfo">DOI 10.17487/RFC7518</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://tools.ietf.org/html/rfc7518">https://tools.ietf.org/html/rfc7518</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="JWE">[JWE]</dt>
         <dd>
-<span class="refAuthor">Jones, M.B.</span> and <span class="refAuthor">J. Hildebrand</span>, <span class="refTitle">"JSON Web Encryption (JWE)"</span>, <span class="seriesInfo">RFC 7516</span>, <span class="seriesInfo">DOI 10.17487/RFC7516</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="http://tools.ietf.org/html/rfc7516">http://tools.ietf.org/html/rfc7516</a>&gt;</span>. </dd>
+<span class="refAuthor">Jones, M.B.</span> and <span class="refAuthor">J. Hildebrand</span>, <span class="refTitle">"JSON Web Encryption (JWE)"</span>, <span class="seriesInfo">RFC 7516</span>, <span class="seriesInfo">DOI 10.17487/RFC7516</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://tools.ietf.org/html/rfc7516">https://tools.ietf.org/html/rfc7516</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="JWK">[JWK]</dt>
         <dd>
-<span class="refAuthor">Jones, M.B.</span>, <span class="refTitle">"JSON Web Key (JWK)"</span>, <span class="seriesInfo">RFC 7517</span>, <span class="seriesInfo">DOI 10.17487/RFC7517</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="http://tools.ietf.org/html/rfc7517">http://tools.ietf.org/html/rfc7517</a>&gt;</span>. </dd>
+<span class="refAuthor">Jones, M.B.</span>, <span class="refTitle">"JSON Web Key (JWK)"</span>, <span class="seriesInfo">RFC 7517</span>, <span class="seriesInfo">DOI 10.17487/RFC7517</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://tools.ietf.org/html/rfc7517">https://tools.ietf.org/html/rfc7517</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="JWS">[JWS]</dt>
         <dd>
-<span class="refAuthor">Jones, M.B.</span>, <span class="refAuthor">Bradley, J.</span>, and <span class="refAuthor">N. Sakimura</span>, <span class="refTitle">"JSON Web Signature (JWS)"</span>, <span class="seriesInfo">RFC 7515</span>, <span class="seriesInfo">DOI 10.17487/RFC7515</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="http://tools.ietf.org/html/rfc7515">http://tools.ietf.org/html/rfc7515</a>&gt;</span>. </dd>
+<span class="refAuthor">Jones, M.B.</span>, <span class="refAuthor">Bradley, J.</span>, and <span class="refAuthor">N. Sakimura</span>, <span class="refTitle">"JSON Web Signature (JWS)"</span>, <span class="seriesInfo">RFC 7515</span>, <span class="seriesInfo">DOI 10.17487/RFC7515</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://tools.ietf.org/html/rfc7515">https://tools.ietf.org/html/rfc7515</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="JWT">[JWT]</dt>
         <dd>
-<span class="refAuthor">Jones, M.B.</span>, <span class="refAuthor">Bradley, J.</span>, and <span class="refAuthor">N. Sakimura</span>, <span class="refTitle">"JSON Web Token (JWT)"</span>, <span class="seriesInfo">RFC 7519</span>, <span class="seriesInfo">DOI 10.17487/RFC7519</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="http://tools.ietf.org/html/rfc7519">http://tools.ietf.org/html/rfc7519</a>&gt;</span>. </dd>
+<span class="refAuthor">Jones, M.B.</span>, <span class="refAuthor">Bradley, J.</span>, and <span class="refAuthor">N. Sakimura</span>, <span class="refTitle">"JSON Web Token (JWT)"</span>, <span class="seriesInfo">RFC 7519</span>, <span class="seriesInfo">DOI 10.17487/RFC7519</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://tools.ietf.org/html/rfc7519">https://tools.ietf.org/html/rfc7519</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
         <dd>
 <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC5646">[RFC5646]</dt>
+        <dd>
+<span class="refAuthor">Phillips, A., Ed.</span> and <span class="refAuthor">M. Davis, Ed.</span>, <span class="refTitle">"Tags for Identifying Languages"</span>, <span class="seriesInfo">BCP 47</span>, <span class="seriesInfo">RFC 5646</span>, <span class="seriesInfo">DOI 10.17487/RFC5646</span>, <time datetime="2009-09" class="refDate">September 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5646">https://www.rfc-editor.org/info/rfc5646</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC6749">[RFC6749]</dt>
         <dd>
@@ -2611,6 +2744,10 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dt id="RFC7033">[RFC7033]</dt>
         <dd>
 <span class="refAuthor">Jones, P.</span>, <span class="refAuthor">Salgueiro, G.</span>, <span class="refAuthor">Jones, M.</span>, and <span class="refAuthor">J. Smarr</span>, <span class="refTitle">"WebFinger"</span>, <span class="seriesInfo">RFC 7033</span>, <span class="seriesInfo">DOI 10.17487/RFC7033</span>, <time datetime="2013-09" class="refDate">September 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7033">https://www.rfc-editor.org/info/rfc7033</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7234">[RFC7234]</dt>
+        <dd>
+<span class="refAuthor">Fielding, R., Ed.</span>, <span class="refAuthor">Nottingham, M., Ed.</span>, and <span class="refAuthor">J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Caching"</span>, <span class="seriesInfo">RFC 7234</span>, <span class="seriesInfo">DOI 10.17487/RFC7234</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7234">https://www.rfc-editor.org/info/rfc7234</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC7591">[RFC7591]</dt>
         <dd>
@@ -2650,11 +2787,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="break"></dd>
 <dt id="UNICODE">[UNICODE]</dt>
         <dd>
-<span class="refAuthor">The Unicode Consortium</span>, <span class="refTitle">"The Unicode Standard"</span>, <span>&lt;<a href="http://www.unicode.org/versions/latest/">http://www.unicode.org/versions/latest/</a>&gt;</span>. </dd>
+<span class="refAuthor">The Unicode Consortium</span>, <span class="refTitle">"The Unicode Standard"</span>, <span>&lt;<a href="https://www.unicode.org/versions/latest/">https://www.unicode.org/versions/latest/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="USA15">[USA15]</dt>
       <dd>
-<span class="refAuthor">Davis, M.</span> and <span class="refAuthor">K. Whistler</span>, <span class="refTitle">"Unicode Normalization Forms"</span>, <span class="seriesInfo">Unicode Standard Annex 15</span>, <time datetime="2015-06-01" class="refDate">1 June 2015</time>, <span>&lt;<a href="http://www.unicode.org/reports/tr15/">http://www.unicode.org/reports/tr15/</a>&gt;</span>. </dd>
+<span class="refAuthor">Davis, M.</span> and <span class="refAuthor">K. Whistler</span>, <span class="refTitle">"Unicode Normalization Forms"</span>, <span class="seriesInfo">Unicode Standard Annex 15</span>, <time datetime="2015-06-01" class="refDate">1 June 2015</time>, <span>&lt;<a href="https://www.unicode.org/reports/tr15/">https://www.unicode.org/reports/tr15/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -2673,7 +2810,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="break"></dd>
 <dt id="IANA.well-known">[IANA.well-known]</dt>
         <dd>
-<span class="refAuthor">IANA</span>, <span class="refTitle">"Well-Known URIs"</span>, <span>&lt;<a href="http://www.iana.org/assignments/well-known-uris">http://www.iana.org/assignments/well-known-uris</a>&gt;</span>. </dd>
+<span class="refAuthor">IANA</span>, <span class="refTitle">"Well-Known URIs"</span>, <span>&lt;<a href="https://www.iana.org/assignments/well-known-uris">https://www.iana.org/assignments/well-known-uris</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="OpenID.Discovery">[OpenID.Discovery]</dt>
         <dd>
@@ -2707,12 +2844,15 @@ svg :is([fill="white"], [fill^="#fff"]) {
  Deb Cooley,
  Vladimir Dzhuvinov,
  George Fletcher,
+ Arnt Gulbrandsen,
  Pieter Kasselman,
+ David Mandelberg,
  Tony Nadalin,
  Rifaat Shekh-Yusef,
  Filip Skokan,
+ Atul Tulshibagwale,
  and
- Atul Tulshibagwale
+ Bo Wu
  for their contributions to the specification.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -2731,7 +2871,37 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </li>
         <li class="normal" id="appendix-B-3.2">
           <p id="appendix-B-3.2.1">
-     Added step numbers to sequence diagram.<a href="#appendix-B-3.2.1" class="pilcrow">¶</a></p>
+     Addressed ART, SecDir, and OpsDir review comments by
+     Arnt Gulbrandsen, David Mandelberg, and Bo Wu,
+     resulting in the following changes.<a href="#appendix-B-3.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-3.3">
+          <p id="appendix-B-3.3.1">
+     Added step numbers to sequence diagram.<a href="#appendix-B-3.3.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-3.4">
+          <p id="appendix-B-3.4.1">
+     Defined meaning of omitting
+     <code>bearer_methods_supported</code>
+     metadata parameter.<a href="#appendix-B-3.4.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-3.5">
+          <p id="appendix-B-3.5.1">
+     Added internationalization of human-readable metadata values
+     using the mechanism from <span>[<a href="#RFC7591" class="cite xref">RFC7591</a>]</span>.<a href="#appendix-B-3.5.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-3.6">
+          <p id="appendix-B-3.6.1">
+     Added <code>resource_name</code> metadata parameter,
+     paralleling<code>client_name</code> in <span>[<a href="#RFC7591" class="cite xref">RFC7591</a>]</span>.<a href="#appendix-B-3.6.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-3.7">
+          <p id="appendix-B-3.7.1">
+     Added Security Considerations section on metadata caching.<a href="#appendix-B-3.7.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-3.8">
+          <p id="appendix-B-3.8.1">
+     Used and referenced Resource Identifier definition.<a href="#appendix-B-3.8.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-B-4">
