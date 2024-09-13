@@ -1046,7 +1046,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Jones, et al.</td>
-<td class="center">Expires 15 March 2025</td>
+<td class="center">Expires 17 March 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1059,12 +1059,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-resource-metadata-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-09-11" class="published">11 September 2024</time>
+<time datetime="2024-09-13" class="published">13 September 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-03-15">15 March 2025</time></dd>
+<dd class="expires"><time datetime="2025-03-17">17 March 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1110,7 +1110,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 15 March 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 17 March 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1510,6 +1510,33 @@ svg :is([fill="white"], [fill^="#fff"]) {
      about the protected resource's terms of service.
      The value of this field MAY be internationalized,
      as described in <a href="#HumanReadableMetadata" class="auto internal xref">Section 2.1</a>.<a href="#section-2-2.20" class="pilcrow">¶</a>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.21">tls_client_certificate_bound_access_tokens</dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.22">
+     OPTIONAL.
+     Boolean value indicating protected resource support for
+     mutual-TLS client certificate-bound access tokens
+     <span>[<a href="#RFC8705" class="cite xref">RFC8705</a>]</span>.
+     If omitted, the default value is false.<a href="#section-2-2.22" class="pilcrow">¶</a>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.23">dpop_signing_alg_values_supported</dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.24">
+     OPTIONAL.
+     A JSON array containing a list of the JWS alg values
+     (from the "JSON Web Signature and Encryption Algorithms" registry
+     <span>[<a href="#IANA.JOSE" class="cite xref">IANA.JOSE</a>]</span>)
+     supported by the resource server for validating
+     DPoP proof JWTs <span>[<a href="#RFC9449" class="cite xref">RFC9449</a>]</span>.<a href="#section-2-2.24" class="pilcrow">¶</a>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.25">dpop_bound_access_tokens_required</dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.26">
+     OPTIONAL.
+     A boolean value specifying whether the protected resource always requires
+     the use of DPoP-bound access tokens <span>[<a href="#RFC9449" class="cite xref">RFC9449</a>]</span>.
+     If omitted, the default value is false.<a href="#section-2-2.26" class="pilcrow">¶</a>
 </dd>
       <dd class="break"></dd>
 </dl>
@@ -2596,20 +2623,80 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <ul class="compact">
 <li class="compact" id="section-8.1.2-11.1">
               <p id="section-8.1.2-11.1.1">
- Metadata Name: signed_metadata<a href="#section-8.1.2-11.1.1" class="pilcrow">¶</a></p>
+                Metadata Name: <code>tls_client_certificate_bound_access_tokens</code><a href="#section-8.1.2-11.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="compact" id="section-8.1.2-11.2">
               <p id="section-8.1.2-11.2.1">
- Metadata Description:
- Signed JWT containing metadata values about the protected resource as claims<a href="#section-8.1.2-11.2.1" class="pilcrow">¶</a></p>
+                Metadata Description:
+ Boolean value indicating protected resource support for
+ mutual-TLS client certificate-bound access tokens<a href="#section-8.1.2-11.2.1" class="pilcrow">¶</a></p>
 </li>
             <li class="compact" id="section-8.1.2-11.3">
               <p id="section-8.1.2-11.3.1">
- Change Controller: IETF<a href="#section-8.1.2-11.3.1" class="pilcrow">¶</a></p>
+                Change Controller: IETF<a href="#section-8.1.2-11.3.1" class="pilcrow">¶</a></p>
 </li>
             <li class="compact" id="section-8.1.2-11.4">
               <p id="section-8.1.2-11.4.1">
- Specification Document(s): <a href="#SignedMetadata" class="auto internal xref">Section 2.2</a> of [[ this specification ]]<a href="#section-8.1.2-11.4.1" class="pilcrow">¶</a></p>
+                Specification Document(s): <a href="#PRMetadata" class="auto internal xref">Section 2</a> of [[ this specification ]]<a href="#section-8.1.2-11.4.1" class="pilcrow">¶</a></p>
+</li>
+          </ul>
+<ul class="compact">
+<li class="compact" id="section-8.1.2-12.1">
+              <p id="section-8.1.2-12.1.1">
+                Metadata Name: <code>dpop_signing_alg_values_supported</code><a href="#section-8.1.2-12.1.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="compact" id="section-8.1.2-12.2">
+              <p id="section-8.1.2-12.2.1">
+                Metadata Description:
+ JSON array containing a list of the JWS alg values
+ supported by the resource server for validating DPoP proof JWTs<a href="#section-8.1.2-12.2.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="compact" id="section-8.1.2-12.3">
+              <p id="section-8.1.2-12.3.1">
+                Change Controller: IETF<a href="#section-8.1.2-12.3.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="compact" id="section-8.1.2-12.4">
+              <p id="section-8.1.2-12.4.1">
+                Specification Document(s): <a href="#PRMetadata" class="auto internal xref">Section 2</a> of [[ this specification ]]<a href="#section-8.1.2-12.4.1" class="pilcrow">¶</a></p>
+</li>
+          </ul>
+<ul class="compact">
+<li class="compact" id="section-8.1.2-13.1">
+              <p id="section-8.1.2-13.1.1">
+                Metadata Name: <code>dpop_bound_access_tokens_required</code><a href="#section-8.1.2-13.1.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="compact" id="section-8.1.2-13.2">
+              <p id="section-8.1.2-13.2.1">
+                Metadata Description:
+ Boolean value specifying whether the protected resource
+ always requires the use of DPoP-bound access tokens<a href="#section-8.1.2-13.2.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="compact" id="section-8.1.2-13.3">
+              <p id="section-8.1.2-13.3.1">
+                Change Controller: IETF<a href="#section-8.1.2-13.3.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="compact" id="section-8.1.2-13.4">
+              <p id="section-8.1.2-13.4.1">
+                Specification Document(s): <a href="#PRMetadata" class="auto internal xref">Section 2</a> of [[ this specification ]]<a href="#section-8.1.2-13.4.1" class="pilcrow">¶</a></p>
+</li>
+          </ul>
+<ul class="compact">
+<li class="compact" id="section-8.1.2-14.1">
+              <p id="section-8.1.2-14.1.1">
+ Metadata Name: signed_metadata<a href="#section-8.1.2-14.1.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="compact" id="section-8.1.2-14.2">
+              <p id="section-8.1.2-14.2.1">
+ Metadata Description:
+ Signed JWT containing metadata values about the protected resource as claims<a href="#section-8.1.2-14.2.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="compact" id="section-8.1.2-14.3">
+              <p id="section-8.1.2-14.3.1">
+ Change Controller: IETF<a href="#section-8.1.2-14.3.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="compact" id="section-8.1.2-14.4">
+              <p id="section-8.1.2-14.4.1">
+ Specification Document(s): <a href="#SignedMetadata" class="auto internal xref">Section 2.2</a> of [[ this specification ]]<a href="#section-8.1.2-14.4.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </section>
@@ -2773,6 +2860,10 @@ svg :is([fill="white"], [fill^="#fff"]) {
         <dd>
 <span class="refAuthor">Nottingham, M.</span>, <span class="refTitle">"Well-Known Uniform Resource Identifiers (URIs)"</span>, <span class="seriesInfo">RFC 8615</span>, <span class="seriesInfo">DOI 10.17487/RFC8615</span>, <time datetime="2019-05" class="refDate">May 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8615">https://www.rfc-editor.org/info/rfc8615</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC8705">[RFC8705]</dt>
+        <dd>
+<span class="refAuthor">Campbell, B.</span>, <span class="refAuthor">Bradley, J.</span>, <span class="refAuthor">Sakimura, N.</span>, and <span class="refAuthor">T. Lodderstedt</span>, <span class="refTitle">"OAuth 2.0 Mutual-TLS Client Authentication and Certificate-Bound Access Tokens"</span>, <span class="seriesInfo">RFC 8705</span>, <span class="seriesInfo">DOI 10.17487/RFC8705</span>, <time datetime="2020-02" class="refDate">February 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8705">https://www.rfc-editor.org/info/rfc8705</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC8707">[RFC8707]</dt>
         <dd>
 <span class="refAuthor">Campbell, B.</span>, <span class="refAuthor">Bradley, J.</span>, and <span class="refAuthor">H. Tschofenig</span>, <span class="refTitle">"Resource Indicators for OAuth 2.0"</span>, <span class="seriesInfo">RFC 8707</span>, <span class="seriesInfo">DOI 10.17487/RFC8707</span>, <time datetime="2020-02" class="refDate">February 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8707">https://www.rfc-editor.org/info/rfc8707</a>&gt;</span>. </dd>
@@ -2784,6 +2875,10 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dt id="RFC9325">[RFC9325]</dt>
         <dd>
 <span class="refAuthor">Sheffer, Y.</span>, <span class="refAuthor">Saint-Andre, P.</span>, and <span class="refAuthor">T. Fossati</span>, <span class="refTitle">"Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)"</span>, <span class="seriesInfo">BCP 195</span>, <span class="seriesInfo">RFC 9325</span>, <span class="seriesInfo">DOI 10.17487/RFC9325</span>, <time datetime="2022-11" class="refDate">November 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc9325">https://www.rfc-editor.org/info/rfc9325</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9449">[RFC9449]</dt>
+        <dd>
+<span class="refAuthor">Fett, D.</span>, <span class="refAuthor">Campbell, B.</span>, <span class="refAuthor">Bradley, J.</span>, <span class="refAuthor">Lodderstedt, T.</span>, <span class="refAuthor">Jones, M.</span>, and <span class="refAuthor">D. Waite</span>, <span class="refTitle">"OAuth 2.0 Demonstrating Proof of Possession (DPoP)"</span>, <span class="seriesInfo">RFC 9449</span>, <span class="seriesInfo">DOI 10.17487/RFC9449</span>, <time datetime="2023-09" class="refDate">September 2023</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc9449">https://www.rfc-editor.org/info/rfc9449</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="UNICODE">[UNICODE]</dt>
         <dd>
@@ -2807,6 +2902,10 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dt id="I-D.ietf-oauth-security-topics">[I-D.ietf-oauth-security-topics]</dt>
         <dd>
 <span class="refAuthor">Lodderstedt, T.</span>, <span class="refAuthor">Bradley, J.</span>, <span class="refAuthor">Labunets, A.</span>, and <span class="refAuthor">D. Fett</span>, <span class="refTitle">"OAuth 2.0 Security Best Current Practice"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-security-topics-29</span>, <time datetime="2024-06-03" class="refDate">3 June 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics-29">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics-29</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="IANA.JOSE">[IANA.JOSE]</dt>
+        <dd>
+<span class="refAuthor">IANA</span>, <span class="refTitle">"JSON Object Signing and Encryption (JOSE)"</span>, <span>&lt;<a href="https://www.iana.org/assignments/jose">https://www.iana.org/assignments/jose</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="IANA.well-known">[IANA.well-known]</dt>
         <dd>
@@ -2842,6 +2941,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
  We would would also like to thank
  Brian Campbell,
  Deb Cooley,
+ Gabriel Corona,
  Vladimir Dzhuvinov,
  George Fletcher,
  Arnt Gulbrandsen,
@@ -2867,41 +2967,46 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <ul class="normal">
 <li class="normal" id="appendix-B-3.1">
           <p id="appendix-B-3.1.1">
-     Added missing word caught during IANA review.<a href="#appendix-B-3.1.1" class="pilcrow">¶</a></p>
+     Added metadata values declaring support for DPoP
+     and mutual-TLS client certificate-bound access tokens.<a href="#appendix-B-3.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-B-3.2">
           <p id="appendix-B-3.2.1">
-     Addressed ART, SecDir, and OpsDir review comments by
-     Arnt Gulbrandsen, David Mandelberg, and Bo Wu,
-     resulting in the following changes.<a href="#appendix-B-3.2.1" class="pilcrow">¶</a></p>
+     Added missing word caught during IANA review.<a href="#appendix-B-3.2.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-B-3.3">
           <p id="appendix-B-3.3.1">
-     Added step numbers to sequence diagram.<a href="#appendix-B-3.3.1" class="pilcrow">¶</a></p>
+     Addressed ART, SecDir, and OpsDir review comments by
+     Arnt Gulbrandsen, David Mandelberg, and Bo Wu,
+     resulting in the following changes.<a href="#appendix-B-3.3.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-B-3.4">
           <p id="appendix-B-3.4.1">
-     Defined meaning of omitting
-     <code>bearer_methods_supported</code>
-     metadata parameter.<a href="#appendix-B-3.4.1" class="pilcrow">¶</a></p>
+     Added step numbers to sequence diagram.<a href="#appendix-B-3.4.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-B-3.5">
           <p id="appendix-B-3.5.1">
-     Added internationalization of human-readable metadata values
-     using the mechanism from <span>[<a href="#RFC7591" class="cite xref">RFC7591</a>]</span>.<a href="#appendix-B-3.5.1" class="pilcrow">¶</a></p>
+     Defined meaning of omitting
+     <code>bearer_methods_supported</code>
+     metadata parameter.<a href="#appendix-B-3.5.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-B-3.6">
           <p id="appendix-B-3.6.1">
-     Added <code>resource_name</code> metadata parameter,
-     paralleling<code>client_name</code> in <span>[<a href="#RFC7591" class="cite xref">RFC7591</a>]</span>.<a href="#appendix-B-3.6.1" class="pilcrow">¶</a></p>
+     Added internationalization of human-readable metadata values
+     using the mechanism from <span>[<a href="#RFC7591" class="cite xref">RFC7591</a>]</span>.<a href="#appendix-B-3.6.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-B-3.7">
           <p id="appendix-B-3.7.1">
-     Added Security Considerations section on metadata caching.<a href="#appendix-B-3.7.1" class="pilcrow">¶</a></p>
+     Added <code>resource_name</code> metadata parameter,
+     paralleling <code>client_name</code> in <span>[<a href="#RFC7591" class="cite xref">RFC7591</a>]</span>.<a href="#appendix-B-3.7.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-B-3.8">
           <p id="appendix-B-3.8.1">
-     Used and referenced Resource Identifier definition.<a href="#appendix-B-3.8.1" class="pilcrow">¶</a></p>
+     Added Security Considerations section on metadata caching.<a href="#appendix-B-3.8.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-3.9">
+          <p id="appendix-B-3.9.1">
+     Used and referenced Resource Identifier definition.<a href="#appendix-B-3.9.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-B-4">

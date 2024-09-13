@@ -5,10 +5,10 @@
 OAuth Working Group                                           M.B. Jones
 Internet-Draft                                    Self-Issued Consulting
 Intended status: Standards Track                                 P. Hunt
-Expires: 15 March 2025                        Independent Identity, Inc.
+Expires: 17 March 2025                        Independent Identity, Inc.
                                                               A. Parecki
                                                                     Okta
-                                                       11 September 2024
+                                                       13 September 2024
 
 
                  OAuth 2.0 Protected Resource Metadata
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 15 March 2025.
+   This Internet-Draft will expire on 17 March 2025.
 
 Copyright Notice
 
@@ -253,6 +253,22 @@ Table of Contents
       OPTIONAL.  URL of a page containing human-readable information
       about the protected resource's terms of service.  The value of
       this field MAY be internationalized, as described in Section 2.1.
+
+   tls_client_certificate_bound_access_tokens
+      OPTIONAL.  Boolean value indicating protected resource support for
+      mutual-TLS client certificate-bound access tokens [RFC8705].  If
+      omitted, the default value is false.
+
+   dpop_signing_alg_values_supported
+      OPTIONAL.  A JSON array containing a list of the JWS alg values
+      (from the "JSON Web Signature and Encryption Algorithms" registry
+      [IANA.JOSE]) supported by the resource server for validating DPoP
+      proof JWTs [RFC9449].
+
+   dpop_bound_access_tokens_required
+      OPTIONAL.  A boolean value specifying whether the protected
+      resource always requires the use of DPoP-bound access tokens
+      [RFC9449].  If omitted, the default value is false.
 
    Additional protected resource metadata parameters MAY also be used.
 
@@ -963,6 +979,26 @@ Table of Contents
    *  Change Controller: IETF
    *  Specification Document(s): Section 2 of [[ this specification ]]
 
+   *  Metadata Name: tls_client_certificate_bound_access_tokens
+   *  Metadata Description: Boolean value indicating protected resource
+      support for mutual-TLS client certificate-bound access tokens
+   *  Change Controller: IETF
+   *  Specification Document(s): Section 2 of [[ this specification ]]
+
+   *  Metadata Name: dpop_signing_alg_values_supported
+   *  Metadata Description: JSON array containing a list of the JWS alg
+      values supported by the resource server for validating DPoP proof
+      JWTs
+   *  Change Controller: IETF
+   *  Specification Document(s): Section 2 of [[ this specification ]]
+
+   *  Metadata Name: dpop_bound_access_tokens_required
+   *  Metadata Description: Boolean value specifying whether the
+      protected resource always requires the use of DPoP-bound access
+      tokens
+   *  Change Controller: IETF
+   *  Specification Document(s): Section 2 of [[ this specification ]]
+
    *  Metadata Name: signed_metadata
    *  Metadata Description: Signed JWT containing metadata values about
       the protected resource as claims
@@ -1079,6 +1115,12 @@ Table of Contents
               (URIs)", RFC 8615, DOI 10.17487/RFC8615, May 2019,
               <https://www.rfc-editor.org/info/rfc8615>.
 
+   [RFC8705]  Campbell, B., Bradley, J., Sakimura, N., and T.
+              Lodderstedt, "OAuth 2.0 Mutual-TLS Client Authentication
+              and Certificate-Bound Access Tokens", RFC 8705,
+              DOI 10.17487/RFC8705, February 2020,
+              <https://www.rfc-editor.org/info/rfc8705>.
+
    [RFC8707]  Campbell, B., Bradley, J., and H. Tschofenig, "Resource
               Indicators for OAuth 2.0", RFC 8707, DOI 10.17487/RFC8707,
               February 2020, <https://www.rfc-editor.org/info/rfc8707>.
@@ -1092,6 +1134,11 @@ Table of Contents
               Security (TLS) and Datagram Transport Layer Security
               (DTLS)", BCP 195, RFC 9325, DOI 10.17487/RFC9325, November
               2022, <https://www.rfc-editor.org/info/rfc9325>.
+
+   [RFC9449]  Fett, D., Campbell, B., Bradley, J., Lodderstedt, T.,
+              Jones, M., and D. Waite, "OAuth 2.0 Demonstrating Proof of
+              Possession (DPoP)", RFC 9449, DOI 10.17487/RFC9449,
+              September 2023, <https://www.rfc-editor.org/info/rfc9449>.
 
    [UNICODE]  The Unicode Consortium, "The Unicode Standard",
               <https://www.unicode.org/versions/latest/>.
@@ -1114,6 +1161,10 @@ Table of Contents
               topics-29, 3 June 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
               security-topics-29>.
+
+   [IANA.JOSE]
+              IANA, "JSON Object Signing and Encryption (JOSE)",
+              <https://www.iana.org/assignments/jose>.
 
    [IANA.well-known]
               IANA, "Well-Known URIs",
@@ -1145,16 +1196,19 @@ Appendix A.  Acknowledgements
    of the IETF 115 OAuth and HTTP API Working Group meetings and the
    attendees of subsequent OAuth Working Group meetings for their input
    on this specification.  We would would also like to thank Brian
-   Campbell, Deb Cooley, Vladimir Dzhuvinov, George Fletcher, Arnt
-   Gulbrandsen, Pieter Kasselman, David Mandelberg, Tony Nadalin, Rifaat
-   Shekh-Yusef, Filip Skokan, Atul Tulshibagwale, and Bo Wu for their
-   contributions to the specification.
+   Campbell, Deb Cooley, Gabriel Corona, Vladimir Dzhuvinov, George
+   Fletcher, Arnt Gulbrandsen, Pieter Kasselman, David Mandelberg, Tony
+   Nadalin, Rifaat Shekh-Yusef, Filip Skokan, Atul Tulshibagwale, and Bo
+   Wu for their contributions to the specification.
 
 Appendix B.  Document History
 
    [[ to be removed by the RFC Editor before publication as an RFC ]]
 
    -09
+
+   *  Added metadata values declaring support for DPoP and mutual-TLS
+      client certificate-bound access tokens.
 
    *  Added missing word caught during IANA review.
 
@@ -1170,7 +1224,7 @@ Appendix B.  Document History
    *  Added internationalization of human-readable metadata values using
       the mechanism from [RFC7591].
 
-   *  Added resource_name metadata parameter, parallelingclient_name in
+   *  Added resource_name metadata parameter, paralleling client_name in
       [RFC7591].
 
    *  Added Security Considerations section on metadata caching.
