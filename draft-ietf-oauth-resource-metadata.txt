@@ -108,6 +108,19 @@ Table of Contents
    Server Metadata [RFC8414], which enables a client to obtain metadata
    about an OAuth 2.0 authorization server.
 
+   The means by which the client obtains the location of the protected
+   resource is out of scope of this document.  In some cases, the
+   location may be manually configured into the client; for example, an
+   email client could provide an interface for a user to enter the URL
+   of their JMAP [RFC8620] server.  In other cases, it may be
+   dynamically discovered; for example, a user could enter their email
+   address into an email client, the client could perform WebFinger
+   [RFC7033] discovery (in a manner related to the description in
+   Section 2 of "OpenID Connect Discovery 1.0" [OpenID.Discovery]) to
+   find the resource server, then fetch the resource server metadata to
+   find the authorization server to use to obtain authorization to
+   access the user's email.
+
    The metadata for a protected resource is retrieved from a well-known
    location as a JSON [RFC8259] document, which declares information
    about its capabilities and optionally, its relationships to other
@@ -128,13 +141,6 @@ Table of Contents
    describing the protected resource, but that is not actually
    authoritative for the protected resource, as described in
    Section 7.3.
-
-   The means by which the client obtains the location of the protected
-   resource is out of scope.  In some cases, the location may be
-   manually configured into the client.  In other cases, it may be
-   dynamically discovered, for instance, through the use of WebFinger
-   [RFC7033], in a manner related to the description in Section 2 of
-   "OpenID Connect Discovery 1.0" [OpenID.Discovery].
 
    Section 2 defines metadata values that a protected resource can
    publish, which includes things like which scopes are supported, how a
@@ -1181,6 +1187,10 @@ Table of Contents
               <https://cheatsheetseries.owasp.org/cheatsheets/
               Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html>.
 
+   [RFC8620]  Jenkins, N. and C. Newman, "The JSON Meta Application
+              Protocol (JMAP)", RFC 8620, DOI 10.17487/RFC8620, July
+              2019, <https://www.rfc-editor.org/info/rfc8620>.
+
    [RFC9470]  Bertocci, V. and B. Campbell, "OAuth 2.0 Step Up
               Authentication Challenge Protocol", RFC 9470,
               DOI 10.17487/RFC9470, September 2023,
@@ -1230,6 +1240,8 @@ Appendix B.  Document History
    *  Added Security Considerations section on metadata caching.
 
    *  Used and referenced Resource Identifier definition.
+
+   *  Added motivating example of an email client to intro.
 
    -08
 

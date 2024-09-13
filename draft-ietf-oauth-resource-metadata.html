@@ -1306,35 +1306,41 @@ svg :is([fill="white"], [fill^="#fff"]) {
  which enables a client to obtain metadata about
  an OAuth 2.0 authorization server.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">
+ The means by which the client obtains the location
+ of the protected resource
+ is out of scope of this document.
+ In some cases, the location may be manually configured into the client;
+ for example, an email client could provide an interface for a user to enter
+ the URL of their <span><a href="#RFC8620" class="internal xref">JMAP</a> [<a href="#RFC8620" class="cite xref">RFC8620</a>]</span> server.
+ In other cases, it may be dynamically discovered;
+ for example, a user could enter their email address into an email client,
+ the client could perform <span><a href="#RFC7033" class="internal xref">WebFinger</a> [<a href="#RFC7033" class="cite xref">RFC7033</a>]</span> discovery
+ (in a manner related to the description in Section 2 of
+ <span><a href="#OpenID.Discovery" class="internal xref">"OpenID Connect Discovery 1.0"</a> [<a href="#OpenID.Discovery" class="cite xref">OpenID.Discovery</a>]</span>)
+ to find the resource server, then fetch the resource server metadata
+ to find the authorization server to use to obtain authorization
+ to access the user's email.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-3">
  The metadata for a protected resource
  is retrieved from a well-known location as a JSON <span>[<a href="#RFC8259" class="cite xref">RFC8259</a>]</span> document,
  which declares information about its capabilities and optionally, its relationships to other services.
- This process is described in <a href="#PRConfig" class="auto internal xref">Section 3</a>.<a href="#section-1-2" class="pilcrow">¶</a></p>
-<p id="section-1-3">
+ This process is described in <a href="#PRConfig" class="auto internal xref">Section 3</a>.<a href="#section-1-3" class="pilcrow">¶</a></p>
+<p id="section-1-4">
  This metadata can either be communicated in a self-asserted fashion or as
  a set of signed metadata values represented as claims
  in a JSON Web Token (JWT) <span>[<a href="#JWT" class="cite xref">JWT</a>]</span>.
  In the JWT case, the issuer is vouching for
  the validity of the data about the protected resource.
  This is analogous to the role that the Software Statement
- plays in OAuth Dynamic Client Registration <span>[<a href="#RFC7591" class="cite xref">RFC7591</a>]</span>.<a href="#section-1-3" class="pilcrow">¶</a></p>
-<p id="section-1-4">
+ plays in OAuth Dynamic Client Registration <span>[<a href="#RFC7591" class="cite xref">RFC7591</a>]</span>.<a href="#section-1-4" class="pilcrow">¶</a></p>
+<p id="section-1-5">
  Each protected resource publishing metadata about itself makes its own
  metadata document available at a well-known location
  deterministically derived from the protected resource's URL,
  even when the resource server implements multiple protected resources.
  This prevents attackers from publishing metadata supposedly describing
  the protected resource, but that is not actually authoritative for
- the protected resource, as described in <a href="#Impersonation" class="auto internal xref">Section 7.3</a>.<a href="#section-1-4" class="pilcrow">¶</a></p>
-<p id="section-1-5">
- The means by which the client obtains the location
- of the protected resource
- is out of scope.
- In some cases, the location may be manually configured into the client.
- In other cases, it may be dynamically discovered, for instance,
- through the use of <span><a href="#RFC7033" class="internal xref">WebFinger</a> [<a href="#RFC7033" class="cite xref">RFC7033</a>]</span>,
- in a manner related to the description in Section 2 of
- <span><a href="#OpenID.Discovery" class="internal xref">"OpenID Connect Discovery 1.0"</a> [<a href="#OpenID.Discovery" class="cite xref">OpenID.Discovery</a>]</span>.<a href="#section-1-5" class="pilcrow">¶</a></p>
+ the protected resource, as described in <a href="#Impersonation" class="auto internal xref">Section 7.3</a>.<a href="#section-1-5" class="pilcrow">¶</a></p>
 <p id="section-1-6">
       <a href="#PRMetadata" class="auto internal xref">Section 2</a> defines metadata values that a protected
        resource can publish, which includes things like which scopes are
@@ -2919,6 +2925,10 @@ svg :is([fill="white"], [fill^="#fff"]) {
         <dd>
 <span class="refAuthor">OWASP</span>, <span class="refTitle">"OWASP SSRF Prevention Cheat Sheet"</span>, <span>&lt;<a href="https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC8620">[RFC8620]</dt>
+        <dd>
+<span class="refAuthor">Jenkins, N.</span> and <span class="refAuthor">C. Newman</span>, <span class="refTitle">"The JSON Meta Application Protocol (JMAP)"</span>, <span class="seriesInfo">RFC 8620</span>, <span class="seriesInfo">DOI 10.17487/RFC8620</span>, <time datetime="2019-07" class="refDate">July 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8620">https://www.rfc-editor.org/info/rfc8620</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC9470">[RFC9470]</dt>
         <dd>
 <span class="refAuthor">Bertocci, V.</span> and <span class="refAuthor">B. Campbell</span>, <span class="refTitle">"OAuth 2.0 Step Up Authentication Challenge Protocol"</span>, <span class="seriesInfo">RFC 9470</span>, <span class="seriesInfo">DOI 10.17487/RFC9470</span>, <time datetime="2023-09" class="refDate">September 2023</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc9470">https://www.rfc-editor.org/info/rfc9470</a>&gt;</span>. </dd>
@@ -3007,6 +3017,10 @@ svg :is([fill="white"], [fill^="#fff"]) {
         <li class="normal" id="appendix-B-3.9">
           <p id="appendix-B-3.9.1">
      Used and referenced Resource Identifier definition.<a href="#appendix-B-3.9.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-3.10">
+          <p id="appendix-B-3.10.1">
+    Added motivating example of an email client to intro.<a href="#appendix-B-3.10.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-B-4">
