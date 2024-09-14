@@ -40,7 +40,7 @@
       </address>
     </author>
 
-    <date day="13" month="September" year="2024" />
+    <date day="14" month="September" year="2024" />
 
     <area>Security</area>
     <workgroup>OAuth Working Group</workgroup>
@@ -302,6 +302,15 @@
 	    mutual-TLS client certificate-bound access tokens
 	    <xref target="RFC8705"/>.
 	    If omitted, the default value is false.
+	  </t>
+
+	  <t hangText="authorization_details_types_supported">
+	    <vspace/>
+	    OPTIONAL.
+	    A JSON array containing a list of the authorization details
+	    <spanx style="verb">type</spanx> values supported by the resource server
+	    when the <spanx style="verb">authorization_details</spanx>
+	    request parameter <xref target="RFC9396"/> is used.
 	  </t>
 
 	  <t hangText="dpop_signing_alg_values_supported">
@@ -1430,6 +1439,26 @@
               </t>
             </list>
           </t>
+	  <t>
+	    <list style='symbols'>
+	      <t>
+		Metadata Name: <spanx style="verb">authorization_details_types_supported</spanx>
+	      </t>
+	      <t>
+		Metadata Description:
+		JSON array containing a list of the authorization details
+		<spanx style="verb">type</spanx> values supported by the resource server
+		when the <spanx style="verb">authorization_details</spanx>
+		request parameter is used
+	      </t>
+	      <t>
+		Change Controller: IETF
+	      </t>
+	      <t>
+		Specification Document(s): <xref target="PRMetadata"/> of [[ this specification ]]
+	      </t>
+	    </list>
+	  </t>
           <t>
             <list style='symbols'>
               <t>
@@ -1567,6 +1596,7 @@
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8707.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8996.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9325.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9396.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9449.xml"/>
 
       <reference anchor="USA15" target="https://www.unicode.org/reports/tr15/">
@@ -1792,6 +1822,7 @@
 	The authors of this specification would like to thank the attendees of the IETF 115 OAuth and HTTP API Working Group meetings
 	and the attendees of subsequent OAuth Working Group meetings for their input on this specification.
 	We would would also like to thank
+	Ralph Bragg,
 	Brian Campbell,
 	Deb Cooley,
 	Gabriel Corona,
@@ -1812,6 +1843,15 @@
 
     <section anchor="History" title="Document History">
       <t>[[ to be removed by the RFC Editor before publication as an RFC ]]</t>
+
+      <t>
+	-10
+	<list style="symbols">
+	  <t>
+	    Added metadata parameter declaring RAR types supported.
+	  </t>
+	</list>
+      </t>
 
       <t>
 	-09
