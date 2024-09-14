@@ -1084,10 +1084,6 @@ Table of Contents
               DOI 10.17487/RFC6750, October 2012,
               <https://www.rfc-editor.org/info/rfc6750>.
 
-   [RFC7033]  Jones, P., Salgueiro, G., Jones, M., and J. Smarr,
-              "WebFinger", RFC 7033, DOI 10.17487/RFC7033, September
-              2013, <https://www.rfc-editor.org/info/rfc7033>.
-
    [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
               Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
               RFC 7234, DOI 10.17487/RFC7234, June 2014,
@@ -1186,6 +1182,10 @@ Table of Contents
               OWASP, "OWASP SSRF Prevention Cheat Sheet",
               <https://cheatsheetseries.owasp.org/cheatsheets/
               Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html>.
+
+   [RFC7033]  Jones, P., Salgueiro, G., Jones, M., and J. Smarr,
+              "WebFinger", RFC 7033, DOI 10.17487/RFC7033, September
+              2013, <https://www.rfc-editor.org/info/rfc7033>.
 
    [RFC8620]  Jenkins, N. and C. Newman, "The JSON Meta Application
               Protocol (JMAP)", RFC 8620, DOI 10.17487/RFC8620, July
