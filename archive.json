@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-12T00:07:36.617236+00:00",
+  "timestamp": "2024-09-15T00:08:18.422405+00:00",
   "repo": "oauth-wg/draft-ietf-oauth-resource-metadata",
   "labels": [
     {
@@ -484,15 +484,15 @@
       "id": "I_kwDOJ1yJis6UJfre",
       "title": "Declaring support for DPoP and Certificate-Bound Access Tokens",
       "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/48",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "randomstuff",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "It would be interesting for the resource server to declare support for:\r\n\r\n* [DPoP](https://datatracker.ietf.org/doc/html/rfc9449)\r\n* [Certificate-Bound Access Token](https://www.rfc-editor.org/rfc/rfc8705)\r\n\r\nThe authorization server could use this information to detect that it can issue this type of access tokens for the target Resource Server.",
       "createdAt": "2024-08-25T23:18:28Z",
-      "updatedAt": "2024-08-27T19:49:58Z",
-      "closedAt": null,
+      "updatedAt": "2024-09-13T23:35:33Z",
+      "closedAt": "2024-09-13T23:35:33Z",
       "comments": [
         {
           "author": "selfissued",
@@ -533,7 +533,7 @@
       "id": "I_kwDOJ1yJis6WQgim",
       "title": "Add motivating example for resource metadata to the spec",
       "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/50",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "selfissued",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -542,9 +542,38 @@
       "labels": [],
       "body": "Per my reply to Bo Wu's OpsDir review:\r\n\r\n> It seems that text in Introduction means that the resource server is prior knowledge of the client if I understand correctly. Am I correct?\r\n\r\n> Mike> Actually, the client may learn about the resource server at runtime as a result of user interface actions by the person using the client.  The client might be, for instance, an e-mail reader and the resource might be an e-mail server.  The client can be pointed at any of thousands of e-mail servers worldwide, which would be the resources.\r\n\r\n> Mike> Aaron Parecki did a good job explaining that motivating use case several IETFs ago.  I'll try to dig that up and we'll consider describing it in the draft.\r\n\r\n@aaronpk, can you add your motivating example to the introduction?  Thanks!",
       "createdAt": "2024-09-11T22:36:21Z",
-      "updatedAt": "2024-09-11T22:36:21Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-09-14T00:12:51Z",
+      "closedAt": "2024-09-14T00:10:05Z",
+      "comments": [
+        {
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "body": "I didn't mean to merge that PR without your review, so let me know if it looks good before I close this issue!",
+          "createdAt": "2024-09-14T00:05:48Z",
+          "updatedAt": "2024-09-14T00:05:48Z"
+        },
+        {
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Looks good!  The only change I made was to make the WebFinger reference informative.  Please close.",
+          "createdAt": "2024-09-14T00:08:43Z",
+          "updatedAt": "2024-09-14T00:08:43Z"
+        },
+        {
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "body": "Good catch, not sure why that wasn't informative before.",
+          "createdAt": "2024-09-14T00:10:20Z",
+          "updatedAt": "2024-09-14T00:10:20Z"
+        },
+        {
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "body": "It was previously incorrectly normative.  I just happened to notice when reviewing your addition.  Thanks again!",
+          "createdAt": "2024-09-14T00:12:50Z",
+          "updatedAt": "2024-09-14T00:12:50Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -2107,20 +2136,231 @@
       "id": "PR_kwDOJ1yJis57OgUV",
       "title": "Addressed ART, SecDir, and OpsDir reviews",
       "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/51",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "selfissued",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-09-11T23:00:11Z",
-      "updatedAt": "2024-09-11T23:00:11Z",
+      "updatedAt": "2024-09-13T17:30:56Z",
       "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
       "baseRefName": "main",
       "baseRefOid": "fe6fd613eae34e3c63acbec340d21de21a3a1176",
       "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
       "headRefName": "mbj-area-reviews",
       "headRefOid": "5f3450dcb40a6badebec4935fab7783d9f149b95",
+      "closedAt": "2024-09-13T17:30:56Z",
+      "mergedAt": "2024-09-13T17:30:56Z",
+      "mergedBy": "aaronpk",
+      "mergeCommit": {
+        "oid": "3cee0c116f118ce66ad702b6f5926017fcb6ad32"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ1yJis6JT5rD",
+          "commit": {
+            "abbreviatedOid": "5f3450d"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-09-13T17:30:37Z",
+          "updatedAt": "2024-09-13T17:30:37Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 52,
+      "id": "PR_kwDOJ1yJis57O43P",
+      "title": "Add metadata values for DPoP and MTLS",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/52",
+      "state": "MERGED",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #48 \r\n\r\nCc: @randomstuff",
+      "createdAt": "2024-09-12T00:24:05Z",
+      "updatedAt": "2024-09-13T23:35:32Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "3cee0c116f118ce66ad702b6f5926017fcb6ad32",
+      "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
+      "headRefName": "mbj-sender-constrained",
+      "headRefOid": "19c285987e12f275ebb81fd2deef67c72c83e150",
+      "closedAt": "2024-09-13T23:35:32Z",
+      "mergedAt": "2024-09-13T23:35:32Z",
+      "mergedBy": "selfissued",
+      "mergeCommit": {
+        "oid": "9b4bbfcf5cf8c71cec088f45f583bb8f8263de06"
+      },
+      "comments": [
+        {
+          "author": "randomstuff",
+          "authorAssociation": "NONE",
+          "body": "Small comments:\r\n\r\n* One confusing thing is that `dpop_bound_access_tokens` declares that RS **always requires** DPoP whereas `tls_client_certificate_bound_access_tokens`** declares whether the Rs supports mTLS-bound access tokens.\r\n* I am wondering if `dpop_bound_access_tokens` makes sense in the context of the RS. It makes a lot of sens =e in the context of the client application bit it might make more sense for the RS to have a parameter which says \"I always require sender-constrained access tokens\" in order to different different type of clients (?).",
+          "createdAt": "2024-09-12T11:14:38Z",
+          "updatedAt": "2024-09-12T11:14:38Z"
+        },
+        {
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "body": "As I'm sure you can tell, I reused the existing metadata values from the DPoP and MTLS specs, applying them here.  That seemed like at least the right starting point.  I agree that the two mechanisms aren't parallel (including that there's no way to specify what MTLS algorithms are supported).\r\n\r\nIf we do anything else, I would prefer to add something like an `access_token_types_supported` field with defined values `[bearer, mtls, dpop]` and delete `dpop_bound_access_tokens`.\r\n\r\nWhat do people think?",
+          "createdAt": "2024-09-12T13:39:04Z",
+          "updatedAt": "2024-09-12T13:39:04Z"
+        },
+        {
+          "author": "randomstuff",
+          "authorAssociation": "NONE",
+          "body": "Note: I would expect `access_token_types_supported` to list actually defined `acces_token_types` (from the [registry](https://www.iana.org/assignments/oauth-parameters/oauth-parameters.xhtml#token-types)) and `mtls` is not one of them because it (typically) uses `\"token_type\":\"bearer\"`.",
+          "createdAt": "2024-09-12T14:01:33Z",
+          "updatedAt": "2024-09-12T14:01:33Z"
+        },
+        {
+          "author": "randomstuff",
+          "authorAssociation": "NONE",
+          "body": "I would suggest simply removing `dpop_bound_access_tokens` because I am not sure it is useful. However, I am not sure if this is right or wrong.",
+          "createdAt": "2024-09-12T14:04:07Z",
+          "updatedAt": "2024-09-12T14:04:07Z"
+        },
+        {
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Good point about access token types having a registry and MTLS not being in the registry.  So we shouldn't do what I proposed in the comments.",
+          "createdAt": "2024-09-12T14:29:11Z",
+          "updatedAt": "2024-09-12T14:29:11Z"
+        },
+        {
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Having `dpop_bound_access_tokens` to say that DPoP tokens are required is very useful.  It means that the WWW-Authenticate dance saying that the client has to use DPoP shown in Figure 15 at https://www.rfc-editor.org/rfc/rfc9449.html#http-401-response-protected-req-without-auth can be skipped - saving a protocol round trip.\r\n\r\nSo I'm thinking that we should leave the metadata parameters as they are in the PR.",
+          "createdAt": "2024-09-12T14:31:56Z",
+          "updatedAt": "2024-09-12T14:31:56Z"
+        },
+        {
+          "author": "randomstuff",
+          "authorAssociation": "NONE",
+          "body": "> Having dpop_bound_access_tokens to say that DPoP tokens are required is very useful. It means that the WWW-Authenticate dance saying that the client has to use DPoP shown in Figure 15 at https://www.rfc-editor.org/rfc/rfc9449.html#http-401-response-protected-req-without-auth can be skipped - saving a protocol round trip.\r\n\r\nThis *could* be supported by the `access_token_types_supported` parameter (which could have the `bearer` and `DPoP` values).",
+          "createdAt": "2024-09-12T18:58:04Z",
+          "updatedAt": "2024-09-12T18:58:04Z"
+        },
+        {
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@randomstuff, you talked me out of `access_token_types_supported` earlier because it's a mix of things with and outside of an existing registry.  And I believe you were right.\r\n\r\nI'm prone to leave things as-is, pending @aaronpk's feedback.",
+          "createdAt": "2024-09-12T23:46:45Z",
+          "updatedAt": "2024-09-12T23:46:45Z"
+        },
+        {
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "body": "I agree the mismatch of DPoP *required* vs MTLS *supported* is weird.\r\n\r\n>  I reused the existing metadata values from the DPoP and MTLS specs, applying them here\r\n\r\nWhich DPoP metadata is that? I see one for [client metadata](https://datatracker.ietf.org/doc/html/rfc9449#section-12.10) which indicates whether the client always uses DPoP for token requests. But that isn't the same thing. It is also only about the token *request* to the authorization server, not about requests to the resource server.",
+          "createdAt": "2024-09-13T17:18:05Z",
+          "updatedAt": "2024-09-13T17:18:05Z"
+        },
+        {
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "body": "One gets the DPoP-supported bit from whether `dpop_signing_alg_values_supported` is present or not.  So you have _supported_ bits for both mechanisms.\r\n\r\nThe difference between DPoP and MTLS that this PR tries to accurately reflect is that DPoP has a mechanism to say that DPoP is required whereas MTLS doesn't.  The required bit for DPoP is in `dpop_bound_access_tokens`.  I decided not to add such a bit for MTLS, but could if you guys feel that it's needed.",
+          "createdAt": "2024-09-13T17:59:28Z",
+          "updatedAt": "2024-09-13T17:59:28Z"
+        },
+        {
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "body": "I see, that's fine. Can we make it more explicit and make it `dpop_bound_access_tokens_required` so that at least we don't have the inconsistency of `tls_client_certificate_bound_access_tokens` meaning \"supported\" and `dpop_bound_access_tokens` meaning \"required\"?",
+          "createdAt": "2024-09-13T22:26:27Z",
+          "updatedAt": "2024-09-13T22:26:27Z"
+        },
+        {
+          "author": "randomstuff",
+          "authorAssociation": "NONE",
+          "body": "@aaronpk, the inconsistency comes from [RFC9447](https://www.rfc-editor.org/rfc/rfc9449.html#name-client-registration-metadat), which defines `dpop_bound_access_tokens` as:\r\n\r\n> A boolean value specifying whether the client always uses DPoP for token requests. If omitted, the default value is false.\r\n\r\nI agree that this should probably have been named `dpop_bound_access_token(s)_required` instead but here we are.\r\n\r\nNow, it probably makes sense to use the same (arguably bogus) name here for the same semantic.",
+          "createdAt": "2024-09-13T22:45:09Z",
+          "updatedAt": "2024-09-13T22:45:39Z"
+        },
+        {
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "body": "I actually think it's not necessary to use the same term, since RFC9447 is talking about it from the opposite point of view. In 9447 it's about whether the *client* always uses DPoP, whereas what we're talking about is whether the *server* requires DPoP. It would be weird in 9447 to use `_required`, since the semantic is not that the client *requires* DPoP, it's about whether the client always includes DPoP proofs in its requests. So the semantic is actually different.",
+          "createdAt": "2024-09-13T22:51:10Z",
+          "updatedAt": "2024-09-13T22:52:39Z"
+        },
+        {
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Based on the discussion here, I changed `dpop_bound_access_tokens` to `dpop_bound_access_tokens_required`.",
+          "createdAt": "2024-09-13T23:31:50Z",
+          "updatedAt": "2024-09-13T23:31:50Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ1yJis6JWOan",
+          "commit": {
+            "abbreviatedOid": "19c2859"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-09-13T23:34:46Z",
+          "updatedAt": "2024-09-13T23:34:46Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 53,
+      "id": "PR_kwDOJ1yJis57fXsq",
+      "title": "add email example to intro",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/53",
+      "state": "MERGED",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "for #50",
+      "createdAt": "2024-09-13T23:49:10Z",
+      "updatedAt": "2024-09-13T23:53:54Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "9b4bbfcf5cf8c71cec088f45f583bb8f8263de06",
+      "headRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "headRefName": "aaronpk-intro",
+      "headRefOid": "3db44411afdf9bb5d76e85f2e425e0380226472a",
+      "closedAt": "2024-09-13T23:53:53Z",
+      "mergedAt": "2024-09-13T23:53:53Z",
+      "mergedBy": "aaronpk",
+      "mergeCommit": {
+        "oid": "3db44411afdf9bb5d76e85f2e425e0380226472a"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 54,
+      "id": "PR_kwDOJ1yJis57h94H",
+      "title": "Add metadata parameter for RAR types supported",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/54",
+      "state": "OPEN",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Addresses request in https://mailarchive.ietf.org/arch/msg/oauth/txKa1w5f8b9s3_J1i0CAkYLNfR4/.\r\n\r\nCc: @RalphBragg\r\n",
+      "createdAt": "2024-09-14T23:44:42Z",
+      "updatedAt": "2024-09-14T23:44:42Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "02c989c56f4090b14a669d7fbc13b1c1c3d4aa65",
+      "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
+      "headRefName": "mbj-rar",
+      "headRefOid": "052d865c4bc2280a7cf63c9398f177bc5f778a49",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
