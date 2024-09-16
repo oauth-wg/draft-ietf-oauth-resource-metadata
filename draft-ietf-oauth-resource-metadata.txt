@@ -5,10 +5,10 @@
 OAuth Working Group                                           M.B. Jones
 Internet-Draft                                    Self-Issued Consulting
 Intended status: Standards Track                                 P. Hunt
-Expires: 18 March 2025                        Independent Identity, Inc.
+Expires: 20 March 2025                        Independent Identity, Inc.
                                                               A. Parecki
                                                                     Okta
-                                                       14 September 2024
+                                                       16 September 2024
 
 
                  OAuth 2.0 Protected Resource Metadata
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 18 March 2025.
+   This Internet-Draft will expire on 20 March 2025.
 
 Copyright Notice
 
