@@ -5,10 +5,10 @@
 OAuth Working Group                                           M.B. Jones
 Internet-Draft                                    Self-Issued Consulting
 Intended status: Standards Track                                 P. Hunt
-Expires: 17 March 2025                        Independent Identity, Inc.
+Expires: 18 March 2025                        Independent Identity, Inc.
                                                               A. Parecki
                                                                     Okta
-                                                       13 September 2024
+                                                       14 September 2024
 
 
                  OAuth 2.0 Protected Resource Metadata
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 17 March 2025.
+   This Internet-Draft will expire on 18 March 2025.
 
 Copyright Notice
 
@@ -264,6 +264,11 @@ Table of Contents
       OPTIONAL.  Boolean value indicating protected resource support for
       mutual-TLS client certificate-bound access tokens [RFC8705].  If
       omitted, the default value is false.
+
+   authorization_details_types_supported
+      OPTIONAL.  A JSON array containing a list of the authorization
+      details type values supported by the resource server when the
+      authorization_details request parameter [RFC9396] is used.
 
    dpop_signing_alg_values_supported
       OPTIONAL.  A JSON array containing a list of the JWS alg values
@@ -991,6 +996,13 @@ Table of Contents
    *  Change Controller: IETF
    *  Specification Document(s): Section 2 of [[ this specification ]]
 
+   *  Metadata Name: authorization_details_types_supported
+   *  Metadata Description: JSON array containing a list of the
+      authorization details type values supported by the resource server
+      when the authorization_details request parameter is used
+   *  Change Controller: IETF
+   *  Specification Document(s): Section 2 of [[ this specification ]]
+
    *  Metadata Name: dpop_signing_alg_values_supported
    *  Metadata Description: JSON array containing a list of the JWS alg
       values supported by the resource server for validating DPoP proof
@@ -1137,6 +1149,11 @@ Table of Contents
               (DTLS)", BCP 195, RFC 9325, DOI 10.17487/RFC9325, November
               2022, <https://www.rfc-editor.org/info/rfc9325>.
 
+   [RFC9396]  Lodderstedt, T., Richer, J., and B. Campbell, "OAuth 2.0
+              Rich Authorization Requests", RFC 9396,
+              DOI 10.17487/RFC9396, May 2023,
+              <https://www.rfc-editor.org/info/rfc9396>.
+
    [RFC9449]  Fett, D., Campbell, B., Bradley, J., Lodderstedt, T.,
               Jones, M., and D. Waite, "OAuth 2.0 Demonstrating Proof of
               Possession (DPoP)", RFC 9449, DOI 10.17487/RFC9449,
@@ -1205,15 +1222,20 @@ Appendix A.  Acknowledgements
    The authors of this specification would like to thank the attendees
    of the IETF 115 OAuth and HTTP API Working Group meetings and the
    attendees of subsequent OAuth Working Group meetings for their input
-   on this specification.  We would would also like to thank Brian
-   Campbell, Deb Cooley, Gabriel Corona, Vladimir Dzhuvinov, George
-   Fletcher, Arnt Gulbrandsen, Pieter Kasselman, David Mandelberg, Tony
-   Nadalin, Rifaat Shekh-Yusef, Filip Skokan, Atul Tulshibagwale, and Bo
-   Wu for their contributions to the specification.
+   on this specification.  We would would also like to thank Ralph
+   Bragg, Brian Campbell, Deb Cooley, Gabriel Corona, Vladimir
+   Dzhuvinov, George Fletcher, Arnt Gulbrandsen, Pieter Kasselman, David
+   Mandelberg, Tony Nadalin, Rifaat Shekh-Yusef, Filip Skokan, Atul
+   Tulshibagwale, and Bo Wu for their contributions to the
+   specification.
 
 Appendix B.  Document History
 
    [[ to be removed by the RFC Editor before publication as an RFC ]]
+
+   -10
+
+   *  Added metadata parameter declaring RAR types supported.
 
    -09
 
