@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-15T00:08:18.422405+00:00",
+  "timestamp": "2024-09-17T00:06:33.302940+00:00",
   "repo": "oauth-wg/draft-ietf-oauth-resource-metadata",
   "labels": [
     {
@@ -574,6 +574,22 @@
           "updatedAt": "2024-09-14T00:12:50Z"
         }
       ]
+    },
+    {
+      "number": 55,
+      "id": "I_kwDOJ1yJis6Wxdmi",
+      "title": "The client cannot tells whether audience restriction has been applied",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/55",
+      "state": "OPEN",
+      "author": "randomstuff",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "The current draft contains the wording:\r\n\r\n> While this attack is not explicitly enabled by this specification, and is possible in a plain OAuth 2.0 deployment, it is made somewhat more likely by the use of dynamically-configured clients. As such, the use of audience-restricted access tokens and **Resource Indicators [[RFC8707](https://www.ietf.org/archive/id/draft-ietf-oauth-resource-metadata-01.html#RFC8707)] is RECOMMENDED** when using the features in this specification.\r\n\r\nHowever there is currently no way for the OAuth client to know (in the general case i.e. loose coupling between the different actors) that the audience restriction has been properly supported and applied by authorization server. For example, the authorization server might silently ignore the `resource` parameter of the authorization request.\r\n\r\nIdeally, the authorization server should probably include the `resource` back in the authorization response similar to how this is done for the `scope` parameter (and in a sense for the [`authorization_details` parameter](https://www.ietf.org/archive/id/draft-ietf-oauth-rar-21.html#name-token-response)). Such an option should probably have been included in [RFC8707](https://datatracker.ietf.org/doc/html/rfc8707), however.\r\n\r\nAlternatively (or in addition) some authorization server metadata could be used to indicate that it supports resource indication.",
+      "createdAt": "2024-09-16T21:43:09Z",
+      "updatedAt": "2024-09-16T21:43:09Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -2347,26 +2363,63 @@
       "id": "PR_kwDOJ1yJis57h94H",
       "title": "Add metadata parameter for RAR types supported",
       "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/54",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "selfissued",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Addresses request in https://mailarchive.ietf.org/arch/msg/oauth/txKa1w5f8b9s3_J1i0CAkYLNfR4/.\r\n\r\nCc: @RalphBragg\r\n",
       "createdAt": "2024-09-14T23:44:42Z",
-      "updatedAt": "2024-09-14T23:44:42Z",
+      "updatedAt": "2024-09-16T17:32:29Z",
       "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
       "baseRefName": "main",
       "baseRefOid": "02c989c56f4090b14a669d7fbc13b1c1c3d4aa65",
       "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
       "headRefName": "mbj-rar",
       "headRefOid": "052d865c4bc2280a7cf63c9398f177bc5f778a49",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
-      "reviews": []
+      "closedAt": "2024-09-16T17:32:29Z",
+      "mergedAt": "2024-09-16T17:32:29Z",
+      "mergedBy": "selfissued",
+      "mergeCommit": {
+        "oid": "204666d6800bf7aeea2f312c3b63a9cd4d2356e8"
+      },
+      "comments": [
+        {
+          "author": "RalphBragg",
+          "authorAssociation": "NONE",
+          "body": "Thanks @selfissued, much appreciated.",
+          "createdAt": "2024-09-15T00:21:56Z",
+          "updatedAt": "2024-09-15T00:21:56Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ1yJis6JZ3Au",
+          "commit": {
+            "abbreviatedOid": "052d865"
+          },
+          "author": "RalphBragg",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-09-15T00:21:14Z",
+          "updatedAt": "2024-09-15T00:21:14Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJ1yJis6JhY83",
+          "commit": {
+            "abbreviatedOid": "052d865"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-09-16T17:06:10Z",
+          "updatedAt": "2024-09-16T17:06:10Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
