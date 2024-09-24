@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-22T00:08:28.917402+00:00",
+  "timestamp": "2024-09-24T00:07:46.002652+00:00",
   "repo": "oauth-wg/draft-ietf-oauth-resource-metadata",
   "labels": [
     {
@@ -164,7 +164,7 @@
       "labels": [],
       "body": "Should the header return the full path to the Resource Metadata document, or return the resource identifier?\r\n\r\n* RS Metadata document: the client fetches the exact URL returned\r\n* Resource Identifier: the client builds the metadata URL by appending .well-known... and then fetches the URL\r\n\r\nWhat are the implications of this for resources that differ by path? (see mailing list thread about path-based resources that require different scopes)",
       "createdAt": "2023-10-12T20:32:44Z",
-      "updatedAt": "2024-01-22T21:58:33Z",
+      "updatedAt": "2024-09-22T14:14:25Z",
       "closedAt": "2024-01-22T21:58:33Z",
       "comments": [
         {
@@ -173,6 +173,13 @@
           "body": "I'm increasingly of the view that the resource identifier should be returned, which is what the draft already does.  This aligns with the `resource` value in https://www.rfc-editor.org/rfc/rfc8707.html , which we normatively use.\r\n\r\nI propose that we say that during IETF 118 in Prague.  If we get consensus on this, it will close our last remaining issue.",
           "createdAt": "2023-10-31T17:02:57Z",
           "updatedAt": "2023-10-31T17:02:57Z"
+        },
+        {
+          "author": "randomstuff",
+          "authorAssociation": "NONE",
+          "body": "> I'm increasingly of the view that the resource identifier should be returned, which is what the draft already does. This aligns with the resource value in https://www.rfc-editor.org/rfc/rfc8707.html , which we normatively use.\r\n\r\nI'm wondering why the [related PR](https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/20) ended up the other route (advertising the URI of the resource metadata instead).\r\n\r\nAdvertising the resource identifier in the `WWW-Authenticate` would be more consistent with existing OAuth specifications as you pointed out.\r\n\r\nAdvertising the resource identifier in the `WWW-Authenticate` would make it possible for the client application to fetch an application-specific metadata documents (`/.well-known/myapplication-protected-resource/foo`) if it can handle it and the generic one (`/.well-known/oauth-protected-resource/foo`) otherwise.",
+          "createdAt": "2024-09-22T14:14:25Z",
+          "updatedAt": "2024-09-22T14:14:25Z"
         }
       ]
     },
@@ -587,9 +594,48 @@
       "labels": [],
       "body": "The current draft contains the wording:\r\n\r\n> While this attack is not explicitly enabled by this specification, and is possible in a plain OAuth 2.0 deployment, it is made somewhat more likely by the use of dynamically-configured clients. As such, the use of audience-restricted access tokens and **Resource Indicators [[RFC8707](https://www.ietf.org/archive/id/draft-ietf-oauth-resource-metadata-01.html#RFC8707)] is RECOMMENDED** when using the features in this specification.\r\n\r\nHowever there is currently no way for the OAuth client to know (in the general case i.e. loose coupling between the different actors) that the audience restriction has been properly supported and applied by authorization server. For example, the authorization server might silently ignore the `resource` parameter of the authorization request.\r\n\r\nIdeally, the authorization server should probably include the `resource` back in the authorization response similar to how this is done for the `scope` parameter (and in a sense for the [`authorization_details` parameter](https://www.ietf.org/archive/id/draft-ietf-oauth-rar-21.html#name-token-response)). Such an option should probably have been included in [RFC8707](https://datatracker.ietf.org/doc/html/rfc8707), however.\r\n\r\nAlternatively (or in addition) some authorization server metadata could be used to indicate that it supports resource indication.",
       "createdAt": "2024-09-16T21:43:09Z",
-      "updatedAt": "2024-09-16T21:43:09Z",
+      "updatedAt": "2024-09-23T18:35:50Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "body": "I agree that the token response should include `resource` like it does `scope` to inform the client. However I don't think that is a mechanism that this spec can suggest or define, it probably should have been part of RFC8707. Same goes for the authorization server metadata to indicate support, that should have been part of 8707, and isn't something this spec can define.",
+          "createdAt": "2024-09-23T18:34:15Z",
+          "updatedAt": "2024-09-23T18:34:15Z"
+        },
+        {
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I agree with Aaron's assessment that this is out of scope for this specification.  I'm prone to close this issue on that basis.",
+          "createdAt": "2024-09-23T18:35:49Z",
+          "updatedAt": "2024-09-23T18:35:49Z"
+        }
+      ]
+    },
+    {
+      "number": 56,
+      "id": "I_kwDOJ1yJis6Xdg9s",
+      "title": "Ambiguous handling of the resource_metadata WWW-Authenticate parameter",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/56",
+      "state": "OPEN",
+      "author": "randomstuff",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "The current draft [specifies that](https://drafts.oauth.net/draft-ietf-oauth-resource-metadata/draft-ietf-oauth-resource-metadata.html#name-protected-resource-metadata-v):\r\n\r\n> If the protected resource metadata was retrieved from a URL returned by the protected resource via the WWW-Authenticate resource_metadata parameter, then the resource value returned MUST be identical to the URL that the client used to make the request to the resource server. If these values are not identical, the data contained in the response MUST NOT be used.\r\n\r\nIf I am reading this currently, if the client makes a request to `https://resource.example.com/api/foo`, then the metadata must contain `\"resource\": \"https://resource.example.com/api/foo\"` but not something like `\"resource\": \"https://resource.example.com/api/\"` (and therefore the resource_metadata must be `https://resource.example.com/.well-known/oauth-protected-resource/api/foo`.\r\n\r\nOn the other hand, the [metadata example](https://drafts.oauth.net/draft-ietf-oauth-resource-metadata/draft-ietf-oauth-resource-metadata.html#name-protected-resource-metadata-r) uses:\r\n\r\n~~~json\r\n\"resource\": \"https://resource.example.com\",\r\n~~~\r\n\r\nThis suggests that the draft would encourage using a root API resource identifier (instead of a resource identifier for each path). \r\n\r\nShould the authorization server return a different metadata document URI path?\r\n\r\nOr should the authorization server return metadata document for a base (API) path? In this case, the requirement should probably be modified to something like:\r\n\r\n> If the protected resource metadata was retrieved from a URL returned by the protected resource via the WWW-Authenticate resource_metadata parameter, then **the URL that the client used to make the request to the resource server must be in scope of the the resource value returned**. Otherwise, the data contained in the response MUST NOT be used.\r\n\r\nMoreover, should the client check that the `resource_metadata` URI is the same URI as the one found by applying the `/.well-known/oauth-protected-resource` transformation to the \"resource\" metadata value? (i.e. should the client check that `resource_metadata_uri == origin + \"/.well-known/oauth-protected-resource\" + request_path`?)\r\n",
+      "createdAt": "2024-09-22T14:05:10Z",
+      "updatedAt": "2024-09-23T18:30:08Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Yes, as the spec says, they must be identical.\r\n\r\nThe example is just an example and happens not to include a path.  Both this spec and RFC 8707 allow the resource identifier to include a path component.\r\n\r\nYes, I would have also preferred that WWW-Authenticate return the \"resource\" value rather than the \"resource_metadata\" value.  In fact, it did until draft -02.  But the working group felt otherwise, and as we're past both WGLC and IETF last call, I'm not prone to try to reopen that issue at this point in time.",
+          "createdAt": "2024-09-23T18:30:07Z",
+          "updatedAt": "2024-09-23T18:30:07Z"
+        }
+      ]
     }
   ],
   "pulls": [
