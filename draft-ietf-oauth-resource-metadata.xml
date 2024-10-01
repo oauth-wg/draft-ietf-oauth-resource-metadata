@@ -40,7 +40,7 @@
       </address>
     </author>
 
-    <date day="16" month="September" year="2024" />
+    <date day="30" month="September" year="2024" />
 
     <area>Security</area>
     <workgroup>OAuth Working Group</workgroup>
@@ -423,7 +423,8 @@
 	      A JWT containing metadata values about the protected resource as claims.
 	      This is a string value consisting of the entire signed JWT.
 	      A <spanx style="verb">signed_metadata</spanx>
-	      metadata value SHOULD NOT appear as a claim in the JWT.
+	      metadata value SHOULD NOT appear as a claim in the JWT;
+	      it is RECOMMENDED to reject any metadata in which this occurs.
 	    </t>
 
 	  </list>
@@ -974,19 +975,14 @@
       <section anchor="TLSRequirements" title="TLS Requirements">
 	<t>
 	  Implementations MUST support TLS.
-	  Which version(s) ought to be implemented will vary over
-	  time, and depend on the widespread deployment and known
-	  security vulnerabilities at the time of implementation.
-	  Implementations SHOULD follow the guidance in
+	  They MUST follow the guidance in
 	  BCP 195 <xref target="RFC8996"/> <xref target="RFC9325"/>,
 	  which provides recommendations and requirements
 	  for improving the security of deployed services that use TLS.
 	</t>
 	<t>
-	  To protect against information disclosure and tampering,
-	  confidentiality protection MUST be applied using TLS
-	  with a ciphersuite that provides confidentiality and
-	  integrity protection.
+	  Use of TLS at the protected resource metadata URLs
+	  protects against information disclosure and tampering.
 	</t>
       </section>
 
@@ -998,8 +994,8 @@
 
       <section anchor="Impersonation" title="Impersonation Attacks">
 	<t>
-	  TLS certificate checking MUST be performed by the client,
-	  as described in <xref target="TLSRequirements"/>,
+	  TLS certificate checking MUST be performed by the client
+	  as described in <xref target="RFC9525"/>
 	  when making a protected resource metadata request.
 	  Checking that the server certificate is valid for the resource identifier URL
 	  prevents man-in-middle and DNS-based attacks.
@@ -1224,7 +1220,7 @@
               </t>
               <t hangText='Change Controller:'>
                 <vspace/>
-                For Standards Track RFCs, list the "IETF".
+                For IETF stream RFCs, list the "IETF".
 		For others, give the name of the responsible party.
 		Other details (e.g., postal address, email address, home page URI) may also be included.
               </t>
@@ -1558,16 +1554,19 @@
 	  <t> <?rfc subcompact="yes"?>
             <list style='symbols'>
 	      <t>
-		URI suffix: <spanx style="verb">oauth-protected-resource</spanx>
+		URI Suffix: <spanx style="verb">oauth-protected-resource</spanx>
 	      </t>
 	      <t>
-		Change controller: IETF
+		Reference: <xref target="PRConfig"/> of [[ this specification ]]
 	      </t>
 	      <t>
-		Specification document: <xref target="PRConfig"/> of [[ this specification ]]
+		Status: permanent
 	      </t>
 	      <t>
-		Related information: (none)
+		Change Controller: IETF
+	      </t>
+	      <t>
+		Related Information: (none)
 	      </t>
 	    </list>
 	  </t>
@@ -1598,6 +1597,7 @@
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9325.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9396.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9449.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9525.xml"/>
 
       <reference anchor="USA15" target="https://www.unicode.org/reports/tr15/">
 	<front>
@@ -1744,7 +1744,6 @@
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7033.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8620.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9470.xml"/>
-      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9525.xml"/>
 
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-oauth-security-topics-29.xml"/>
 
@@ -1825,6 +1824,7 @@
 	Ralph Bragg,
 	Brian Campbell,
 	Deb Cooley,
+	Roman Danyliw,
 	Gabriel Corona,
 	Vladimir Dzhuvinov,
 	George Fletcher,
@@ -1843,6 +1843,15 @@
 
     <section anchor="History" title="Document History">
       <t>[[ to be removed by the RFC Editor before publication as an RFC ]]</t>
+
+      <t>
+	-11
+	<list style="symbols">
+	  <t>
+	    Incorporated responses to IESG review comments by Roman Danyliw.
+	  </t>
+	</list>
+      </t>
 
       <t>
 	-10
