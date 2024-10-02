@@ -40,7 +40,7 @@
       </address>
     </author>
 
-    <date day="30" month="September" year="2024" />
+    <date day="1" month="October" year="2024" />
 
     <area>Security</area>
     <workgroup>OAuth Working Group</workgroup>
@@ -123,7 +123,7 @@
 	the protected resource, as described in <xref target="Impersonation"/>.
       </t>
       <t>
-	    	<xref target="PRMetadata"/> defines metadata values that a protected
+	<xref target="PRMetadata"/> defines metadata parameters that a protected
 	      resource can publish, which includes things like which scopes are
 	      supported, how a client can present an access token, and more.
 	      These values may be used by other specifications, such as the <spanx style="verb">jwks_uri</spanx>
@@ -154,6 +154,7 @@
 	  data structures in this specification utilize
 	  the JWS Compact Serialization or the JWE Compact Serialization;
 	  the JWS JSON Serialization and the JWE JSON Serialization are not used.
+	  Choosing a single serialization is intended to facilitate interoperability.
 	</t>
       </section>
 
@@ -174,7 +175,10 @@
 	    <t hangText='Resource Identifier:'>
 	      <vspace/>
 	      The Protected resource's resource identifier, which is a URL that
-	      uses the <spanx style="verb">https</spanx> scheme and has no query or fragment components.
+	      uses the <spanx style="verb">https</spanx> scheme and has no fragment component.
+	      As in Section 2 of <xref target="RFC8707"/>, it also SHOULD NOT include
+	      a query component, but it is recognized that there are cases that make
+	      a query component a useful and necessary part of a resource identifier.
 	      Protected resource metadata is published at a
 	      <spanx style="verb">.well-known</spanx> location
 	      <xref target="RFC8615"/>
@@ -189,7 +193,7 @@
     <section anchor="PRMetadata" title="Protected Resource Metadata">
       <t>
 	Protected resources can have metadata describing their configuration.
-	The following protected resource metadata values
+	The following protected resource metadata parameters
 	are used by this specification and are registered in the IANA
 	"OAuth Protected Resource Metadata" registry
 	established in <xref target="PRMetadataReg"/>:
@@ -408,7 +412,7 @@
 	  as a <spanx style="verb">signed_metadata</spanx> value,
 	  which is a JSON Web Token (JWT) <xref target="JWT"/>
 	  that asserts metadata values about the protected resource as a bundle.
-	  A set of claims that can be used in signed metadata
+	  A set of metadata parameters that can be used in signed metadata as claims
 	  are defined in <xref target="PRMetadata"/>.
 	  The signed metadata MUST be digitally signed or MACed
 	  using <xref target="JWS">JSON Web Signature (JWS)</xref>
@@ -427,10 +431,10 @@
 
 	    <t hangText="signed_metadata">
 	      <vspace/>
-	      A JWT containing metadata values about the protected resource as claims.
+	      A JWT containing metadata parameters about the protected resource as claims.
 	      This is a string value consisting of the entire signed JWT.
 	      A <spanx style="verb">signed_metadata</spanx>
-	      metadata value SHOULD NOT appear as a claim in the JWT;
+	      parameter SHOULD NOT appear as a claim in the JWT;
 	      it is RECOMMENDED to reject any metadata in which this occurs.
 	    </t>
 
@@ -446,9 +450,9 @@
       <t>
 	Protected resources supporting metadata
 	MUST make a JSON document containing metadata as specified in <xref target="PRMetadata"/>
-	available at a path formed by
+	available at a URL formed by
 	inserting a well-known URI string into the protected resource's resource identifier
-	between the host component and the path component, if any.
+	between the host component and the path and/or query components, if any.
 	By default, the well-known URI string used is
 	<spanx style="verb">/.well-known/oauth-protected-resource</spanx>.
 	The syntax and semantics of <spanx style="verb">.well-known</spanx>
@@ -473,9 +477,9 @@
 	and there are Example-specific metadata values that it needs to publish,
 	then it might register and use the
 	<spanx style="verb">example-protected-resource</spanx> URI path suffix and publish
-	the metadata document at the path formed by inserting
+	the metadata document at the URL formed by inserting
 	<spanx style="verb">/.well-known/example-protected-resource</spanx>
-	between the host and path components of the
+	between the host and path and/or query components of the
 	protected resource's resource identifier.
 	Alternatively, many such applications will use the default well-known URI string
 	<spanx style="verb">/.well-known/oauth-protected-resource</spanx>,
@@ -496,7 +500,7 @@
 	       title="Protected Resource Metadata Request">
         <t>
 	  A protected resource metadata document MUST be queried using an HTTP
-	  <spanx style="verb">GET</spanx> request at the previously specified path.
+	  <spanx style="verb">GET</spanx> request at the previously specified URL.
 	</t>
         <t>
 	  The consumer of the metadata would make the following request when the
@@ -515,11 +519,11 @@
 	</t>
 
 	<t>
-	  If the
-	  resource identifier value contains a path component, any terminating
-	  <spanx style="verb">/</spanx> MUST be removed before inserting
+	  If the resource identifier value contains a path or query component,
+	  any terminating <spanx style="verb">/</spanx> following the host component
+	  MUST be removed before inserting
 	  <spanx style="verb">/.well-known/</spanx> and the well-known URI path suffix
-	  between the host component and the path component.
+	  between the host component and the path and/or query components.
 	  The consumer of the metadata would make the following request when the
 	  resource identifier is <spanx style="verb">https://resource.example.com/resource1</spanx>
 	  and the well-known URI path suffix is <spanx style="verb">oauth-protected-resource</spanx>
@@ -549,18 +553,19 @@
       <section anchor="PRConfigurationResponse"
 	       title="Protected Resource Metadata Response">
         <t>
-	  The response is a set of claims about the protected resource's
+	  The response is a set of metadata parameters about the protected resource's
 	  configuration.
 	  A successful response MUST use the 200 OK HTTP status code and return
 	  a JSON object using the <spanx style="verb">application/json</spanx> content type
-	  that contains a set of claims as its members
-	  that are a subset of the metadata values defined in
+	  that contains a set of metadata parameters as its members
+	  that are a subset of the metadata parameters defined in
 	  <xref target="PRMetadata"/>.
-	  Other claims MAY also be returned.
+	  Additional metadata parameters MAY be defined and used;
+	  any metadata parameters that are not understood MUST be ignored.
 	</t>
         <t>
-	  Claims that return multiple values are represented as JSON arrays.
-	  Claims with zero elements MUST be omitted from the response.
+	  Parameters with multiple values are represented as JSON arrays.
+	  Parameters with zero values MUST be omitted from the response.
 	</t>
 	<t>
 	  An error response uses the applicable HTTP status code value.
@@ -626,7 +631,7 @@
       <t>
 	To support use cases in which the set of legitimate protected resources
 	to use with the authorization server is enumerable,
-	this specification defines the authorization server metadata value
+	this specification defines the authorization server metadata parameter
 	<spanx style="verb">protected_resources</spanx>,
 	which enables the authorization server to explicitly list the protected resources.
 	Note that if the set of legitimate authorization servers
@@ -636,7 +641,7 @@
 	when these lists are used by the application profile.
       </t>
       <t>
-	The following authorization server metadata value
+	The following authorization server metadata parameter
 	is defined by this specification and is registered in the IANA
 	"OAuth Authorization Server Metadata" registry established in
 	<xref target="RFC8414">OAuth 2.0 Authorization Server Metadata</xref>.
@@ -912,7 +917,7 @@
 
       <section anchor="changes" title="Changes to Resource Metadata">
 	<t>
-	  At any point, for any reason determined by the protected resource,
+	  At any point, for any reason determined by the resource server,
 	  the protected resource MAY respond with a new <spanx style="verb">WWW-Authenticate</spanx> challenge
 	  that includes a value for the protected resource metadata URL to indicate that its metadata MAY have changed.
 	  If the client receives such a <spanx style="verb">WWW-Authenticate</spanx> response,
@@ -1026,13 +1031,13 @@
 	</t>
 	<t>
 	  An attacker may also attempt to impersonate a protected resource by publishing
-	  a metadata document that contains a <spanx style="verb">resource</spanx> claim
+	  a metadata document that contains a <spanx style="verb">resource</spanx> metadata parameter
 	  using the resource identifier URL of the protected resource being impersonated,
 	  but containing information of the attacker's choosing.
 	  This would enable it to impersonate that protected resource, if accepted by the client.
 	  To prevent this, the client MUST ensure that the resource identifier URL it is using
 	  as the prefix for the metadata request exactly matches the value of
-	  the <spanx style="verb">resource</spanx> metadata value
+	  the <spanx style="verb">resource</spanx> metadata parameter
 	  in the protected resource metadata document received by the client,
 	  as described in <xref target="PRConfigurationValidation"/>.
 	</t>
@@ -1076,7 +1081,7 @@
 	  To support use cases in which the set of legitimate authorization servers
 	  to use with the protected resource is enumerable,
 	  this specification defines the <spanx style="verb">authorization_servers</spanx>
-	  metadata value, which enables explicitly listing them.
+	  metadata parameter, which enables explicitly listing them.
 	  Note that if the set of legitimate protected resources
 	  to use with an authorization server is also enumerable,
 	  lists in the protected resource metadata and authorization server metadata
@@ -1517,7 +1522,7 @@
 	      </t>
 	      <t>
 		Metadata Description:
-		Signed JWT containing metadata values about the protected resource as claims
+		Signed JWT containing metadata parameters about the protected resource as claims
 	      </t>
 	      <t>
 		Change Controller: IETF
@@ -1533,7 +1538,7 @@
 
       <section title="OAuth Authorization Server Metadata Registry" anchor="ASMetadataReg">
 	<t>
-	  The following authorization server metadata value
+	  The following authorization server metadata parameter
 	  is registered in the IANA
 	  "OAuth Authorization Server Metadata" registry established in
 	  <xref target="RFC8414">OAuth 2.0 Authorization Server Metadata</xref>.
@@ -1855,7 +1860,9 @@
 	Tony Nadalin,
 	Rifaat Shekh-Yusef,
 	Filip Skokan,
+	Orie Steele,
 	Atul Tulshibagwale,
+	Paul Wouters,
 	and
 	Bo Wu
 	for their contributions to the specification.
@@ -1870,9 +1877,17 @@
 	<list style="symbols">
 	  <t>
 	    Incorporated responses to HttpDir review comments by Mike Bishop.
-    </t>
-    <t>
-      Incorporated responses to IESG review comments by Roman Danyliw.
+	  </t>
+	  <t>
+	    Incorporated responses to IESG review comments by Roman Danyliw.
+	  </t>
+	  <t>
+	    Incorporated responses to IESG review comments by Orie Steele.
+	  </t>
+	  <t>
+	    Consistently use the term "metadata parameter".
+	    The terms "metadata value" and "claim" were previously
+	    inconsistently used for the same thing.
 	  </t>
 	</list>
       </t>
