@@ -1883,6 +1883,8 @@
 	  </t>
 	  <t>
 	    Incorporated responses to IESG review comments by Orie Steele.
+	    Particularly, the specification now allows resource identifiers
+	    to contain a query component (but still discourages it).
 	  </t>
 	  <t>
 	    Consistently use the term "metadata parameter".
