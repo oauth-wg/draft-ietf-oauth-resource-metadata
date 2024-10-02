@@ -1651,7 +1651,8 @@ svg :is([fill="white"], [fill^="#fff"]) {
        A JWT containing metadata values about the protected resource as claims.
        This is a string value consisting of the entire signed JWT.
        A <code>signed_metadata</code>
-       metadata value SHOULD NOT appear as a claim in the JWT.<a href="#section-2.2-3.2" class="pilcrow">¶</a>
+       metadata value SHOULD NOT appear as a claim in the JWT;
+       it is RECOMMENDED to reject any metadata in which this occurs.<a href="#section-2.2-3.2" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -2161,18 +2162,13 @@ svg :is([fill="white"], [fill^="#fff"]) {
         </h3>
 <p id="section-7.1-1">
    Implementations MUST support TLS.
-   Which version(s) ought to be implemented will vary over
-   time, and depend on the widespread deployment and known
-   security vulnerabilities at the time of implementation.
-   Implementations SHOULD follow the guidance in
+   They MUST follow the guidance in
    BCP 195 <span>[<a href="#RFC8996" class="cite xref">RFC8996</a>]</span> <span>[<a href="#RFC9325" class="cite xref">RFC9325</a>]</span>,
    which provides recommendations and requirements
    for improving the security of deployed services that use TLS.<a href="#section-7.1-1" class="pilcrow">¶</a></p>
 <p id="section-7.1-2">
-   To protect against information disclosure and tampering,
-   confidentiality protection MUST be applied using TLS
-   with a ciphersuite that provides confidentiality and
-   integrity protection.<a href="#section-7.1-2" class="pilcrow">¶</a></p>
+   Use of TLS at the protected resource metadata URLs
+   protects against information disclosure and tampering.<a href="#section-7.1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="Scopes">
@@ -2190,8 +2186,8 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="#section-7.3" class="section-number selfRef">7.3. </a><a href="#name-impersonation-attacks" class="section-name selfRef">Impersonation Attacks</a>
         </h3>
 <p id="section-7.3-1">
-   TLS certificate checking MUST be performed by the client,
-   as described in <a href="#TLSRequirements" class="auto internal xref">Section 7.1</a>,
+   TLS certificate checking MUST be performed by the client
+   as described in <span>[<a href="#RFC9525" class="cite xref">RFC9525</a>]</span>
    when making a protected resource metadata request.
    Checking that the server certificate is valid for the resource identifier URL
    prevents man-in-middle and DNS-based attacks.
@@ -2431,7 +2427,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <dd class="break"></dd>
 <dt id="section-8.1.1-1.5">Change Controller:</dt>
             <dd style="margin-left: 1.5em" id="section-8.1.1-1.6">
-                For Standards Track RFCs, list the "IETF".
+                For IETF stream RFCs, list the "IETF".
  For others, give the name of the responsible party.
  Other details (e.g., postal address, email address, home page URI) may also be included.<a href="#section-8.1.1-1.6" class="pilcrow">¶</a>
 </dd>
@@ -2813,19 +2809,23 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <ul class="compact">
 <li class="compact" id="section-8.3.1-1.1">
               <p id="section-8.3.1-1.1.1">
- URI suffix: <code>oauth-protected-resource</code><a href="#section-8.3.1-1.1.1" class="pilcrow">¶</a></p>
+ URI Suffix: <code>oauth-protected-resource</code><a href="#section-8.3.1-1.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="compact" id="section-8.3.1-1.2">
               <p id="section-8.3.1-1.2.1">
- Change controller: IETF<a href="#section-8.3.1-1.2.1" class="pilcrow">¶</a></p>
+ Reference: <a href="#PRConfig" class="auto internal xref">Section 3</a> of [[ this specification ]]<a href="#section-8.3.1-1.2.1" class="pilcrow">¶</a></p>
 </li>
             <li class="compact" id="section-8.3.1-1.3">
               <p id="section-8.3.1-1.3.1">
- Specification document: <a href="#PRConfig" class="auto internal xref">Section 3</a> of [[ this specification ]]<a href="#section-8.3.1-1.3.1" class="pilcrow">¶</a></p>
+ Status: permanent<a href="#section-8.3.1-1.3.1" class="pilcrow">¶</a></p>
 </li>
             <li class="compact" id="section-8.3.1-1.4">
               <p id="section-8.3.1-1.4.1">
- Related information: (none)<a href="#section-8.3.1-1.4.1" class="pilcrow">¶</a></p>
+ Change Controller: IETF<a href="#section-8.3.1-1.4.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="compact" id="section-8.3.1-1.5">
+              <p id="section-8.3.1-1.5.1">
+ Related Information: (none)<a href="#section-8.3.1-1.5.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </section>
@@ -2939,6 +2939,10 @@ svg :is([fill="white"], [fill^="#fff"]) {
         <dd>
 <span class="refAuthor">Fett, D.</span>, <span class="refAuthor">Campbell, B.</span>, <span class="refAuthor">Bradley, J.</span>, <span class="refAuthor">Lodderstedt, T.</span>, <span class="refAuthor">Jones, M.</span>, and <span class="refAuthor">D. Waite</span>, <span class="refTitle">"OAuth 2.0 Demonstrating Proof of Possession (DPoP)"</span>, <span class="seriesInfo">RFC 9449</span>, <span class="seriesInfo">DOI 10.17487/RFC9449</span>, <time datetime="2023-09" class="refDate">September 2023</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc9449">https://www.rfc-editor.org/info/rfc9449</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC9525">[RFC9525]</dt>
+        <dd>
+<span class="refAuthor">Saint-Andre, P.</span> and <span class="refAuthor">R. Salz</span>, <span class="refTitle">"Service Identity in TLS"</span>, <span class="seriesInfo">RFC 9525</span>, <span class="seriesInfo">DOI 10.17487/RFC9525</span>, <time datetime="2023-11" class="refDate">November 2023</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc9525">https://www.rfc-editor.org/info/rfc9525</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="UNICODE">[UNICODE]</dt>
         <dd>
 <span class="refAuthor">The Unicode Consortium</span>, <span class="refTitle">"The Unicode Standard"</span>, <span>&lt;<a href="https://www.unicode.org/versions/latest/">https://www.unicode.org/versions/latest/</a>&gt;</span>. </dd>
@@ -2987,12 +2991,8 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <span class="refAuthor">Jenkins, N.</span> and <span class="refAuthor">C. Newman</span>, <span class="refTitle">"The JSON Meta Application Protocol (JMAP)"</span>, <span class="seriesInfo">RFC 8620</span>, <span class="seriesInfo">DOI 10.17487/RFC8620</span>, <time datetime="2019-07" class="refDate">July 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8620">https://www.rfc-editor.org/info/rfc8620</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC9470">[RFC9470]</dt>
-        <dd>
-<span class="refAuthor">Bertocci, V.</span> and <span class="refAuthor">B. Campbell</span>, <span class="refTitle">"OAuth 2.0 Step Up Authentication Challenge Protocol"</span>, <span class="seriesInfo">RFC 9470</span>, <span class="seriesInfo">DOI 10.17487/RFC9470</span>, <time datetime="2023-09" class="refDate">September 2023</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc9470">https://www.rfc-editor.org/info/rfc9470</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC9525">[RFC9525]</dt>
       <dd>
-<span class="refAuthor">Saint-Andre, P.</span> and <span class="refAuthor">R. Salz</span>, <span class="refTitle">"Service Identity in TLS"</span>, <span class="seriesInfo">RFC 9525</span>, <span class="seriesInfo">DOI 10.17487/RFC9525</span>, <time datetime="2023-11" class="refDate">November 2023</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc9525">https://www.rfc-editor.org/info/rfc9525</a>&gt;</span>. </dd>
+<span class="refAuthor">Bertocci, V.</span> and <span class="refAuthor">B. Campbell</span>, <span class="refTitle">"OAuth 2.0 Step Up Authentication Challenge Protocol"</span>, <span class="seriesInfo">RFC 9470</span>, <span class="seriesInfo">DOI 10.17487/RFC9470</span>, <time datetime="2023-09" class="refDate">September 2023</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc9470">https://www.rfc-editor.org/info/rfc9470</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -3010,6 +3010,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
  Ralph Bragg,
  Brian Campbell,
  Deb Cooley,
+ Roman Danyliw,
  Gabriel Corona,
  Vladimir Dzhuvinov,
  George Fletcher,
@@ -3037,6 +3038,10 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <li class="normal" id="appendix-B-3.1">
           <p id="appendix-B-3.1.1">
      Incorporated responses to HttpDir review comments by Mike Bishop.<a href="#appendix-B-3.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-3.2">
+          <p id="appendix-B-3.2.1">
+      Incorporated responses to IESG review comments by Roman Danyliw.<a href="#appendix-B-3.2.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-B-4">
