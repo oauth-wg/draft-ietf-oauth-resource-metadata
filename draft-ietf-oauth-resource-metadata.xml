@@ -131,7 +131,14 @@
 	      resource responses, for instance,
 	      as described in <xref target="FAPI.MessageSigning"/>.
 	    </t>
-
+      <t>
+	<xref target="WWW-Authenticate"/> describes the use of
+	<spanx style="verb">WWW-Authenticate</spanx> by protected resources
+	to dynamically inform clients of
+	the URL of their protected resource metadata.
+	This use of <spanx style="verb">WWW-Authenticate</spanx> can indicate that
+	the protected resource metadata MAY have changed.
+      </t>
       <section anchor="rnc" title="Requirements Notation and Conventions">
 	<t>
 	  The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
@@ -596,7 +603,7 @@
 	</t>
 	<t>
 	  If the protected resource metadata was retrieved from a URL
-	  returned by the protected resource via the WWW-Authenticate
+	  returned by the protected resource via the <spanx style="verb">WWW-Authenticate</spanx>
 	  <spanx style="verb">resource_metadata</spanx> parameter, then
 	  the <spanx style="verb">resource</spanx> value returned MUST be identical to
 	  the URL that the client used to make the request to the resource server.
@@ -653,7 +660,9 @@
 
     <section anchor="WWW-Authenticate" title="Use of WWW-Authenticate for Protected Resource Metadata">
       <t>
-	A protected resource MAY use a <spanx style="verb">WWW-Authenticate</spanx> response to return a URL to its protected resource metadata to the client.
+	A protected resource MAY use the <spanx style="verb">WWW-Authenticate</spanx>
+	<xref target="RFC9110"/> HTTP response header field
+	to return a URL to its protected resource metadata to the client.
 	The client can then retrieve protected resource metadata as described in <xref target="PRConfig"/>.
 	The client might then, for instance, determine what authorization server to use for the resource
 	based on protected resource metadata retrieved.
@@ -860,7 +869,8 @@
 
       <section anchor="WWW-Authenticate-Response" title="WWW-Authenticate Response">
 	<t>
-	  This specification introduces a new parameter in the <spanx style="verb">WWW-Authenticate</spanx> response
+	  This specification introduces a new parameter in the
+	  <spanx style="verb">WWW-Authenticate</spanx> HTTP response header field
 	  to indicate the protected resource metadata URL:
             <list style='hanging'>
               <t hangText='resource_metadata:'>
@@ -883,7 +893,16 @@
 	  </figure>
 	</t>
 	<t>
-	  The HTTP status code and error string in the response are defined by <xref target="RFC6750"/>.
+	  The HTTP status code and error string in the example response above
+	  are defined by <xref target="RFC6750"/>.
+	</t>
+	<t>
+	  This parameter MAY also be used in
+	  <spanx style="verb">WWW-Authenticate</spanx> responses using
+	  <spanx style="verb">Authorization</spanx> schemes other than
+	  <spanx style="verb">Bearer</spanx> <xref target="RFC6750"/>,
+	  such as the <spanx style="verb">DPoP</spanx> scheme
+	  defined by <xref target="RFC9449"/>.
 	</t>
 	<t>
 	  The <spanx style="verb">resource_metadata</spanx> parameter MAY be combined with other parameters defined in other extensions,
@@ -1594,6 +1613,7 @@
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8705.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8707.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8996.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9110.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9325.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9396.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9449.xml"/>
@@ -1821,6 +1841,7 @@
 	The authors of this specification would like to thank the attendees of the IETF 115 OAuth and HTTP API Working Group meetings
 	and the attendees of subsequent OAuth Working Group meetings for their input on this specification.
 	We would would also like to thank
+	Mike Bishop,
 	Ralph Bragg,
 	Brian Campbell,
 	Deb Cooley,
@@ -1848,7 +1869,10 @@
 	-11
 	<list style="symbols">
 	  <t>
-	    Incorporated responses to IESG review comments by Roman Danyliw.
+	    Incorporated responses to HttpDir review comments by Mike Bishop.
+    </t>
+    <t>
+      Incorporated responses to IESG review comments by Roman Danyliw.
 	  </t>
 	</list>
       </t>
