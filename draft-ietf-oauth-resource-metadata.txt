@@ -5,10 +5,10 @@
 OAuth Working Group                                           M.B. Jones
 Internet-Draft                                    Self-Issued Consulting
 Intended status: Standards Track                                 P. Hunt
-Expires: 20 March 2025                        Independent Identity, Inc.
+Expires: 3 April 2025                         Independent Identity, Inc.
                                                               A. Parecki
                                                                     Okta
-                                                       16 September 2024
+                                                       30 September 2024
 
 
                  OAuth 2.0 Protected Resource Metadata
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 20 March 2025.
+   This Internet-Draft will expire on 3 April 2025.
 
 Copyright Notice
 
@@ -148,6 +148,11 @@ Table of Contents
    used by other specifications, such as the jwks_uri used to publish
    public keys the resource server uses to sign resource responses, for
    instance, as described in [FAPI.MessageSigning].
+
+   Section 5 describes the use of WWW-Authenticate by protected
+   resources to dynamically inform clients of the URL of their protected
+   resource metadata.  This use of WWW-Authenticate can indicate that
+   the protected resource metadata MAY have changed.
 
 1.1.  Requirements Notation and Conventions
 
@@ -508,12 +513,12 @@ Table of Contents
 
 5.  Use of WWW-Authenticate for Protected Resource Metadata
 
-   A protected resource MAY use a WWW-Authenticate response to return a
-   URL to its protected resource metadata to the client.  The client can
-   then retrieve protected resource metadata as described in Section 3.
-   The client might then, for instance, determine what authorization
-   server to use for the resource based on protected resource metadata
-   retrieved.
+   A protected resource MAY use the WWW-Authenticate [RFC9110] HTTP
+   response header field to return a URL to its protected resource
+   metadata to the client.  The client can then retrieve protected
+   resource metadata as described in Section 3.  The client might then,
+   for instance, determine what authorization server to use for the
+   resource based on protected resource metadata retrieved.
 
    A typical end-to-end flow doing so is as follows.  Note that while
    this example uses the OAuth 2.0 Authorization Code flow, a similar
@@ -605,7 +610,8 @@ Table of Contents
 5.1.  WWW-Authenticate Response
 
    This specification introduces a new parameter in the WWW-Authenticate
-   response to indicate the protected resource metadata URL:
+   HTTP response header field to indicate the protected resource
+   metadata URL:
 
    resource_metadata:
       The URL of the protected resource metadata.
@@ -619,8 +625,12 @@ Table of Contents
      resource_metadata=
      "https://resource.example.com/.well-known/oauth-protected-resource"
 
-   The HTTP status code and error string in the response are defined by
-   [RFC6750].
+   The HTTP status code and error string in the example response above
+   are defined by [RFC6750].
+
+   This parameter MAY also be used in WWW-Authenticate responses using
+   Authorization schemes other than Bearer [RFC6750], such as the DPoP
+   scheme defined by [RFC9449].
 
    The resource_metadata parameter MAY be combined with other parameters
    defined in other extensions, such as the max_age parameter defined by
@@ -1143,6 +1153,11 @@ Table of Contents
               1.1", BCP 195, RFC 8996, DOI 10.17487/RFC8996, March 2021,
               <https://www.rfc-editor.org/info/rfc8996>.
 
+   [RFC9110]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
+              Ed., "HTTP Semantics", STD 97, RFC 9110,
+              DOI 10.17487/RFC9110, June 2022,
+              <https://www.rfc-editor.org/info/rfc9110>.
+
    [RFC9325]  Sheffer, Y., Saint-Andre, P., and T. Fossati,
               "Recommendations for Secure Use of Transport Layer
               Security (TLS) and Datagram Transport Layer Security
@@ -1222,16 +1237,20 @@ Appendix A.  Acknowledgements
    The authors of this specification would like to thank the attendees
    of the IETF 115 OAuth and HTTP API Working Group meetings and the
    attendees of subsequent OAuth Working Group meetings for their input
-   on this specification.  We would would also like to thank Ralph
-   Bragg, Brian Campbell, Deb Cooley, Gabriel Corona, Vladimir
-   Dzhuvinov, George Fletcher, Arnt Gulbrandsen, Pieter Kasselman, David
-   Mandelberg, Tony Nadalin, Rifaat Shekh-Yusef, Filip Skokan, Atul
-   Tulshibagwale, and Bo Wu for their contributions to the
+   on this specification.  We would would also like to thank Mike
+   Bishop, Ralph Bragg, Brian Campbell, Deb Cooley, Gabriel Corona,
+   Vladimir Dzhuvinov, George Fletcher, Arnt Gulbrandsen, Pieter
+   Kasselman, David Mandelberg, Tony Nadalin, Rifaat Shekh-Yusef, Filip
+   Skokan, Atul Tulshibagwale, and Bo Wu for their contributions to the
    specification.
 
 Appendix B.  Document History
 
    [[ to be removed by the RFC Editor before publication as an RFC ]]
+
+   -11
+
+   *  Incorporated responses to HttpDir review comments by Mike Bishop.
 
    -10
 
