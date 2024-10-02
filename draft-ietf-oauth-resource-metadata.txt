@@ -353,7 +353,8 @@ Table of Contents
       A JWT containing metadata values about the protected resource as
       claims.  This is a string value consisting of the entire signed
       JWT.  A signed_metadata metadata value SHOULD NOT appear as a
-      claim in the JWT.
+      claim in the JWT; it is RECOMMENDED to reject any metadata in
+      which this occurs.
 
 3.  Obtaining Protected Resource Metadata
 
@@ -700,17 +701,13 @@ Table of Contents
 
 7.1.  TLS Requirements
 
-   Implementations MUST support TLS.  Which version(s) ought to be
-   implemented will vary over time, and depend on the widespread
-   deployment and known security vulnerabilities at the time of
-   implementation.  Implementations SHOULD follow the guidance in BCP
-   195 [RFC8996] [RFC9325], which provides recommendations and
+   Implementations MUST support TLS.  They MUST follow the guidance in
+   BCP 195 [RFC8996] [RFC9325], which provides recommendations and
    requirements for improving the security of deployed services that use
    TLS.
 
-   To protect against information disclosure and tampering,
-   confidentiality protection MUST be applied using TLS with a
-   ciphersuite that provides confidentiality and integrity protection.
+   Use of TLS at the protected resource metadata URLs protects against
+   information disclosure and tampering.
 
 7.2.  Scopes
 
@@ -724,15 +721,15 @@ Table of Contents
 
 7.3.  Impersonation Attacks
 
-   TLS certificate checking MUST be performed by the client, as
-   described in Section 7.1, when making a protected resource metadata
-   request.  Checking that the server certificate is valid for the
-   resource identifier URL prevents man-in-middle and DNS-based attacks.
-   These attacks could cause a client to be tricked into using an
-   attacker's resource server, which would enable impersonation of the
-   legitimate protected resource.  If an attacker can accomplish this,
-   they can access the resources that the affected client has access to
-   using the protected resource that they are impersonating.
+   TLS certificate checking MUST be performed by the client as described
+   in [RFC9525] when making a protected resource metadata request.
+   Checking that the server certificate is valid for the resource
+   identifier URL prevents man-in-middle and DNS-based attacks.  These
+   attacks could cause a client to be tricked into using an attacker's
+   resource server, which would enable impersonation of the legitimate
+   protected resource.  If an attacker can accomplish this, they can
+   access the resources that the affected client has access to using the
+   protected resource that they are impersonating.
 
    An attacker may also attempt to impersonate a protected resource by
    publishing a metadata document that contains a resource claim using
@@ -924,9 +921,9 @@ Table of Contents
       URL").
 
    Change Controller:
-      For Standards Track RFCs, list the "IETF".  For others, give the
-      name of the responsible party.  Other details (e.g., postal
-      address, email address, home page URI) may also be included.
+      For IETF stream RFCs, list the "IETF".  For others, give the name
+      of the responsible party.  Other details (e.g., postal address,
+      email address, home page URI) may also be included.
 
    Specification Document(s):
       Reference to the document or documents that specify the parameter,
@@ -1054,10 +1051,11 @@ Table of Contents
 
 8.3.1.  Registry Contents
 
-   *  URI suffix: oauth-protected-resource
-   *  Change controller: IETF
-   *  Specification document: Section 3 of [[ this specification ]]
-   *  Related information: (none)
+   *  URI Suffix: oauth-protected-resource
+   *  Reference: Section 3 of [[ this specification ]]
+   *  Status: permanent
+   *  Change Controller: IETF
+   *  Related Information: (none)
 
 9.  References
 
@@ -1174,6 +1172,10 @@ Table of Contents
               Possession (DPoP)", RFC 9449, DOI 10.17487/RFC9449,
               September 2023, <https://www.rfc-editor.org/info/rfc9449>.
 
+   [RFC9525]  Saint-Andre, P. and R. Salz, "Service Identity in TLS",
+              RFC 9525, DOI 10.17487/RFC9525, November 2023,
+              <https://www.rfc-editor.org/info/rfc9525>.
+
    [UNICODE]  The Unicode Consortium, "The Unicode Standard",
               <https://www.unicode.org/versions/latest/>.
 
@@ -1228,21 +1230,17 @@ Table of Contents
               DOI 10.17487/RFC9470, September 2023,
               <https://www.rfc-editor.org/info/rfc9470>.
 
-   [RFC9525]  Saint-Andre, P. and R. Salz, "Service Identity in TLS",
-              RFC 9525, DOI 10.17487/RFC9525, November 2023,
-              <https://www.rfc-editor.org/info/rfc9525>.
-
 Appendix A.  Acknowledgements
 
    The authors of this specification would like to thank the attendees
    of the IETF 115 OAuth and HTTP API Working Group meetings and the
    attendees of subsequent OAuth Working Group meetings for their input
    on this specification.  We would would also like to thank Mike
-   Bishop, Ralph Bragg, Brian Campbell, Deb Cooley, Gabriel Corona,
-   Vladimir Dzhuvinov, George Fletcher, Arnt Gulbrandsen, Pieter
-   Kasselman, David Mandelberg, Tony Nadalin, Rifaat Shekh-Yusef, Filip
-   Skokan, Atul Tulshibagwale, and Bo Wu for their contributions to the
-   specification.
+   Bishop, Ralph Bragg, Brian Campbell, Deb Cooley, Roman Danyliw,
+   Gabriel Corona, Vladimir Dzhuvinov, George Fletcher, Arnt
+   Gulbrandsen, Pieter Kasselman, David Mandelberg, Tony Nadalin, Rifaat
+   Shekh-Yusef, Filip Skokan, Atul Tulshibagwale, and Bo Wu for their
+   contributions to the specification.
 
 Appendix B.  Document History
 
@@ -1251,6 +1249,8 @@ Appendix B.  Document History
    -11
 
    *  Incorporated responses to HttpDir review comments by Mike Bishop.
+
+   *  Incorporated responses to IESG review comments by Roman Danyliw.
 
    -10
 
