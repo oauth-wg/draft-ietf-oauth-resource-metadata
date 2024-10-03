@@ -152,7 +152,7 @@ Table of Contents
    Section 5 describes the use of WWW-Authenticate by protected
    resources to dynamically inform clients of the URL of their protected
    resource metadata.  This use of WWW-Authenticate can indicate that
-   the protected resource metadata MAY have changed.
+   the protected resource metadata may have changed.
 
 1.1.  Requirements Notation and Conventions
 
@@ -647,7 +647,7 @@ Table of Contents
    At any point, for any reason determined by the resource server, the
    protected resource MAY respond with a new WWW-Authenticate challenge
    that includes a value for the protected resource metadata URL to
-   indicate that its metadata MAY have changed.  If the client receives
+   indicate that its metadata may have changed.  If the client receives
    such a WWW-Authenticate response, it SHOULD retrieve the updated
    protected resource metadata and use the new metadata values obtained,
    after validating them as described in Section 3.3.  Among other
@@ -1249,6 +1249,10 @@ Appendix A.  Acknowledgements
 Appendix B.  Document History
 
    [[ to be removed by the RFC Editor before publication as an RFC ]]
+
+   -11
+
+   *  Incorporated responses to review comments by John Scudder.
 
    -11
 
