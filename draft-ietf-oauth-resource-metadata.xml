@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="US-ASCII"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type='text/xsl' href='http://xml2rfc.tools.ietf.org/authoring/rfc2629.xslt' ?>
 <!DOCTYPE rfc PUBLIC "-//IETF//DTD RFC 2629//EN"
 "http://xml2rfc.tools.ietf.org/authoring/rfc2629.dtd">
@@ -40,7 +40,7 @@
       </address>
     </author>
 
-    <date day="2" month="October" year="2024" />
+    <date day="3" month="October" year="2024" />
 
     <area>Security</area>
     <workgroup>OAuth Working Group</workgroup>
@@ -1194,9 +1194,8 @@
 	deny the registration request, communicating this decision to the review list and IANA.
 	Denials should include an explanation and, if applicable, suggestions as to how to make
 	the request successful.
-	Registration requests that are undetermined for
-	a period longer than 21 days can be brought to the IESG's attention
-	(using the iesg@ietf.org mailing list) for resolution.
+	The IANA escalation process is followed when the Designated Experts
+	are not responsive within 14 days.
       </t>
       <t>
 	Criteria that should be applied by the Designated Experts includes
@@ -1856,12 +1855,16 @@
 	George Fletcher,
 	Arnt Gulbrandsen,
 	Pieter Kasselman,
+	Murray Kucherawy,
 	David Mandelberg,
 	Tony Nadalin,
+	Francesca Palombini,
+	John Scudder,
 	Rifaat Shekh-Yusef,
 	Filip Skokan,
 	Orie Steele,
 	Atul Tulshibagwale,
+	Éric Vyncke,
 	Paul Wouters,
 	and
 	Bo Wu
@@ -1873,10 +1876,13 @@
       <t>[[ to be removed by the RFC Editor before publication as an RFC ]]</t>
 
       <t>
-	-11
+	-12
 	<list style="symbols">
 	  <t>
-	    Incorporated responses to review comments by John Scudder.
+	    Incorporated responses to IESG review comments by John Scudder,
+	    Murray Kucherawy, Francesca Palombini, and Éric Vyncke.
+	    The IANA registration procedure was updated per the discussion
+	    on the IESG telechat.
 	  </t>
 	</list>
       </t>
