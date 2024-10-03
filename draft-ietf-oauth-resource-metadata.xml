@@ -137,7 +137,7 @@
 	to dynamically inform clients of
 	the URL of their protected resource metadata.
 	This use of <spanx style="verb">WWW-Authenticate</spanx> can indicate that
-	the protected resource metadata MAY have changed.
+	the protected resource metadata may have changed.
       </t>
       <section anchor="rnc" title="Requirements Notation and Conventions">
 	<t>
@@ -919,7 +919,7 @@
 	<t>
 	  At any point, for any reason determined by the resource server,
 	  the protected resource MAY respond with a new <spanx style="verb">WWW-Authenticate</spanx> challenge
-	  that includes a value for the protected resource metadata URL to indicate that its metadata MAY have changed.
+	  that includes a value for the protected resource metadata URL to indicate that its metadata may have changed.
 	  If the client receives such a <spanx style="verb">WWW-Authenticate</spanx> response,
 	  it SHOULD retrieve the updated protected resource metadata
 	  and use the new metadata values obtained, after validating them
@@ -1871,6 +1871,15 @@
 
     <section anchor="History" title="Document History">
       <t>[[ to be removed by the RFC Editor before publication as an RFC ]]</t>
+
+      <t>
+	-11
+	<list style="symbols">
+	  <t>
+	    Incorporated responses to review comments by John Scudder.
+	  </t>
+	</list>
+      </t>
 
       <t>
 	-11
