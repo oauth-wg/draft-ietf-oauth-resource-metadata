@@ -16,7 +16,7 @@
  an OAuth 2.0 protected resource.
        
     " name="description">
-<meta content="xml2rfc 3.23.1" name="generator">
+<meta content="xml2rfc 3.23.2" name="generator">
 <meta content="OAuth" name="keyword">
 <meta content="Discovery" name="keyword">
 <meta content="Metadata" name="keyword">
@@ -31,7 +31,7 @@
 <meta content="JWT" name="keyword">
 <meta content="draft-ietf-oauth-resource-metadata-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.23.1
+  xml2rfc 3.23.2
     Python 3.12.6
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
@@ -1355,7 +1355,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
  to dynamically inform clients of
  the URL of their protected resource metadata.
  This use of <code>WWW-Authenticate</code> can indicate that
- the protected resource metadata MAY have changed.<a href="#section-1-7" class="pilcrow">¶</a></p>
+ the protected resource metadata may have changed.<a href="#section-1-7" class="pilcrow">¶</a></p>
 <div id="rnc">
 <section id="section-1.1">
         <h3 id="name-requirements-notation-and-c">
@@ -2079,7 +2079,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <p id="section-5.2-1">
    At any point, for any reason determined by the resource server,
    the protected resource MAY respond with a new <code>WWW-Authenticate</code> challenge
-   that includes a value for the protected resource metadata URL to indicate that its metadata MAY have changed.
+   that includes a value for the protected resource metadata URL to indicate that its metadata may have changed.
    If the client receives such a <code>WWW-Authenticate</code> response,
    it SHOULD retrieve the updated protected resource metadata
    and use the new metadata values obtained, after validating them
@@ -3044,202 +3044,210 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <ul class="normal">
 <li class="normal" id="appendix-B-3.1">
           <p id="appendix-B-3.1.1">
-     Incorporated responses to HttpDir review comments by Mike Bishop.<a href="#appendix-B-3.1.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-3.2">
-          <p id="appendix-B-3.2.1">
-     Incorporated responses to IESG review comments by Roman Danyliw.<a href="#appendix-B-3.2.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-3.3">
-          <p id="appendix-B-3.3.1">
-     Incorporated responses to IESG review comments by Orie Steele.
-     Particularly, the specification now allows resource identifiers
-     to contain a query component (but still discourages it).<a href="#appendix-B-3.3.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-3.4">
-          <p id="appendix-B-3.4.1">
-     Consistently use the term "metadata parameter".
-     The terms "metadata value" and "claim" were previously
-     inconsistently used for the same thing.<a href="#appendix-B-3.4.1" class="pilcrow">¶</a></p>
+     Incorporated responses to review comments by John Scudder.<a href="#appendix-B-3.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-B-4">
- -10<a href="#appendix-B-4" class="pilcrow">¶</a></p>
+ -11<a href="#appendix-B-4" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-B-5.1">
           <p id="appendix-B-5.1.1">
-     Added metadata parameter declaring RAR types supported.<a href="#appendix-B-5.1.1" class="pilcrow">¶</a></p>
+     Incorporated responses to HttpDir review comments by Mike Bishop.<a href="#appendix-B-5.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-5.2">
+          <p id="appendix-B-5.2.1">
+     Incorporated responses to IESG review comments by Roman Danyliw.<a href="#appendix-B-5.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-5.3">
+          <p id="appendix-B-5.3.1">
+     Incorporated responses to IESG review comments by Orie Steele.
+     Particularly, the specification now allows resource identifiers
+     to contain a query component (but still discourages it).<a href="#appendix-B-5.3.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-5.4">
+          <p id="appendix-B-5.4.1">
+     Consistently use the term "metadata parameter".
+     The terms "metadata value" and "claim" were previously
+     inconsistently used for the same thing.<a href="#appendix-B-5.4.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-B-6">
- -09<a href="#appendix-B-6" class="pilcrow">¶</a></p>
+ -10<a href="#appendix-B-6" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-B-7.1">
           <p id="appendix-B-7.1.1">
-     Added metadata values declaring support for DPoP
-     and mutual-TLS client certificate-bound access tokens.<a href="#appendix-B-7.1.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-7.2">
-          <p id="appendix-B-7.2.1">
-     Added missing word caught during IANA review.<a href="#appendix-B-7.2.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-7.3">
-          <p id="appendix-B-7.3.1">
-     Addressed ART, SecDir, and OpsDir review comments by
-     Arnt Gulbrandsen, David Mandelberg, and Bo Wu,
-     resulting in the following changes.<a href="#appendix-B-7.3.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-7.4">
-          <p id="appendix-B-7.4.1">
-     Added step numbers to sequence diagram.<a href="#appendix-B-7.4.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-7.5">
-          <p id="appendix-B-7.5.1">
-     Defined meaning of omitting
-     <code>bearer_methods_supported</code>
-     metadata parameter.<a href="#appendix-B-7.5.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-7.6">
-          <p id="appendix-B-7.6.1">
-     Added internationalization of human-readable metadata values
-     using the mechanism from <span>[<a href="#RFC7591" class="cite xref">RFC7591</a>]</span>.<a href="#appendix-B-7.6.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-7.7">
-          <p id="appendix-B-7.7.1">
-     Added <code>resource_name</code> metadata parameter,
-     paralleling <code>client_name</code> in <span>[<a href="#RFC7591" class="cite xref">RFC7591</a>]</span>.<a href="#appendix-B-7.7.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-7.8">
-          <p id="appendix-B-7.8.1">
-     Added Security Considerations section on metadata caching.<a href="#appendix-B-7.8.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-7.9">
-          <p id="appendix-B-7.9.1">
-     Used and referenced Resource Identifier definition.<a href="#appendix-B-7.9.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-7.10">
-          <p id="appendix-B-7.10.1">
-    Added motivating example of an email client to intro.<a href="#appendix-B-7.10.1" class="pilcrow">¶</a></p>
+     Added metadata parameter declaring RAR types supported.<a href="#appendix-B-7.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-B-8">
- -08<a href="#appendix-B-8" class="pilcrow">¶</a></p>
+ -09<a href="#appendix-B-8" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-B-9.1">
           <p id="appendix-B-9.1.1">
-     Added Security Considerations about the differences between
-     unsigned and signed metadata, as suggested by Deb Cooley.<a href="#appendix-B-9.1.1" class="pilcrow">¶</a></p>
+     Added metadata values declaring support for DPoP
+     and mutual-TLS client certificate-bound access tokens.<a href="#appendix-B-9.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-B-9.2">
           <p id="appendix-B-9.2.1">
-     Updated obsolete references.<a href="#appendix-B-9.2.1" class="pilcrow">¶</a></p>
+     Added missing word caught during IANA review.<a href="#appendix-B-9.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-9.3">
+          <p id="appendix-B-9.3.1">
+     Addressed ART, SecDir, and OpsDir review comments by
+     Arnt Gulbrandsen, David Mandelberg, and Bo Wu,
+     resulting in the following changes.<a href="#appendix-B-9.3.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-9.4">
+          <p id="appendix-B-9.4.1">
+     Added step numbers to sequence diagram.<a href="#appendix-B-9.4.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-9.5">
+          <p id="appendix-B-9.5.1">
+     Defined meaning of omitting
+     <code>bearer_methods_supported</code>
+     metadata parameter.<a href="#appendix-B-9.5.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-9.6">
+          <p id="appendix-B-9.6.1">
+     Added internationalization of human-readable metadata values
+     using the mechanism from <span>[<a href="#RFC7591" class="cite xref">RFC7591</a>]</span>.<a href="#appendix-B-9.6.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-9.7">
+          <p id="appendix-B-9.7.1">
+     Added <code>resource_name</code> metadata parameter,
+     paralleling <code>client_name</code> in <span>[<a href="#RFC7591" class="cite xref">RFC7591</a>]</span>.<a href="#appendix-B-9.7.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-9.8">
+          <p id="appendix-B-9.8.1">
+     Added Security Considerations section on metadata caching.<a href="#appendix-B-9.8.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-9.9">
+          <p id="appendix-B-9.9.1">
+     Used and referenced Resource Identifier definition.<a href="#appendix-B-9.9.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-9.10">
+          <p id="appendix-B-9.10.1">
+    Added motivating example of an email client to intro.<a href="#appendix-B-9.10.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-B-10">
- -07<a href="#appendix-B-10" class="pilcrow">¶</a></p>
+ -08<a href="#appendix-B-10" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-B-11.1">
           <p id="appendix-B-11.1.1">
-     Removed extraneous paragraph about downgrade attacks discussing
-     an issue that's already addressed elsewhere in the specification.<a href="#appendix-B-11.1.1" class="pilcrow">¶</a></p>
+     Added Security Considerations about the differences between
+     unsigned and signed metadata, as suggested by Deb Cooley.<a href="#appendix-B-11.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-11.2">
+          <p id="appendix-B-11.2.1">
+     Updated obsolete references.<a href="#appendix-B-11.2.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-B-12">
- -06<a href="#appendix-B-12" class="pilcrow">¶</a></p>
+ -07<a href="#appendix-B-12" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-B-13.1">
           <p id="appendix-B-13.1.1">
-     Addressed shepherd review comments by Rifaat Shekh-Yusef.<a href="#appendix-B-13.1.1" class="pilcrow">¶</a></p>
+     Removed extraneous paragraph about downgrade attacks discussing
+     an issue that's already addressed elsewhere in the specification.<a href="#appendix-B-13.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-B-14">
- -05<a href="#appendix-B-14" class="pilcrow">¶</a></p>
+ -06<a href="#appendix-B-14" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-B-15.1">
           <p id="appendix-B-15.1.1">
-     Added SVG diagram<a href="#appendix-B-15.1.1" class="pilcrow">¶</a></p>
+     Addressed shepherd review comments by Rifaat Shekh-Yusef.<a href="#appendix-B-15.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-B-16">
- -04<a href="#appendix-B-16" class="pilcrow">¶</a></p>
+ -05<a href="#appendix-B-16" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-B-17.1">
           <p id="appendix-B-17.1.1">
-     Applied working group last call suggestions by
-     Atul Tulshibagwale.<a href="#appendix-B-17.1.1" class="pilcrow">¶</a></p>
+     Added SVG diagram<a href="#appendix-B-17.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-B-17.2">
-          <p id="appendix-B-17.2.1">
+      </ul>
+<p id="appendix-B-18">
+ -04<a href="#appendix-B-18" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-B-19.1">
+          <p id="appendix-B-19.1.1">
+     Applied working group last call suggestions by
+     Atul Tulshibagwale.<a href="#appendix-B-19.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-19.2">
+          <p id="appendix-B-19.2.1">
      Better described the purpose of
      <code>resource_signing_alg_values_supported</code> and
      removed <code>resource_encryption_alg_values_supported</code> and
      <code>resource_encryption_enc_values_supported</code>,
-     per WGLC comments by Vladimir Dzhuvinov and Brian Campbell.<a href="#appendix-B-17.2.1" class="pilcrow">¶</a></p>
+     per WGLC comments by Vladimir Dzhuvinov and Brian Campbell.<a href="#appendix-B-19.2.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-B-17.3">
-          <p id="appendix-B-17.3.1">
-     Applied suggestions by Pieter Kasselman.<a href="#appendix-B-17.3.1" class="pilcrow">¶</a></p>
-</li>
-      </ul>
-<p id="appendix-B-18">
- -03<a href="#appendix-B-18" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="appendix-B-19.1">
-          <p id="appendix-B-19.1.1">
-     Applied correction by Filip Skokan.<a href="#appendix-B-19.1.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-B-19.3">
+          <p id="appendix-B-19.3.1">
+     Applied suggestions by Pieter Kasselman.<a href="#appendix-B-19.3.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-B-20">
- -02<a href="#appendix-B-20" class="pilcrow">¶</a></p>
+ -03<a href="#appendix-B-20" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-B-21.1">
           <p id="appendix-B-21.1.1">
-     Switched from concatenating .well-known to the end of the resource identifier
-     to inserting it between the host and path components of it.<a href="#appendix-B-21.1.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-21.2">
-          <p id="appendix-B-21.2.1">
-     Have WWW-Authenticate return <code>resource_metadata</code> rather than <code>resource</code>.<a href="#appendix-B-21.2.1" class="pilcrow">¶</a></p>
+     Applied correction by Filip Skokan.<a href="#appendix-B-21.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-B-22">
- -01<a href="#appendix-B-22" class="pilcrow">¶</a></p>
+ -02<a href="#appendix-B-22" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-B-23.1">
           <p id="appendix-B-23.1.1">
-     Renamed scopes_provided to scopes_supported.<a href="#appendix-B-23.1.1" class="pilcrow">¶</a></p>
+     Switched from concatenating .well-known to the end of the resource identifier
+     to inserting it between the host and path components of it.<a href="#appendix-B-23.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-B-23.2">
           <p id="appendix-B-23.2.1">
-     Added security consideration for scopes_supported.<a href="#appendix-B-23.2.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-23.3">
-          <p id="appendix-B-23.3.1">
-     Use BCP 195 for TLS recommendations.<a href="#appendix-B-23.3.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-23.4">
-          <p id="appendix-B-23.4.1">
-     Clarified that resource metadata can be used by clients and authorization servers.<a href="#appendix-B-23.4.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-23.5">
-          <p id="appendix-B-23.5.1">
-     Updated references.<a href="#appendix-B-23.5.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-23.6">
-          <p id="appendix-B-23.6.1">
-     Added security consideration recommending audience-restricted access tokens.<a href="#appendix-B-23.6.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-23.7">
-          <p id="appendix-B-23.7.1">
-     Mention FAPI Message Signing as a use case for publishing signing keys.<a href="#appendix-B-23.7.1" class="pilcrow">¶</a></p>
+     Have WWW-Authenticate return <code>resource_metadata</code> rather than <code>resource</code>.<a href="#appendix-B-23.2.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-B-24">
- -00<a href="#appendix-B-24" class="pilcrow">¶</a></p>
+ -01<a href="#appendix-B-24" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-B-25.1">
           <p id="appendix-B-25.1.1">
-     Initial working group version based on draft-jones-oauth-resource-metadata-04.<a href="#appendix-B-25.1.1" class="pilcrow">¶</a></p>
+     Renamed scopes_provided to scopes_supported.<a href="#appendix-B-25.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-25.2">
+          <p id="appendix-B-25.2.1">
+     Added security consideration for scopes_supported.<a href="#appendix-B-25.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-25.3">
+          <p id="appendix-B-25.3.1">
+     Use BCP 195 for TLS recommendations.<a href="#appendix-B-25.3.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-25.4">
+          <p id="appendix-B-25.4.1">
+     Clarified that resource metadata can be used by clients and authorization servers.<a href="#appendix-B-25.4.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-25.5">
+          <p id="appendix-B-25.5.1">
+     Updated references.<a href="#appendix-B-25.5.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-25.6">
+          <p id="appendix-B-25.6.1">
+     Added security consideration recommending audience-restricted access tokens.<a href="#appendix-B-25.6.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-25.7">
+          <p id="appendix-B-25.7.1">
+     Mention FAPI Message Signing as a use case for publishing signing keys.<a href="#appendix-B-25.7.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="appendix-B-26">
+ -00<a href="#appendix-B-26" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-B-27.1">
+          <p id="appendix-B-27.1.1">
+     Initial working group version based on draft-jones-oauth-resource-metadata-04.<a href="#appendix-B-27.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 </section>
