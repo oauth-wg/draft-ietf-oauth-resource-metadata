@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-01T00:08:36.138037+00:00",
+  "timestamp": "2024-10-03T00:07:52.445098+00:00",
   "repo": "oauth-wg/draft-ietf-oauth-resource-metadata",
   "labels": [
     {
@@ -2463,6 +2463,187 @@
           "body": "",
           "createdAt": "2024-09-16T17:06:10Z",
           "updatedAt": "2024-09-16T17:06:10Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 57,
+      "id": "PR_kwDOJ1yJis59Mehe",
+      "title": "Address HttpDir review comments by Mike Bishop",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/57",
+      "state": "MERGED",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-10-01T03:35:52Z",
+      "updatedAt": "2024-10-02T02:20:58Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "5100bfed29699aff1814b9536f678e06ba74f90a",
+      "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
+      "headRefName": "mbj-httpdir",
+      "headRefOid": "85c5e9faf49c6f834b25059a6c151fd6728db581",
+      "closedAt": "2024-10-02T02:20:58Z",
+      "mergedAt": "2024-10-02T02:20:58Z",
+      "mergedBy": "selfissued",
+      "mergeCommit": {
+        "oid": "87b7d8c404ccd23341a793129f2bf41075ef1928"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ1yJis6LjS5-",
+          "commit": {
+            "abbreviatedOid": "85c5e9f"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-10-01T19:46:00Z",
+          "updatedAt": "2024-10-01T19:46:00Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 58,
+      "id": "PR_kwDOJ1yJis59MlDe",
+      "title": "Address IESG review comments by Roman Danyliw",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/58",
+      "state": "MERGED",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-10-01T04:07:03Z",
+      "updatedAt": "2024-10-02T02:25:02Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "87b7d8c404ccd23341a793129f2bf41075ef1928",
+      "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
+      "headRefName": "mbj-roman",
+      "headRefOid": "81ca2a2611235425e9c987addf3763415d8d7b2b",
+      "closedAt": "2024-10-02T02:25:02Z",
+      "mergedAt": "2024-10-02T02:25:02Z",
+      "mergedBy": "selfissued",
+      "mergeCommit": {
+        "oid": "4a5a4af6ae5efabc392f4423dda55fad47ff32f7"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ1yJis6LjHKa",
+          "commit": {
+            "abbreviatedOid": "38f53dd"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-10-01T19:33:54Z",
+          "updatedAt": "2024-10-01T19:33:54Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 59,
+      "id": "PR_kwDOJ1yJis59VDDl",
+      "title": "Address IESG review comments by Orie Steele",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/59",
+      "state": "MERGED",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Allows query parameters in resource identifiers.  Consistently uses the term \"metadata parameter\".\r\n\r\nCc: @OR13",
+      "createdAt": "2024-10-02T04:11:43Z",
+      "updatedAt": "2024-10-02T18:09:51Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "4a5a4af6ae5efabc392f4423dda55fad47ff32f7",
+      "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
+      "headRefName": "mbj-orie",
+      "headRefOid": "5f9a7fd5bb9db63580308a130598c69dd576eb86",
+      "closedAt": "2024-10-02T18:09:50Z",
+      "mergedAt": "2024-10-02T18:09:50Z",
+      "mergedBy": "selfissued",
+      "mergeCommit": {
+        "oid": "a8343f791f80c51b7c256282e8c263af4e0c2342"
+      },
+      "comments": [
+        {
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "body": "Given that this would be one of the first specs that mentions the combination a well-known URL with a query string, should we mention some use cases where that would be justified?",
+          "createdAt": "2024-10-02T04:21:14Z",
+          "updatedAt": "2024-10-02T04:21:14Z"
+        },
+        {
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@OR13's example use case was an existing resource already using a syntax like https://shoppingcart.example.com/?item=product .  Feel free to propose text briefly explaining this use case (but probably not in the `resource` parameter definition).",
+          "createdAt": "2024-10-02T04:30:18Z",
+          "updatedAt": "2024-10-02T04:30:18Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ1yJis6LljDw",
+          "commit": {
+            "abbreviatedOid": "9eb6a92"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-10-02T04:19:37Z",
+          "updatedAt": "2024-10-02T04:19:37Z",
+          "comments": [
+            {
+              "originalPosition": 236,
+              "body": "It's probably worth calling out specifically the change that was made based on this review here",
+              "createdAt": "2024-10-02T04:19:37Z",
+              "updatedAt": "2024-10-02T04:19:37Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJ1yJis6LlkHj",
+          "commit": {
+            "abbreviatedOid": "9eb6a92"
+          },
+          "author": "selfissued",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-10-02T04:26:34Z",
+          "updatedAt": "2024-10-02T04:26:35Z",
+          "comments": [
+            {
+              "originalPosition": 236,
+              "body": "Done in https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/59/commits/5f9a7fd5bb9db63580308a130598c69dd576eb86",
+              "createdAt": "2024-10-02T04:26:34Z",
+              "updatedAt": "2024-10-02T04:26:35Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJ1yJis6LpQhU",
+          "commit": {
+            "abbreviatedOid": "5f9a7fd"
+          },
+          "author": "OR13",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-10-02T12:50:12Z",
+          "updatedAt": "2024-10-02T12:50:13Z",
           "comments": []
         }
       ]
