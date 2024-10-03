@@ -5,10 +5,10 @@
 OAuth Working Group                                           M.B. Jones
 Internet-Draft                                    Self-Issued Consulting
 Intended status: Standards Track                                 P. Hunt
-Expires: 5 April 2025                         Independent Identity, Inc.
+Expires: 6 April 2025                         Independent Identity, Inc.
                                                               A. Parecki
                                                                     Okta
-                                                          2 October 2024
+                                                          3 October 2024
 
 
                  OAuth 2.0 Protected Resource Metadata
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 5 April 2025.
+   This Internet-Draft will expire on 6 April 2025.
 
 Copyright Notice
 
@@ -883,9 +883,8 @@ Table of Contents
    or deny the registration request, communicating this decision to the
    review list and IANA.  Denials should include an explanation and, if
    applicable, suggestions as to how to make the request successful.
-   Registration requests that are undetermined for a period longer than
-   21 days can be brought to the IESG's attention (using the
-   iesg@ietf.org mailing list) for resolution.
+   The IANA escalation process is followed when the Designated Experts
+   are not responsive within 14 days.
 
    Criteria that should be applied by the Designated Experts includes
    determining whether the proposed registration duplicates existing
@@ -1242,17 +1241,21 @@ Appendix A.  Acknowledgements
    on this specification.  We would would also like to thank Mike
    Bishop, Ralph Bragg, Brian Campbell, Deb Cooley, Roman Danyliw,
    Gabriel Corona, Vladimir Dzhuvinov, George Fletcher, Arnt
-   Gulbrandsen, Pieter Kasselman, David Mandelberg, Tony Nadalin, Rifaat
-   Shekh-Yusef, Filip Skokan, Orie Steele, Atul Tulshibagwale, Paul
+   Gulbrandsen, Pieter Kasselman, Murray Kucherawy, David Mandelberg,
+   Tony Nadalin, Francesca Palombini, John Scudder, Rifaat Shekh-Yusef,
+   Filip Skokan, Orie Steele, Atul Tulshibagwale, Éric Vyncke, Paul
    Wouters, and Bo Wu for their contributions to the specification.
 
 Appendix B.  Document History
 
    [[ to be removed by the RFC Editor before publication as an RFC ]]
 
-   -11
+   -12
 
-   *  Incorporated responses to review comments by John Scudder.
+   *  Incorporated responses to IESG review comments by John Scudder,
+      Murray Kucherawy, Francesca Palombini, and Éric Vyncke.  The IANA
+      registration procedure was updated per the discussion on the IESG
+      telechat.
 
    -11
 
