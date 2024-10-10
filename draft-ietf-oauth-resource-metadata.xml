@@ -40,7 +40,7 @@
       </address>
     </author>
 
-    <date day="3" month="October" year="2024" />
+    <date day="10" month="October" year="2024" />
 
     <area>Security</area>
     <workgroup>OAuth Working Group</workgroup>
@@ -1180,9 +1180,13 @@
 	Values are registered on a Specification Required <xref target="RFC8126"/>
 	basis after a two-week review period on the oauth-ext-review@ietf.org
 	mailing list, on the advice of one or more Designated Experts.
-	However, to allow for the allocation of values prior to publication,
+	However, to allow for the allocation of values prior to publication
+	of the final version of a specification,
 	the Designated Experts may approve registration once they are satisfied
-	that such a specification will be published.
+	that the specification will be completed and published.
+	However, if the specification is not completed and published
+	in a timely manner, as determined by the Designated Experts,
+	they may request that IANA withdraw the registration.
        </t>
        <t>
 	Registration requests sent to the mailing list for review should use
@@ -1216,6 +1220,18 @@
 	creating a conflict of interest for a particular Expert,
 	that Expert should defer to the judgment of the other Experts.
       </t>
+       <t>
+	 The reason for the use of the mailing list is to enable
+	 public review of registration requests, enabling both Designated Experts
+	 and other interested parties to provide feedback on proposed registrations.
+	 The reason to allow the Designated Experts to
+	 allocate values prior to publication as a final specification is to enable
+	 giving authors of specifications proposing registrations
+	 the benefit of review by the Designated Experts
+	 before the specification is completely done,
+	 so that if problems are identified, the authors can iterate and fix them
+	 before publication of the final specification.
+       </t>
 
       <section title="OAuth Protected Resource Metadata Registry" anchor="PRMetadataReg">
 	<t>
@@ -1874,6 +1890,16 @@
 
     <section anchor="History" title="Document History">
       <t>[[ to be removed by the RFC Editor before publication as an RFC ]]</t>
+
+      <t>
+	-13
+	<list style="symbols">
+	  <t>
+	    Described motivations for the IANA registration procedure,
+	    per additional comments by Murray Kucherawy.
+	  </t>
+	</list>
+      </t>
 
       <t>
 	-12
