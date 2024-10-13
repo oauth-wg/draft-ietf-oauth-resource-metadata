@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-10T00:07:40.043305+00:00",
+  "timestamp": "2024-10-13T00:08:23.959701+00:00",
   "repo": "oauth-wg/draft-ietf-oauth-resource-metadata",
   "labels": [
     {
@@ -2756,6 +2756,54 @@
           "body": "",
           "createdAt": "2024-10-03T17:23:36Z",
           "updatedAt": "2024-10-03T17:23:36Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 62,
+      "id": "PR_kwDOJ1yJis5-QRZJ",
+      "title": "Describe motivations for IANA registration procedure",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/62",
+      "state": "OPEN",
+      "author": "selfissued",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "... per additional feedback by @mskucherawy.\r\n\r\nCc: @debcooley\r\n",
+      "createdAt": "2024-10-10T17:51:07Z",
+      "updatedAt": "2024-10-11T12:37:26Z",
+      "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
+      "baseRefName": "main",
+      "baseRefOid": "a1611b72e4c88c7accd5b54ea4a8f1984913b38c",
+      "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
+      "headRefName": "mbj-iana-motivations",
+      "headRefOid": "fdae5ad60952a9a0732fc264f20135ad13f1238a",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "debcooley",
+          "authorAssociation": "NONE",
+          "body": "I'm checking with IANA....  will reply once they respond.  Thanks for the work!",
+          "createdAt": "2024-10-11T12:37:25Z",
+          "updatedAt": "2024-10-11T12:37:25Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ1yJis6Mvw-K",
+          "commit": {
+            "abbreviatedOid": "fdae5ad"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-10-10T20:10:51Z",
+          "updatedAt": "2024-10-10T20:10:51Z",
           "comments": []
         }
       ]
