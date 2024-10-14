@@ -1186,7 +1186,7 @@
 	that the specification will be completed and published.
 	However, if the specification is not completed and published
 	in a timely manner, as determined by the Designated Experts,
-	they may request that IANA withdraw the registration.
+	the Designated Experts may request that IANA withdraw the registration.
        </t>
        <t>
 	Registration requests sent to the mailing list for review should use
@@ -1861,6 +1861,7 @@
 	The authors of this specification would like to thank the attendees of the IETF 115 OAuth and HTTP API Working Group meetings
 	and the attendees of subsequent OAuth Working Group meetings for their input on this specification.
 	We would would also like to thank
+	Amanda Baber,
 	Mike Bishop,
 	Ralph Bragg,
 	Brian Campbell,
