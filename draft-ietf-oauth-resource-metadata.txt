@@ -5,10 +5,10 @@
 OAuth Working Group                                           M.B. Jones
 Internet-Draft                                    Self-Issued Consulting
 Intended status: Standards Track                                 P. Hunt
-Expires: 6 April 2025                         Independent Identity, Inc.
+Expires: 18 April 2025                        Independent Identity, Inc.
                                                               A. Parecki
                                                                     Okta
-                                                          3 October 2024
+                                                         15 October 2024
 
 
                  OAuth 2.0 Protected Resource Metadata
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 6 April 2025.
+   This Internet-Draft will expire on 18 April 2025.
 
 Copyright Notice
 
@@ -871,9 +871,13 @@ Table of Contents
    Values are registered on a Specification Required [RFC8126] basis
    after a two-week review period on the oauth-ext-review@ietf.org
    mailing list, on the advice of one or more Designated Experts.
-   However, to allow for the allocation of values prior to publication,
-   the Designated Experts may approve registration once they are
-   satisfied that such a specification will be published.
+   However, to allow for the allocation of values prior to publication
+   of the final version of a specification, the Designated Experts may
+   approve registration once they are satisfied that the specification
+   will be completed and published.  However, if the specification is
+   not completed and published in a timely manner, as determined by the
+   Designated Experts, the Designated Experts may request that IANA
+   withdraw the registration.
 
    Registration requests sent to the mailing list for review should use
    an appropriate subject (e.g., "Request to register OAuth Protected
@@ -903,6 +907,16 @@ Table of Contents
    be perceived as creating a conflict of interest for a particular
    Expert, that Expert should defer to the judgment of the other
    Experts.
+
+   The reason for the use of the mailing list is to enable public review
+   of registration requests, enabling both Designated Experts and other
+   interested parties to provide feedback on proposed registrations.
+   The reason to allow the Designated Experts to allocate values prior
+   to publication as a final specification is to enable giving authors
+   of specifications proposing registrations the benefit of review by
+   the Designated Experts before the specification is completely done,
+   so that if problems are identified, the authors can iterate and fix
+   them before publication of the final specification.
 
 8.1.  OAuth Protected Resource Metadata Registry
 
@@ -1238,9 +1252,9 @@ Appendix A.  Acknowledgements
    The authors of this specification would like to thank the attendees
    of the IETF 115 OAuth and HTTP API Working Group meetings and the
    attendees of subsequent OAuth Working Group meetings for their input
-   on this specification.  We would would also like to thank Mike
-   Bishop, Ralph Bragg, Brian Campbell, Deb Cooley, Roman Danyliw,
-   Gabriel Corona, Vladimir Dzhuvinov, George Fletcher, Arnt
+   on this specification.  We would would also like to thank Amanda
+   Baber, Mike Bishop, Ralph Bragg, Brian Campbell, Deb Cooley, Roman
+   Danyliw, Gabriel Corona, Vladimir Dzhuvinov, George Fletcher, Arnt
    Gulbrandsen, Pieter Kasselman, Murray Kucherawy, David Mandelberg,
    Tony Nadalin, Francesca Palombini, John Scudder, Rifaat Shekh-Yusef,
    Filip Skokan, Orie Steele, Atul Tulshibagwale, Éric Vyncke, Paul
@@ -1249,6 +1263,11 @@ Appendix A.  Acknowledgements
 Appendix B.  Document History
 
    [[ to be removed by the RFC Editor before publication as an RFC ]]
+
+   -13
+
+   *  Described motivations for the IANA registration procedure, per
+      additional comments by Murray Kucherawy.
 
    -12
 
