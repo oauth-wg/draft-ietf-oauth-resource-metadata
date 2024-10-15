@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-13T00:08:23.959701+00:00",
+  "timestamp": "2024-10-15T00:07:40.222337+00:00",
   "repo": "oauth-wg/draft-ietf-oauth-resource-metadata",
   "labels": [
     {
@@ -2772,13 +2772,13 @@
       "labels": [],
       "body": "... per additional feedback by @mskucherawy.\r\n\r\nCc: @debcooley\r\n",
       "createdAt": "2024-10-10T17:51:07Z",
-      "updatedAt": "2024-10-11T12:37:26Z",
+      "updatedAt": "2024-10-14T23:41:05Z",
       "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
       "baseRefName": "main",
       "baseRefOid": "a1611b72e4c88c7accd5b54ea4a8f1984913b38c",
       "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
       "headRefName": "mbj-iana-motivations",
-      "headRefOid": "fdae5ad60952a9a0732fc264f20135ad13f1238a",
+      "headRefOid": "7dbad96397005b0284f564c6e4d7e48ab1210192",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
