@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-15T00:07:40.222337+00:00",
+  "timestamp": "2024-10-17T00:07:40.304380+00:00",
   "repo": "oauth-wg/draft-ietf-oauth-resource-metadata",
   "labels": [
     {
@@ -2765,24 +2765,26 @@
       "id": "PR_kwDOJ1yJis5-QRZJ",
       "title": "Describe motivations for IANA registration procedure",
       "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/pull/62",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "selfissued",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "... per additional feedback by @mskucherawy.\r\n\r\nCc: @debcooley\r\n",
       "createdAt": "2024-10-10T17:51:07Z",
-      "updatedAt": "2024-10-14T23:41:05Z",
+      "updatedAt": "2024-10-15T18:11:53Z",
       "baseRepository": "oauth-wg/draft-ietf-oauth-resource-metadata",
       "baseRefName": "main",
       "baseRefOid": "a1611b72e4c88c7accd5b54ea4a8f1984913b38c",
       "headRepository": "selfissued/draft-ietf-oauth-resource-metadata",
       "headRefName": "mbj-iana-motivations",
-      "headRefOid": "7dbad96397005b0284f564c6e4d7e48ab1210192",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "57f292af5ab4619310f0a6d8ef031574d2680ea6",
+      "closedAt": "2024-10-15T18:11:53Z",
+      "mergedAt": "2024-10-15T18:11:53Z",
+      "mergedBy": "selfissued",
+      "mergeCommit": {
+        "oid": "d5780574f158a88f528f878ec9c4b92a3ddfc95d"
+      },
       "comments": [
         {
           "author": "debcooley",
