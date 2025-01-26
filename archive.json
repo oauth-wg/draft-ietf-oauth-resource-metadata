@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-01-23T00:07:40.483738+00:00",
+  "timestamp": "2025-01-26T00:08:18.797898+00:00",
   "repo": "oauth-wg/draft-ietf-oauth-resource-metadata",
   "labels": [
     {
@@ -625,7 +625,7 @@
       "labels": [],
       "body": "The current draft [specifies that](https://drafts.oauth.net/draft-ietf-oauth-resource-metadata/draft-ietf-oauth-resource-metadata.html#name-protected-resource-metadata-v):\r\n\r\n> If the protected resource metadata was retrieved from a URL returned by the protected resource via the WWW-Authenticate resource_metadata parameter, then the resource value returned MUST be identical to the URL that the client used to make the request to the resource server. If these values are not identical, the data contained in the response MUST NOT be used.\r\n\r\nIf I am reading this currently, if the client makes a request to `https://resource.example.com/api/foo`, then the metadata must contain `\"resource\": \"https://resource.example.com/api/foo\"` but not something like `\"resource\": \"https://resource.example.com/api/\"` (and therefore the resource_metadata must be `https://resource.example.com/.well-known/oauth-protected-resource/api/foo`.\r\n\r\nOn the other hand, the [metadata example](https://drafts.oauth.net/draft-ietf-oauth-resource-metadata/draft-ietf-oauth-resource-metadata.html#name-protected-resource-metadata-r) uses:\r\n\r\n~~~json\r\n\"resource\": \"https://resource.example.com\",\r\n~~~\r\n\r\nThis suggests that the draft would encourage using a root API resource identifier (instead of a resource identifier for each path). \r\n\r\nShould the authorization server return a different metadata document URI path?\r\n\r\nOr should the authorization server return metadata document for a base (API) path? In this case, the requirement should probably be modified to something like:\r\n\r\n> If the protected resource metadata was retrieved from a URL returned by the protected resource via the WWW-Authenticate resource_metadata parameter, then **the URL that the client used to make the request to the resource server must be in scope of the the resource value returned**. Otherwise, the data contained in the response MUST NOT be used.\r\n\r\nMoreover, should the client check that the `resource_metadata` URI is the same URI as the one found by applying the `/.well-known/oauth-protected-resource` transformation to the \"resource\" metadata value? (i.e. should the client check that `resource_metadata_uri == origin + \"/.well-known/oauth-protected-resource\" + request_path`?)\r\n",
       "createdAt": "2024-09-22T14:05:10Z",
-      "updatedAt": "2024-09-23T18:30:08Z",
+      "updatedAt": "2025-01-23T12:13:15Z",
       "closedAt": null,
       "comments": [
         {
@@ -634,8 +634,31 @@
           "body": "Yes, as the spec says, they must be identical.\r\n\r\nThe example is just an example and happens not to include a path.  Both this spec and RFC 8707 allow the resource identifier to include a path component.\r\n\r\nYes, I would have also preferred that WWW-Authenticate return the \"resource\" value rather than the \"resource_metadata\" value.  In fact, it did until draft -02.  But the working group felt otherwise, and as we're past both WGLC and IETF last call, I'm not prone to try to reopen that issue at this point in time.",
           "createdAt": "2024-09-23T18:30:07Z",
           "updatedAt": "2024-09-23T18:30:07Z"
+        },
+        {
+          "author": "erincandescent",
+          "authorAssociation": "NONE",
+          "body": "So if I do a request to \"https://example.com/resource/foo\" and get back a WWW-Authenticate header pointing me at resource metadata which specifies a resource of \"https://example.com/resource\", I have to discard it?\n\nThat seems unworkable.",
+          "createdAt": "2025-01-23T12:13:13Z",
+          "updatedAt": "2025-01-23T12:13:13Z"
         }
       ]
+    },
+    {
+      "number": 63,
+      "id": "I_kwDOJ1yJis6nSv5D",
+      "title": "Necessity of `dpop_bound_access_tokens_required` parameter",
+      "url": "https://github.com/oauth-wg/draft-ietf-oauth-resource-metadata/issues/63",
+      "state": "OPEN",
+      "author": "erincandescent",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "It seems to me that I can infer that DPoP is supported by presence of a nonempty `dpop_signing_alg_values_supported`. Likewise, I can infer that bearer tokens are not supported by presence of an empty `bearer_methods_supported` array.\n\nSo I'm left to wonder: what additional utility does `dpop_bound_access_tokens_required` give anyone? And, in particular, I'm worried that its semantics will just result in confusion as additional methods are added. Let's say we have a NewSuperAuthMethod, and the endpoint declares support for it, but also declares `\"dpop_bound_access_tokens_required\": true`; does that mean it's actually not supported? I have to include a DPoP proof JWT alongside NewSuperAuthMethod?\n\nSo I don't think the metadata value provides any value here and just sews confusion and should be removed. ",
+      "createdAt": "2025-01-23T11:54:32Z",
+      "updatedAt": "2025-01-23T11:54:32Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
